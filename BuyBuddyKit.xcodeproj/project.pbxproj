@@ -22,9 +22,7 @@
 		5A77C8501E61E66D008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
 		5A77C85F1E61E682008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */; };
 		5A77C86E1E61E694008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */; };
-		5A77C8771E61E777008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
-		5A77C8781E61E777008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
-		5A77C8791E61E777008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
+		5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -628,7 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8781E61E777008D1143 /* SimpleTest.swift in Sources */,
+				5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +634,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8771E61E777008D1143 /* SimpleTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +641,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8791E61E777008D1143 /* SimpleTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1193,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1252,6 +1249,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1298,6 +1296,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug-iphoneos";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1352,6 +1351,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug-iphoneos";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
