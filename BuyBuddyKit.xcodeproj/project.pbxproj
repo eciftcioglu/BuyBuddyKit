@@ -11,10 +11,6 @@
 		5A77C8101E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A77C8111E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A77C8121E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A77C8251E61E118008D1143 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
-		5A77C8261E61E118008D1143 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
-		5A77C8271E61E118008D1143 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
-		5A77C8281E61E118008D1143 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
 		5A77C8431E61E551008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C8361E61E539008D1143 /* Alamofire.framework */; };
 		5A77C8441E61E557008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C83A1E61E539008D1143 /* Alamofire.framework */; };
 		5A77C8451E61E55D008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C83E1E61E539008D1143 /* Alamofire.framework */; };
@@ -23,6 +19,58 @@
 		5A77C85F1E61E682008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */; };
 		5A77C86E1E61E694008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */; };
 		5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
+		5AD310941E720957005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
+		5AD310951E720959005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
+		5AD3109B1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
+		5AD3109C1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
+		5AD3109D1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
+		5AD3109E1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
+		5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
+		5AD310A31E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
+		5AD310A41E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
+		5AD310A51E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
+		5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
+		5AD310A91E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
+		5AD310AA1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
+		5AD310AB1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
+		5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
+		5AD310AE1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
+		5AD310AF1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
+		5AD310B01E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
+		5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
+		5AD310B31E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
+		5AD310B41E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
+		5AD310B51E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
+		5AD310B71E7216CD005F8368 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
+		5AD310B81E7216CD005F8368 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
+		5AD310B91E7216CD005F8368 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
+		5AD310BA1E7216CD005F8368 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
+		5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
+		5AD310BD1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
+		5AD310BE1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
+		5AD310BF1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
+		5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
+		5AD310C21E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
+		5AD310C31E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
+		5AD310C41E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
+		5AD310C61E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
+		5AD310C71E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
+		5AD310C81E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
+		5AD310C91E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
+		5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
+		5AD310CD1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
+		5AD310CE1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
+		5AD310CF1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
+		5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
+		5AD310D21E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
+		5AD310D31E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
+		5AD310D41E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
+		5AD310EE1E7220B7005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E11E7220AC005F8368 /* SwiftyJSON.framework */; };
+		5AD310EF1E7220BC005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E51E7220AC005F8368 /* SwiftyJSON.framework */; };
+		5AD310F01E7220C2005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310EB1E7220AC005F8368 /* SwiftyJSON.framework */; };
+		5AD310F11E7220C6005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E91E7220AC005F8368 /* SwiftyJSON.framework */; };
+		5AD311081E72268E005F8368 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
+		5AD3111E1E722798005F8368 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +144,68 @@
 			remoteGlobalIDString = 5A77C7F21E61DE12008D1143;
 			remoteInfo = "BuyBuddyKit tvOS";
 		};
+		5AD310E01E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFDB19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		5AD310E21E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFE619575BE100351305;
+			remoteInfo = "SwiftyJSON iOS Tests";
+		};
+		5AD310E41E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC5B1A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX";
+		};
+		5AD310E61E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC651A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX Tests";
+		};
+		5AD310E81E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
+			remoteInfo = "SwiftyJSON watchOS";
+		};
+		5AD310EA1E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7236B4F61BAC14150020529B;
+			remoteInfo = "SwiftyJSON tvOS";
+		};
+		5AD310EC1E7220AC005F8368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
+			remoteInfo = "SwiftyJSON tvOS Tests";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5AD310F41E722669005F8368 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +217,7 @@
 		5A77C80C1E61E038008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C80D1E61E038008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C80E1E61E038008D1143 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
-		5A77C8241E61E118008D1143 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5A77C8241E61E118008D1143 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../../../Users/Instigater/Development/BuyBuddy/buybuddy_cocoa_sdk/Sources/main.swift; sourceTree = DEVELOPER_DIR; };
 		5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +226,20 @@
 		5A77C87D1E61E7F6008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C87E1E61E7F6008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C87F1E61E7F6008D1143 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		5AD3109A1E720F8E005F8368 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5AD310A11E7211E4005F8368 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationNotAvailableError.swift; sourceTree = "<group>"; };
+		5AD310AC1E721537005F8368 /* EmailAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAssignment.swift; sourceTree = "<group>"; };
+		5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAssignmentNotAvailableError.swift; sourceTree = "<group>"; };
+		5AD310B61E7216CD005F8368 /* UserFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
+		5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseFactory.swift; sourceTree = "<group>"; };
+		5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
+		5AD310C51E72188B005F8368 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseFactoryDelegate.swift; sourceTree = "<group>"; };
+		5AD310D01E7219FE005F8368 /* Passphrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passphrase.swift; sourceTree = "<group>"; };
+		5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		5AD310F61E722669005F8368 /* BuyBuddyKit CLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "BuyBuddyKit CLI"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD310F81E722669005F8368 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310EE1E7220B7005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8431E61E551008D1143 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310EF1E7220BC005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8441E61E557008D1143 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310F01E7220C2005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8451E61E55D008D1143 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310F11E7220C6005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8461E61E562008D1143 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +303,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5AD310F31E722669005F8368 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD311081E72268E005F8368 /* BuyBuddyKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -183,8 +318,10 @@
 			isa = PBXGroup;
 			children = (
 				5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */,
+				5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */,
 				5A77C8091E61E038008D1143 /* Sources */,
 				5A77C8741E61E777008D1143 /* Tests */,
+				5AD310F71E722669005F8368 /* BuyBuddyKit CLI */,
 				5A77C7D91E61DDF6008D1143 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,6 +336,7 @@
 				5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */,
 				5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */,
 				5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */,
+				5AD310F61E722669005F8368 /* BuyBuddyKit CLI */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,6 +345,11 @@
 			isa = PBXGroup;
 			children = (
 				5A77C8241E61E118008D1143 /* main.swift */,
+				5AD310991E720F8E005F8368 /* Model */,
+				5AD310A61E7213BE005F8368 /* ErrorHandling */,
+				5AD3109F1E7211D2005F8368 /* Factories */,
+				5AD310CA1E7219BF005F8368 /* Delegates */,
+				5AD310A01E7211D2005F8368 /* Repositories */,
 				5A77C8291E61E11F008D1143 /* Supporting Files */,
 			);
 			path = Sources;
@@ -247,6 +390,74 @@
 				5A77C87E1E61E7F6008D1143 /* Info-tvOS.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5AD310991E720F8E005F8368 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5AD3109A1E720F8E005F8368 /* User.swift */,
+				5AD310AC1E721537005F8368 /* EmailAssignment.swift */,
+				5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */,
+				5AD310C51E72188B005F8368 /* Credentials.swift */,
+				5AD310D01E7219FE005F8368 /* Passphrase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5AD3109F1E7211D2005F8368 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310B61E7216CD005F8368 /* UserFactory.swift */,
+				5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		5AD310A01E7211D2005F8368 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310A11E7211E4005F8368 /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		5AD310A61E7213BE005F8368 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */,
+				5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */,
+			);
+			path = ErrorHandling;
+			sourceTree = "<group>";
+		};
+		5AD310CA1E7219BF005F8368 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5AD310D61E7220AC005F8368 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310E11E7220AC005F8368 /* SwiftyJSON.framework */,
+				5AD310E31E7220AC005F8368 /* SwiftyJSON iOS Tests.xctest */,
+				5AD310E51E7220AC005F8368 /* SwiftyJSON.framework */,
+				5AD310E71E7220AC005F8368 /* SwiftyJSON OSX Tests.xctest */,
+				5AD310E91E7220AC005F8368 /* SwiftyJSON.framework */,
+				5AD310EB1E7220AC005F8368 /* SwiftyJSON.framework */,
+				5AD310ED1E7220AC005F8368 /* SwiftyJSON tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5AD310F71E722669005F8368 /* BuyBuddyKit CLI */ = {
+			isa = PBXGroup;
+			children = (
+				5AD310F81E722669005F8368 /* main.swift */,
+			);
+			path = "BuyBuddyKit CLI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,13 +624,30 @@
 			productReference = 5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5AD310F51E722669005F8368 /* BuyBuddyKit CLI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AD310FA1E722669005F8368 /* Build configuration list for PBXNativeTarget "BuyBuddyKit CLI" */;
+			buildPhases = (
+				5AD310F21E722669005F8368 /* Sources */,
+				5AD310F31E722669005F8368 /* Frameworks */,
+				5AD310F41E722669005F8368 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BuyBuddyKit CLI";
+			productName = "BuyBuddyKit CLI";
+			productReference = 5AD310F61E722669005F8368 /* BuyBuddyKit CLI */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5A77C7CD1E61DDDB008D1143 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					5A77C7D71E61DDF6008D1143 = {
@@ -454,6 +682,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
+					5AD310F51E722669005F8368 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = DHCR3H4M55;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 5A77C7D01E61DDDB008D1143 /* Build configuration list for PBXProject "BuyBuddyKit" */;
@@ -471,9 +704,14 @@
 					ProductGroup = 5A77C82B1E61E539008D1143 /* Products */;
 					ProjectRef = 5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */;
 				},
+				{
+					ProductGroup = 5AD310D61E7220AC005F8368 /* Products */;
+					ProjectRef = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
+				5AD310F51E722669005F8368 /* BuyBuddyKit CLI */,
 				5A77C7D71E61DDF6008D1143 /* BuyBuddyKit iOS */,
 				5A77C7E51E61DE03008D1143 /* BuyBuddyKit macOS */,
 				5A77C7F21E61DE12008D1143 /* BuyBuddyKit tvOS */,
@@ -535,6 +773,55 @@
 			remoteRef = 5A77C8411E61E539008D1143 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		5AD310E11E7220AC005F8368 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 5AD310E01E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310E31E7220AC005F8368 /* SwiftyJSON iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON iOS Tests.xctest";
+			remoteRef = 5AD310E21E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310E51E7220AC005F8368 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 5AD310E41E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310E71E7220AC005F8368 /* SwiftyJSON OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON OSX Tests.xctest";
+			remoteRef = 5AD310E61E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310E91E7220AC005F8368 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 5AD310E81E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310EB1E7220AC005F8368 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 5AD310EA1E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5AD310ED1E7220AC005F8368 /* SwiftyJSON tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON tvOS Tests.xctest";
+			remoteRef = 5AD310EC1E7220AC005F8368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -594,7 +881,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8251E61E118008D1143 /* main.swift in Sources */,
+				5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
+				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
+				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				5AD310C61E72188B005F8368 /* Credentials.swift in Sources */,
+				5AD310B71E7216CD005F8368 /* UserFactory.swift in Sources */,
+				5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
+				5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
+				5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */,
+				5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */,
+				5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
+				5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,7 +899,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8261E61E118008D1143 /* main.swift in Sources */,
+				5AD310CD1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
+				5AD3109C1E720F8E005F8368 /* User.swift in Sources */,
+				5AD310AE1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				5AD310C71E72188B005F8368 /* Credentials.swift in Sources */,
+				5AD310B81E7216CD005F8368 /* UserFactory.swift in Sources */,
+				5AD310B31E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
+				5AD310C21E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
+				5AD310A31E7211E4005F8368 /* UserRepository.swift in Sources */,
+				5AD310D21E7219FE005F8368 /* Passphrase.swift in Sources */,
+				5AD310BD1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
+				5AD310A91E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +917,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8271E61E118008D1143 /* main.swift in Sources */,
+				5AD310CE1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
+				5AD3109D1E720F8E005F8368 /* User.swift in Sources */,
+				5AD310AF1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				5AD310C81E72188B005F8368 /* Credentials.swift in Sources */,
+				5AD310B91E7216CD005F8368 /* UserFactory.swift in Sources */,
+				5AD310B41E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
+				5AD310C31E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
+				5AD310A41E7211E4005F8368 /* UserRepository.swift in Sources */,
+				5AD310D31E7219FE005F8368 /* Passphrase.swift in Sources */,
+				5AD310BE1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
+				5AD310AA1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,7 +935,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A77C8281E61E118008D1143 /* main.swift in Sources */,
+				5AD310CF1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
+				5AD3109E1E720F8E005F8368 /* User.swift in Sources */,
+				5AD310B01E721537005F8368 /* EmailAssignment.swift in Sources */,
+				5AD310C91E72188B005F8368 /* Credentials.swift in Sources */,
+				5AD310BA1E7216CD005F8368 /* UserFactory.swift in Sources */,
+				5AD310B51E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
+				5AD310C41E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
+				5AD310A51E7211E4005F8368 /* UserRepository.swift in Sources */,
+				5AD310D41E7219FE005F8368 /* Passphrase.swift in Sources */,
+				5AD310BF1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
+				5AD310AB1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +961,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310941E720957005F8368 /* SimpleTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +969,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD310951E720959005F8368 /* SimpleTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AD310F21E722669005F8368 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD3111E1E722798005F8368 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +1809,104 @@
 			};
 			name = Release;
 		};
+		5AD310FB1E722669005F8368 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DHCR3H4M55;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5AD310FC1E722669005F8368 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DHCR3H4M55;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1491,6 +1926,7 @@
 				5A77C7E01E61DDF6008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C7EB1E61DE03008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS" */ = {
 			isa = XCConfigurationList;
@@ -1499,6 +1935,7 @@
 				5A77C7ED1E61DE03008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C7F81E61DE12008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1507,6 +1944,7 @@
 				5A77C7FA1E61DE12008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C8051E61DE24008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit watchOS" */ = {
 			isa = XCConfigurationList;
@@ -1515,6 +1953,7 @@
 				5A77C8071E61DE24008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C8531E61E66D008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS Tests" */ = {
 			isa = XCConfigurationList;
@@ -1523,6 +1962,7 @@
 				5A77C8551E61E66D008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C8621E61E682008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit iOS Tests" */ = {
 			isa = XCConfigurationList;
@@ -1531,12 +1971,22 @@
 				5A77C8641E61E682008D1143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A77C8711E61E694008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A77C8721E61E694008D1143 /* Debug */,
 				5A77C8731E61E694008D1143 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AD310FA1E722669005F8368 /* Build configuration list for PBXNativeTarget "BuyBuddyKit CLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AD310FB1E722669005F8368 /* Debug */,
+				5AD310FC1E722669005F8368 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

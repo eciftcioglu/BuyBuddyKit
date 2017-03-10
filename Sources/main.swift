@@ -7,19 +7,15 @@
 //
 
 import Foundation
-import Alamofire
+import BuyBuddyKit
 
-//Alamofire.request("https://httpbin.org/get").responseJSON { response in
-//    print(response.request)  // original URL request
-//    print(response.response) // HTTP URL response
-//    print(response.data)     // server data
-//    print(response.result)   // result of response serialization
-//    
-//    if let JSON = response.result.value {
-//        print("JSON: \(JSON)")
-//    }
-//}
-
-public func fn() -> Bool {
-    return true
+struct Delegate: PassphraseFactoryDelegate {
+    func didFetchPassphrase() {
+        
+    }
 }
+
+let delegate = Delegate()
+let factory = PassphraseFactory(delegate: delegate)
+
+factory.createPassphrase(withCredentials: Credentials(username: "", password: ""))

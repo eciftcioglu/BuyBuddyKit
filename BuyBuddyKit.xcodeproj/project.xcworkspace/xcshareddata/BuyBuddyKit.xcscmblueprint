@@ -5,12 +5,14 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8" : 9223372036854775807,
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 9223372036854775807,
     "67620B5EFA902936DF04070AF595B76AB0333747" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DAF42291-6354-4BA1-85FF-84AF8F918841",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8" : "BuyBuddyKit\/",
-    "67620B5EFA902936DF04070AF595B76AB0333747" : "BuyBuddyKit\/Alamofire\/"
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8" : "buybuddy_cocoa_sdk\/",
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "buybuddy_cocoa_sdk\/SwiftyJSON\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "buybuddy_cocoa_sdk\/Alamofire\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BuyBuddyKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftyJSON\/SwiftyJSON.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3"
     }
   ]
 }
