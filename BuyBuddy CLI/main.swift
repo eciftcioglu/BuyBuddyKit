@@ -19,3 +19,5 @@ let delegate = Delegate()
 let factory = PassphraseFactory(delegate: delegate)
 
 factory.createPassphrase(withCredentials: Credentials(username: "", password: ""))
+
+while true {}

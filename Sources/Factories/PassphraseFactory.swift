@@ -10,12 +10,18 @@ public class PassphraseFactory {
     }
     
     public func createPassphrase(withCredentials credentials: Credentials) {
-        Alamofire.request("http://localhost:4000/api/passphrase/",
+        Alamofire.request("http://localhost:4000/api/passphrases/",
                           method: .post,
-                          parameters: ["":""],
+                          parameters: ["credentials": ["email":"test@mail.com", "password": "super_cow_powers"]],
                           encoding: JSONEncoding.default)
-        .responseJSON { response in
-            print(response)
+        .response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+            }
         }
     }
 }

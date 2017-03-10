@@ -19,6 +19,8 @@
 		5A77C85F1E61E682008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */; };
 		5A77C86E1E61E694008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */; };
 		5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
+		5AB53B891E72F0FC00C5D49E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB53B881E72F0FC00C5D49E /* main.swift */; };
+		5AB53B8D1E72F11900C5D49E /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
 		5AD310941E720957005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
 		5AD310951E720959005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
 		5AD3109B1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
@@ -69,8 +71,6 @@
 		5AD310EF1E7220BC005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E51E7220AC005F8368 /* SwiftyJSON.framework */; };
 		5AD310F01E7220C2005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310EB1E7220AC005F8368 /* SwiftyJSON.framework */; };
 		5AD310F11E7220C6005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E91E7220AC005F8368 /* SwiftyJSON.framework */; };
-		5AD311081E72268E005F8368 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
-		5AD3111E1E722798005F8368 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8241E61E118008D1143 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,11 +196,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5AD310F41E722669005F8368 /* CopyFiles */ = {
+		5AB53B841E72F0FC00C5D49E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = usr/share/man/man1;
-			dstSubfolderSpec = 10;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -217,7 +217,6 @@
 		5A77C80C1E61E038008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C80D1E61E038008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C80E1E61E038008D1143 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
-		5A77C8241E61E118008D1143 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../../../Users/Instigater/Development/BuyBuddy/buybuddy_cocoa_sdk/Sources/main.swift; sourceTree = DEVELOPER_DIR; };
 		5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +225,10 @@
 		5A77C87D1E61E7F6008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C87E1E61E7F6008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C87F1E61E7F6008D1143 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		5AB53B4F1E72EF2800C5D49E /* dylib1.10.5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.10.5.o; path = usr/lib/dylib1.10.5.o; sourceTree = SDKROOT; };
+		5AB53B511E72EF4000C5D49E /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = SDKROOT; };
+		5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "BuyBuddy CLI"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AB53B881E72F0FC00C5D49E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5AD3109A1E720F8E005F8368 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5AD310A11E7211E4005F8368 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationNotAvailableError.swift; sourceTree = "<group>"; };
@@ -238,8 +241,6 @@
 		5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseFactoryDelegate.swift; sourceTree = "<group>"; };
 		5AD310D01E7219FE005F8368 /* Passphrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passphrase.swift; sourceTree = "<group>"; };
 		5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
-		5AD310F61E722669005F8368 /* BuyBuddyKit CLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "BuyBuddyKit CLI"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AD310F81E722669005F8368 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,11 +304,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AD310F31E722669005F8368 /* Frameworks */ = {
+		5AB53B831E72F0FC00C5D49E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AD311081E72268E005F8368 /* BuyBuddyKit.framework in Frameworks */,
+				5AB53B8D1E72F11900C5D49E /* BuyBuddyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,9 +321,10 @@
 				5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */,
 				5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */,
 				5A77C8091E61E038008D1143 /* Sources */,
+				5AB53B871E72F0FC00C5D49E /* BuyBuddy CLI */,
 				5A77C8741E61E777008D1143 /* Tests */,
-				5AD310F71E722669005F8368 /* BuyBuddyKit CLI */,
 				5A77C7D91E61DDF6008D1143 /* Products */,
+				5AB53B4E1E72EF2800C5D49E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,7 +338,7 @@
 				5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */,
 				5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */,
 				5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */,
-				5AD310F61E722669005F8368 /* BuyBuddyKit CLI */,
+				5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,7 +346,6 @@
 		5A77C8091E61E038008D1143 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5A77C8241E61E118008D1143 /* main.swift */,
 				5AD310991E720F8E005F8368 /* Model */,
 				5AD310A61E7213BE005F8368 /* ErrorHandling */,
 				5AD3109F1E7211D2005F8368 /* Factories */,
@@ -390,6 +391,23 @@
 				5A77C87E1E61E7F6008D1143 /* Info-tvOS.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5AB53B4E1E72EF2800C5D49E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AB53B511E72EF4000C5D49E /* libswiftCore.tbd */,
+				5AB53B4F1E72EF2800C5D49E /* dylib1.10.5.o */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5AB53B871E72F0FC00C5D49E /* BuyBuddy CLI */ = {
+			isa = PBXGroup;
+			children = (
+				5AB53B881E72F0FC00C5D49E /* main.swift */,
+			);
+			path = "BuyBuddy CLI";
 			sourceTree = "<group>";
 		};
 		5AD310991E720F8E005F8368 /* Model */ = {
@@ -450,14 +468,6 @@
 				5AD310ED1E7220AC005F8368 /* SwiftyJSON tvOS Tests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5AD310F71E722669005F8368 /* BuyBuddyKit CLI */ = {
-			isa = PBXGroup;
-			children = (
-				5AD310F81E722669005F8368 /* main.swift */,
-			);
-			path = "BuyBuddyKit CLI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,21 +634,21 @@
 			productReference = 5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5AD310F51E722669005F8368 /* BuyBuddyKit CLI */ = {
+		5AB53B851E72F0FC00C5D49E /* BuyBuddy CLI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AD310FA1E722669005F8368 /* Build configuration list for PBXNativeTarget "BuyBuddyKit CLI" */;
+			buildConfigurationList = 5AB53B8A1E72F0FC00C5D49E /* Build configuration list for PBXNativeTarget "BuyBuddy CLI" */;
 			buildPhases = (
-				5AD310F21E722669005F8368 /* Sources */,
-				5AD310F31E722669005F8368 /* Frameworks */,
-				5AD310F41E722669005F8368 /* CopyFiles */,
+				5AB53B821E72F0FC00C5D49E /* Sources */,
+				5AB53B831E72F0FC00C5D49E /* Frameworks */,
+				5AB53B841E72F0FC00C5D49E /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "BuyBuddyKit CLI";
-			productName = "BuyBuddyKit CLI";
-			productReference = 5AD310F61E722669005F8368 /* BuyBuddyKit CLI */;
+			name = "BuyBuddy CLI";
+			productName = "BuyBuddy CLI";
+			productReference = 5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -647,7 +657,7 @@
 		5A77C7CD1E61DDDB008D1143 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					5A77C7D71E61DDF6008D1143 = {
@@ -657,6 +667,7 @@
 					};
 					5A77C7E51E61DE03008D1143 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P74CR59QQG;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -682,9 +693,9 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
-					5AD310F51E722669005F8368 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = DHCR3H4M55;
+					5AB53B851E72F0FC00C5D49E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = X4R5K8NKGR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -711,7 +722,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				5AD310F51E722669005F8368 /* BuyBuddyKit CLI */,
+				5AB53B851E72F0FC00C5D49E /* BuyBuddy CLI */,
 				5A77C7D71E61DDF6008D1143 /* BuyBuddyKit iOS */,
 				5A77C7E51E61DE03008D1143 /* BuyBuddyKit macOS */,
 				5A77C7F21E61DE12008D1143 /* BuyBuddyKit tvOS */,
@@ -973,11 +984,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AD310F21E722669005F8368 /* Sources */ = {
+		5AB53B821E72F0FC00C5D49E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AD3111E1E722798005F8368 /* main.swift in Sources */,
+				5AB53B891E72F0FC00C5D49E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1028,7 @@
 		5A77C7DF1E61DDF6008D1143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1082,6 +1094,7 @@
 		5A77C7E01E61DDF6008D1143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1140,6 +1153,7 @@
 		5A77C7EC1E61DE03008D1143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1158,12 +1172,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P74CR59QQG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1178,6 +1193,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1197,6 +1213,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1205,6 +1222,7 @@
 		5A77C7ED1E61DE03008D1143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1229,6 +1247,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P74CR59QQG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1237,6 +1256,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1254,6 +1274,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1262,6 +1283,7 @@
 		5A77C7F91E61DE12008D1143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1326,6 +1348,7 @@
 		5A77C7FA1E61DE12008D1143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1383,6 +1406,7 @@
 		5A77C8061E61DE24008D1143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1448,6 +1472,7 @@
 		5A77C8071E61DE24008D1143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1809,10 +1834,10 @@
 			};
 			name = Release;
 		};
-		5AD310FB1E722669005F8368 /* Debug */ = {
+		5AB53B8B1E72F0FC00C5D49E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1828,13 +1853,13 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = DHCR3H4M55;
+				DEVELOPMENT_TEAM = X4R5K8NKGR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1851,7 +1876,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1862,10 +1886,10 @@
 			};
 			name = Debug;
 		};
-		5AD310FC1E722669005F8368 /* Release */ = {
+		5AB53B8C1E72F0FC00C5D49E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1881,13 +1905,13 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = DHCR3H4M55;
+				DEVELOPMENT_TEAM = X4R5K8NKGR;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1898,7 +1922,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1982,13 +2005,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AD310FA1E722669005F8368 /* Build configuration list for PBXNativeTarget "BuyBuddyKit CLI" */ = {
+		5AB53B8A1E72F0FC00C5D49E /* Build configuration list for PBXNativeTarget "BuyBuddy CLI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5AD310FB1E722669005F8368 /* Debug */,
-				5AD310FC1E722669005F8368 /* Release */,
+				5AB53B8B1E72F0FC00C5D49E /* Debug */,
+				5AB53B8C1E72F0FC00C5D49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
