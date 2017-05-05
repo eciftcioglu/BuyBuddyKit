@@ -26,7 +26,7 @@ class ShoppingCartButton:UIButton{
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        NotificationCenter.default.addObserver(self, selector: #selector(ShoppingCartButtonView.countDidChange(_:)), name: NSNotification.Name(rawValue: ShoppingBasketNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShoppingCartButton.countDidChange(_:)), name: NSNotification.Name(rawValue: ShoppingBasketNotification), object: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
