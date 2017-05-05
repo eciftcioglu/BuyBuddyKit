@@ -1,5 +1,5 @@
 import Foundation
 
-class EmailAssignmentNotAvailableError: Error {
-    
+enum EmailAssignmentNotAvailableError: Error {
+    case missing(String)
 }

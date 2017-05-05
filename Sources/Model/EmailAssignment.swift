@@ -1,3 +1,10 @@
+//
+//  EmailAssignment.swift
+//  BuyBuddyKit
+//
+//  Created by Emir Çiftçioğlu on 06/04/2017.
+//
+//
 import Foundation
 
 public struct EmailAssignment {

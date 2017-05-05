@@ -1,5 +1,5 @@
 import Foundation
 
-class PersonalInformationNotAvailableError: Error {
-    
+enum PersonalInformationNotAvailableError: Error {
+    case missing(String)
 }

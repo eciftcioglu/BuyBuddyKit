@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Yxn-Qk-6Cq">
+            <objects>
+                <viewController id="LCj-PJ-XV8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MsD-v0-Pmk"/>
+                        <viewControllerLayoutGuide type="bottom" id="azy-47-sne"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UHS-0o-EOV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVm-LJ-fDH" customClass="PopUpScanView" customModule="BuyBuddyKit">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-da-PCc" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                                <rect key="frame" x="24" y="296" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5k6-da-PCc" secondAttribute="height" multiplier="1:1" id="H2c-0N-oLx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
+                                <state key="normal" title="Info" image="glasses"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-BP-k8X" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                                <rect key="frame" x="276" y="296" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hbB-BP-k8X" secondAttribute="height" multiplier="1:1" id="wJA-q7-a1k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
+                                <state key="normal" title="Add" image="add_basket">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7w-nR-xlf">
+                                <rect key="frame" x="311" y="0.0" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f7w-nR-xlf" secondAttribute="height" multiplier="1:1" id="3Xx-hg-Od4"/>
+                                </constraints>
+                                <state key="normal" image="shopping_cart"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-Up-Doz" customClass="CircleLabel" customModule="BuyBuddyIOS" customModuleProvider="target">
+                                <rect key="frame" x="343.5" y="8" width="23.5" height="23.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xff-Up-Doz" secondAttribute="height" multiplier="1:1" id="KrD-BM-JKi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yu-z7-3m2">
+                                <rect key="frame" x="0.0" y="371" width="375" height="67"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqZ-XE-EhZ" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                                <rect key="frame" x="162" y="438" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="d47-BC-jXi"/>
+                                    <constraint firstAttribute="height" constant="50" id="pmg-Lf-B1f"/>
+                                </constraints>
+                                <state key="normal" image="cross_white"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0Yu-z7-3m2" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="27F-Sz-piO"/>
+                            <constraint firstItem="5k6-da-PCc" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="4e5-N8-tml"/>
+                            <constraint firstItem="0Yu-z7-3m2" firstAttribute="top" secondItem="hbB-BP-k8X" secondAttribute="bottom" id="6Hh-PT-PAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Xff-Up-Doz" secondAttribute="trailing" constant="8" id="6Sc-oM-Zuy"/>
+                            <constraint firstItem="0Yu-z7-3m2" firstAttribute="height" secondItem="UHS-0o-EOV" secondAttribute="height" multiplier="1:10" id="Dyi-gu-1gM"/>
+                            <constraint firstItem="5k6-da-PCc" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="Eer-te-kHS"/>
+                            <constraint firstItem="hbB-BP-k8X" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="ExK-DJ-6YK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hbB-BP-k8X" secondAttribute="trailing" constant="8" id="JOS-1h-oPH"/>
+                            <constraint firstAttribute="trailing" secondItem="0Yu-z7-3m2" secondAttribute="trailing" id="M6A-hY-qgK"/>
+                            <constraint firstItem="Xff-Up-Doz" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:16" id="O7I-J9-9QE"/>
+                            <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="yVm-LJ-fDH" secondAttribute="bottom" id="PCF-ca-6Ju"/>
+                            <constraint firstItem="yVm-LJ-fDH" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="RZg-hi-wI1"/>
+                            <constraint firstItem="5k6-da-PCc" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leadingMargin" constant="8" id="SgD-bW-FHc"/>
+                            <constraint firstItem="Xff-Up-Doz" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" constant="8" id="Xhp-Hu-ljt"/>
+                            <constraint firstItem="f7w-nR-xlf" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="Zzo-xm-wNv"/>
+                            <constraint firstItem="BqZ-XE-EhZ" firstAttribute="centerX" secondItem="UHS-0o-EOV" secondAttribute="centerX" id="cBN-JY-VjV"/>
+                            <constraint firstItem="hbB-BP-k8X" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="cv6-7r-g9P"/>
+                            <constraint firstItem="f7w-nR-xlf" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" constant="-11" id="iWa-kc-ecp"/>
+                            <constraint firstItem="yVm-LJ-fDH" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="jTl-ri-ndo"/>
+                            <constraint firstAttribute="trailing" secondItem="f7w-nR-xlf" secondAttribute="trailing" id="ke6-eF-XGo"/>
+                            <constraint firstItem="BqZ-XE-EhZ" firstAttribute="top" secondItem="0Yu-z7-3m2" secondAttribute="bottom" id="kvt-nn-bRU"/>
+                            <constraint firstAttribute="trailing" secondItem="yVm-LJ-fDH" secondAttribute="trailing" id="lPN-yW-wLm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Yt-xO-z16" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.80000000000001" y="139.880059970015"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add_basket" width="34" height="36"/>
+        <image name="cross_white" width="14" height="14"/>
+        <image name="glasses" width="34" height="13"/>
+        <image name="shopping_cart" width="30" height="30"/>
+    </resources>
+</document>
