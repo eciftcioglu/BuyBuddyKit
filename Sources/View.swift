@@ -20,4 +20,31 @@ extension UIView{
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.insertSubview(blurEffectView, at: 0)
     }
+    func addBlurEffect(animation:Bool = false) {
+        
+        self.backgroundColor = UIColor(patternImage: imageWithColor(UIColor.clear))
+        let frost = UIVisualEffectView()
+        frost.frame = (self.bounds)
+        frost.isUserInteractionEnabled = false
+        frost.translatesAutoresizingMaskIntoConstraints = false
+        self.insertSubview(frost, at: 0)
+        if (animation == true){
+            UIView.animate(withDuration: 0.5) {
+                frost.effect = UIBlurEffect(style: .light)
+            }
+        }
+        else{
+            frost.effect = UIBlurEffect(style: .light)
+        }
+    }
+    func imageWithColor(_ color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }

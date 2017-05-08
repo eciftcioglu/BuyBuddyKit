@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Scan View Controller-->
         <scene sceneID="Yxn-Qk-6Cq">
             <objects>
-                <viewController id="LCj-PJ-XV8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="LCj-PJ-XV8" customClass="ScanViewController" customModule="BuyBuddyKit" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MsD-v0-Pmk"/>
                         <viewControllerLayoutGuide type="bottom" id="azy-47-sne"/>
@@ -27,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-da-PCc" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-da-PCc" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
                                 <rect key="frame" x="24" y="296" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5k6-da-PCc" secondAttribute="height" multiplier="1:1" id="H2c-0N-oLx"/>
@@ -35,7 +36,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
                                 <state key="normal" title="Info" image="glasses"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-BP-k8X" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-BP-k8X" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
                                 <rect key="frame" x="276" y="296" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hbB-BP-k8X" secondAttribute="height" multiplier="1:1" id="wJA-q7-a1k"/>
@@ -50,21 +51,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f7w-nR-xlf" secondAttribute="height" multiplier="1:1" id="3Xx-hg-Od4"/>
                                 </constraints>
-                                <state key="normal" image="shopping_cart"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-Up-Doz" customClass="CircleLabel" customModule="BuyBuddyIOS" customModuleProvider="target">
-                                <rect key="frame" x="343.5" y="8" width="23.5" height="23.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Xff-Up-Doz" secondAttribute="height" multiplier="1:1" id="KrD-BM-JKi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yu-z7-3m2">
                                 <rect key="frame" x="0.0" y="371" width="375" height="67"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqZ-XE-EhZ" customClass="CircleButton" customModule="BuyBuddyIOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqZ-XE-EhZ" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
                                 <rect key="frame" x="162" y="438" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="d47-BC-jXi"/>
@@ -73,21 +64,19 @@
                                 <state key="normal" image="cross_white"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="27F-Sz-piO"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="4e5-N8-tml"/>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="top" secondItem="hbB-BP-k8X" secondAttribute="bottom" id="6Hh-PT-PAJ"/>
-                            <constraint firstAttribute="trailing" secondItem="Xff-Up-Doz" secondAttribute="trailing" constant="8" id="6Sc-oM-Zuy"/>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="height" secondItem="UHS-0o-EOV" secondAttribute="height" multiplier="1:10" id="Dyi-gu-1gM"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="Eer-te-kHS"/>
                             <constraint firstItem="hbB-BP-k8X" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="ExK-DJ-6YK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hbB-BP-k8X" secondAttribute="trailing" constant="8" id="JOS-1h-oPH"/>
                             <constraint firstAttribute="trailing" secondItem="0Yu-z7-3m2" secondAttribute="trailing" id="M6A-hY-qgK"/>
-                            <constraint firstItem="Xff-Up-Doz" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:16" id="O7I-J9-9QE"/>
                             <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="yVm-LJ-fDH" secondAttribute="bottom" id="PCF-ca-6Ju"/>
                             <constraint firstItem="yVm-LJ-fDH" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="RZg-hi-wI1"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leadingMargin" constant="8" id="SgD-bW-FHc"/>
-                            <constraint firstItem="Xff-Up-Doz" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" constant="8" id="Xhp-Hu-ljt"/>
                             <constraint firstItem="f7w-nR-xlf" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="Zzo-xm-wNv"/>
                             <constraint firstItem="BqZ-XE-EhZ" firstAttribute="centerX" secondItem="UHS-0o-EOV" secondAttribute="centerX" id="cBN-JY-VjV"/>
                             <constraint firstItem="hbB-BP-k8X" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="cv6-7r-g9P"/>
@@ -126,6 +115,5 @@
         <image name="add_basket" width="34" height="36"/>
         <image name="cross_white" width="14" height="14"/>
         <image name="glasses" width="34" height="13"/>
-        <image name="shopping_cart" width="30" height="30"/>
     </resources>
 </document>

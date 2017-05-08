@@ -12,24 +12,27 @@ import UIKit
 @IBDesignable
 public class PopUpScanView : UIView {
 
-    fileprivate var sizePriceView: UIView    = UIView(frame: .zero)
+    fileprivate var sizePriceView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
     fileprivate var centerImageView: UIImageView    = UIImageView(frame: .zero)
     fileprivate var overlayView: UIView    = UIView(frame:.zero)
     fileprivate let path = CGMutablePath()
     fileprivate let maskLayer = CAShapeLayer()
-    
+    fileprivate let strokeLayer = CAShapeLayer()
+
     @IBInspectable
         public var centerImage = UIImage(named: "Oval_2") {
         didSet {
             centerImageView.image = centerImage
         }
     }
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.clear
         createCenterImageView()
         createSizePriceView()
         createOverlayView()
+        createStroke()
         self.bringSubview(toFront: centerImageView)
     }
     
@@ -39,9 +42,11 @@ public class PopUpScanView : UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        self.backgroundColor = UIColor.clear
         createCenterImageView()
         createSizePriceView()
         createOverlayView()
+        createStroke()
         self.bringSubview(toFront: centerImageView)
     }
     
@@ -49,8 +54,9 @@ public class PopUpScanView : UIView {
         
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         sizePriceView.frame = CGRect(x:circlePath.bounds.minX, y: (self.frame.width*0.3)*0.5, width: self.frame.width*0.8, height: self.frame.width*0.3)
-        sizePriceView.addblurView()
         sizePriceView.layer.cornerRadius = 20
+        sizePriceView.clipsToBounds = true
+        sizePriceView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(sizePriceView)
     }
     
@@ -62,6 +68,15 @@ public class PopUpScanView : UIView {
         centerImageView.contentMode = UIViewContentMode.scaleAspectFill
         
         self.addSubview(centerImageView)
+    }
+    
+    func createStroke(width:CGFloat = 3.0){
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        strokeLayer.path = circlePath.cgPath
+        strokeLayer.fillColor = UIColor.clear.cgColor
+        strokeLayer.strokeColor = UIColor.white.cgColor
+        strokeLayer.lineWidth = width
+        self.layer.addSublayer(strokeLayer)
     }
     
     private func createOverlayView(){
