@@ -49,9 +49,8 @@ public class PopUpScanView : UIView {
         
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         sizePriceView.frame = CGRect(x:circlePath.bounds.minX, y: (self.frame.width*0.3)*0.5, width: self.frame.width*0.8, height: self.frame.width*0.3)
-        sizePriceView.addblurView(radius: 20)
+        sizePriceView.addblurView()
         sizePriceView.layer.cornerRadius = 20
-        //sizePriceView.backgroundColor = UIColor.blue
         self.addSubview(sizePriceView)
     }
     

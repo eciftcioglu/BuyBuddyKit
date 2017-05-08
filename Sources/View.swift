@@ -12,13 +12,12 @@ import UIKit
 
 extension UIView{
 
-    func addblurView(radius:CGFloat = 0){
+    func addblurView(){
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         blurEffectView.frame = self.bounds
-        blurEffectView.layer.cornerRadius = radius
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.addSubview(blurEffectView)
+        self.insertSubview(blurEffectView, at: 0)
     }
 }
