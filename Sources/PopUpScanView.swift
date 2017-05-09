@@ -87,7 +87,7 @@ public class PopUpScanView : UIView {
         centerImageView.layer.cornerRadius = self.centerImageView.layer.frame.width / 2
         centerImageView.image = centerImage
         centerImageView.contentMode = UIViewContentMode.scaleAspectFill
-        
+        centerImageView.image = UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil)
         self.addSubview(centerImageView)
     }
     

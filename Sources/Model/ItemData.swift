@@ -18,8 +18,8 @@ public struct ItemData {
     public var image: UIImage?
     public var price: Double?
 
-
-
+    init() {
+    }
     init?(json: [String:Any]) throws{
         guard let size = json["size"] as? String,
             let color = json["color"] as? UIColor,

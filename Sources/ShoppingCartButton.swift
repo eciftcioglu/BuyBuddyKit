@@ -16,12 +16,11 @@ protocol ShoppingCartButtonDelegate {
 class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
-    fileprivate var button: UIButton = UIButton(frame: .zero)
 
     var delegate:ShoppingCartButtonDelegate?
     
     @IBInspectable
-    public var buttonImage = UIImage(named: "shopping_cart") {
+    public var buttonImage = UIImage(named: "shopping_cart", in: Bundle(for: type(of: self) as! AnyClass), compatibleWith: nil) {
         didSet {
             self.setImage(buttonImage, for: UIControlState.normal) 
         }
@@ -30,32 +29,25 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     public override init(frame: CGRect) {
         super.init(frame: frame)
         createLabel()
-        createButton()
-        self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
-        self.setImage(UIImage(named: "shopping_cart"), for: UIControlState.normal)
+        self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
+
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         createLabel()
-        createButton()
-        self.setImage(UIImage(named: "shopping_cart"), for: UIControlState.normal)
-    }
-    
-    private func createButton(){
-        button.frame = CGRect(x:  UIScreen.main.bounds.width-UIScreen.main.bounds.width/5, y: 0, width:UIScreen.main.bounds.width/5, height:UIScreen.main.bounds.width/5)
-        
-
-        self.addSubview(countLabel)
+        self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
     
     private func createLabel(){
         countLabel.frame = CGRect(x:  self.frame.width-23, y: 0, width: 23, height: 23)
         countLabel.textAlignment = .center
+        countLabel.backgroundColor = UIColor.buddyGreen()
         countLabel.layer.cornerRadius = self.countLabel.layer.frame.width / 2
         self.addSubview(countLabel)
     }
