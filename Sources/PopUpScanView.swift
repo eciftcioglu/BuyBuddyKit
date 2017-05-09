@@ -15,11 +15,13 @@ public class PopUpScanView : UIView {
     fileprivate var sizePriceView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
     fileprivate var centerImageView: UIImageView    = UIImageView(frame: .zero)
     fileprivate var overlayView: UIView    = UIView(frame:.zero)
+    fileprivate var sizeLabel: UILabel = UILabel(frame: .zero)
+    fileprivate var priceLabel: UILabel = UILabel(frame: .zero)
     fileprivate let path = CGMutablePath()
     fileprivate let maskLayer = CAShapeLayer()
     fileprivate let strokeLayer = CAShapeLayer()
 
-    @IBInspectable
+    
         public var centerImage = UIImage(named: "Oval_2") {
         didSet {
             centerImageView.image = centerImage
@@ -33,6 +35,7 @@ public class PopUpScanView : UIView {
         createSizePriceView()
         createOverlayView()
         createStroke()
+        createLabels()
         self.bringSubview(toFront: centerImageView)
     }
     
@@ -47,9 +50,27 @@ public class PopUpScanView : UIView {
         createSizePriceView()
         createOverlayView()
         createStroke()
+        createLabels()
         self.bringSubview(toFront: centerImageView)
     }
     
+    private func createLabels(){
+        sizeLabel.frame = CGRect(x:  8, y: 8, width: 40, height: 22)
+        priceLabel.frame = CGRect(x:  sizePriceView.frame.width-108, y: 8, width: 100, height: 22)
+        sizeLabel.font = UIFont(name: "Avenir-Medium", size: 16)
+        priceLabel.font = UIFont(name: "Avenir-Medium", size: 16)
+        sizeLabel.textColor = UIColor.white
+        priceLabel.textColor = UIColor.white
+
+        sizeLabel.textAlignment = .left
+        priceLabel.textAlignment = .right
+
+        sizeLabel.text = "asd"
+        priceLabel.text = "asd"
+        sizePriceView.addSubview(sizeLabel)
+        sizePriceView.addSubview(priceLabel)
+
+    }
     private func createSizePriceView(){
         
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
@@ -70,7 +91,7 @@ public class PopUpScanView : UIView {
         self.addSubview(centerImageView)
     }
     
-    func createStroke(width:CGFloat = 3.0){
+    private func createStroke(width:CGFloat = 3.0){
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         strokeLayer.path = circlePath.cgPath
         strokeLayer.fillColor = UIColor.clear.cgColor

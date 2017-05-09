@@ -10,7 +10,11 @@ import Foundation
 
 
 class ShoppingCartManager {
-    static let sharedInstance = ShoppingCartManager()
-    var basket: [:]
+    static let shared = ShoppingCartManager()
+    var basket: [String:ItemData] = [:]
+    
+    private init() {
+        
+    }
     
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ttl-Xd-fda" customClass="ShoppingCartTableViewCell" customModule="BuyBuddyKit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ttl-Xd-fda" id="7IX-aj-pPW">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-OG-qHX">
+                        <rect key="frame" x="76" y="17" width="77" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOu-9Y-bOT">
+                        <rect key="frame" x="76" y="34.5" width="29.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZs-Ab-PFG">
+                        <rect key="frame" x="76" y="52" width="39" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbK-E3-gja">
+                        <rect key="frame" x="76" y="70.5" width="35.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTB-FO-diX">
+                        <rect key="frame" x="114.5" y="34.5" width="34.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSe-UX-j9e" customClass="CircleImageView" customModule="BuyBuddyKit" customModuleProvider="target">
+                        <rect key="frame" x="8" y="18" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="Nnc-m4-6j4"/>
+                            <constraint firstAttribute="height" constant="64" id="oYo-bD-erd"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91K-OO-EYg" customClass="CircleImageView" customModule="BuyBuddyKit" customModuleProvider="target">
+                        <rect key="frame" x="123" y="53.5" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="ArR-GK-MR4"/>
+                            <constraint firstAttribute="height" constant="20" id="Sx1-BF-3nK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owN-G8-NBR">
+                        <rect key="frame" x="119.5" y="71.5" width="34.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kbK-E3-gja" firstAttribute="leading" secondItem="Aba-OG-qHX" secondAttribute="leading" id="9Dk-Jl-fHb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="kbK-E3-gja" secondAttribute="bottom" constant="1" id="9dx-Vm-zse"/>
+                    <constraint firstItem="eSe-UX-j9e" firstAttribute="leading" secondItem="7IX-aj-pPW" secondAttribute="leadingMargin" id="JNR-WM-GsA"/>
+                    <constraint firstItem="owN-G8-NBR" firstAttribute="leading" secondItem="kbK-E3-gja" secondAttribute="trailing" constant="7.5" id="Jac-gP-YJl"/>
+                    <constraint firstItem="TTB-FO-diX" firstAttribute="baseline" secondItem="dOu-9Y-bOT" secondAttribute="baseline" id="KNf-7V-y1w"/>
+                    <constraint firstItem="wZs-Ab-PFG" firstAttribute="leading" secondItem="Aba-OG-qHX" secondAttribute="leading" id="L4L-hJ-cdS"/>
+                    <constraint firstItem="91K-OO-EYg" firstAttribute="baseline" secondItem="wZs-Ab-PFG" secondAttribute="baseline" constant="7" id="M6C-4t-t5e"/>
+                    <constraint firstItem="owN-G8-NBR" firstAttribute="baseline" secondItem="kbK-E3-gja" secondAttribute="baseline" constant="1" id="RmX-4p-9bD"/>
+                    <constraint firstItem="Aba-OG-qHX" firstAttribute="leading" secondItem="7IX-aj-pPW" secondAttribute="leadingMargin" constant="68" id="Syg-lg-0tB"/>
+                    <constraint firstItem="dOu-9Y-bOT" firstAttribute="leading" secondItem="Aba-OG-qHX" secondAttribute="leading" id="Z98-Zm-vXy"/>
+                    <constraint firstItem="eSe-UX-j9e" firstAttribute="centerY" secondItem="7IX-aj-pPW" secondAttribute="centerY" id="f6R-1I-ISV"/>
+                    <constraint firstItem="kbK-E3-gja" firstAttribute="top" secondItem="wZs-Ab-PFG" secondAttribute="bottom" constant="-1" id="fuj-sK-CnA"/>
+                    <constraint firstItem="dOu-9Y-bOT" firstAttribute="top" secondItem="Aba-OG-qHX" secondAttribute="bottom" constant="-2" id="gj3-Tg-SgU"/>
+                    <constraint firstItem="Aba-OG-qHX" firstAttribute="top" secondItem="7IX-aj-pPW" secondAttribute="topMargin" constant="9" id="lCG-4Q-c7k"/>
+                    <constraint firstItem="91K-OO-EYg" firstAttribute="leading" secondItem="wZs-Ab-PFG" secondAttribute="trailing" constant="7.5" id="opX-Q0-jzK"/>
+                    <constraint firstItem="TTB-FO-diX" firstAttribute="leading" secondItem="dOu-9Y-bOT" secondAttribute="trailing" constant="9" id="qe4-Km-nHt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="productColor" destination="91K-OO-EYg" id="1Ax-CB-SBJ"/>
+                <outlet property="productImage" destination="eSe-UX-j9e" id="xb0-vL-ssz"/>
+                <outlet property="productName" destination="Aba-OG-qHX" id="fId-ug-EEn"/>
+                <outlet property="productPrice" destination="owN-G8-NBR" id="MAN-fA-hHt"/>
+                <outlet property="productSize" destination="TTB-FO-diX" id="dGh-sv-943"/>
+            </connections>
+            <point key="canvasLocation" x="-63.5" y="-3"/>
+        </tableViewCell>
+    </objects>
+</document>

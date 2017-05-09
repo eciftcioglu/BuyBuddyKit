@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cyS-Bc-PFW" customClass="SuggestionsCollectionViewCell" customModule="BuyBuddyKit">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxl-fO-C8j" customClass="CircleImageView" customModule="BuyBuddyKit">
+                        <rect key="frame" x="18" y="0.0" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="0qL-bO-A4O"/>
+                            <constraint firstAttribute="width" constant="65" id="rde-gL-F8h"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vk-fS-a1j">
+                        <rect key="frame" x="0.0" y="65" width="100" height="35"/>
+                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="hxl-fO-C8j" firstAttribute="top" secondItem="cyS-Bc-PFW" secondAttribute="top" id="2Tm-y7-Bto"/>
+                <constraint firstItem="9Vk-fS-a1j" firstAttribute="leading" secondItem="cyS-Bc-PFW" secondAttribute="leading" id="C2b-Ne-Cu8"/>
+                <constraint firstItem="9Vk-fS-a1j" firstAttribute="top" secondItem="hxl-fO-C8j" secondAttribute="bottom" id="LFm-2h-Z6K"/>
+                <constraint firstAttribute="trailing" secondItem="9Vk-fS-a1j" secondAttribute="trailing" id="Rxu-oH-DJG"/>
+                <constraint firstItem="hxl-fO-C8j" firstAttribute="centerX" secondItem="cyS-Bc-PFW" secondAttribute="centerX" id="bVV-rn-TTG"/>
+                <constraint firstItem="hxl-fO-C8j" firstAttribute="top" secondItem="cyS-Bc-PFW" secondAttribute="top" id="ljd-eb-Nmf"/>
+                <constraint firstAttribute="bottom" secondItem="9Vk-fS-a1j" secondAttribute="bottom" id="uKI-9t-aGB"/>
+            </constraints>
+            <size key="customSize" width="128" height="153"/>
+            <connections>
+                <outlet property="productImage" destination="hxl-fO-C8j" id="eTM-iD-o35"/>
+                <outlet property="productPrice" destination="9Vk-fS-a1j" id="smd-pn-HJJ"/>
+            </connections>
+            <point key="canvasLocation" x="-11" y="42"/>
+        </collectionViewCell>
+    </objects>
+</document>
