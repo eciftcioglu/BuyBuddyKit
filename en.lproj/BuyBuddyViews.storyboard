@@ -49,12 +49,6 @@
                                     <action selector="addButtonAction:" destination="LCj-PJ-XV8" eventType="touchUpInside" id="fmO-Yy-vyD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7w-nR-xlf" customClass="ShoppingCartButton" customModule="BuyBuddyKit" customModuleProvider="target">
-                                <rect key="frame" x="311" y="0.0" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="f7w-nR-xlf" secondAttribute="height" multiplier="1:1" id="3Xx-hg-Od4"/>
-                                </constraints>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yu-z7-3m2">
                                 <rect key="frame" x="0.0" y="371" width="375" height="67"/>
                             </view>
@@ -80,12 +74,9 @@
                             <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="yVm-LJ-fDH" secondAttribute="bottom" id="PCF-ca-6Ju"/>
                             <constraint firstItem="yVm-LJ-fDH" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="RZg-hi-wI1"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leadingMargin" constant="8" id="SgD-bW-FHc"/>
-                            <constraint firstItem="f7w-nR-xlf" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="Zzo-xm-wNv"/>
                             <constraint firstItem="BqZ-XE-EhZ" firstAttribute="centerX" secondItem="UHS-0o-EOV" secondAttribute="centerX" id="cBN-JY-VjV"/>
                             <constraint firstItem="hbB-BP-k8X" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="cv6-7r-g9P"/>
-                            <constraint firstItem="f7w-nR-xlf" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" constant="-11" id="iWa-kc-ecp"/>
                             <constraint firstItem="yVm-LJ-fDH" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="jTl-ri-ndo"/>
-                            <constraint firstAttribute="trailing" secondItem="f7w-nR-xlf" secondAttribute="trailing" id="ke6-eF-XGo"/>
                             <constraint firstItem="BqZ-XE-EhZ" firstAttribute="top" secondItem="0Yu-z7-3m2" secondAttribute="bottom" id="kvt-nn-bRU"/>
                             <constraint firstAttribute="trailing" secondItem="yVm-LJ-fDH" secondAttribute="trailing" id="lPN-yW-wLm"/>
                         </constraints>
@@ -137,16 +128,7 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FD5-bL-fp7">
-                                                <rect key="frame" x="0.0" y="29" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </view>
-                                            </collectionViewCell>
-                                        </cells>
+                                        <cells/>
                                     </collectionView>
                                 </subviews>
                                 <constraints>

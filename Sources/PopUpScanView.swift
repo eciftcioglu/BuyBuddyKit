@@ -65,8 +65,8 @@ public class PopUpScanView : UIView {
         sizeLabel.textAlignment = .left
         priceLabel.textAlignment = .right
 
-        sizeLabel.text = "asd"
-        priceLabel.text = "asd"
+        sizeLabel.text = "M"
+        priceLabel.text = "99 TL"
         sizePriceView.addSubview(sizeLabel)
         sizePriceView.addSubview(priceLabel)
 
@@ -87,7 +87,7 @@ public class PopUpScanView : UIView {
         centerImageView.layer.cornerRadius = self.centerImageView.layer.frame.width / 2
         centerImageView.image = centerImage
         centerImageView.contentMode = UIViewContentMode.scaleAspectFill
-        centerImageView.image = UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil)
+        centerImageView.image = UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)
         self.addSubview(centerImageView)
     }
     
