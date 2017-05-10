@@ -29,10 +29,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tr4-uh-JTV">
-                                <rect key="frame" x="0.0" y="488" width="375" height="179"/>
+                                <rect key="frame" x="0.0" y="492.5" width="375" height="174.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42W-nu-FrA" customClass="ShoppingCartButton" customModule="BuyBuddyKit" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="52" width="75" height="75"/>
+                                        <rect key="frame" x="150" y="50" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="42W-nu-FrA" secondAttribute="height" multiplier="1:1" id="3cb-OA-EyW"/>
                                         </constraints>
@@ -53,12 +53,12 @@
                                 <state key="normal" title="Info" image="glasses"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-BP-k8X" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
-                                <rect key="frame" x="276" y="296" width="75" height="75"/>
+                                <rect key="frame" x="267.5" y="292" width="83.5" height="83.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hbB-BP-k8X" secondAttribute="height" multiplier="1:1" id="wJA-q7-a1k"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
-                                <state key="normal" title="Add" image="add_basket">
+                                <state key="normal" title="Ekle" image="add_basket">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -66,10 +66,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yu-z7-3m2">
-                                <rect key="frame" x="0.0" y="371" width="375" height="67"/>
+                                <rect key="frame" x="0.0" y="375.5" width="375" height="67"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqZ-XE-EhZ" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
-                                <rect key="frame" x="162" y="438" width="50" height="50"/>
+                                <rect key="frame" x="162" y="442.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="d47-BC-jXi"/>
                                     <constraint firstAttribute="height" constant="50" id="pmg-Lf-B1f"/>
@@ -88,7 +88,7 @@
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="top" secondItem="hbB-BP-k8X" secondAttribute="bottom" id="6Hh-PT-PAJ"/>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="height" secondItem="UHS-0o-EOV" secondAttribute="height" multiplier="1:10" id="Dyi-gu-1gM"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="Eer-te-kHS"/>
-                            <constraint firstItem="hbB-BP-k8X" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="ExK-DJ-6YK"/>
+                            <constraint firstItem="hbB-BP-k8X" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:4.5" id="ExK-DJ-6YK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hbB-BP-k8X" secondAttribute="trailing" constant="8" id="JOS-1h-oPH"/>
                             <constraint firstAttribute="trailing" secondItem="0Yu-z7-3m2" secondAttribute="trailing" id="M6A-hY-qgK"/>
                             <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="yVm-LJ-fDH" secondAttribute="bottom" id="PCF-ca-6Ju"/>
@@ -107,6 +107,7 @@
                     <connections>
                         <outlet property="addButton" destination="hbB-BP-k8X" id="OHd-38-9Ns"/>
                         <outlet property="cartButton" destination="42W-nu-FrA" id="FJ6-ti-PiE"/>
+                        <outlet property="popUpScanView" destination="yVm-LJ-fDH" id="lLy-no-urk"/>
                         <segue destination="5eq-OG-3s9" kind="presentation" identifier="shoppingCart" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gku-Mz-PvH"/>
                     </connections>
                 </viewController>
@@ -244,7 +245,9 @@
                         <outlet property="basketTotal" destination="ByD-Tg-kUB" id="Baq-Fk-yy7"/>
                         <outlet property="collectionView" destination="vfm-y6-5lJ" id="pQO-dT-KIn"/>
                         <outlet property="labelContainer" destination="rto-Io-Sgz" id="VzB-2M-81z"/>
+                        <outlet property="paymentButton" destination="I5y-QJ-1sz" id="HQf-Hd-FUW"/>
                         <outlet property="tableView" destination="pPI-ih-81e" id="hyp-l2-cjC"/>
+                        <outlet property="titleText" destination="2CB-N9-2yX" id="88x-PX-aFq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRe-Up-Yqo" userLabel="First Responder" sceneMemberID="firstResponder"/>

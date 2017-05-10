@@ -23,11 +23,21 @@ class ShoppingCartTableViewCell:UITableViewCell{
     
     public func setData(data:ItemData){
     
-        setProductName(name: data.code!)
-        setProductColor(color: data.color!)
-        setProductSize(size:  data.size!)
-        setProductImage(image: data.image!)
-        setProductPrice(price: data.price!)
+        if(data.code != nil){
+            setProductName(name: data.code!)}
+        if(data.color != nil){
+            
+            setProductColor(color: data.color!)}
+        if(data.size != nil){
+            
+            setProductSize(size:  data.size!)}
+        if(data.image != nil){
+            setProductImage(image: data.image!)
+        }
+        if(data.price != nil){
+            
+            setProductPrice(price: data.price!)}
+        
 
     }
     private func setProductImage(image:UIImage){
@@ -49,8 +59,8 @@ class ShoppingCartTableViewCell:UITableViewCell{
         productColor.backgroundColor = color
     }
     
-    private func setProductPrice(price:Double){
+    private func setProductPrice(price:Float){
         
-        productPrice.text = String(price)
+        productPrice.text = String(price) + " TL"
     }
 }

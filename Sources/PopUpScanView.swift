@@ -17,6 +17,7 @@ public class PopUpScanView : UIView {
     fileprivate var overlayView: UIView    = UIView(frame:.zero)
     fileprivate var sizeLabel: UILabel = UILabel(frame: .zero)
     fileprivate var priceLabel: UILabel = UILabel(frame: .zero)
+    fileprivate var tagImage:UIImageView = UIImageView(frame: .zero)
     fileprivate let path = CGMutablePath()
     fileprivate let maskLayer = CAShapeLayer()
     fileprivate let strokeLayer = CAShapeLayer()
@@ -57,6 +58,12 @@ public class PopUpScanView : UIView {
     private func createLabels(){
         sizeLabel.frame = CGRect(x:  8, y: 8, width: 40, height: 22)
         priceLabel.frame = CGRect(x:  sizePriceView.frame.width-108, y: 8, width: 100, height: 22)
+        tagImage.frame = CGRect(x:sizePriceView.frame.width/2,y:8,width:24,height:15)
+        
+        tagImage.contentMode = .scaleAspectFit
+        tagImage.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        tagImage.image = UIImage(named: "tag_white", in: Bundle(for: type(of: self)), compatibleWith: nil)
+        
         sizeLabel.font = UIFont(name: "Avenir-Medium", size: 16)
         priceLabel.font = UIFont(name: "Avenir-Medium", size: 16)
         sizeLabel.textColor = UIColor.white
@@ -65,8 +72,7 @@ public class PopUpScanView : UIView {
         sizeLabel.textAlignment = .left
         priceLabel.textAlignment = .right
 
-        sizeLabel.text = "M"
-        priceLabel.text = "99 TL"
+
         sizePriceView.addSubview(sizeLabel)
         sizePriceView.addSubview(priceLabel)
 
@@ -91,7 +97,7 @@ public class PopUpScanView : UIView {
         self.addSubview(centerImageView)
     }
     
-    private func createStroke(width:CGFloat = 3.0){
+    private func createStroke(width:CGFloat = 5.0){
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.frame.midX,y: self.frame.midY*0.7), radius: CGFloat(self.frame.width*0.4), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         strokeLayer.path = circlePath.cgPath
         strokeLayer.fillColor = UIColor.clear.cgColor
@@ -115,6 +121,11 @@ public class PopUpScanView : UIView {
         overlayView.layer.mask = maskLayer
         overlayView.clipsToBounds = true
     
+    }
+    
+    func setSizePrice(size:String,price:Float){
+        sizeLabel.text = size
+        priceLabel.text = String(price) + " TL"
     }
 }
 

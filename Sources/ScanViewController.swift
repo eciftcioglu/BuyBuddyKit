@@ -12,11 +12,13 @@ import UIKit
 
 class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
     
+    @IBOutlet var popUpScanView: PopUpScanView!
     @IBOutlet var cartButton: ShoppingCartButton!
     @IBOutlet var addButton: CircleButton!
     var test: ItemData = ItemData()
     var delegate: ShoppingCartDelegate?
-    
+    let shapeLayerButton = CAShapeLayer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,17 +27,25 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
         test.color = UIColor.black
         test.id = 123
         test.code = "cdsfsdf"
+        test.price = Float("12")
         
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
         cartButton.delegate = self
+        
+        popUpScanView.setSizePrice(size: "S", price:test.price!)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addButton.drawBorder(shapeLayer: shapeLayerButton,width:5)
+        shapeLayerButton.strokeColor = UIColor.buddyGreen().cgColor
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! ShoppingBasketViewController
         detailVC.delegate = cartButton
-
     }
+    
     func buttonWasPressed(_ data: UIButton) {
         performSegue(withIdentifier: "shoppingCart", sender: self)
 

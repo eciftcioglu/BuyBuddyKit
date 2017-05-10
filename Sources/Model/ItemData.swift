@@ -18,7 +18,7 @@ public struct ItemData {
     public var code: String?
     public var id : Int64?
     public var image: UIImage?
-    public var price: Double?
+    public var price: Float?
 
     init() {
     }
@@ -28,7 +28,7 @@ public struct ItemData {
             let color = json["color"] as? UIColor,
             let code = json["code"] as? String,
             let id = json["id"] as? Int64,
-            let price = json["price"] as? Double,
+            let price = json["price"] as? Float,
             let image = json["image"] as? UIImage
         else { return nil }
         

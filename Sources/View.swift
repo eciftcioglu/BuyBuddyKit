@@ -63,4 +63,15 @@ extension UIView{
         rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft , .bottomRight ], cornerRadii: CGSize(width: 5, height:10)).cgPath
         self.layer.mask = rectShape
     }
+    
+    func drawBorder(shapeLayer:CAShapeLayer,inset:CGFloat = 0,width:CGFloat = 2.5){
+        
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x:self.layer.bounds.midX, y: self.layer.bounds.midY), radius: CGFloat(self.frame.width/2-inset), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        shapeLayer.path = circlePath.cgPath
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.lineWidth = width
+        //set the background color to #fde8d7
+        self.layer.addSublayer(shapeLayer)
+    }
 }

@@ -13,8 +13,10 @@ protocol ShoppingCartDelegate {
 }
 
 
-class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate{
+class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
 
+    @IBOutlet var titleText: UILabel!
+    @IBOutlet var paymentButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var labelContainer: UIView!
     @IBOutlet var tableView: UITableView!
@@ -29,6 +31,8 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         self.view.addBlurEffect()
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
         tableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle:Bundle(for: type(of: self))), forCellReuseIdentifier: "ShoppingCartTableViewCell")
         collectionView.register(UINib(nibName: "SuggestionsCollectionViewCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "SuggestionsCollectionViewCell")
         tableData = Array(ShoppingCartManager.shared.basket.values)
@@ -38,6 +42,25 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     override func viewDidLayoutSubviews() {
         labelContainer.roundedBottomCorner()
         tableView.roundedTopCorner()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if(tableData.isEmpty){
+            paymentButton.isHidden = true
+            collectionView.isHidden = true
+            titleText.isHidden = true
+            basketTotal.text = "0 TL"
+        }else{
+            paymentButton.isHidden = false
+            collectionView.isHidden = false
+            titleText.isHidden = false
+        }
+        var total:Float = 0
+        for p in tableData{
+            total += p.price!
+        }
+        basketTotal.text = String(total) + " TL"
     }
     
     @IBAction func dismissAction(_ sender: Any) {
@@ -51,6 +74,17 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
 extension ShoppingBasketViewController{
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if(tableData.isEmpty){
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "Your Shopping Cart is Empty"
+            noDataLabel.font = UIFont(name: "Avenir-Medium", size: 18)
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+            
+        }
 
         return tableData.count
     }
@@ -79,13 +113,23 @@ extension ShoppingBasketViewController{
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
         
-        var total:Double = 0
+        var total:Float = 0
         for p in tableData{
             total += p.price!
         }
-        
+        basketTotal.text = String(total) + " TL"
         let count = String(tableData.count)
         delegate?.countDidChange(count)
+        
+        if(tableData.isEmpty){
+            paymentButton.isHidden = true
+            collectionView.isHidden = true
+            titleText.isHidden = true
+        }else{
+            paymentButton.isHidden = false
+            collectionView.isHidden = false
+            titleText.isHidden = false
+        }
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,7 +146,7 @@ extension ShoppingBasketViewController{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableData.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout:UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {

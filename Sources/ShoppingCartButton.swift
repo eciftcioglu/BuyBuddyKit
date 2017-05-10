@@ -30,7 +30,6 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         super.awakeFromNib()
         self.adjustImageAndTitleOffsets()
         self.addBlurEffect()
-        self.layer.cornerRadius = self.layer.frame.width / 2
     }
     
     public override init(frame: CGRect) {
@@ -46,13 +45,14 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.masksToBounds = true
         createLabel()
+        self.layer.cornerRadius = self.layer.frame.width / 2
+        self.layer.masksToBounds = true
         self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
     
     private func createLabel(){
-        countLabel.frame = CGRect(x:  self.frame.width-23, y: 0, width: 23, height: 23)
+        countLabel.frame = CGRect(x:   self.frame.width/2, y:  self.frame.width/2, width: self.frame.width/3.5, height: self.frame.width/3.5)
         countLabel.textAlignment = .center
         countLabel.backgroundColor = UIColor.buddyGreen()
         countLabel.textColor = UIColor.white

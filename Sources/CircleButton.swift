@@ -10,7 +10,7 @@ import UIKit
 
 
 class CircleButton : UIButton {
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.layer.frame.width / 2
@@ -33,6 +33,8 @@ class CircleButton : UIButton {
         super.init(coder: aDecoder)
         
     }
+    
+   
     
     func adjustImageAndTitleOffsets () {
         

@@ -15,13 +15,19 @@ class SuggestionsCollectionViewCell:UICollectionViewCell{
     @IBOutlet private var productPrice: UILabel!
 
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.contentView.autoresizingMask.insert(.flexibleHeight)
+        self.contentView.autoresizingMask.insert(.flexibleWidth)
+    }
+    
     public func setProductImage(image:UIImage){
         
         productImage.image = image
         
     }
     
-    public func setProductPrice(price:Double){
+    public func setProductPrice(price:Float){
         
         productPrice.text = String(price)
     }
