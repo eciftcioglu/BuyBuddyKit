@@ -28,7 +28,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-da-PCc" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tr4-uh-JTV">
+                                <rect key="frame" x="0.0" y="488" width="375" height="179"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42W-nu-FrA" customClass="ShoppingCartButton" customModule="BuyBuddyKit" customModuleProvider="target">
+                                        <rect key="frame" x="150" y="52" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="42W-nu-FrA" secondAttribute="height" multiplier="1:1" id="3cb-OA-EyW"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="42W-nu-FrA" firstAttribute="width" secondItem="Tr4-uh-JTV" secondAttribute="width" multiplier="1:5" id="FpD-ih-GWA"/>
+                                    <constraint firstItem="42W-nu-FrA" firstAttribute="centerY" secondItem="Tr4-uh-JTV" secondAttribute="centerY" id="UeE-s4-IM2"/>
+                                    <constraint firstItem="42W-nu-FrA" firstAttribute="centerX" secondItem="Tr4-uh-JTV" secondAttribute="centerX" id="Vlp-9r-KX9"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-da-PCc" customClass="CircleButton" customModule="BuyBuddyKit" customModuleProvider="target">
                                 <rect key="frame" x="24" y="296" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5k6-da-PCc" secondAttribute="height" multiplier="1:1" id="H2c-0N-oLx"/>
@@ -59,11 +75,15 @@
                                     <constraint firstAttribute="height" constant="50" id="pmg-Lf-B1f"/>
                                 </constraints>
                                 <state key="normal" image="cross_white"/>
+                                <connections>
+                                    <action selector="dismissController:" destination="LCj-PJ-XV8" eventType="touchUpInside" id="TUF-6q-vL3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="27F-Sz-piO"/>
+                            <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="Tr4-uh-JTV" secondAttribute="bottom" id="3sa-L6-O63"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="width" secondItem="UHS-0o-EOV" secondAttribute="width" multiplier="1:5" id="4e5-N8-tml"/>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="top" secondItem="hbB-BP-k8X" secondAttribute="bottom" id="6Hh-PT-PAJ"/>
                             <constraint firstItem="0Yu-z7-3m2" firstAttribute="height" secondItem="UHS-0o-EOV" secondAttribute="height" multiplier="1:10" id="Dyi-gu-1gM"/>
@@ -73,16 +93,20 @@
                             <constraint firstAttribute="trailing" secondItem="0Yu-z7-3m2" secondAttribute="trailing" id="M6A-hY-qgK"/>
                             <constraint firstItem="azy-47-sne" firstAttribute="top" secondItem="yVm-LJ-fDH" secondAttribute="bottom" id="PCF-ca-6Ju"/>
                             <constraint firstItem="yVm-LJ-fDH" firstAttribute="top" secondItem="UHS-0o-EOV" secondAttribute="top" id="RZg-hi-wI1"/>
+                            <constraint firstItem="Tr4-uh-JTV" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="Rf0-Nw-yV2"/>
                             <constraint firstItem="5k6-da-PCc" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leadingMargin" constant="8" id="SgD-bW-FHc"/>
                             <constraint firstItem="BqZ-XE-EhZ" firstAttribute="centerX" secondItem="UHS-0o-EOV" secondAttribute="centerX" id="cBN-JY-VjV"/>
+                            <constraint firstItem="Tr4-uh-JTV" firstAttribute="top" secondItem="BqZ-XE-EhZ" secondAttribute="bottom" id="cps-Sb-ybH"/>
                             <constraint firstItem="hbB-BP-k8X" firstAttribute="centerY" secondItem="UHS-0o-EOV" secondAttribute="centerY" id="cv6-7r-g9P"/>
                             <constraint firstItem="yVm-LJ-fDH" firstAttribute="leading" secondItem="UHS-0o-EOV" secondAttribute="leading" id="jTl-ri-ndo"/>
                             <constraint firstItem="BqZ-XE-EhZ" firstAttribute="top" secondItem="0Yu-z7-3m2" secondAttribute="bottom" id="kvt-nn-bRU"/>
                             <constraint firstAttribute="trailing" secondItem="yVm-LJ-fDH" secondAttribute="trailing" id="lPN-yW-wLm"/>
+                            <constraint firstAttribute="trailing" secondItem="Tr4-uh-JTV" secondAttribute="trailing" id="neX-lT-Z7n"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="hbB-BP-k8X" id="OHd-38-9Ns"/>
+                        <outlet property="cartButton" destination="42W-nu-FrA" id="FJ6-ti-PiE"/>
                         <segue destination="5eq-OG-3s9" kind="presentation" identifier="shoppingCart" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gku-Mz-PvH"/>
                     </connections>
                 </viewController>
@@ -218,6 +242,9 @@
                     </view>
                     <connections>
                         <outlet property="basketTotal" destination="ByD-Tg-kUB" id="Baq-Fk-yy7"/>
+                        <outlet property="collectionView" destination="vfm-y6-5lJ" id="pQO-dT-KIn"/>
+                        <outlet property="labelContainer" destination="rto-Io-Sgz" id="VzB-2M-81z"/>
+                        <outlet property="tableView" destination="pPI-ih-81e" id="hyp-l2-cjC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRe-Up-Yqo" userLabel="First Responder" sceneMemberID="firstResponder"/>

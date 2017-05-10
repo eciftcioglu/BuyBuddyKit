@@ -15,6 +15,9 @@ protocol ShoppingCartDelegate {
 
 class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate{
 
+    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var labelContainer: UIView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var basketTotal: UILabel!
     var delegate: ShoppingCartDelegate?
 
@@ -23,8 +26,18 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addBlurEffect()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle:Bundle(for: type(of: self))), forCellReuseIdentifier: "ShoppingCartTableViewCell")
+        collectionView.register(UINib(nibName: "SuggestionsCollectionViewCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "SuggestionsCollectionViewCell")
         tableData = Array(ShoppingCartManager.shared.basket.values)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        labelContainer.roundedBottomCorner()
+        tableView.roundedTopCorner()
     }
     
     @IBAction func dismissAction(_ sender: Any) {
@@ -39,14 +52,14 @@ extension ShoppingBasketViewController{
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return ShoppingCartManager.shared.basket.count
+        return tableData.count
     }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 100
     }
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
             
@@ -57,7 +70,10 @@ extension ShoppingBasketViewController{
                 
                 if(indexPath.row == i){
                     
+                    let toDelete = tableData[i].hitagId
+                    ShoppingCartManager.shared.basket.removeValue(forKey: toDelete!)
                     tableData.remove(at: i)
+                    
                 }
             }
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
@@ -70,7 +86,6 @@ extension ShoppingBasketViewController{
         
         let count = String(tableData.count)
         delegate?.countDidChange(count)
-
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +94,6 @@ extension ShoppingBasketViewController{
         let data = tableData[indexPath.row]
         
         cell.setData(data: data)
-        
         return cell
     }
     

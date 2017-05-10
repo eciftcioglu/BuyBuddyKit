@@ -47,4 +47,20 @@ extension UIView{
         UIGraphicsEndImageContext()
         return image!
     }
+    
+    func roundedTopCorner(){
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = self.frame
+        rectShape.position = self.center
+        rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topLeft , .topRight ], cornerRadii: CGSize(width: 5, height:10)).cgPath
+        self.layer.mask = rectShape
+    }
+    
+    func roundedBottomCorner(){
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = self.frame
+        rectShape.position = self.center
+        rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft , .bottomRight ], cornerRadii: CGSize(width: 5, height:10)).cgPath
+        self.layer.mask = rectShape
+    }
 }

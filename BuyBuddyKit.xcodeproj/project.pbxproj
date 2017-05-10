@@ -36,6 +36,7 @@
 		2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */; };
 		2D8097801EC21E1700FD1983 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80977E1EC21E1100FD1983 /* Color.swift */; };
 		2D8097841EC22C9D00FD1983 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097831EC22C9D00FD1983 /* Utilities.swift */; };
+		2D9546221EC336C500D197B9 /* BlueCapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9546211EC3369A00D197B9 /* BlueCapKit.framework */; };
 		2DC3A8381EBA04040011C93E /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
 		2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
 		2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */; };
@@ -103,6 +104,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2D9546201EC3369A00D197B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D95461C1EC3369A00D197B9 /* BlueCapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0551208219F5506000ED3B74;
+			remoteInfo = BlueCapKit;
+		};
 		5A77C8351E61E539008D1143 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */;
@@ -256,6 +264,7 @@
 		2D8097271EC1E2EE00FD1983 /* SuggestionsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionsCollectionViewCell.xib; sourceTree = "<group>"; };
 		2D80977E1EC21E1100FD1983 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2D8097831EC22C9D00FD1983 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		2D95461C1EC3369A00D197B9 /* BlueCapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueCapKit.xcodeproj; path = "BlueCap-master/BlueCapKit.xcodeproj"; sourceTree = "<group>"; };
 		2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactory.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9546221EC336C500D197B9 /* BlueCapKit.framework in Frameworks */,
 				5AD310EE1E7220B7005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8431E61E551008D1143 /* Alamofire.framework in Frameworks */,
 			);
@@ -461,9 +471,18 @@
 			name = CollectionView;
 			sourceTree = "<group>";
 		};
+		2D95461D1EC3369A00D197B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D9546211EC3369A00D197B9 /* BlueCapKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5A77C7CC1E61DDDB008D1143 = {
 			isa = PBXGroup;
 			children = (
+				2D95461C1EC3369A00D197B9 /* BlueCapKit.xcodeproj */,
 				5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */,
 				5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */,
 				5A77C8091E61E038008D1143 /* Sources */,
@@ -868,6 +887,10 @@
 					ProjectRef = 5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */;
 				},
 				{
+					ProductGroup = 2D95461D1EC3369A00D197B9 /* Products */;
+					ProjectRef = 2D95461C1EC3369A00D197B9 /* BlueCapKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 5AD310D61E7220AC005F8368 /* Products */;
 					ProjectRef = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
 				},
@@ -887,6 +910,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		2D9546211EC3369A00D197B9 /* BlueCapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BlueCapKit.framework;
+			remoteRef = 2D9546201EC3369A00D197B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5A77C8361E61E539008D1143 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

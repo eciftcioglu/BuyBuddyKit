@@ -11,6 +11,8 @@ import Alamofire
 import UIKit
 
 public struct ItemData {
+    
+    public var hitagId: String?
     public var size: String?
     public var color: UIColor?
     public var code: String?
@@ -22,6 +24,7 @@ public struct ItemData {
     }
     init?(json: [String:Any]) throws{
         guard let size = json["size"] as? String,
+            let hitagId = json["hitagId"] as? String,
             let color = json["color"] as? UIColor,
             let code = json["code"] as? String,
             let id = json["id"] as? Int64,
@@ -30,6 +33,7 @@ public struct ItemData {
         else { return nil }
         
         self.size = size
+        self.hitagId = hitagId
         self.color = color
         self.code = code
         self.id = id
