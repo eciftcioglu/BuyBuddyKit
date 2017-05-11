@@ -23,8 +23,11 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     @IBOutlet var basketTotal: UILabel!
     var delegate: ShoppingCartDelegate?
 
+    var blemanager : BuyBuddyBLEManager?
+
     var tableData : [ItemData] = []
     var suggestedData : [ItemData] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +70,9 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func callPaymentPage(_ sender: Any) {
+    @IBAction func callPaymentPage(_ sender: Any) { 
+        let product = ItemData(hitagId: "0100000001")
+        blemanager = BuyBuddyBLEManager(products: [product])
     }
 }
 

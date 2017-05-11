@@ -20,6 +20,12 @@ public struct ItemData {
     public var image: UIImage?
     public var price: Float?
 
+ 
+    
+    init(hitagId: String){
+        self.hitagId = hitagId
+    }
+    
     init() {
     }
     init?(json: [String:Any]) throws{

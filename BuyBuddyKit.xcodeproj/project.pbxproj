@@ -37,8 +37,15 @@
 		2D8097801EC21E1700FD1983 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80977E1EC21E1100FD1983 /* Color.swift */; };
 		2D8097841EC22C9D00FD1983 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097831EC22C9D00FD1983 /* Utilities.swift */; };
 		2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
-		2D9547921EC3C84000D197B9 /* BuyBuddyBleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */; };
-		2DC3A8381EBA04040011C93E /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2D9547A11EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */; };
+		2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */; };
+		2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
+		2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */; };
+		2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2D9547B81EC3D6F000D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2D9547B91EC3D6F100D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2D9547BA1EC3D6F200D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
 		2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
 		2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */; };
 		5A77C80F1E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -260,6 +267,7 @@
 		2D8097831EC22C9D00FD1983 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEManager.swift; sourceTree = "<group>"; };
 		2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBleHandler.swift; sourceTree = "<group>"; };
+		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBlePeripheral.swift; sourceTree = "<group>"; };
 		2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactory.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
@@ -468,6 +476,7 @@
 		2D95478E1EC3C80A00D197B9 /* CoreBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
+				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */,
 				2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */,
 				2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */,
 			);
@@ -1070,14 +1079,18 @@
 				2D5D74D91EBCA427009E75FC /* ShoppingCartButton.swift in Sources */,
 				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
 				2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */,
+				2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */,
 				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
 				5AD310C61E72188B005F8368 /* Credentials.swift in Sources */,
 				5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
 				2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */,
 				5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
+				2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
 				2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */,
+				2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */,
 				2D5204351E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
 				2D8097281EC1E2FC00FD1983 /* SuggestionsCollectionViewCell.swift in Sources */,
+				2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */,
 				2D52042F1E967C1500F5EE0D /* ItemData.swift in Sources */,
 				5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */,
 				2D8097801EC21E1700FD1983 /* Color.swift in Sources */,
@@ -1097,6 +1110,7 @@
 				5AD310CD1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
 				5AD3109C1E720F8E005F8368 /* User.swift in Sources */,
 				5AD310AE1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				2D9547B81EC3D6F000D197B9 /* Hitag.swift in Sources */,
 				5AD310C71E72188B005F8368 /* Credentials.swift in Sources */,
 				5AD310B81E7216CD005F8368 /* UserFactory.swift in Sources */,
 				5AD310B31E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
@@ -1117,6 +1131,7 @@
 				5AD310CE1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
 				5AD3109D1E720F8E005F8368 /* User.swift in Sources */,
 				5AD310AF1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				2D9547B91EC3D6F100D197B9 /* Hitag.swift in Sources */,
 				5AD310C81E72188B005F8368 /* Credentials.swift in Sources */,
 				5AD310B41E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
 				5AD310C31E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
@@ -1137,6 +1152,7 @@
 				5AD310CF1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
 				5AD3109E1E720F8E005F8368 /* User.swift in Sources */,
 				5AD310B01E721537005F8368 /* EmailAssignment.swift in Sources */,
+				2D9547BA1EC3D6F200D197B9 /* Hitag.swift in Sources */,
 				5AD310C91E72188B005F8368 /* Credentials.swift in Sources */,
 				5AD310B51E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
 				5AD310C41E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
@@ -1181,11 +1197,11 @@
 				2D8097841EC22C9D00FD1983 /* Utilities.swift in Sources */,
 				2D52042E1E967B8C00F5EE0D /* ItemData.swift in Sources */,
 				2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */,
+				2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */,
 				5AB53B891E72F0FC00C5D49E /* main.swift in Sources */,
-				2D9547921EC3C84000D197B9 /* BuyBuddyBleHandler.swift in Sources */,
-				2DC3A8381EBA04040011C93E /* Hitag.swift in Sources */,
 				2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */,
 				2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */,
+				2D9547A11EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,7 +1337,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1383,7 +1399,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-iOS";

@@ -9,20 +9,21 @@
 import Foundation
 
 
+import Foundation
+import CoreBluetooth
+
 class BuyBuddyBLEManager {
-    
-    /*
     var centralManager : CBCentralManager!
-    var bleHandler     : BLEHandler
+    var bleHandler     : BuyBuddyBleHandler
     
     init(){
-        self.bleHandler = BLEHandler()
+        self.bleHandler = BuyBuddyBleHandler()
         //self.centralManager = CBCentralManager(delegate: self.bleHandler, queue: nil)
         
     }
     
-    init(products: [Product]){
-        self.bleHandler = BLEHandler(products: products)
-    }*/
+    init(products: [ItemData]){
+        self.bleHandler = BuyBuddyBleHandler(products: products)
+    }
     
 }
