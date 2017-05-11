@@ -117,7 +117,7 @@
         <!--Shopping Basket View Controller-->
         <scene sceneID="Zws-MP-Gao">
             <objects>
-                <viewController storyboardIdentifier="ShoppingBasketVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="5eq-OG-3s9" customClass="ShoppingBasketViewController" customModule="BuyBuddyKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shoppingBasketView" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="5eq-OG-3s9" customClass="ShoppingBasketViewController" customModule="BuyBuddyKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MYF-K2-Hzu"/>
                         <viewControllerLayoutGuide type="bottom" id="Iwz-xw-DcO"/>
@@ -224,6 +224,7 @@
                             <constraint firstAttribute="trailing" secondItem="rto-Io-Sgz" secondAttribute="trailing" constant="8" id="F5K-6z-hjB"/>
                             <constraint firstItem="pPI-ih-81e" firstAttribute="top" secondItem="X0I-Fg-bxm" secondAttribute="bottom" id="T10-Zo-jAn"/>
                             <constraint firstItem="X0I-Fg-bxm" firstAttribute="top" secondItem="MYF-K2-Hzu" secondAttribute="bottom" id="Up7-2S-GtJ"/>
+                            <constraint firstItem="pPI-ih-81e" firstAttribute="centerX" secondItem="Wbg-nF-YGT" secondAttribute="centerX" id="ZdT-8J-pdY"/>
                             <constraint firstItem="fuP-v5-XvF" firstAttribute="top" secondItem="Wbg-nF-YGT" secondAttribute="top" id="b0l-xc-Zfx"/>
                             <constraint firstAttribute="trailing" secondItem="X0I-Fg-bxm" secondAttribute="trailing" id="bF0-0v-2jF"/>
                             <constraint firstItem="X0I-Fg-bxm" firstAttribute="width" secondItem="Wbg-nF-YGT" secondAttribute="width" multiplier="1:5" id="cBC-Pl-x00"/>

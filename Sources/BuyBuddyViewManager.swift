@@ -20,6 +20,15 @@ public class BuyBuddyViewManager{
          }
      }
     
+    public class  func callShoppingBasketView(param:UIViewController){
+        if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ShoppingBasketViewController.self)).instantiateViewController(withIdentifier: "shoppingBasketView") as? ShoppingBasketViewController
+        {
+            param.modalTransitionStyle = .crossDissolve
+            param.modalPresentationStyle = .overCurrentContext
+            param.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     public class  func callPaymentFinalizerView(param:UIViewController){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: FinalizePaymentViewController.self)).instantiateViewController(withIdentifier: "paymentFinalizerView") as? FinalizePaymentViewController
         {
