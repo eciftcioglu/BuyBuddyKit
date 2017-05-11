@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2D291BF01EC08BA100C9FB78 /* BuyBuddyViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */; };
 		2D291CE41EC0927B00C9FB78 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291CA61EC0911300C9FB78 /* CircleButton.swift */; };
+		2D393CAB1EC4A54C008C7457 /* BuyBuddyBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */; };
+		2D393CAD1EC4A70E008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
+		2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D52042A1E967ABC00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
 		2D52042B1E967ABD00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
 		2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
@@ -249,6 +252,8 @@
 		2D291BF11EC08BA100C9FB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/BuyBuddyViews.storyboard; sourceTree = "<group>"; };
 		2D291CA61EC0911300C9FB78 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
+		2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBeaconManager.swift; sourceTree = "<group>"; };
+		2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectedHitag.swift; sourceTree = "<group>"; };
 		2D52042D1E967B8C00F5EE0D /* ItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseObjectSerializable.swift; path = Extensions/ResponseObjectSerializable.swift; sourceTree = "<group>"; };
 		2D5C0B731EBB57C5000CE7E9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
@@ -479,6 +484,7 @@
 				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */,
 				2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */,
 				2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */,
+				2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */,
 			);
 			name = CoreBlueTooth;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				5AD310D01E7219FE005F8368 /* Passphrase.swift */,
 				2D52042D1E967B8C00F5EE0D /* ItemData.swift */,
 				2DC3A8371EBA04040011C93E /* Hitag.swift */,
+				2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1090,6 +1097,7 @@
 				2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */,
 				2D5204351E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
 				2D8097281EC1E2FC00FD1983 /* SuggestionsCollectionViewCell.swift in Sources */,
+				2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */,
 				2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */,
 				2D52042F1E967C1500F5EE0D /* ItemData.swift in Sources */,
 				5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */,
@@ -1100,6 +1108,7 @@
 				5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
 				5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 				2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */,
+				2D393CAB1EC4A54C008C7457 /* BuyBuddyBeaconManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,6 +1209,7 @@
 				2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */,
 				5AB53B891E72F0FC00C5D49E /* main.swift in Sources */,
 				2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */,
+				2D393CAD1EC4A70E008C7457 /* CollectedHitag.swift in Sources */,
 				2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */,
 				2D9547A11EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
 			);
@@ -1609,7 +1619,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1668,7 +1678,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

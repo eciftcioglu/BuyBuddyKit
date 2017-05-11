@@ -23,7 +23,7 @@ public class PopUpScanView : UIView {
     fileprivate let strokeLayer = CAShapeLayer()
 
     
-        public var centerImage = UIImage(named: "Oval_2") {
+        public var centerImage = UIImage(named: "Oval_2", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
         didSet {
             centerImageView.image = centerImage
         }

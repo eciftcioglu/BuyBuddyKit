@@ -13,14 +13,14 @@ protocol ShoppingCartButtonDelegate:class {
     func buttonWasPressed(_ button:UIButton)
 }
 
-
+@IBDesignable
 class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
     weak var delegate:ShoppingCartButtonDelegate?
     
     @IBInspectable
-    public var buttonImage = UIImage(named: "shopping_cart") {
+    public var buttonImage = UIImage(named: "shopping_cart", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
         didSet {
             self.setImage(buttonImage, for: UIControlState.normal) 
         }

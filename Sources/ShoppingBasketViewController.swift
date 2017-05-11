@@ -170,10 +170,13 @@ extension ShoppingBasketViewController{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestionsCollectionViewCell", for: indexPath) as! SuggestionsCollectionViewCell
-        let data = suggestedData[(indexPath as NSIndexPath).row]
-
-        cell.setProductImage(image: data.image!)
-        cell.setProductPrice(price: data.price!)
+        //let data = suggestedData[(indexPath as NSIndexPath).row]
+        
+        //cell.setProductImage(image: data.image!)
+        //cell.setProductPrice(price: data.price!)
+        
+        cell.setProductImage(image: UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+        cell.setProductPrice(price: 12)
         //let data = filltable[(indexPath as NSIndexPath).row]
         return cell
     }

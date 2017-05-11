@@ -10,6 +10,7 @@ import Foundation
 import CoreBluetooth
 
 
+
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 
 
@@ -32,7 +33,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var willDevices    : [String] = []
     var doneDevices    : [String] = []
     
-
+    
     
     override init() {
         super.init()
@@ -144,16 +145,34 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        let nameOfDeviceFound = (advertisementData as NSDictionary).object(forKey: CBAdvertisementDataManufacturerDataKey)  as? Data
+        let manufacturerData = (advertisementData as NSDictionary)
+            .object(forKey: CBAdvertisementDataManufacturerDataKey)  as? Data
+        let deviceName = (advertisementData as NSDictionary)
+            .object(forKey: CBAdvertisementDataLocalNameKey) as? Data
         
-        if nameOfDeviceFound != nil {
-            let data = NSString(data: nameOfDeviceFound!, encoding: String.Encoding.utf8.rawValue)
+        if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject], (list.contains { ($0 as? CBUUID)?.uuidString == "0000BEEF-6275-7962-7564-647966656565" } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
+            
+            let manufactererData = advertisementData["kCBAdvDataManufacturerData"] as? Data
+            let hitagDataString = NSString(data: manufactererData!, encoding: String.Encoding.utf8.rawValue)
+            let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "") as String as NSString
+            
+            print(hitagManufacturerData)
+        }
+        
+        
+        if manufacturerData != nil && deviceName != nil{
+            let deviceData = NSString(data: deviceName!, encoding: String.Encoding.utf8.rawValue)
+            let data = NSString(data: manufacturerData!, encoding: String.Encoding.utf8.rawValue)
             
             if data != nil{
                 
+                var deviceName : NSString = data!.replacingOccurrences(of: "Y\0", with: "") as String as NSString
+                
+                print(deviceName)
+                
                 if data!.length > 16 {
                     
-                    var deviceName : NSString = data!.replacingOccurrences(of: "\0", with: "") as String as NSString
+                    
                     deviceName = deviceName.substring(with: NSRange(location: 11, length: 10)) as NSString
                     
                     let deviceNameStr : String = deviceName as String
@@ -170,14 +189,11 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                             currentTag = deviceNameStr
                             centralManager.stopScan()
                             connectDevice(peripheral)
+                            
                         }
                     }
-                    
                 }
-                
             }
-            
-            
         }
     }
     

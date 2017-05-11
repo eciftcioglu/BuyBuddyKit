@@ -29,6 +29,6 @@ class SuggestionsCollectionViewCell:UICollectionViewCell{
     
     public func setProductPrice(price:Float){
         
-        productPrice.text = String(price)
+        productPrice.text = String(price) + " TL"
     }
 }
