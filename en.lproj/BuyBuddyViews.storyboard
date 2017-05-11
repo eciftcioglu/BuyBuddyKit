@@ -14,7 +14,7 @@
         <!--Scan View Controller-->
         <scene sceneID="Yxn-Qk-6Cq">
             <objects>
-                <viewController storyboardIdentifier="firstVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="LCj-PJ-XV8" customClass="ScanViewController" customModule="BuyBuddyKit" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scannedProductView" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="LCj-PJ-XV8" customClass="ScanViewController" customModule="BuyBuddyKit" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MsD-v0-Pmk"/>
                         <viewControllerLayoutGuide type="bottom" id="azy-47-sne"/>
@@ -105,7 +105,7 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="hbB-BP-k8X" id="OHd-38-9Ns"/>
-                        <outlet property="cartButton" destination="42W-nu-FrA" id="FJ6-ti-PiE"/>
+                        <outlet property="cartButton" destination="42W-nu-FrA" id="iSa-NI-Yse"/>
                         <outlet property="popUpScanView" destination="yVm-LJ-fDH" id="lLy-no-urk"/>
                         <segue destination="5eq-OG-3s9" kind="presentation" identifier="shoppingCart" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gku-Mz-PvH"/>
                     </connections>
@@ -253,10 +253,170 @@
             </objects>
             <point key="canvasLocation" x="968.79999999999995" y="139.880059970015"/>
         </scene>
+        <!--paymentFinalizer-->
+        <scene sceneID="Rnj-BW-9r4">
+            <objects>
+                <viewController storyboardIdentifier="paymentFinalizerView" title="paymentFinalizer" id="XA9-Sg-cEP" customClass="FinalizePaymentViewController" customModule="BuyBuddyKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QfZ-5v-Co4"/>
+                        <viewControllerLayoutGuide type="bottom" id="qSG-In-G4l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bys-c9-0GA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovj-Jn-DzR">
+                                <rect key="frame" x="311" y="8" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="aMR-Ne-weH"/>
+                                    <constraint firstAttribute="height" constant="64" id="vbA-4r-m52"/>
+                                </constraints>
+                                <state key="normal" image="cross_white"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-bB-LEF">
+                                <rect key="frame" x="0.0" y="259" width="375" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval_2" translatesAutoresizingMaskIntoConstraints="NO" id="6W5-TE-3tr" customClass="CircleImageView" customModule="BuyBuddyKit" customModuleProvider="target">
+                                        <rect key="frame" x="150" y="38" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="4EB-3m-xsk"/>
+                                            <constraint firstAttribute="width" constant="75" id="hrz-gK-ba6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Processing..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q6-bT-9Yq">
+                                        <rect key="frame" x="108" y="121" width="159" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6W5-TE-3tr" firstAttribute="centerY" secondItem="JWM-bB-LEF" secondAttribute="centerY" id="8tS-6S-ZsA"/>
+                                    <constraint firstItem="9Q6-bT-9Yq" firstAttribute="centerX" secondItem="JWM-bB-LEF" secondAttribute="centerX" id="Jek-YE-4pC"/>
+                                    <constraint firstAttribute="height" constant="150" id="d8T-rX-kMf"/>
+                                    <constraint firstItem="9Q6-bT-9Yq" firstAttribute="top" secondItem="6W5-TE-3tr" secondAttribute="bottom" constant="8" id="gNN-oU-qxm"/>
+                                    <constraint firstItem="6W5-TE-3tr" firstAttribute="centerX" secondItem="JWM-bB-LEF" secondAttribute="centerX" id="kX3-eT-L40"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-g3-F4F">
+                                <rect key="frame" x="0.0" y="516" width="375" height="111"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EuN-Q7-LXb">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="svh-Me-qfN">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d54-z8-iQG">
+                                <rect key="frame" x="0.0" y="72" width="375" height="444"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRf-3a-DzI">
+                                        <rect key="frame" x="63" y="129" width="250" height="41.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jRf-3a-DzI" secondAttribute="height" multiplier="6:1" id="2kL-Hm-U69"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="Mesajla Gönder" image="message_icon"/>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_icon" translatesAutoresizingMaskIntoConstraints="NO" id="asa-AE-1V8">
+                                        <rect key="frame" x="150" y="8" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="asa-AE-1V8" secondAttribute="height" multiplier="1:1" id="Tj2-JV-i4V"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ödeme Tamamlandı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXL-L7-Cd1">
+                                        <rect key="frame" x="113" y="91" width="149.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-nN-Hk2">
+                                        <rect key="frame" x="62.5" y="178.5" width="250" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="LJc-nN-Hk2" secondAttribute="height" multiplier="6:1" id="Wex-5h-7gy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="Maille Gönder" image="mail_icon"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-an-Tpb">
+                                        <rect key="frame" x="0.0" y="362" width="375" height="66"/>
+                                        <string key="text">Hızlıydı değil mi?
+Buy Buddy sayesinde 6 saniyede 3
+ ürün aldın!</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.80392156859999997" blue="0.60784313729999995" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="top" secondItem="jRf-3a-DzI" secondAttribute="bottom" constant="8" id="G1x-jY-Sjl"/>
+                                    <constraint firstItem="asa-AE-1V8" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:5" id="GF6-xF-fqw"/>
+                                    <constraint firstItem="jRf-3a-DzI" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:1.5" id="Hu2-RY-Qck"/>
+                                    <constraint firstItem="asa-AE-1V8" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="Jxj-ee-pR4"/>
+                                    <constraint firstItem="jRf-3a-DzI" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="LxG-0Q-iJc"/>
+                                    <constraint firstItem="vXL-L7-Cd1" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="NZZ-fv-I7b"/>
+                                    <constraint firstAttribute="bottom" secondItem="6gE-an-Tpb" secondAttribute="bottom" constant="16" id="P8y-X4-NF0"/>
+                                    <constraint firstItem="6gE-an-Tpb" firstAttribute="leading" secondItem="d54-z8-iQG" secondAttribute="leading" id="QGR-S3-Yif"/>
+                                    <constraint firstItem="vXL-L7-Cd1" firstAttribute="top" secondItem="asa-AE-1V8" secondAttribute="bottom" constant="8" id="Qkn-Wq-kne"/>
+                                    <constraint firstItem="jRf-3a-DzI" firstAttribute="top" secondItem="vXL-L7-Cd1" secondAttribute="bottom" constant="16" id="nGO-Cu-Jcu"/>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="oEE-1x-flB"/>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:1.5" id="pbU-IF-PeX"/>
+                                    <constraint firstAttribute="trailing" secondItem="6gE-an-Tpb" secondAttribute="trailing" id="sU5-Rn-KZf"/>
+                                    <constraint firstItem="asa-AE-1V8" firstAttribute="top" secondItem="d54-z8-iQG" secondAttribute="top" constant="8" id="uDN-03-m5P"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="JWM-bB-LEF" firstAttribute="centerY" secondItem="bys-c9-0GA" secondAttribute="centerY" id="84q-xa-723"/>
+                            <constraint firstItem="d54-z8-iQG" firstAttribute="top" secondItem="ovj-Jn-DzR" secondAttribute="bottom" id="8aJ-Rr-74F"/>
+                            <constraint firstItem="HM1-g3-F4F" firstAttribute="top" secondItem="d54-z8-iQG" secondAttribute="bottom" id="9Pt-Vm-rzj"/>
+                            <constraint firstItem="HM1-g3-F4F" firstAttribute="height" secondItem="bys-c9-0GA" secondAttribute="height" multiplier="1:6" id="C9I-Qg-j1R"/>
+                            <constraint firstAttribute="trailing" secondItem="d54-z8-iQG" secondAttribute="trailing" id="IVL-gn-pKp"/>
+                            <constraint firstItem="d54-z8-iQG" firstAttribute="leading" secondItem="bys-c9-0GA" secondAttribute="leading" id="Jra-Za-wkK"/>
+                            <constraint firstItem="JWM-bB-LEF" firstAttribute="leading" secondItem="bys-c9-0GA" secondAttribute="leading" id="RKt-Xc-snR"/>
+                            <constraint firstItem="ovj-Jn-DzR" firstAttribute="top" secondItem="bys-c9-0GA" secondAttribute="top" constant="8" id="VjZ-UQ-Qly"/>
+                            <constraint firstAttribute="trailing" secondItem="JWM-bB-LEF" secondAttribute="trailing" id="Weo-Zk-NQi"/>
+                            <constraint firstAttribute="trailing" secondItem="HM1-g3-F4F" secondAttribute="trailing" id="aeh-UQ-bKz"/>
+                            <constraint firstAttribute="trailing" secondItem="ovj-Jn-DzR" secondAttribute="trailing" id="bNX-ld-W9J"/>
+                            <constraint firstItem="JWM-bB-LEF" firstAttribute="centerX" secondItem="bys-c9-0GA" secondAttribute="centerX" id="c9S-Gk-Dmr"/>
+                            <constraint firstItem="HM1-g3-F4F" firstAttribute="leading" secondItem="bys-c9-0GA" secondAttribute="leading" id="oLr-pi-B9f"/>
+                            <constraint firstItem="qSG-In-G4l" firstAttribute="top" secondItem="HM1-g3-F4F" secondAttribute="bottom" constant="40" id="rE8-L6-Ru6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="HM1-g3-F4F" id="JQb-2k-BIj"/>
+                        <outlet property="completionView" destination="d54-z8-iQG" id="Jb4-WZ-UDf"/>
+                        <outlet property="midView" destination="JWM-bB-LEF" id="POr-1a-kEB"/>
+                        <outlet property="paymentLabel" destination="9Q6-bT-9Yq" id="2wQ-k0-5UE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EWk-v0-12S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733.5999999999999" y="139.880059970015"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Oval_2" width="240" height="240"/>
         <image name="add_basket" width="34" height="36"/>
+        <image name="check_icon" width="67" height="67"/>
         <image name="cross_white" width="14" height="14"/>
         <image name="glasses" width="34" height="13"/>
+        <image name="mail_icon" width="32" height="22"/>
+        <image name="message_icon" width="31" height="31"/>
     </resources>
 </document>

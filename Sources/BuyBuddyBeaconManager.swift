@@ -52,8 +52,8 @@ class BeaconManager : NSObject, CLLocationManagerDelegate {
             self.startRanging()
         case .denied, .restricted:
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LOCATION_DENIED"), object: nil)
-        default:
-            break
+  
+            
         }
     }
     
@@ -65,10 +65,11 @@ class BeaconManager : NSObject, CLLocationManagerDelegate {
 
 
         if let beacon = beaconsRanged?.last {
-                    
-            data = CollectedHitag(id: String(format:"%4X",  beacon.major) + String(format:"%4X",beacon.minor), rssi: beacon.rssi, txPower: nil)
-                    print(data)
-                    hitags[data.id!] = data
+            
+            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil)
+            print(data)
+            hitags[data.id!] = data
+            
         }
     }
     

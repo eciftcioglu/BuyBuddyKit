@@ -2,31 +2,31 @@
 //  ShoppingCartButton.swift
 //  BuyBuddyKit
 //
-//  Created by Emir Çiftçioğlu on 05/05/2017.
+//  Created by Emir Çiftçioğlu on 11/05/2017.
 //
 //
 
 import Foundation
 import UIKit
 
-protocol ShoppingCartButtonDelegate:class {
+public protocol ShoppingCartButtonDelegate:class {
     func buttonWasPressed(_ button:UIButton)
 }
 
 @IBDesignable
-class ShoppingCartButton:UIButton,ShoppingCartDelegate{
+public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
-    weak var delegate:ShoppingCartButtonDelegate?
+    public weak var delegate:ShoppingCartButtonDelegate?
     
     @IBInspectable
     public var buttonImage = UIImage(named: "shopping_cart", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
         didSet {
-            self.setImage(buttonImage, for: UIControlState.normal) 
+            self.setImage(buttonImage, for: UIControlState.normal)
         }
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.adjustImageAndTitleOffsets()
         self.addBlurEffect()
@@ -43,7 +43,7 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         createLabel()
         self.layer.cornerRadius = self.layer.frame.width / 2
@@ -59,14 +59,14 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         countLabel.layer.masksToBounds = true
         countLabel.font = UIFont(name: "Avenir-Heavy", size: 13)
         countLabel.layer.cornerRadius = countLabel.layer.frame.width / 2
-
+        
         self.addSubview(countLabel)
     }
     
     func buttonPress(button:UIButton) {
         delegate?.buttonWasPressed(self)
     }
-    func countDidChange(_ data: String) {
+    public func countDidChange(_ data: String) {
         countLabel.text = data
     }
     
@@ -78,6 +78,5 @@ class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         let titleSize = self.titleLabel!.frame.size
         self.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width)
     }
- 
+    
 }
-

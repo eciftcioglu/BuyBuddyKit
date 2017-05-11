@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ShoppingCartDelegate {
+public protocol ShoppingCartDelegate {
     func countDidChange(_ data:String)
 }
 

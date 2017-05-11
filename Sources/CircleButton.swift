@@ -2,15 +2,15 @@
 //  CircleButton.swift
 //  BuyBuddyKit
 //
-//  Created by Emir Çiftçioğlu on 08/05/2017.
+//  Created by Emir Çiftçioğlu on 11/05/2017.
 //
 //
 
+import Foundation
 import UIKit
 
-
 class CircleButton : UIButton {
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.layer.frame.width / 2
@@ -34,7 +34,7 @@ class CircleButton : UIButton {
         
     }
     
-   
+    
     
     func adjustImageAndTitleOffsets () {
         
