@@ -23,9 +23,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addBlurEffect(dark: true)
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.view.addBlurEffect()
         collectionView.register(UINib(nibName: "BorderedHitagCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "BorderedHitagCell")
         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didOpen(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         midView.blink(duration:1.5)
@@ -36,6 +36,11 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     override func viewWillAppear(_ animated: Bool) {
         completionView.alpha = 0
     }
+    
+    @IBAction func dismissPage(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
@@ -62,10 +67,10 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         DispatchQueue.main.async {
             self.paymentLabel.text = "Ödeme Tamamlandı"
             self.midView.timer.invalidate()
-            self.midView.fadeIn(duration: 0.5)
+            self.midView.fadeOut(duration: 0.5)
             self.completionView.fadeIn(duration: 0.5)
-            self.collectionView.reloadData()
             self.state = true
+            self.collectionView.reloadData()
 
         }
     }
@@ -85,7 +90,7 @@ extension FinalizePaymentViewController{
     }
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width:collectionView.frame.height-8,height:collectionView.frame.height-8)
+        return CGSize(width:collectionView.frame.height-16,height:collectionView.frame.height-16)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         

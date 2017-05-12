@@ -17,6 +17,8 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
     @IBOutlet var addButton: CircleButton!
     var test: ItemData = ItemData()
     var delegate: ShoppingCartDelegate?
+    var userButtonDelegate: ShoppingCartDelegate?
+    var userButton:ShoppingCartButton?
     let shapeLayerButton = CAShapeLayer()
 
     override func viewDidLoad() {
@@ -29,11 +31,22 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
         test.code = "cdsfsdf"
         test.price = Float("12")
         
+        userButtonDelegate = userButton
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
         cartButton.delegate = self
         
         popUpScanView.setSizePrice(size: "S", price:test.price!)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        userButton?.fadeIn()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        userButton?.fadeOut()
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +72,7 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
         ShoppingCartManager.shared.basket[test.hitagId!] = test
         let count = String(ShoppingCartManager.shared.basket.count)
         delegate?.countDidChange(count)
+        userButtonDelegate?.countDidChange(count)
         self.dismiss(animated: true, completion: nil)
     }
 }

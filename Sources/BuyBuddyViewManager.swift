@@ -11,30 +11,32 @@ import UIKit
 
 public class BuyBuddyViewManager{
     
-    public class  func callScannedProductView(param:UIViewController){
-         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
-         {
-         param.modalTransitionStyle = .crossDissolve
-         param.modalPresentationStyle = .overCurrentContext
-         param.present(vc, animated: true, completion: nil)
-         }
-     }
-    
-    public class  func callShoppingBasketView(param:UIViewController){
-        if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ShoppingBasketViewController.self)).instantiateViewController(withIdentifier: "shoppingBasketView") as? ShoppingBasketViewController
+    public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton){
+        if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
-            param.modalTransitionStyle = .crossDissolve
-            param.modalPresentationStyle = .overCurrentContext
-            param.present(vc, animated: true, completion: nil)
+            vc.userButton = cartButton
+            vc.modalTransitionStyle = transitionStyle
+            vc.modalPresentationStyle = .overFullScreen
+            viewController.present(vc, animated: true, completion: nil)
         }
     }
     
-    public class  func callPaymentFinalizerView(param:UIViewController){
+    public class  func callShoppingBasketView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton){
+        if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ShoppingBasketViewController.self)).instantiateViewController(withIdentifier: "shoppingBasketView") as? ShoppingBasketViewController
+        {
+            vc.modalTransitionStyle = transitionStyle
+            vc.modalPresentationStyle = .overFullScreen
+            vc.userButton = cartButton
+            viewController.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: FinalizePaymentViewController.self)).instantiateViewController(withIdentifier: "paymentFinalizerView") as? FinalizePaymentViewController
         {
-            param.modalTransitionStyle = .crossDissolve
-            param.modalPresentationStyle = .overCurrentContext
-            param.present(vc, animated: true, completion: nil)
+            vc.modalTransitionStyle = transitionStyle
+            vc.modalPresentationStyle = .overFullScreen
+            viewController.present(vc, animated: true, completion: nil)
         }
     }
 }

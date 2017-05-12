@@ -16,11 +16,15 @@ public protocol ShoppingCartDelegate {
 class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
 
     @IBOutlet var titleText: UILabel!
+    @IBOutlet var tableViewContainer: UIView!
     @IBOutlet var paymentButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var labelContainer: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var basketTotal: UILabel!
+    var userButtonDelegate: ShoppingCartDelegate?
+    var userButton:ShoppingCartButton?
+    var noDataLabel: UILabel = UILabel(frame:.zero)
     var delegate: ShoppingCartDelegate?
 
     var blemanager : BuyBuddyBLEManager?
@@ -34,17 +38,24 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         self.view.addBlurEffect()
         tableView.delegate = self
         tableView.dataSource = self
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        
+        createTableLabel()
+        //collectionView.dataSource = self
+        //collectionView.delegate = self
+        
+        userButtonDelegate = userButton
+
         tableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle:Bundle(for: type(of: self))), forCellReuseIdentifier: "ShoppingCartTableViewCell")
-        collectionView.register(UINib(nibName: "SuggestionsCollectionViewCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "SuggestionsCollectionViewCell")
+        //collectionView.register(UINib(nibName: "SuggestionsCollectionViewCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "SuggestionsCollectionViewCell")
         tableData = Array(ShoppingCartManager.shared.basket.values)
         
     }
     
     override func viewDidLayoutSubviews() {
         labelContainer.roundedBottomCorner()
-        tableView.roundedTopCorner()
+        tableViewContainer.roundedTopCorner()
+        createTableLabel()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,13 +77,26 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         basketTotal.text = String(total) + " TL"
     }
     
+    func createTableLabel(){
+    
+        noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.text          = "Your Shopping Cart is Empty"
+        noDataLabel.font = UIFont(name: "Avenir-Medium", size: 18)
+        noDataLabel.textColor     = UIColor.black
+        noDataLabel.textAlignment = .center
+        tableView.backgroundView  = noDataLabel
+        tableView.separatorStyle  = .none
+    
+    }
+    
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func callPaymentPage(_ sender: Any) { 
-        let product = ItemData(hitagId: "0100000001")
-        blemanager = BuyBuddyBLEManager(products: [product])
+        
+        /*let product = ItemData(hitagId: "0100000001")
+        blemanager = BuyBuddyBLEManager(products: [product])*/
     }
 }
 
@@ -81,14 +105,13 @@ extension ShoppingBasketViewController{
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(tableData.isEmpty){
-            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "Your Shopping Cart is Empty"
-            noDataLabel.font = UIFont(name: "Avenir-Medium", size: 18)
-            noDataLabel.textColor     = UIColor.black
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-            tableView.separatorStyle  = .none
-            
+    
+            noDataLabel.isHidden = false
+        }
+        
+        else {
+        
+            noDataLabel.isHidden = true
         }
 
         return tableData.count
@@ -125,6 +148,8 @@ extension ShoppingBasketViewController{
         basketTotal.text = String(total) + " TL"
         let count = String(tableData.count)
         delegate?.countDidChange(count)
+        userButtonDelegate?.countDidChange(count)
+
         
         if(tableData.isEmpty){
             paymentButton.isHidden = true

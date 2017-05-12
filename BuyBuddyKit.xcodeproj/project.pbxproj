@@ -42,6 +42,8 @@
 		2D5204381E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
 		2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C0B781EBB6813000CE7E9 /* PopUpScanView.swift */; };
 		2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D74D31EBC7EDD009E75FC /* View.swift */; };
+		2D626A951EC5C2C000DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
+		2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
 		2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */; };
 		2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */; };
 		2D7A2F851EC0859900C2DD75 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C0B731EBB57C5000CE7E9 /* images.xcassets */; };
@@ -278,6 +280,7 @@
 		2D5C0B731EBB57C5000CE7E9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		2D5C0B781EBB6813000CE7E9 /* PopUpScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpScanView.swift; sourceTree = "<group>"; };
 		2D5D74D31EBC7EDD009E75FC /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithFrame.swift; sourceTree = "<group>"; };
 		2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyViewManager.swift; sourceTree = "<group>"; };
 		2D8097141EC1C1D000FD1983 /* ShoppingBasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingBasketViewController.swift; sourceTree = "<group>"; };
@@ -414,6 +417,7 @@
 			children = (
 				2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */,
 				2D393D121EC4CD0B008C7457 /* CircleButton.swift */,
+				2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -432,8 +436,8 @@
 		2D5C0B721EBB5230000CE7E9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2D393D0F1EC4CC9B008C7457 /* Buttons */,
 				2D5C0B741EBB58F5000CE7E9 /* ViewControllers */,
+				2D393D0F1EC4CC9B008C7457 /* Buttons */,
 				2D8097241EC1E2C500FD1983 /* CollectionView */,
 				2D80971D1EC1CE8E00FD1983 /* ImageView */,
 				2D8097171EC1CDEF00FD1983 /* TableViewCell */,
@@ -1120,6 +1124,7 @@
 				5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
 				2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
 				2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */,
+				2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */,
 				2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */,
 				2D5204351E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
 				2D8097281EC1E2FC00FD1983 /* SuggestionsCollectionViewCell.swift in Sources */,
@@ -1240,6 +1245,7 @@
 				2D393D471EC4FC28008C7457 /* Animations.swift in Sources */,
 				2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */,
 				2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */,
+				2D626A951EC5C2C000DE62B3 /* ButtonWithFrame.swift in Sources */,
 				5AB53B891E72F0FC00C5D49E /* main.swift in Sources */,
 				2D393D131EC4CD0B008C7457 /* CircleButton.swift in Sources */,
 				2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */,

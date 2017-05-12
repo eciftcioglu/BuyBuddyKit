@@ -14,7 +14,7 @@
         <!--Scan View Controller-->
         <scene sceneID="Yxn-Qk-6Cq">
             <objects>
-                <viewController storyboardIdentifier="scannedProductView" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="LCj-PJ-XV8" customClass="ScanViewController" customModule="BuyBuddyKit" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scannedProductView" id="LCj-PJ-XV8" customClass="ScanViewController" customModule="BuyBuddyKit" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MsD-v0-Pmk"/>
                         <viewControllerLayoutGuide type="bottom" id="azy-47-sne"/>
@@ -117,7 +117,7 @@
         <!--Shopping Basket View Controller-->
         <scene sceneID="Zws-MP-Gao">
             <objects>
-                <viewController storyboardIdentifier="shoppingBasketView" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="5eq-OG-3s9" customClass="ShoppingBasketViewController" customModule="BuyBuddyKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shoppingBasketView" id="5eq-OG-3s9" customClass="ShoppingBasketViewController" customModule="BuyBuddyKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MYF-K2-Hzu"/>
                         <viewControllerLayoutGuide type="bottom" id="Iwz-xw-DcO"/>
@@ -130,10 +130,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.11" colorSpace="calibratedWhite"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pPI-ih-81e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C69-S6-jSY">
                                 <rect key="frame" x="8" y="95" width="359" height="330"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pPI-ih-81e">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="330"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="pPI-ih-81e" firstAttribute="top" secondItem="C69-S6-jSY" secondAttribute="top" id="6rH-nK-PM7"/>
+                                    <constraint firstAttribute="trailing" secondItem="pPI-ih-81e" secondAttribute="trailing" id="Dc2-7F-qSq"/>
+                                    <constraint firstAttribute="bottom" secondItem="pPI-ih-81e" secondAttribute="bottom" id="dtj-be-Vhw"/>
+                                    <constraint firstItem="pPI-ih-81e" firstAttribute="leading" secondItem="C69-S6-jSY" secondAttribute="leading" id="tLD-Pj-TTX"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDN-QF-A3D">
                                 <rect key="frame" x="0.0" y="474" width="375" height="144"/>
                                 <subviews>
@@ -218,13 +230,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pPI-ih-81e" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" constant="8" id="2RA-39-Rvj"/>
+                            <constraint firstItem="C69-S6-jSY" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" constant="8" id="0Hr-su-seC"/>
                             <constraint firstItem="SDN-QF-A3D" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" id="CHk-If-qab"/>
                             <constraint firstItem="I5y-QJ-1sz" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" id="DLJ-j5-HWc"/>
                             <constraint firstAttribute="trailing" secondItem="rto-Io-Sgz" secondAttribute="trailing" constant="8" id="F5K-6z-hjB"/>
-                            <constraint firstItem="pPI-ih-81e" firstAttribute="top" secondItem="X0I-Fg-bxm" secondAttribute="bottom" id="T10-Zo-jAn"/>
                             <constraint firstItem="X0I-Fg-bxm" firstAttribute="top" secondItem="MYF-K2-Hzu" secondAttribute="bottom" id="Up7-2S-GtJ"/>
-                            <constraint firstItem="pPI-ih-81e" firstAttribute="centerX" secondItem="Wbg-nF-YGT" secondAttribute="centerX" id="ZdT-8J-pdY"/>
                             <constraint firstItem="fuP-v5-XvF" firstAttribute="top" secondItem="Wbg-nF-YGT" secondAttribute="top" id="b0l-xc-Zfx"/>
                             <constraint firstAttribute="trailing" secondItem="X0I-Fg-bxm" secondAttribute="trailing" id="bF0-0v-2jF"/>
                             <constraint firstItem="X0I-Fg-bxm" firstAttribute="width" secondItem="Wbg-nF-YGT" secondAttribute="width" multiplier="1:5" id="cBC-Pl-x00"/>
@@ -233,11 +243,12 @@
                             <constraint firstAttribute="trailing" secondItem="SDN-QF-A3D" secondAttribute="trailing" id="dEG-Bo-oFQ"/>
                             <constraint firstAttribute="trailing" secondItem="I5y-QJ-1sz" secondAttribute="trailing" id="h0L-tO-9xH"/>
                             <constraint firstItem="rto-Io-Sgz" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" constant="8" id="i1q-jl-pt6"/>
-                            <constraint firstAttribute="trailing" secondItem="pPI-ih-81e" secondAttribute="trailing" constant="8" id="jui-BF-xtY"/>
                             <constraint firstAttribute="trailing" secondItem="fuP-v5-XvF" secondAttribute="trailing" id="k1z-Js-fKJ"/>
                             <constraint firstItem="I5y-QJ-1sz" firstAttribute="top" secondItem="SDN-QF-A3D" secondAttribute="bottom" id="l5l-7i-eLT"/>
-                            <constraint firstItem="rto-Io-Sgz" firstAttribute="top" secondItem="pPI-ih-81e" secondAttribute="bottom" id="maR-b4-c0K"/>
+                            <constraint firstItem="rto-Io-Sgz" firstAttribute="top" secondItem="C69-S6-jSY" secondAttribute="bottom" id="rc5-Yb-XT2"/>
+                            <constraint firstAttribute="trailing" secondItem="C69-S6-jSY" secondAttribute="trailing" constant="8" id="rtb-sY-muC"/>
                             <constraint firstItem="fuP-v5-XvF" firstAttribute="leading" secondItem="Wbg-nF-YGT" secondAttribute="leading" id="sNu-nt-ZoM"/>
+                            <constraint firstItem="C69-S6-jSY" firstAttribute="top" secondItem="X0I-Fg-bxm" secondAttribute="bottom" id="xeH-C8-AVf"/>
                             <constraint firstItem="Iwz-xw-DcO" firstAttribute="top" secondItem="I5y-QJ-1sz" secondAttribute="bottom" id="yfQ-CL-TJq"/>
                         </constraints>
                     </view>
@@ -247,6 +258,7 @@
                         <outlet property="labelContainer" destination="rto-Io-Sgz" id="VzB-2M-81z"/>
                         <outlet property="paymentButton" destination="I5y-QJ-1sz" id="HQf-Hd-FUW"/>
                         <outlet property="tableView" destination="pPI-ih-81e" id="hyp-l2-cjC"/>
+                        <outlet property="tableViewContainer" destination="C69-S6-jSY" id="r0S-dL-hTw"/>
                         <outlet property="titleText" destination="2CB-N9-2yX" id="88x-PX-aFq"/>
                     </connections>
                 </viewController>
@@ -273,6 +285,9 @@
                                     <constraint firstAttribute="height" constant="64" id="vbA-4r-m52"/>
                                 </constraints>
                                 <state key="normal" image="cross_white"/>
+                                <connections>
+                                    <action selector="dismissPage:" destination="XA9-Sg-cEP" eventType="touchUpInside" id="WFn-Xm-Eow"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-bB-LEF">
                                 <rect key="frame" x="0.0" y="259" width="375" height="150"/>
@@ -322,7 +337,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d54-z8-iQG">
                                 <rect key="frame" x="0.0" y="72" width="375" height="444"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRf-3a-DzI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRf-3a-DzI" customClass="ButtonWithFrame" customModule="BuyBuddyKit" customModuleProvider="target">
                                         <rect key="frame" x="63" y="129" width="250" height="41.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="jRf-3a-DzI" secondAttribute="height" multiplier="6:1" id="2kL-Hm-U69"/>
@@ -343,11 +358,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-nN-Hk2">
-                                        <rect key="frame" x="62.5" y="178.5" width="250" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="LJc-nN-Hk2" secondAttribute="height" multiplier="6:1" id="Wex-5h-7gy"/>
-                                        </constraints>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-nN-Hk2" customClass="ButtonWithFrame" customModule="BuyBuddyKit" customModuleProvider="target">
+                                        <rect key="frame" x="63" y="186.5" width="250" height="42.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                         <state key="normal" title="Maille Gönder" image="mail_icon"/>
@@ -364,7 +376,8 @@ Buy Buddy sayesinde 6 saniyede 3
                                 </subviews>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.80392156859999997" blue="0.60784313729999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="top" secondItem="jRf-3a-DzI" secondAttribute="bottom" constant="8" id="G1x-jY-Sjl"/>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="height" secondItem="jRf-3a-DzI" secondAttribute="height" id="5j9-C5-ASX"/>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="top" secondItem="jRf-3a-DzI" secondAttribute="bottom" constant="16" id="G1x-jY-Sjl"/>
                                     <constraint firstItem="asa-AE-1V8" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:5" id="GF6-xF-fqw"/>
                                     <constraint firstItem="jRf-3a-DzI" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:1.5" id="Hu2-RY-Qck"/>
                                     <constraint firstItem="asa-AE-1V8" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="Jxj-ee-pR4"/>
@@ -373,15 +386,15 @@ Buy Buddy sayesinde 6 saniyede 3
                                     <constraint firstAttribute="bottom" secondItem="6gE-an-Tpb" secondAttribute="bottom" constant="16" id="P8y-X4-NF0"/>
                                     <constraint firstItem="6gE-an-Tpb" firstAttribute="leading" secondItem="d54-z8-iQG" secondAttribute="leading" id="QGR-S3-Yif"/>
                                     <constraint firstItem="vXL-L7-Cd1" firstAttribute="top" secondItem="asa-AE-1V8" secondAttribute="bottom" constant="8" id="Qkn-Wq-kne"/>
+                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="width" secondItem="jRf-3a-DzI" secondAttribute="width" id="aHi-pS-Pc1"/>
                                     <constraint firstItem="jRf-3a-DzI" firstAttribute="top" secondItem="vXL-L7-Cd1" secondAttribute="bottom" constant="16" id="nGO-Cu-Jcu"/>
                                     <constraint firstItem="LJc-nN-Hk2" firstAttribute="centerX" secondItem="d54-z8-iQG" secondAttribute="centerX" id="oEE-1x-flB"/>
-                                    <constraint firstItem="LJc-nN-Hk2" firstAttribute="width" secondItem="d54-z8-iQG" secondAttribute="width" multiplier="1:1.5" id="pbU-IF-PeX"/>
                                     <constraint firstAttribute="trailing" secondItem="6gE-an-Tpb" secondAttribute="trailing" id="sU5-Rn-KZf"/>
                                     <constraint firstItem="asa-AE-1V8" firstAttribute="top" secondItem="d54-z8-iQG" secondAttribute="top" constant="8" id="uDN-03-m5P"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JWM-bB-LEF" firstAttribute="centerY" secondItem="bys-c9-0GA" secondAttribute="centerY" id="84q-xa-723"/>
                             <constraint firstItem="d54-z8-iQG" firstAttribute="top" secondItem="ovj-Jn-DzR" secondAttribute="bottom" id="8aJ-Rr-74F"/>

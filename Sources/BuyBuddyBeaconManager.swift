@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 
 
-class BeaconManager : NSObject, CLLocationManagerDelegate {
+public class BuyBuddyBeaconManager : NSObject, CLLocationManagerDelegate {
     
-    static let sharedInstance = BeaconManager()
+    static public let sharedInstance = BuyBuddyBeaconManager()
     
     var locationManager:CLLocationManager
     var hitags         : [String : CollectedHitag] = [:]
@@ -37,13 +37,19 @@ class BeaconManager : NSObject, CLLocationManagerDelegate {
         
         // NOTE:  The UUIDString here must match the UUID of your iBeacon.  If your
         //        iBeacon UUID is different, replace the string below accordingly!
-        let uuid   = NSUUID(uuidString:"0000BEEF-6275-7962-7564-647966656565")
-        let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
-        self.locationManager.startRangingBeacons(in: region)
+        
+        for var serialNumber in 0..<20 {
+            
+            let serialHex = String(NSString(format:"%02X", serialNumber))
+            let uuidStr = String("0000BEEF-6275-7962-7564-6479666565" + serialHex)
+            let uuid   = NSUUID(uuidString: uuidStr!)
+            let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
+            self.locationManager.startRangingBeacons(in: region)
+        }
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         switch status {
         case .notDetermined:
@@ -58,7 +64,7 @@ class BeaconManager : NSObject, CLLocationManagerDelegate {
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+   public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!
         
         var data: CollectedHitag = CollectedHitag()
