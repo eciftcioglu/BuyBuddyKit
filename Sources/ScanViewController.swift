@@ -20,6 +20,9 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
     var userButtonDelegate: ShoppingCartDelegate?
     var userButton:ShoppingCartButton?
     let shapeLayerButton = CAShapeLayer()
+    
+    var blemanager : BuyBuddyBLEManager?
+    public var hitags: [String:String] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,9 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
         cartButton.delegate = self
+        
+        hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
+        blemanager = BuyBuddyBLEManager(products: hitags)
         
         popUpScanView.setSizePrice(size: "S", price:test.price!)
     }

@@ -12,6 +12,12 @@ import Foundation
 import Foundation
 import CoreBluetooth
 
+struct HitagResponse{
+    public static let Error   = Utilities.dataFrom(hex: "ffff")
+    public static let Success = Utilities.dataFrom(hex: "0101")
+    public static let Unknown = Utilities.dataFrom(hex: "0202")
+}
+
 class BuyBuddyBLEManager {
     var centralManager : CBCentralManager!
     var bleHandler     : BuyBuddyBleHandler
@@ -22,7 +28,7 @@ class BuyBuddyBLEManager {
         
     }
     
-    init(products: [ItemData]){
+    init(products: [String:String]){
         self.bleHandler = BuyBuddyBleHandler(products: products)
     }
     

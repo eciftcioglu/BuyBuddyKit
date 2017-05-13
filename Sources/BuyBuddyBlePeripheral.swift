@@ -83,6 +83,10 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         
     }
     
+    func writeHexString(_ hexString: String) {
+        
+        writeRawData(Utilities.dataFrom(hex: hexString))
+    }
     
     
     func writeString(_ string:NSString){
@@ -92,23 +96,6 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         
         writeRawData(data)
     }
-    
-    func dataWithHexString(hex: String) -> Data {
-        var hex = hex
-        var data = Data()
-        while(hex.characters.count > 0) {
-            let c: String = hex.substring(to: hex.index(hex.startIndex, offsetBy: 2))
-            hex = hex.substring(from: hex.index(hex.startIndex, offsetBy: 2))
-            var ch: UInt32 = 0
-            Scanner(string: c).scanHexInt32(&ch)
-            var char = UInt8(ch)
-            data.append(&char, count: 1)
-        }
-        return data
-    }
-    
-    
-    
     
     func writeRawData(_ data:Data) {
         
@@ -141,7 +128,7 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         
         //send data in lengths of <= 20 bytes
         let dataLength = data.count
-        let limit = 20
+        let limit = 36
         
         //Below limit, send as-is
         if dataLength <= limit {
@@ -529,4 +516,36 @@ extension CBUUID {
         
     }
     
+}
+
+extension UnicodeScalar {
+    var hexNibble:UInt8 {
+        let value = self.value
+        if 48 <= value && value <= 57 {
+            return UInt8(value - 48)
+        }
+        else if 65 <= value && value <= 70 {
+            return UInt8(value - 55)
+        }
+        else if 97 <= value && value <= 102 {
+            return UInt8(value - 87)
+        }
+        fatalError("\(self) not a legal hex nibble")
+    }
+}
+
+
+extension Data {
+    init(hex:String) {
+        let scalars = hex.unicodeScalars
+        var bytes = Array<UInt8>(repeating: 0, count: (scalars.count + 1) >> 1)
+        for (index, scalar) in scalars.enumerated() {
+            var nibble = scalar.hexNibble
+            if index & 1 == 0 {
+                nibble <<= 4
+            }
+            bytes[index >> 1] |= nibble
+        }
+        self = Data(bytes: bytes)
+    }
 }

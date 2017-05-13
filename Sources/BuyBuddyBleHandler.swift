@@ -18,53 +18,45 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     
     var singleBuy      : Bool = false
     
-    var tempProducts   : [ItemData] = []
-    var currentProduct : ItemData?
-    var currentIndexPath : IndexPath?
-    
     var connectionMode : ConnectionMode = ConnectionMode.uart
     var delegate       : BuyBuddyBlePeripheralDelegate!
     var uartConnect    : BuyBuddyBlePeripheral?
     var centralManager : CBCentralManager!
     var currentDevice  : CBPeripheral!
-    var currentTag     : String!
     var connected      : Bool = false
-    var hitags         : [String : Hitag] = [:]
-    var willDevices    : [String] = []
-    var doneDevices    : [String] = []
+    
+    var tempHitags       : [String:String] = [:]
+    var hitagsPasswords  : [String : String] = [:]
+    var currentHitag     : String!
+    var devicesToOpen    : [String] = []
+    var openedDevices    : [String] = []
+    var currentIndexPath : IndexPath?
     
     
     
     override init() {
         super.init()
         
-        /*if singleBuy {
-         tempProducts.append(singleItem)
-         willDevices.append(singleItem.hitagId)
-         }else{
-         
-         for p in basket{
-         tempProducts.append(p)
-         willDevices.append(p.hitagId)
-         }
-         }*/
+    }
+    
+    init(products : [String:String]) {
+        super.init()
+        self.hitagsPasswords = products
+        
+        for (key,_) in hitagsPasswords
+        {
+            devicesToOpen.append(key)
+        }
+        
+        centralManager = CBCentralManager(delegate: self, queue: nil)
         
         //self.nextProduct()
     }
     
-    init(products : [ItemData]) {
-        super.init()
-        self.tempProducts = products
-        willDevices.append("0100000001")
-        centralManager = CBCentralManager(delegate: self, queue: nil)
-        
-        self.nextProduct()
-    }
-    
     func nextProduct(){
         
-        if !tempProducts.isEmpty {
-            currentProduct = tempProducts[0]
+        if !tempHitags.isEmpty {
+            //  currentProduct = tempProducts.keys.first
         }
         
     }
@@ -75,7 +67,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
             
-            self.uartConnect?.writeString("open")
+            self.uartConnect?.writeHexString( self.hitagsPasswords[self.currentHitag]!)
+            
             //self.centralManager.cancelPeripheralConnection(self.currentDevice)
         }
     }
@@ -113,24 +106,16 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     
     func didReceiveData(_ newData: Data) {
         
-        let data = NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!
-        print(data)
-        if data == "opening" {
-            
+        switch newData {
+        case HitagResponse.Error:
+            print("Error")
+        case HitagResponse.Success:
             self.sendBTServiceNotificationWithIsBluetoothConnected(true)
-            
-            
+        case HitagResponse.Unknown:
+            print("Error")
+        default:
+            return
         }
-        /*let data = NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!
-         //print(data)
-         
-         if data == "opened" {
-         willDevices = willDevices.filter{$0 != currentTag}
-         doneDevices.append(currentTag)
-         currentDevice = nil
-         currentTag = ""
-         centralManager = CBCentralManager(delegate: self, queue: nil)
-         }*/
         
     }
     
@@ -154,47 +139,20 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             
             let manufactererData = advertisementData["kCBAdvDataManufacturerData"] as? Data
             let hitagDataString = NSString(data: manufactererData!, encoding: String.Encoding.utf8.rawValue)
-            let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "") as String as NSString
+            let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "").replacingOccurrences(of: "\0", with: "") as NSString
             
-            print(hitagManufacturerData)
-        }
-        
-        
-        if manufacturerData != nil && deviceName != nil{
-            let deviceData = NSString(data: deviceName!, encoding: String.Encoding.utf8.rawValue)
-            let data = NSString(data: manufacturerData!, encoding: String.Encoding.utf8.rawValue)
-            
-            if data != nil{
-                
-                var deviceName : NSString = data!.replacingOccurrences(of: "Y\0", with: "") as String as NSString
-                
-                print(deviceName)
-                
-                if data!.length > 16 {
+            if hitagManufacturerData.length >= 10 {
+                if devicesToOpen.contains(hitagManufacturerData as String) {
+                    currentHitag = hitagManufacturerData as String
+                    centralManager.stopScan()
+                    connectDevice(peripheral)
                     
-                    
-                    deviceName = deviceName.substring(with: NSRange(location: 11, length: 10)) as NSString
-                    
-                    let deviceNameStr : String = deviceName as String
-                    
-                    if !deviceNameStr.isEmpty{
-                        
-                        if hitags[deviceNameStr] == nil {
-                            hitags[deviceNameStr] = Hitag(name: deviceNameStr, device: peripheral)
-                        }
-                        
-                        currentDevice = hitags[deviceNameStr]
-                        
-                        if willDevices.contains(deviceNameStr) {
-                            currentTag = deviceNameStr
-                            centralManager.stopScan()
-                            connectDevice(peripheral)
-                            
-                        }
-                    }
                 }
             }
         }
+        
+        
+        
     }
     
     func connectDevice(_ peripheral: CBPeripheral){

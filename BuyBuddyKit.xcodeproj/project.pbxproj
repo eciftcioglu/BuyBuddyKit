@@ -504,7 +504,7 @@
 			name = CollectionView;
 			sourceTree = "<group>";
 		};
-		2D95478E1EC3C80A00D197B9 /* CoreBlueTooth */ = {
+		2D95478E1EC3C80A00D197B9 /* BuyBuddyBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
 				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */,
@@ -512,7 +512,7 @@
 				2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */,
 				2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */,
 			);
-			name = CoreBlueTooth;
+			name = BuyBuddyBlueTooth;
 			sourceTree = "<group>";
 		};
 		5A77C7CC1E61DDDB008D1143 = {
@@ -547,7 +547,7 @@
 		5A77C8091E61E038008D1143 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2D95478E1EC3C80A00D197B9 /* CoreBlueTooth */,
+				2D95478E1EC3C80A00D197B9 /* BuyBuddyBlueTooth */,
 				2D5204331E968C8800F5EE0D /* Extensions */,
 				5AD310991E720F8E005F8368 /* Model */,
 				5AD310A61E7213BE005F8368 /* ErrorHandling */,
