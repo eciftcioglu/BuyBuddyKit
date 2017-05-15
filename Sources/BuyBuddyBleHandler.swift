@@ -25,11 +25,12 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var currentDevice  : CBPeripheral!
     var connected      : Bool = false
     
-    var tempHitags       : [String:String] = [:]
     var hitagsPasswords  : [String : String] = [:]
+    var hitagsTried      : [String : Int] = [:]
     var currentHitag     : String!
     var devicesToOpen    : [String] = []
     var openedDevices    : [String] = []
+    var deviceWithError  : [String] = []
     var currentIndexPath : IndexPath?
     
     
@@ -45,20 +46,20 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         
         for (key,_) in hitagsPasswords
         {
+            hitagsTried[key] = 0
             devicesToOpen.append(key)
         }
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
-        //self.nextProduct()
     }
     
-    func nextProduct(){
+    func decideIfNextProduct(){
         
-        if !tempHitags.isEmpty {
-            //  currentProduct = tempProducts.keys.first
+        if(devicesToOpen.count != 0){
+        
+            let options : [String : AnyObject] = NSDictionary(object: NSNumber(value: true as Bool), forKey: CBCentralManagerScanOptionAllowDuplicatesKey as NSCopying) as! [String : AnyObject]
+            centralManager.scanForPeripherals(withServices: nil, options: options)
         }
-        
     }
     
     func connectionFinalized() {
@@ -102,21 +103,44 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         }
     }
     
-    
-    
     func didReceiveData(_ newData: Data) {
         
         switch newData {
         case HitagResponse.Error:
             print("Error")
+            for index in 0..<devicesToOpen.count{
+                if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
+                    deviceWithError.append(currentHitag)
+                    devicesToOpen.remove(at: index)
+                }
+            }
+            self.sendBTServiceNotificationWithIsBluetoothConnected(false)
+            decideIfNextProduct()
+
         case HitagResponse.Success:
-            self.sendBTServiceNotificationWithIsBluetoothConnected(true)
+            for index in 0..<devicesToOpen.count{
+                if(currentHitag == devicesToOpen[index]){
+                  openedDevices.append(currentHitag)
+                  devicesToOpen.remove(at: index)
+                }
+            }
+        self.sendBTServiceNotificationWithIsBluetoothConnected(true)
+        decideIfNextProduct()
+            
         case HitagResponse.Unknown:
             print("Error")
+            for index in 0..<devicesToOpen.count{
+                if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
+                        deviceWithError.append(currentHitag)
+                        devicesToOpen.remove(at: index)
+                }
+            }
+            self.sendBTServiceNotificationWithIsBluetoothConnected(false)
+            decideIfNextProduct()
+
         default:
             return
         }
-        
     }
     
     func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool) {
@@ -124,16 +148,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
     }
     
-    func peripheralDidUpdateRSSI(_ peripheral: CBPeripheral, error: Error?) {
-        
-    }
-    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-        let manufacturerData = (advertisementData as NSDictionary)
-            .object(forKey: CBAdvertisementDataManufacturerDataKey)  as? Data
-        let deviceName = (advertisementData as NSDictionary)
-            .object(forKey: CBAdvertisementDataLocalNameKey) as? Data
         
         if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject], (list.contains { ($0 as? CBUUID)?.uuidString == "0000BEEF-6275-7962-7564-647966656565" } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
             
@@ -142,17 +157,14 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "").replacingOccurrences(of: "\0", with: "") as NSString
             
             if hitagManufacturerData.length >= 10 {
-                if devicesToOpen.contains(hitagManufacturerData as String) {
-                    currentHitag = hitagManufacturerData as String
+                if devicesToOpen.contains(hitagManufacturerData.substring(to: 10) as String) {
+                    currentHitag = hitagManufacturerData.substring(to: 10) as String
                     centralManager.stopScan()
                     connectDevice(peripheral)
                     
                 }
             }
         }
-        
-        
-        
     }
     
     func connectDevice(_ peripheral: CBPeripheral){
@@ -168,6 +180,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        let increment = hitagsTried[currentHitag]! + 1
+        hitagsTried.updateValue(increment, forKey: currentHitag)
         uartConnect = BuyBuddyBlePeripheral(peripheral: self.currentDevice, delegate: self)
         uartConnect?.didConnect(connectionMode)
     }

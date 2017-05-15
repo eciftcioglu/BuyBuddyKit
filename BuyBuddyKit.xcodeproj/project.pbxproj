@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D291BF01EC08BA100C9FB78 /* BuyBuddyViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */; };
-		2D393CAB1EC4A54C008C7457 /* BuyBuddyBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */; };
+		2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */; };
 		2D393CAD1EC4A70E008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D393CDA1EC4C870008C7457 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097831EC22C9D00FD1983 /* Utilities.swift */; };
@@ -267,7 +267,7 @@
 /* Begin PBXFileReference section */
 		2D291BF11EC08BA100C9FB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/BuyBuddyViews.storyboard; sourceTree = "<group>"; };
 		2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
-		2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBeaconManager.swift; sourceTree = "<group>"; };
+		2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyHitagManager.swift; sourceTree = "<group>"; };
 		2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectedHitag.swift; sourceTree = "<group>"; };
 		2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartButton.swift; sourceTree = "<group>"; };
 		2D393D121EC4CD0B008C7457 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
@@ -437,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				2D5C0B741EBB58F5000CE7E9 /* ViewControllers */,
+				2D7C33931EC9B7D800B81943 /* Utility */,
 				2D393D0F1EC4CC9B008C7457 /* Buttons */,
 				2D8097241EC1E2C500FD1983 /* CollectionView */,
 				2D80971D1EC1CE8E00FD1983 /* ImageView */,
@@ -466,12 +467,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		2D7C33931EC9B7D800B81943 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2D8097831EC22C9D00FD1983 /* Utilities.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		2D8097131EC1C09500FD1983 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
 				2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */,
 				2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */,
-				2D8097831EC22C9D00FD1983 /* Utilities.swift */,
 			);
 			name = StoryBoard;
 			sourceTree = "<group>";
@@ -510,7 +518,7 @@
 				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */,
 				2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */,
 				2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */,
-				2D393CA91EC4A280008C7457 /* BuyBuddyBeaconManager.swift */,
+				2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */,
 			);
 			name = BuyBuddyBlueTooth;
 			sourceTree = "<group>";
@@ -554,8 +562,8 @@
 				5AD3109F1E7211D2005F8368 /* Factories */,
 				5AD310CA1E7219BF005F8368 /* Delegates */,
 				5AD310A01E7211D2005F8368 /* Repositories */,
-				5A77C8291E61E11F008D1143 /* Supporting Files */,
 				2D5C0B721EBB5230000CE7E9 /* UI */,
+				5A77C8291E61E11F008D1143 /* Supporting Files */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1140,7 +1148,7 @@
 				5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
 				5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 				2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */,
-				2D393CAB1EC4A54C008C7457 /* BuyBuddyBeaconManager.swift in Sources */,
+				2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

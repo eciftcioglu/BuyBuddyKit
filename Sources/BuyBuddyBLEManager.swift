@@ -23,9 +23,7 @@ class BuyBuddyBLEManager {
     var bleHandler     : BuyBuddyBleHandler
     
     init(){
-        self.bleHandler = BuyBuddyBleHandler()
-        //self.centralManager = CBCentralManager(delegate: self.bleHandler, queue: nil)
-        
+        self.bleHandler = BuyBuddyBleHandler()        
     }
     
     init(products: [String:String]){
