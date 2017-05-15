@@ -12,12 +12,18 @@ import CoreLocation
 
 public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     
-    static public let sharedInstance = BuyBuddyHitagManager()
+    static public var sharedInstance: BuyBuddyHitagManager!
+    
+    public class func startHitagManager(){
+        if sharedInstance == nil{
+            sharedInstance = BuyBuddyHitagManager()
+        }
+    }
     
     var locationManager:CLLocationManager
     var hitags         : [String : CollectedHitag] = [:]
-    var activeHitags         : [String : CollectedHitag] = [:]
-    var passiveHitags         : [String : CollectedHitag] = [:]
+    var activeHitags   : [String : CollectedHitag] = [:]
+    var passiveHitags  : [String : CollectedHitag] = [:]
 
 
     override init() {
@@ -65,7 +71,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
             let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
             self.locationManager.startMonitoring(for: region)
         }
-        
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -77,7 +82,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
             self.startMonitoring()
         case .denied, .restricted:
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LOCATION_DENIED"), object: nil)
-  
         }
     }
     
@@ -96,7 +100,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
         
         var data: CollectedHitag = CollectedHitag()
   
-        
         if let beacon = beaconsRanged?.last {
             let date = Date()
             let calendar = Calendar.current

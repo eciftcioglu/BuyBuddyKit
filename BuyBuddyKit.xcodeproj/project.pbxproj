@@ -9,40 +9,19 @@
 /* Begin PBXBuildFile section */
 		2D291BF01EC08BA100C9FB78 /* BuyBuddyViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */; };
 		2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */; };
-		2D393CAD1EC4A70E008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D393CDA1EC4C870008C7457 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097831EC22C9D00FD1983 /* Utilities.swift */; };
-		2D393D111EC4CCF9008C7457 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */; };
-		2D393D131EC4CD0B008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
 		2D393D141EC4CD4F008C7457 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */; };
-		2D393D151EC4CD51008C7457 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */; };
-		2D393D161EC4CD51008C7457 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */; };
 		2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
-		2D393D181EC4CD55008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
-		2D393D191EC4CD55008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
-		2D393D1A1EC4CD56008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
-		2D393D441EC4F9CB008C7457 /* FinalizePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D431EC4F9CB008C7457 /* FinalizePaymentViewController.swift */; };
 		2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D431EC4F9CB008C7457 /* FinalizePaymentViewController.swift */; };
-		2D393D471EC4FC28008C7457 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D461EC4FC28008C7457 /* Animations.swift */; };
 		2D393D481EC4FC30008C7457 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D461EC4FC28008C7457 /* Animations.swift */; };
-		2D393D4A1EC4FD20008C7457 /* BorderedHitagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D491EC4FD20008C7457 /* BorderedHitagCell.swift */; };
 		2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D491EC4FD20008C7457 /* BorderedHitagCell.swift */; };
 		2D393D4D1EC4FD54008C7457 /* BorderedHitagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D393D4C1EC4FD54008C7457 /* BorderedHitagCell.xib */; };
-		2D52042A1E967ABC00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
-		2D52042B1E967ABD00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
 		2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
-		2D52042E1E967B8C00F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
 		2D52042F1E967C1500F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
-		2D5204301E967C1800F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
-		2D5204311E967C1900F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
-		2D5204321E967C1900F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
 		2D5204351E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
-		2D5204361E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
-		2D5204371E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
-		2D5204381E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
 		2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C0B781EBB6813000CE7E9 /* PopUpScanView.swift */; };
 		2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D74D31EBC7EDD009E75FC /* View.swift */; };
-		2D626A951EC5C2C000DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
 		2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
 		2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */; };
 		2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */; };
@@ -55,79 +34,23 @@
 		2D8097291EC1E3B500FD1983 /* SuggestionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8097271EC1E2EE00FD1983 /* SuggestionsCollectionViewCell.xib */; };
 		2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */; };
 		2D8097801EC21E1700FD1983 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80977E1EC21E1100FD1983 /* Color.swift */; };
-		2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
-		2D9547A11EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */; };
 		2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */; };
 		2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
 		2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */; };
 		2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
-		2D9547B81EC3D6F000D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
-		2D9547B91EC3D6F100D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
-		2D9547BA1EC3D6F200D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
-		2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
-		2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
-		2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */; };
 		5A77C80F1E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A77C8101E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A77C8111E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A77C8121E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A77C8431E61E551008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C8361E61E539008D1143 /* Alamofire.framework */; };
-		5A77C8441E61E557008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C83A1E61E539008D1143 /* Alamofire.framework */; };
-		5A77C8451E61E55D008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C83E1E61E539008D1143 /* Alamofire.framework */; };
-		5A77C8461E61E562008D1143 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C8421E61E539008D1143 /* Alamofire.framework */; };
-		5A77C8501E61E66D008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
-		5A77C85F1E61E682008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */; };
-		5A77C86E1E61E694008D1143 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */; };
-		5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
-		5AB53B891E72F0FC00C5D49E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB53B881E72F0FC00C5D49E /* main.swift */; };
-		5AB53B8D1E72F11900C5D49E /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */; };
-		5AD310941E720957005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
-		5AD310951E720959005F8368 /* SimpleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77C8751E61E777008D1143 /* SimpleTest.swift */; };
 		5AD3109B1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
-		5AD3109C1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
-		5AD3109D1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
-		5AD3109E1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
 		5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
-		5AD310A31E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
-		5AD310A41E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
-		5AD310A51E7211E4005F8368 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A11E7211E4005F8368 /* UserRepository.swift */; };
 		5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
-		5AD310A91E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
-		5AD310AA1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
-		5AD310AB1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
 		5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
-		5AD310AE1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
-		5AD310AF1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
-		5AD310B01E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
 		5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
-		5AD310B31E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
-		5AD310B41E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
-		5AD310B51E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
-		5AD310B81E7216CD005F8368 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
 		5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
-		5AD310BD1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
-		5AD310BE1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
-		5AD310BF1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
 		5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
-		5AD310C21E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
-		5AD310C31E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
-		5AD310C41E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
 		5AD310C61E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
-		5AD310C71E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
-		5AD310C81E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
-		5AD310C91E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
 		5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
-		5AD310CD1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
-		5AD310CE1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
-		5AD310CF1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
 		5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
-		5AD310D21E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
-		5AD310D31E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
-		5AD310D41E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
 		5AD310EE1E7220B7005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E11E7220AC005F8368 /* SwiftyJSON.framework */; };
-		5AD310EF1E7220BC005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E51E7220AC005F8368 /* SwiftyJSON.framework */; };
-		5AD310F01E7220C2005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310EB1E7220AC005F8368 /* SwiftyJSON.framework */; };
-		5AD310F11E7220C6005F8368 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD310E91E7220AC005F8368 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,27 +103,6 @@
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
-		5A77C8511E61E66D008D1143 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A77C7CD1E61DDDB008D1143 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5A77C7E51E61DE03008D1143;
-			remoteInfo = "BuyBuddyKit macOS";
-		};
-		5A77C8601E61E682008D1143 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A77C7CD1E61DDDB008D1143 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5A77C7D71E61DDF6008D1143;
-			remoteInfo = "BuyBuddyKit iOS";
-		};
-		5A77C86F1E61E694008D1143 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A77C7CD1E61DDDB008D1143 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5A77C7F21E61DE12008D1143;
-			remoteInfo = "BuyBuddyKit tvOS";
-		};
 		5AD310E01E7220AC005F8368 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5AD310D51E7220AC005F8368 /* SwiftyJSON.xcodeproj */;
@@ -252,18 +154,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		5AB53B841E72F0FC00C5D49E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		2D291BF11EC08BA100C9FB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/BuyBuddyViews.storyboard; sourceTree = "<group>"; };
 		2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
@@ -298,25 +188,18 @@
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
 		5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C8001E61DE24008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBuddyKit.h; sourceTree = "<group>"; };
 		5A77C80B1E61E038008D1143 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		5A77C80C1E61E038008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C80D1E61E038008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C80E1E61E038008D1143 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		5A77C82A1E61E539008D1143 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A77C8751E61E777008D1143 /* SimpleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTest.swift; sourceTree = "<group>"; };
 		5A77C87D1E61E7F6008D1143 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A77C87E1E61E7F6008D1143 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5A77C87F1E61E7F6008D1143 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		5AB53B4F1E72EF2800C5D49E /* dylib1.10.5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.10.5.o; path = usr/lib/dylib1.10.5.o; sourceTree = SDKROOT; };
 		5AB53B511E72EF4000C5D49E /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = SDKROOT; };
-		5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "BuyBuddy CLI"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB53B881E72F0FC00C5D49E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5AD3109A1E720F8E005F8368 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5AD310A11E7211E4005F8368 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -339,65 +222,6 @@
 			files = (
 				5AD310EE1E7220B7005F8368 /* SwiftyJSON.framework in Frameworks */,
 				5A77C8431E61E551008D1143 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7E21E61DE03008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310EF1E7220BC005F8368 /* SwiftyJSON.framework in Frameworks */,
-				5A77C8441E61E557008D1143 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7EF1E61DE12008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310F01E7220C2005F8368 /* SwiftyJSON.framework in Frameworks */,
-				5A77C8451E61E55D008D1143 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7FC1E61DE24008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310F11E7220C6005F8368 /* SwiftyJSON.framework in Frameworks */,
-				5A77C8461E61E562008D1143 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8481E61E66D008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C8501E61E66D008D1143 /* BuyBuddyKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8571E61E682008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C85F1E61E682008D1143 /* BuyBuddyKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8661E61E694008D1143 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C86E1E61E694008D1143 /* BuyBuddyKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5AB53B831E72F0FC00C5D49E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AB53B8D1E72F11900C5D49E /* BuyBuddyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,13 +365,6 @@
 			isa = PBXGroup;
 			children = (
 				5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */,
-				5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */,
-				5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */,
-				5A77C8001E61DE24008D1143 /* BuyBuddyKit.framework */,
-				5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */,
-				5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */,
-				5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */,
-				5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -698,30 +515,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A77C7E31E61DE03008D1143 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C8101E61E038008D1143 /* BuyBuddyKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7F01E61DE12008D1143 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C8111E61E038008D1143 /* BuyBuddyKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7FD1E61DE24008D1143 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C8121E61E038008D1143 /* BuyBuddyKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -743,131 +536,6 @@
 			productReference = 5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5A77C7E51E61DE03008D1143 /* BuyBuddyKit macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C7EB1E61DE03008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS" */;
-			buildPhases = (
-				5A77C7E11E61DE03008D1143 /* Sources */,
-				5A77C7E21E61DE03008D1143 /* Frameworks */,
-				5A77C7E31E61DE03008D1143 /* Headers */,
-				5A77C7E41E61DE03008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BuyBuddyKit macOS";
-			productName = "BuyBuddyKit macOS";
-			productReference = 5A77C7E61E61DE03008D1143 /* BuyBuddyKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5A77C7F21E61DE12008D1143 /* BuyBuddyKit tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C7F81E61DE12008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS" */;
-			buildPhases = (
-				5A77C7EE1E61DE12008D1143 /* Sources */,
-				5A77C7EF1E61DE12008D1143 /* Frameworks */,
-				5A77C7F01E61DE12008D1143 /* Headers */,
-				5A77C7F11E61DE12008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BuyBuddyKit tvOS";
-			productName = "BuyBuddyKit tvOS";
-			productReference = 5A77C7F31E61DE12008D1143 /* BuyBuddyKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5A77C7FF1E61DE24008D1143 /* BuyBuddyKit watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C8051E61DE24008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit watchOS" */;
-			buildPhases = (
-				5A77C7FB1E61DE24008D1143 /* Sources */,
-				5A77C7FC1E61DE24008D1143 /* Frameworks */,
-				5A77C7FD1E61DE24008D1143 /* Headers */,
-				5A77C7FE1E61DE24008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BuyBuddyKit watchOS";
-			productName = "BuyBuddyKit watchOS";
-			productReference = 5A77C8001E61DE24008D1143 /* BuyBuddyKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5A77C84A1E61E66D008D1143 /* BuyBuddyKit macOS Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C8531E61E66D008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS Tests" */;
-			buildPhases = (
-				5A77C8471E61E66D008D1143 /* Sources */,
-				5A77C8481E61E66D008D1143 /* Frameworks */,
-				5A77C8491E61E66D008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5A77C8521E61E66D008D1143 /* PBXTargetDependency */,
-			);
-			name = "BuyBuddyKit macOS Tests";
-			productName = "BuyBuddyKit macOS Tests";
-			productReference = 5A77C84B1E61E66D008D1143 /* BuyBuddyKit macOS Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5A77C8591E61E682008D1143 /* BuyBuddyKit iOS Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C8621E61E682008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit iOS Tests" */;
-			buildPhases = (
-				5A77C8561E61E682008D1143 /* Sources */,
-				5A77C8571E61E682008D1143 /* Frameworks */,
-				5A77C8581E61E682008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5A77C8611E61E682008D1143 /* PBXTargetDependency */,
-			);
-			name = "BuyBuddyKit iOS Tests";
-			productName = "BuyBuddyKit iOS Tests";
-			productReference = 5A77C85A1E61E682008D1143 /* BuyBuddyKit iOS Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5A77C8681E61E694008D1143 /* BuyBuddyKit tvOS Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A77C8711E61E694008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS Tests" */;
-			buildPhases = (
-				5A77C8651E61E694008D1143 /* Sources */,
-				5A77C8661E61E694008D1143 /* Frameworks */,
-				5A77C8671E61E694008D1143 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5A77C8701E61E694008D1143 /* PBXTargetDependency */,
-			);
-			name = "BuyBuddyKit tvOS Tests";
-			productName = "BuyBuddyKit tvOS Tests";
-			productReference = 5A77C8691E61E694008D1143 /* BuyBuddyKit tvOS Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5AB53B851E72F0FC00C5D49E /* BuyBuddy CLI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5AB53B8A1E72F0FC00C5D49E /* Build configuration list for PBXNativeTarget "BuyBuddy CLI" */;
-			buildPhases = (
-				5AB53B821E72F0FC00C5D49E /* Sources */,
-				5AB53B831E72F0FC00C5D49E /* Frameworks */,
-				5AB53B841E72F0FC00C5D49E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BuyBuddy CLI";
-			productName = "BuyBuddy CLI";
-			productReference = 5AB53B861E72F0FC00C5D49E /* BuyBuddy CLI */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -881,38 +549,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
-					};
-					5A77C7E51E61DE03008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
-					};
-					5A77C7F21E61DE12008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
-					};
-					5A77C7FF1E61DE24008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
-					};
-					5A77C84A1E61E66D008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-					};
-					5A77C8591E61E682008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-					};
-					5A77C8681E61E694008D1143 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-					};
-					5AB53B851E72F0FC00C5D49E = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = X4R5K8NKGR;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -938,14 +574,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				5AB53B851E72F0FC00C5D49E /* BuyBuddy CLI */,
 				5A77C7D71E61DDF6008D1143 /* BuyBuddyKit iOS */,
-				5A77C7E51E61DE03008D1143 /* BuyBuddyKit macOS */,
-				5A77C7F21E61DE12008D1143 /* BuyBuddyKit tvOS */,
-				5A77C7FF1E61DE24008D1143 /* BuyBuddyKit watchOS */,
-				5A77C8591E61E682008D1143 /* BuyBuddyKit iOS Tests */,
-				5A77C84A1E61E66D008D1143 /* BuyBuddyKit macOS Tests */,
-				5A77C8681E61E694008D1143 /* BuyBuddyKit tvOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1064,48 +693,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A77C7E41E61DE03008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7F11E61DE12008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7FE1E61DE24008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8491E61E66D008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8581E61E682008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8671E61E694008D1143 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1152,138 +739,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A77C7E11E61DE03008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310CD1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
-				5AD3109C1E720F8E005F8368 /* User.swift in Sources */,
-				5AD310AE1E721537005F8368 /* EmailAssignment.swift in Sources */,
-				2D9547B81EC3D6F000D197B9 /* Hitag.swift in Sources */,
-				5AD310C71E72188B005F8368 /* Credentials.swift in Sources */,
-				5AD310B81E7216CD005F8368 /* UserFactory.swift in Sources */,
-				2D393D161EC4CD51008C7457 /* ShoppingCartButton.swift in Sources */,
-				5AD310B31E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
-				2D5204361E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
-				2D5204301E967C1800F5EE0D /* ItemData.swift in Sources */,
-				5AD310C21E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
-				2D393D181EC4CD55008C7457 /* CircleButton.swift in Sources */,
-				5AD310A31E7211E4005F8368 /* UserRepository.swift in Sources */,
-				5AD310D21E7219FE005F8368 /* Passphrase.swift in Sources */,
-				5AD310BD1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
-				5AD310A91E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7EE1E61DE12008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310CE1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
-				5AD3109D1E720F8E005F8368 /* User.swift in Sources */,
-				5AD310AF1E721537005F8368 /* EmailAssignment.swift in Sources */,
-				2D9547B91EC3D6F100D197B9 /* Hitag.swift in Sources */,
-				5AD310C81E72188B005F8368 /* Credentials.swift in Sources */,
-				5AD310B41E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
-				2D393D151EC4CD51008C7457 /* ShoppingCartButton.swift in Sources */,
-				5AD310C31E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
-				2D5204371E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
-				2D5204311E967C1900F5EE0D /* ItemData.swift in Sources */,
-				5AD310A41E7211E4005F8368 /* UserRepository.swift in Sources */,
-				2D393D191EC4CD55008C7457 /* CircleButton.swift in Sources */,
-				5AD310D31E7219FE005F8368 /* Passphrase.swift in Sources */,
-				5AD310BE1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
-				5AD310AA1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
-				2D52042B1E967ABD00F5EE0D /* UserFactory.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C7FB1E61DE24008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D393D1A1EC4CD56008C7457 /* CircleButton.swift in Sources */,
-				5AD310CF1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
-				5AD3109E1E720F8E005F8368 /* User.swift in Sources */,
-				5AD310B01E721537005F8368 /* EmailAssignment.swift in Sources */,
-				2D9547BA1EC3D6F200D197B9 /* Hitag.swift in Sources */,
-				5AD310C91E72188B005F8368 /* Credentials.swift in Sources */,
-				5AD310B51E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
-				5AD310C41E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
-				2D5204381E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */,
-				2D5204321E967C1900F5EE0D /* ItemData.swift in Sources */,
-				5AD310A51E7211E4005F8368 /* UserRepository.swift in Sources */,
-				5AD310D41E7219FE005F8368 /* Passphrase.swift in Sources */,
-				5AD310BF1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
-				5AD310AB1E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
-				2D52042A1E967ABC00F5EE0D /* UserFactory.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8471E61E66D008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A77C8811E61EA44008D1143 /* SimpleTest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8561E61E682008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310941E720957005F8368 /* SimpleTest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A77C8651E61E694008D1143 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AD310951E720959005F8368 /* SimpleTest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5AB53B821E72F0FC00C5D49E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D52042E1E967B8C00F5EE0D /* ItemData.swift in Sources */,
-				2D393D111EC4CCF9008C7457 /* ShoppingCartButton.swift in Sources */,
-				2D393D471EC4FC28008C7457 /* Animations.swift in Sources */,
-				2DC3A83E1EBA0D650011C93E /* ProductScanFactory.swift in Sources */,
-				2D9547BB1EC3D6F200D197B9 /* Hitag.swift in Sources */,
-				2D626A951EC5C2C000DE62B3 /* ButtonWithFrame.swift in Sources */,
-				5AB53B891E72F0FC00C5D49E /* main.swift in Sources */,
-				2D393D131EC4CD0B008C7457 /* CircleButton.swift in Sources */,
-				2D9547901EC3C83100D197B9 /* BuyBuddyBLEManager.swift in Sources */,
-				2D393CAD1EC4A70E008C7457 /* CollectedHitag.swift in Sources */,
-				2D393D4A1EC4FD20008C7457 /* BorderedHitagCell.swift in Sources */,
-				2D393D441EC4F9CB008C7457 /* FinalizePaymentViewController.swift in Sources */,
-				2DC3A83A1EBA078B0011C93E /* ProductScanFactoryDelegate.swift in Sources */,
-				2D9547A11EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5A77C8521E61E66D008D1143 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5A77C7E51E61DE03008D1143 /* BuyBuddyKit macOS */;
-			targetProxy = 5A77C8511E61E66D008D1143 /* PBXContainerItemProxy */;
-		};
-		5A77C8611E61E682008D1143 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5A77C7D71E61DDF6008D1143 /* BuyBuddyKit iOS */;
-			targetProxy = 5A77C8601E61E682008D1143 /* PBXContainerItemProxy */;
-		};
-		5A77C8701E61E694008D1143 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5A77C7F21E61DE12008D1143 /* BuyBuddyKit tvOS */;
-			targetProxy = 5A77C86F1E61E694008D1143 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */ = {
@@ -1462,6 +918,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-iOS";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1473,796 +930,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5A77C7EC1E61DE03008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-macOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-macOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5A77C7ED1E61DE03008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-macOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-macOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5A77C7F91E61DE12008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-tvOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5A77C7FA1E61DE12008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-tvOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5A77C8061E61DE24008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-watchOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
-			};
-			name = Debug;
-		};
-		5A77C8071E61DE24008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-watchOS";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
-			};
-			name = Release;
-		};
-		5A77C8541E61E66D008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-macOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-macOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		5A77C8551E61E66D008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-macOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-macOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		5A77C8631E61E682008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug-iphoneos";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-iOS.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-iOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		5A77C8641E61E682008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/chatatata/Library/Developer/Xcode/DerivedData/BuyBuddyKit-dqklemqwzwsfiyfgpaheozyljjjy/Build/Products/Debug-iphoneos";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-iOS.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-iOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5A77C8721E61E694008D1143 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-tvOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
-			};
-			name = Debug;
-		};
-		5A77C8731E61E694008D1143 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "BB.BuyBuddyKit-tvOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5AB53B8B1E72F0FC00C5D49E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = X4R5K8NKGR;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		5AB53B8C1E72F0FC00C5D49E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = X4R5K8NKGR;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -2283,69 +950,6 @@
 			buildConfigurations = (
 				5A77C7DF1E61DDF6008D1143 /* Debug */,
 				5A77C7E01E61DDF6008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C7EB1E61DE03008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C7EC1E61DE03008D1143 /* Debug */,
-				5A77C7ED1E61DE03008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C7F81E61DE12008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C7F91E61DE12008D1143 /* Debug */,
-				5A77C7FA1E61DE12008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C8051E61DE24008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C8061E61DE24008D1143 /* Debug */,
-				5A77C8071E61DE24008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C8531E61E66D008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit macOS Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C8541E61E66D008D1143 /* Debug */,
-				5A77C8551E61E66D008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C8621E61E682008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit iOS Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C8631E61E682008D1143 /* Debug */,
-				5A77C8641E61E682008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A77C8711E61E694008D1143 /* Build configuration list for PBXNativeTarget "BuyBuddyKit tvOS Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A77C8721E61E694008D1143 /* Debug */,
-				5A77C8731E61E694008D1143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5AB53B8A1E72F0FC00C5D49E /* Build configuration list for PBXNativeTarget "BuyBuddy CLI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5AB53B8B1E72F0FC00C5D49E /* Debug */,
-				5AB53B8C1E72F0FC00C5D49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
