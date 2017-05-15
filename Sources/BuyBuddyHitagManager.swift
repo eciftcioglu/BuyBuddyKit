@@ -26,13 +26,14 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
         super.init()
         
         self.locationManager.delegate = self
-        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest // The accuracy of the location data
+        self.locationManager.allowsBackgroundLocationUpdates = true
+
         if CLLocationManager.authorizationStatus() == .notDetermined{
             
             self.locationManager.requestAlwaysAuthorization()
-             
+
         }
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // The accuracy of the location data
     }
     
     func startRanging() {
@@ -82,27 +83,30 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         self.startRanging()
-        
+        manager.startUpdatingLocation()
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        self.startRanging()
-        
+        manager.stopRangingBeacons(in: region as! CLBeaconRegion)
+        manager.stopUpdatingLocation()
+
     }
-    public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-       // self.startRanging()
-    }
-    
-   public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+
+    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!
         
         var data: CollectedHitag = CollectedHitag()
-
-
+  
+        
         if let beacon = beaconsRanged?.last {
+            let date = Date()
+            let calendar = Calendar.current
+            //let hour = calendar.component(.hour, from: date)
+            //let minutes = calendar.component(.minute, from: date)
             
-            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil)
+            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil,timeStamp:date)
             print(data)
             hitags[data.id!] = data
+            print(hitags)
             
         }
     }
