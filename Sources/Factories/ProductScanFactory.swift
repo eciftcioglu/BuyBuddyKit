@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 public class ProductScanFactory {
 
@@ -33,7 +32,6 @@ public class ProductScanFactory {
                 
                 if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                     print("Data: \(utf8Text)")
-                    let json = JSON(data: data)
                 }
         }
     }

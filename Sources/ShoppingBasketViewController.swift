@@ -54,8 +54,6 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     override func viewDidLayoutSubviews() {
         labelContainer.roundedBottomCorner()
         tableViewContainer.roundedTopCorner()
-        createTableLabel()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +82,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         noDataLabel.font = UIFont(name: "Avenir-Medium", size: 18)
         noDataLabel.textColor     = UIColor.black
         noDataLabel.textAlignment = .center
+        //tableView.addSubview(noDataLabel)
         tableView.backgroundView  = noDataLabel
         tableView.separatorStyle  = .none
     
@@ -93,8 +92,10 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func callPaymentPage(_ sender: Any) { 
+    @IBAction func callPaymentPage(_ sender: Any) {
         
+        BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
+
         /*let product = ItemData(hitagId: "0100000001")
         blemanager = BuyBuddyBLEManager(products: [product])*/
     }
@@ -104,7 +105,7 @@ extension ShoppingBasketViewController{
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(tableData.isEmpty){
+        if(ShoppingCartManager.shared.basket.values.isEmpty){
     
             noDataLabel.isHidden = false
         }
