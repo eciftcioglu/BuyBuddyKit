@@ -13,18 +13,11 @@ import CoreLocation
 public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     
     static private var sharedInstance: BuyBuddyHitagManager!
-    
-    public class func startHitagManager(){
-        if sharedInstance == nil{
-            sharedInstance = BuyBuddyHitagManager()
-        }
-    }
-    
     var locationManager:CLLocationManager
     var hitags         : [String : CollectedHitag] = [:]
     var activeHitags   : [String : CollectedHitag] = [:]
     var passiveHitags  : [String : CollectedHitag] = [:]
-
+    let date = Date()
 
     override init() {
         self.locationManager = CLLocationManager()
@@ -36,17 +29,18 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
         self.locationManager.allowsBackgroundLocationUpdates = true
 
         if CLLocationManager.authorizationStatus() == .notDetermined{
-            
             self.locationManager.requestAlwaysAuthorization()
-
+        }
+    }
+    
+    public class func startHitagManager(){
+        if sharedInstance == nil{
+            sharedInstance = BuyBuddyHitagManager()
         }
     }
     
     func startRanging() {
-        
-        // NOTE:  The UUIDString here must match the UUID of your iBeacon.  If your
-        //        iBeacon UUID is different, replace the string below accordingly!
-        
+
         for var serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
@@ -55,7 +49,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
             let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
             self.locationManager.startRangingBeacons(in: region)
         }
-        
     }
     
     func startMonitoring() {
@@ -99,17 +92,29 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
         let beaconsRanged = beacons as [CLBeacon]!
         
         var data: CollectedHitag = CollectedHitag()
-  
+        
+        for beacon in beaconsRanged!{
+            let beaconId = "UUUID SON 2 HANESI" +  String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true)
+            if activeHitags[beaconId] != nil{
+                let value = activeHitags[beaconId]
+                let calendar = Calendar.current
+                let previousTime = activeHitags[beaconId]?.timeStamp
+                let currentTime = calendar
+                if (currentTime > previousTime + 10){
+                    activeHitags.removeValue(forKey: beaconId)
+                    passiveHitags[beaconId] = value
+                
+                }
+            }
+        }
         if let beacon = beaconsRanged?.last {
-            let date = Date()
             let calendar = Calendar.current
             //let hour = calendar.component(.hour, from: date)
             //let minutes = calendar.component(.minute, from: date)
             
-            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil,timeStamp:date)
-            print(data)
+            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil,timeStamp:calendar)
             hitags[data.id!] = data
-            print(hitags)
+            activeHitags[data.id!] = data
             
         }
     }

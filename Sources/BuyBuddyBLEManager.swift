@@ -29,5 +29,4 @@ class BuyBuddyBLEManager {
     init(products: [String:String]){
         self.bleHandler = BuyBuddyBleHandler(products: products)
     }
-    
 }

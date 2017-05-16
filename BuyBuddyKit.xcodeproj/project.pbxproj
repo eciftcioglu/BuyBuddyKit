@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D143A1C1ECADD1200D7C020 /* ProductScanFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */; };
+		2D143A1C1ECADD1200D7C020 /* BuyBuddyQr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */; };
 		2D143A1D1ECADD1900D7C020 /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
 		2D143A241ECADE1000D7C020 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A221ECADE1000D7C020 /* Alamofire.framework */; };
 		2D143A251ECADE1000D7C020 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A231ECADE1000D7C020 /* ObjectMapper.framework */; };
@@ -57,6 +57,8 @@
 		DC2AC38A1ECA54B500D4B91F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DC2AC3891ECA54B500D4B91F /* Podfile */; };
 		DC2AC38C1ECA563B00D4B91F /* BuyBuddyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */; };
 		DC46D7581ECA6B6A003FF533 /* BuyBuddyUserJwt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */; };
+		DC46D7C51ECB0962003FF533 /* BBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7C41ECB0962003FF533 /* BBResponse.swift */; };
+		DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +95,7 @@
 		2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEManager.swift; sourceTree = "<group>"; };
 		2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBleHandler.swift; sourceTree = "<group>"; };
 		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBlePeripheral.swift; sourceTree = "<group>"; };
-		2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactory.swift; sourceTree = "<group>"; };
+		2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyQr.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
 		5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,8 @@
 		DC2AC3891ECA54B500D4B91F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyApi.swift; sourceTree = "<group>"; };
 		DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyUserJwt.swift; sourceTree = "<group>"; };
+		DC46D7C41ECB0962003FF533 /* BBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBResponse.swift; sourceTree = "<group>"; };
+		DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +348,7 @@
 				2D52042D1E967B8C00F5EE0D /* ItemData.swift */,
 				2DC3A8371EBA04040011C93E /* Hitag.swift */,
 				2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */,
+				DC46D7C41ECB0962003FF533 /* BBResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,9 +358,10 @@
 			children = (
 				5AD310B61E7216CD005F8368 /* UserFactory.swift */,
 				5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */,
-				2DC3A8251EBA03CD0011C93E /* ProductScanFactory.swift */,
+				2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */,
 				DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */,
 				DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */,
+				DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -507,7 +513,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -527,6 +533,8 @@
 				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
 				2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */,
 				2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */,
+				DC46D7C51ECB0962003FF533 /* BBResponse.swift in Sources */,
+				DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */,
 				2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */,
 				2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */,
 				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
@@ -552,7 +560,7 @@
 				2D393D141EC4CD4F008C7457 /* ShoppingCartButton.swift in Sources */,
 				2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */,
 				2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */,
-				2D143A1C1ECADD1200D7C020 /* ProductScanFactory.swift in Sources */,
+				2D143A1C1ECADD1200D7C020 /* BuyBuddyQr.swift in Sources */,
 				5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
 				5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 				2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */,

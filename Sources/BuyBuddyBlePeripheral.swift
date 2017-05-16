@@ -212,13 +212,11 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                 knownServices.append(s)
                 peripheral.discoverCharacteristics(nil, for: s)
             }
-            
         }
         
         //printLog(self, funcName: "didDiscoverServices", logString: "all top-level services discovered")
         
     }
-    
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         
@@ -255,7 +253,6 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                     //                    printLog(self, "didDiscoverCharacteristicsForService", "Found Characteristic: Unknown")
                     break
                 }
-                
             }
             
             if rxCharacteristic != nil && txCharacteristic != nil {
@@ -264,7 +261,6 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                 })
             }
         }
-            
             // Info mode
         else if delegate.connectionMode == ConnectionMode.info {
             
@@ -276,11 +272,8 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                 }
                 
                 peripheral.discoverDescriptors(for: c)
-                
             }
-            
         }
-        
     }
     
     
@@ -301,9 +294,7 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                     //                    currentPeripheral.readValueForDescriptor(desc)
                 }
             }
-            
         }
-        
         
         //Check if all characteristics were discovered
         var allCharacteristics:[CBCharacteristic] = []
@@ -323,8 +314,6 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                 }
             }
         }
-        
-        
     }
     
     
@@ -378,12 +367,8 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
                     self.delegate.connectionFinalized()
                 })
             }
-            
         }
-        
-        
     }
-    
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverIncludedServicesFor service: CBService, error: Error?) {
         
@@ -404,9 +389,7 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
             
             //printLog(self, funcName: "didDiscoverIncludedServicesForService", logString: "\(s.description)")
         }
-        
     }
-    
     
     func handleError(_ errorString:String) {
         
@@ -415,22 +398,17 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         DispatchQueue.main.async(execute: { () -> Void in
             self.delegate.uartDidEncounterError(errorString as NSString)
         })
-        
     }
-    
     
     func hitagServiceUUID()->CBUUID{
         
         return CBUUID(string: "0000beef-6275-7962-7564-647966656565")
-        
     }
-    
     
     func passCharacteristicUUID()->CBUUID{
         
         return CBUUID(string: "00007373-6275-7962-7564-647966656565")
     }
-    
     
     func rxCharacteristicUUID()->CBUUID{
         
@@ -446,9 +424,7 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         else {
             return false
         }
-        
     }
-    
     
     func softwareRevisionStringUUID()->CBUUID{
         
@@ -460,12 +436,10 @@ class BuyBuddyBlePeripheral: NSObject, CBPeripheralDelegate {
         return CBUUID(string: "00001530-1212-efde-1523-785feabcd123")
     }
     
-    
     func deviceInformationServiceUUID()->CBUUID{
         
         return CBUUID(string: "180A")
     }
-    
 }
 
 extension CBUUID {
@@ -475,7 +449,6 @@ extension CBUUID {
         let data = self.data
         var byteArray = [UInt8](repeating: 0x0, count: data.count)
         (data as NSData).getBytes(&byteArray, length:data.count)
-        
         let outputString = NSMutableString(capacity: 16)
         
         for value in byteArray {
@@ -487,12 +460,9 @@ extension CBUUID {
             default:
                 outputString.appendFormat("%02x", value)
             }
-            
         }
-        
         return outputString
     }
-    
     
     func equalsString(_ toString:String, caseSensitive:Bool, omitDashes:Bool)->Bool {
         
@@ -508,14 +478,10 @@ extension CBUUID {
             options = NSString.CompareOptions.literal
         }
         
-        //        println("\(self.representativeString()) ?= \(aString)")
-        
         verdict = aString.compare(self.representativeString() as String, options: options, range: nil, locale: Locale.current) == ComparisonResult.orderedSame
         
         return verdict
-        
     }
-    
 }
 
 extension UnicodeScalar {
@@ -533,7 +499,6 @@ extension UnicodeScalar {
         fatalError("\(self) not a legal hex nibble")
     }
 }
-
 
 extension Data {
     init(hex:String) {

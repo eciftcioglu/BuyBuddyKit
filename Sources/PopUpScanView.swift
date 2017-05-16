@@ -123,9 +123,9 @@ public class PopUpScanView : UIView {
     
     }
     
-    func setSizePrice(size:String,price:Float){
+    func setSizePrice(size:String, price:Price){
         sizeLabel.text = size
-        priceLabel.text = String(price) + " TL"
+        priceLabel.text = String(price.current_price!) + " TL"
     }
 }
 

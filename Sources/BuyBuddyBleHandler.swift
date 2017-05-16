@@ -33,8 +33,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var deviceWithError  : [String] = []
     var currentIndexPath : IndexPath?
     
-    
-    
     override init() {
         super.init()
         

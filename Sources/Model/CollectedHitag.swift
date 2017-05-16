@@ -12,12 +12,12 @@ import Foundation
 public class CollectedHitag{
     
     internal(set) public var id: String?
-    internal(set) public var timeStamp: Date?
+    internal(set) public var timeStamp: Calendar?
     internal(set) public var rssi: Int?
     internal(set) public var txPower: Int?
 
     
-    init(id:String,rssi:Int,txPower:Int?,timeStamp:Date?) {
+    init(id:String,rssi:Int,txPower:Int?,timeStamp:Calendar?) {
         self.id = id
         self.timeStamp = timeStamp
         self.rssi = rssi
@@ -30,7 +30,7 @@ public class CollectedHitag{
     init?(json: [String:Any]) throws{
         guard
             let id = json["id"] as? String,
-            let timeStamp = json["timeStamp"] as? Date,
+            let timeStamp = json["timeStamp"] as? Calendar,
             let rssi = json["rssi"] as? Int,
             let txPower = json["txPower"] as? Int
             else { return nil }

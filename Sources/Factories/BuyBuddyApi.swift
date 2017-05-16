@@ -18,8 +18,8 @@ private func getBaseUrl() -> String{
 }
 
 enum BuyBuddyEndpoint : String {
-    case QrHitag = "/iot/scan/[hitag_id]"  // GET
-    case ScanHitag = "/iot/scan_record" // POST
+    case QrHitag = "GET /iot/scan/<hitag_id>"  // GET
+    case ScanHitag = "POST /iot/scan_record" // POST
     case GetJwt = "/iam/users/tokens"   // POST
 }
 
@@ -30,11 +30,13 @@ protocol BuyBuddyInvalidTokenDelegate{
 class BuyBuddyApi {
     
     public static let sharedInstance: BuyBuddyApi = BuyBuddyApi()
-    
     private let buyBuddySessionManager = SessionManager()
     var tokenDelegate: BuyBuddyInvalidTokenDelegate?
-    
     var isAccessTokenSet = false
+    
+    public static func getBaseUrl() -> String{
+        return "https://" + (isSandBox ? sandBoxPrefix : productionPrefix) + ".buybuddy.co"
+    }
     
     public func sandBoxMode(isActive: Bool){
         isSandBox = isActive
@@ -59,7 +61,16 @@ class BuyBuddyApi {
         }
     }
     
-    func call<T: Mappable>(endPoint: BuyBuddyEndpoint, method: HTTPMethod? = .get, success: @escaping(T) -> Void?){
+    typealias SuccessHandler<T: Mappable> = (_ result: T, _ operation: HTTPURLResponse?)
+        -> Void
+    typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
+        -> Void
+    
+    func call<T: Mappable>(endPoint: BuyBuddyEndpoint,
+              parameters: [String : Any],
+              method: HTTPMethod? = .get,
+              success: @escaping (SuccessHandler<T>),
+              error: @escaping (ErrorHandler)){
         
         if !isAccessTokenSet {
             //"UYARI 1" Kullanıcıya bir token atanmadan sdk çalışmayacaktır.
@@ -67,37 +78,49 @@ class BuyBuddyApi {
             return
         }
         
-        buyBuddySessionManager.request("", method: method!, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        let endPoint = Endpoint.buildURL(endPoint: endPoint.rawValue, values: parameters as [String : AnyObject])
+        
+        buyBuddySessionManager.request(endPoint.URL.absoluteString!,
+                                       method: endPoint.method,
+                                       parameters: endPoint.otherValues,
+                                       encoding: JSONEncoding.default)
             .validate()
             .responseJSON { (response) in
+            
+                if response.error != nil{
+                    return error(response.error!, response.response)
+                }
                 
                 switch response.result {
                 case .success(let value):
-                    
                     let result = Mapper<T>().map(JSON: value as! [String: Any])
                     
-                    if result != nil {
-                        success(result!)
+                    if result != nil{
+                        success(result!, response.response)
                     }else{
                         
                     }
-                    
                     break
-                case .failure(let error):
-                    print(error)
+                case .failure(let err):
+                    error(err, response.response)
             }
         }
+    }
+
+    func getProductWith(hitagId: String,
+                        success: @escaping  (SuccessHandler<ItemData>),
+                        error: @escaping (ErrorHandler)){
+        
+        call(endPoint: BuyBuddyEndpoint.QrHitag, parameters: ["hitag_id" : hitagId], success: success, error: error)
     }
 }
 
 class BuyBuddyJwtAdapter: RequestAdapter, RequestRetrier {
     private typealias RefreshCompletion = (_ succeeded: Bool, _ jwt: BuyBuddyUserJwt?) -> Void
-
     private var jwt: BuyBuddyUserJwt?
     private var accessToken: String?
     private var sessionManager: SessionManager!
     private var tokenDelegate: BuyBuddyInvalidTokenDelegate?
-    
     private let lock = NSLock()
     
     init(accessToken: String!, jwt: BuyBuddyUserJwt?, sessionManager: SessionManager, tokenDelegate: BuyBuddyInvalidTokenDelegate?) {
@@ -171,7 +194,6 @@ class BuyBuddyJwtAdapter: RequestAdapter, RequestRetrier {
                 }else{
                     completion(false, nil)
                 }
-                
                 strongSelf.isRefreshing = false
         }
     }
@@ -188,27 +210,3 @@ class BuyBuddyJwtAdapter: RequestAdapter, RequestRetrier {
         return urlRequest
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

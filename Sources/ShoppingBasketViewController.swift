@@ -70,7 +70,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         }
         var total:Float = 0
         for p in tableData{
-            total += p.price!
+            total += p.price!.current_price!
         }
         basketTotal.text = String(total) + " TL"
     }
@@ -144,7 +144,7 @@ extension ShoppingBasketViewController{
         
         var total:Float = 0
         for p in tableData{
-            total += p.price!
+            total += p.price!.current_price!
         }
         basketTotal.text = String(total) + " TL"
         let count = String(tableData.count)

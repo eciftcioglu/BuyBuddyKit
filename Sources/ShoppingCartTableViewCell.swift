@@ -19,8 +19,6 @@ class ShoppingCartTableViewCell:UITableViewCell{
     @IBOutlet private var productColor: CircleImageView!
     @IBOutlet private var productPrice: UILabel!
 
-
-    
     public func setData(data:ItemData){
     
         if(data.code != nil){
@@ -31,12 +29,12 @@ class ShoppingCartTableViewCell:UITableViewCell{
         if(data.size != nil){
             
             setProductSize(size:  data.size!)}
-        if(data.image != nil){
-            setProductImage(image: data.image!)
+        if(data.image_url != nil){
+            //setProductImage(image: data.image_url!)
         }
         if(data.price != nil){
             
-            setProductPrice(price: data.price!)}
+            setProductPrice(price: data.price!.current_price!)}
         
 
     }
