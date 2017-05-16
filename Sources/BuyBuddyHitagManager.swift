@@ -12,7 +12,7 @@ import CoreLocation
 
 public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     
-    static public var sharedInstance: BuyBuddyHitagManager!
+    static private var sharedInstance: BuyBuddyHitagManager!
     
     public class func startHitagManager(){
         if sharedInstance == nil{

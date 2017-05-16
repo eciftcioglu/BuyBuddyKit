@@ -11,7 +11,6 @@ import Alamofire
 import CoreBluetooth
 import UIKit
 
-
 public class Hitag:CBPeripheral{
 
     internal(set) public var id: String?
