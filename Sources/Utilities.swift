@@ -9,6 +9,19 @@
 import Foundation
 class Utilities{
     
+    private static func getUdKey(_ udKey: String) -> String {
+        return "co.buybuddy.userdefaults_" + udKey
+    }
+    
+    public static func saveToUd(key: String, value: Any){
+        UserDefaults.standard.set(value, forKey: getUdKey(key))
+        UserDefaults.standard.synchronize()
+    }
+    
+    public static func getFromUd(key: String) -> Any? {
+        return UserDefaults.standard.object(forKey: getUdKey(key)) ?? nil
+    }
+    
     /*
      class func qrFilter(){
      let phoneNumber = "01-0000-0001"

@@ -32,7 +32,7 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
         test.color = UIColor.black
         test.id = 123
         test.code = "cdsfsdf"
-        test.price = Float("12")
+        test.price = Price(current_price: 123, discount_price: 100, ex_price: 250)
         
         userButtonDelegate = userButton
         delegate = cartButton

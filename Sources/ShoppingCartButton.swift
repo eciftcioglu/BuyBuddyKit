@@ -18,6 +18,7 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
     public weak var delegate:ShoppingCartButtonDelegate?
+    fileprivate var blurCheck:Bool = true
     
     @IBInspectable
     public var buttonImage = UIImage(named: "shopping_cart", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
@@ -66,6 +67,25 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     func buttonPress(button:UIButton) {
         delegate?.buttonWasPressed(self)
     }
+    
+    public func removeBlur(){
+        
+        let subViews = self.subviews
+        for subview in subViews{
+            if subview.tag == 100 && blurCheck == true{
+                blurCheck = false
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    public func addblur(){
+    
+        if (blurCheck == false){
+            self.addBlurEffect()
+        }
+    }
+    
     public func countDidChange(_ data: String) {
         countLabel.text = data
     }

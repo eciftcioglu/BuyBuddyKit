@@ -1,0 +1,10 @@
+framework module BuyBuddyKit {
+  umbrella header "BuyBuddyKit.h"
+
+  export *
+  module * { export * }
+}
+
+module BuyBuddyKit.Swift {
+    header "BuyBuddyKit-Swift.h"
+}

@@ -27,6 +27,7 @@ extension UIView{
         frost.frame = (self.bounds)
         frost.isUserInteractionEnabled = false
         frost.translatesAutoresizingMaskIntoConstraints = false
+        frost.tag = 100
         self.insertSubview(frost, at: 0)
         if (dark == true){
                 frost.effect = UIBlurEffect(style: .dark)
