@@ -149,14 +149,20 @@ public class BuyBuddyApi {
                         success: @escaping  (SuccessHandler<BuyBuddyObject<ItemData>>),
                         error: @escaping (ErrorHandler)){
         
-        call(endPoint: BuyBuddyEndpoint.QrHitag, parameters: ["hitag_id" : hitagId], success: success, error: error)
+        call(endPoint: BuyBuddyEndpoint.QrHitag,
+             parameters: ["hitag_id" : hitagId],
+             success: success,
+             error: error)
     }
     
     func postScanRecord(hitags: [CollectedHitag],
                         success: @escaping  (SuccessHandler<ItemData>),
                         error: @escaping (ErrorHandler)){
         
-        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["collected_hitags" : hitags], method: HTTPMethod.post, success: success, error: error)
+        call(endPoint: BuyBuddyEndpoint.ScanHitag,
+             parameters: ["collected_hitags" : hitags],
+             success: success,
+             error: error)
     }
     
     public func createOrder(hitagsIds: [Int], sub_total: Float,
@@ -171,9 +177,15 @@ public class BuyBuddyApi {
     }
     
     func completeOrder(orderId: Int,
-                       success: @escaping  (SuccessHandler<ItemData>),
+                       hitagValidations: [String: Int],
+                       success: @escaping  (SuccessHandler<HitagPassKeyResponse>),
                        error: @escaping (ErrorHandler)) {
         
+        call(endPoint: BuyBuddyEndpoint.GetJwt,
+             parameters: ["order_delegate_sale_id" : orderId,
+                          "hitag_release_params" : hitagValidations],
+             success: success,
+             error: error)
         
     }
     

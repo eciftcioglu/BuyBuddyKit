@@ -53,6 +53,7 @@
 		5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
 		D45E6BCD0622E31B887E51F5 /* Pods_BuyBuddyKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6D05D9149ECBC1EF66C8D5 /* Pods_BuyBuddyKit_iOS.framework */; };
 		DC295B781ECBD4FB004803C7 /* OrderDelegateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */; };
+		DC295B7A1ECCAC4B004803C7 /* HitagPassKeyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC295B791ECCAC4B004803C7 /* HitagPassKeyResponse.swift */; };
 		DC2AC38A1ECA54B500D4B91F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DC2AC3891ECA54B500D4B91F /* Podfile */; };
 		DC2AC38C1ECA563B00D4B91F /* BuyBuddyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */; };
 		DC46D7581ECA6B6A003FF533 /* BuyBuddyUserJwt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */; };
@@ -124,6 +125,7 @@
 		6C360878A832ACDB13A71CC8 /* Pods-BuyBuddyKit iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuyBuddyKit iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuyBuddyKit iOS/Pods-BuyBuddyKit iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7C6D05D9149ECBC1EF66C8D5 /* Pods_BuyBuddyKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BuyBuddyKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDelegateResponse.swift; sourceTree = "<group>"; };
+		DC295B791ECCAC4B004803C7 /* HitagPassKeyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitagPassKeyResponse.swift; sourceTree = "<group>"; };
 		DC2AC3891ECA54B500D4B91F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyApi.swift; sourceTree = "<group>"; };
 		DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyUserJwt.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */,
 				DC46D7C41ECB0962003FF533 /* BaseServiceModels.swift */,
 				DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */,
+				DC295B791ECCAC4B004803C7 /* HitagPassKeyResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				2D393CDA1EC4C870008C7457 /* Utilities.swift in Sources */,
 				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
 				2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */,
+				DC295B7A1ECCAC4B004803C7 /* HitagPassKeyResponse.swift in Sources */,
 				2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */,
 				DC46D7C51ECB0962003FF533 /* BaseServiceModels.swift in Sources */,
 				DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */,
