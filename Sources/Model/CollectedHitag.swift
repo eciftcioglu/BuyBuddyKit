@@ -30,13 +30,11 @@ public class CollectedHitag{
     init?(json: [String:Any]) throws{
         guard
             let id = json["id"] as? String,
-            //let timeStamp = json["timeStamp"] as? CFAbsoluteTime,
             let rssi = json["rssi"] as? Int,
             let txPower = json["txPower"] as? Int
             else { return nil }
         
         self.id = id
-        //self.timeStamp = timeStamp
         self.rssi = rssi
         self.txPower = txPower
 

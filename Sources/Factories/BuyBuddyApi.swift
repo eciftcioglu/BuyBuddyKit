@@ -10,60 +10,97 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-private let sandBoxPrefix = "sandbox-api";
-private let productionPrefix = "api";
-private var isSandBox: Bool = false
-private func getBaseUrl() -> String{
-    return "https://" + (isSandBox ? sandBoxPrefix : productionPrefix) + ".buybuddy.co"
-}
-
 enum BuyBuddyEndpoint : String {
-    case QrHitag = "GET /iot/scan/<hitag_id>"  // GET
-    case ScanHitag = "POST /iot/scan_record" // POST
-    case GetJwt = "/iam/users/tokens"   // POST
+    case QrHitag = "GET /iot/scan/<hitag_id>"
+    case ScanHitag = "POST /iot/scan_record"
+    case GetJwt = "POST /iam/users/tokens"
+    case OrderDelegate = "POST /order/delegate"
 }
 
-protocol BuyBuddyInvalidTokenDelegate{
+public protocol BuyBuddyInvalidTokenDelegate{
     func tokenExpired()
 }
 
-class BuyBuddyApi {
+public class BuyBuddyApi {
+    
+    public static let sandBoxPrefix = "sandbox-api";
+    public static let productionPrefix = "api";
+    public static var isSandBox: Bool = false
+    private static var inited: Bool = false
     
     public static let sharedInstance: BuyBuddyApi = BuyBuddyApi()
     private let buyBuddySessionManager = SessionManager()
+    private var userCurrentJwt = BuyBuddyUserJwt.getCurrentJwt()
+    private var currentAccessToken: String?
     var tokenDelegate: BuyBuddyInvalidTokenDelegate?
     var isAccessTokenSet = false
     
-    public static func getBaseUrl() -> String{
-        return "https://" + (isSandBox ? sandBoxPrefix : productionPrefix) + ".buybuddy.co"
+    public static var getBaseUrl: String {
+        return "https://" + (BuyBuddyApi.isSandBox ? BuyBuddyApi.sandBoxPrefix : BuyBuddyApi.productionPrefix) + ".buybuddy.co"
     }
     
     public func sandBoxMode(isActive: Bool){
-        isSandBox = isActive
-    }
-    public func setAccessToken(_ token: String, invalidTokenDelegate: BuyBuddyInvalidTokenDelegate){
-        Utilities.saveToUd(key: "access_token", value: token)
-        isAccessTokenSet = true
-        
-        buyBuddySessionManager.adapter = BuyBuddyJwtAdapter(accessToken: token,
-                                                            jwt: BuyBuddyUserJwt.getCurrentJwt(),
-                                                            sessionManager: buyBuddySessionManager,
-                                                            tokenDelegate: tokenDelegate)
-        self.tokenDelegate = invalidTokenDelegate
+        BuyBuddyApi.isSandBox = isActive
     }
 
     public init(){
-        if (Utilities.getFromUd(key: "access_token") as? String) == nil {
-            //"UYARI 1" Kullanıcıya bir token atanmadan sdk çalışmayacaktır.
+        if let accessToken = Utilities.getFromUd(key: "access_token") as? String {
+            currentAccessToken = accessToken
+            userCurrentJwt = BuyBuddyUserJwt.getCurrentJwt()
+            set(accessToken: accessToken)
             self.isAccessTokenSet = false
         }else{
             self.isAccessTokenSet = true
         }
     }
     
-    typealias SuccessHandler<T: Mappable> = (_ result: T, _ operation: HTTPURLResponse?)
+    public func set(accessToken: String){
+        Utilities.saveToUd(key: "access_token", value: accessToken)
+        currentAccessToken = accessToken
+        isAccessTokenSet = true
+        
+        
+        
+        if userCurrentJwt == nil{
+            getJwt(accessToken: accessToken, success: { (jwt :BuyBuddyObject<BuyBuddyUserJwt>, response) in
+                
+                DispatchQueue.main.async {
+                    BuyBuddyUserJwt.setCurrentJwt(jwt: jwt.data!)
+                    self.userCurrentJwt = jwt.data!
+                    
+                    let jwtHandler = BuyBuddyJwtAdapter(accessToken: accessToken,
+                                                        jwt: jwt.data!,
+                                                        sessionManager: self.buyBuddySessionManager,
+                                                        tokenDelegate: self.tokenDelegate)
+                    
+                    self.buyBuddySessionManager.adapter = jwtHandler
+                    self.buyBuddySessionManager.retrier = jwtHandler
+                }
+                
+            }, error: { (error, response) in
+                DispatchQueue.main.async {
+                  self.tokenDelegate?.tokenExpired()
+                }
+            })
+        }else{
+            
+            let jwtHandler = BuyBuddyJwtAdapter(accessToken: accessToken,
+                                                jwt: userCurrentJwt,
+                                                sessionManager: self.buyBuddySessionManager,
+                                                tokenDelegate: self.tokenDelegate)
+            
+            self.buyBuddySessionManager.adapter = jwtHandler
+            self.buyBuddySessionManager.retrier = jwtHandler
+        }
+    }
+    
+    public func set(invalidTokenDelegate: BuyBuddyInvalidTokenDelegate){
+        self.tokenDelegate = invalidTokenDelegate
+    }
+    
+    public typealias SuccessHandler<T: Mappable> = (_ result: T, _ operation: HTTPURLResponse?)
         -> Void
-    typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
+    public typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
         -> Void
     
     func call<T: Mappable>(endPoint: BuyBuddyEndpoint,
@@ -88,6 +125,7 @@ class BuyBuddyApi {
             .responseJSON { (response) in
             
                 if response.error != nil{
+                    print(response.error)
                     return error(response.error!, response.response)
                 }
                 
@@ -107,106 +145,47 @@ class BuyBuddyApi {
         }
     }
 
-    func getProductWith(hitagId: String,
-                        success: @escaping  (SuccessHandler<ItemData>),
+    public func getProductWith(hitagId: String,
+                        success: @escaping  (SuccessHandler<BuyBuddyObject<ItemData>>),
                         error: @escaping (ErrorHandler)){
         
         call(endPoint: BuyBuddyEndpoint.QrHitag, parameters: ["hitag_id" : hitagId], success: success, error: error)
     }
+    
+    func postScanRecord(hitags: [CollectedHitag],
+                        success: @escaping  (SuccessHandler<ItemData>),
+                        error: @escaping (ErrorHandler)){
+        
+        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["collected_hitags" : hitags], method: HTTPMethod.post, success: success, error: error)
+    }
+    
+    public func createOrder(hitagsIds: [Int], sub_total: Float,
+                     success: @escaping  (SuccessHandler<OrderDelegateResponse>),
+                     error: @escaping (ErrorHandler)) {
+        
+        call(endPoint: BuyBuddyEndpoint.OrderDelegate,
+             parameters: ["order_delegate" : ["hitags": hitagsIds,
+                                              "sub_total": sub_total]],
+             success: success,
+             error: error)
+    }
+    
+    func completeOrder(orderId: Int,
+                       success: @escaping  (SuccessHandler<ItemData>),
+                       error: @escaping (ErrorHandler)) {
+        
+        
+    }
+    
+    public func getJwt(accessToken: String,
+                        success: @escaping  (SuccessHandler<BuyBuddyObject<BuyBuddyUserJwt>>),
+                        error: @escaping (ErrorHandler)) {
+        
+        call(endPoint: BuyBuddyEndpoint.GetJwt,
+             parameters: ["passphrase_submission" : ["passkey": accessToken]],
+             success: success,
+             error: error)
+    }
 }
 
-class BuyBuddyJwtAdapter: RequestAdapter, RequestRetrier {
-    private typealias RefreshCompletion = (_ succeeded: Bool, _ jwt: BuyBuddyUserJwt?) -> Void
-    private var jwt: BuyBuddyUserJwt?
-    private var accessToken: String?
-    private var sessionManager: SessionManager!
-    private var tokenDelegate: BuyBuddyInvalidTokenDelegate?
-    private let lock = NSLock()
-    
-    init(accessToken: String!, jwt: BuyBuddyUserJwt?, sessionManager: SessionManager, tokenDelegate: BuyBuddyInvalidTokenDelegate?) {
-        self.accessToken = accessToken
-        self.jwt = jwt
-        self.sessionManager = sessionManager
-        
-        if jwt == nil {
-            refreshJwt(completion: { (bool, jwt) in
-                if jwt != nil{
-                    Utilities.saveToUd(key: "user_jwt", value: jwt!.toDict())
-                }else{
-                    tokenDelegate?.tokenExpired()
-                }
-            })
-        }
-    }
-    
-    private var isRefreshing = false
-    private var requestsToRetry: [RequestRetryCompletion] = []
-    
-    func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
-        lock.lock(); defer { lock.unlock() }
-        
-        if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 {
-            requestsToRetry.append(completion)
-            
-            if !isRefreshing {
-                refreshJwt { [weak self] succeeded, jwt in
-                    guard let strongSelf = self else { return }
-                    
-                    strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
-                    
-                    if let jwt = jwt {
-                        strongSelf.jwt = jwt
-                    }
-                    
-                    strongSelf.requestsToRetry.forEach { $0(succeeded, 0.0) }
-                    strongSelf.requestsToRetry.removeAll()
-                }
-            }
-        } else {
-            completion(false, 0.0)
-        }
-    }
-    
-    private func refreshJwt(completion: @escaping RefreshCompletion) {
-        guard !isRefreshing else { return }
-        
-        isRefreshing = true
-        
-        let passphrase_submission: [String: Any] = [
-            "passphrase_submission" : ["passkey" : accessToken]
-        ]
-        
-        let urlString = "\(getBaseUrl()) + \(BuyBuddyEndpoint.GetJwt)"
-        
-        sessionManager.request(urlString, method: .post, parameters: passphrase_submission, encoding: JSONEncoding.default)
-            .responseJSON { [weak self] response in
-                guard let strongSelf = self else { return }
-                
-                if response.result.isSuccess{
-                    
-                    if let userJwt = Mapper<BuyBuddyUserJwt>().map(JSON: response.result.value as! [String: Any])  {
-                        BuyBuddyUserJwt.setCurrentJwt(jwt: userJwt)
-                        completion(true, userJwt)
-                    }else{
-                        completion(false, nil)
-                    }
-                    
-                }else{
-                    completion(false, nil)
-                }
-                strongSelf.isRefreshing = false
-        }
-    }
-    
-    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-        var urlRequest = urlRequest
-        
-        if jwt != nil{
-            if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix(getBaseUrl()) {
-                urlRequest.setValue("Bearer " + jwt!.jwt, forHTTPHeaderField: "Authorization")
-            }
-        }
-        
-        return urlRequest
-    }
-}
+

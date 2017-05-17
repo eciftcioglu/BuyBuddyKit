@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct BuyBuddyUserJwt: Mappable{
+public struct BuyBuddyUserJwt: Mappable{
     
     static func getCurrentJwt() -> BuyBuddyUserJwt?{
         if let jwt = Utilities.getFromUd(key: "user_jwt") as? Dictionary<String, Any>{
@@ -24,24 +24,24 @@ struct BuyBuddyUserJwt: Mappable{
     }
 
     var jwt: String = ""
-    //var exp: String?
+    var exp: Int = -1
     var user_id: Int?
     var passphrase_id: Int?
     
-    init?(map: Map) {
+    public init?(map: Map) {
         
     }
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         jwt <- map["jwt"]
-        //exp <- map["exp"]
+        exp <- map["exp"]
         user_id <- map["user_id"]
         passphrase_id <- map["passphrase_id"]
     }
     
     init(fromDict: Dictionary<String, Any>){
         self.jwt = fromDict["jwt"] == nil ? "" : (fromDict["jwt"] as! String)
-        //self.exp = fromDict["exp"]
+        self.exp = fromDict["exp"] == nil ? -1 : (fromDict["exp"] as! Int)
         self.user_id = fromDict["user_id"] as? Int
         self.passphrase_id = fromDict["passphrase_id"] as? Int
     }
@@ -50,10 +50,7 @@ struct BuyBuddyUserJwt: Mappable{
         var jwtDict = Dictionary<String, Any>()
         
         jwtDict.updateValue(jwt, forKey: "jwt")
-        
-        //if exp != nil{
-          //  jwtDict.updateValue(exp!, forKey: "exp")
-        //}
+        jwtDict.updateValue(exp, forKey: "exp")
         
         if user_id != nil{
             jwtDict.updateValue(user_id!, forKey: "user_id")
