@@ -22,14 +22,6 @@ class Utilities{
         return UserDefaults.standard.object(forKey: getUdKey(key)) ?? nil
     }
     
-    /*
-     class func qrFilter(){
-     let phoneNumber = "01-0000-0001"
-     if phoneNumber =~ "?\\[A-Fa-f0-9]{2}-?\\s\\[A-Fa-f0-9]{4}-\\[A-Fa-f0-9]{4}" {
-     println("That looks like a valid US phone number")
-     }
-     }*/
-    
     class func dataFrom(hex: String) -> Data {
         var hex = hex
         var data = Data()

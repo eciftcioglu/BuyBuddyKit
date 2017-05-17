@@ -1,18 +1,22 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++F829052",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8" : 9223372036854775807,
-    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 9223372036854775807,
-    "67620B5EFA902936DF04070AF595B76AB0333747" : 9223372036854775807
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3+++4B03E72" : 9223372036854775807,
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++BE993D8" : 9223372036854775807,
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++F829052" : 9223372036854775807,
+    "67620B5EFA902936DF04070AF595B76AB0333747+++20E5317" : 9223372036854775807,
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++2B5D455" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FA7E90F9-C8FF-48F6-A88A-55BC7B69AEE3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest",
-    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest\/SwiftyJSON",
-    "67620B5EFA902936DF04070AF595B76AB0333747" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest\/Alamofire"
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3+++4B03E72" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest\/SwiftyJSON",
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++BE993D8" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest",
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++F829052" : "BuyBuddyKit\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747+++20E5317" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest\/Alamofire",
+    "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++2B5D455" : "..\/Downloads\/DenemeSDK\/BuyBuddyKitTest"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BuyBuddyKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -21,22 +25,27 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/heybuybuddy\/BuyBuddyKit.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++2B5D455"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/heybuybuddy\/BuyBuddyKit.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++BE993D8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/heybuybuddy\/BuyBuddyKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B2EB4223AF3F5A60AC5F66BACF2476525357AC8+++F829052"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747+++20E5317"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftyJSON\/SwiftyJSON.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3+++4B03E72"
     }
   ]
 }

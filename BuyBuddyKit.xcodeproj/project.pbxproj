@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D143A1C1ECADD1200D7C020 /* BuyBuddyQr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */; };
 		2D143A1D1ECADD1900D7C020 /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
 		2D143A241ECADE1000D7C020 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A221ECADE1000D7C020 /* Alamofire.framework */; };
 		2D143A251ECADE1000D7C020 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A231ECADE1000D7C020 /* ObjectMapper.framework */; };
@@ -48,17 +47,19 @@
 		5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310A71E72147F005F8368 /* PersonalInformationNotAvailableError.swift */; };
 		5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
 		5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */; };
-		5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */; };
 		5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */; };
 		5AD310C61E72188B005F8368 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310C51E72188B005F8368 /* Credentials.swift */; };
 		5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */; };
 		5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310D01E7219FE005F8368 /* Passphrase.swift */; };
 		D45E6BCD0622E31B887E51F5 /* Pods_BuyBuddyKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6D05D9149ECBC1EF66C8D5 /* Pods_BuyBuddyKit_iOS.framework */; };
+		DC295B781ECBD4FB004803C7 /* OrderDelegateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */; };
 		DC2AC38A1ECA54B500D4B91F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DC2AC3891ECA54B500D4B91F /* Podfile */; };
 		DC2AC38C1ECA563B00D4B91F /* BuyBuddyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */; };
 		DC46D7581ECA6B6A003FF533 /* BuyBuddyUserJwt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */; };
-		DC46D7C51ECB0962003FF533 /* BBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7C41ECB0962003FF533 /* BBResponse.swift */; };
+		DC46D7C51ECB0962003FF533 /* BaseServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7C41ECB0962003FF533 /* BaseServiceModels.swift */; };
 		DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */; };
+		DC46D7D51ECB8FFD003FF533 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46D7D41ECB8FFD003FF533 /* DateExtension.swift */; };
+		DCB6A1AB1ECB96AE00B43A42 /* BuyBuddyJwtAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6A1AA1ECB96AE00B43A42 /* BuyBuddyJwtAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +96,6 @@
 		2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEManager.swift; sourceTree = "<group>"; };
 		2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBleHandler.swift; sourceTree = "<group>"; };
 		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBlePeripheral.swift; sourceTree = "<group>"; };
-		2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyQr.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
 		5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +116,6 @@
 		5AD310AC1E721537005F8368 /* EmailAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAssignment.swift; sourceTree = "<group>"; };
 		5AD310B11E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAssignmentNotAvailableError.swift; sourceTree = "<group>"; };
 		5AD310B61E7216CD005F8368 /* UserFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
-		5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseFactory.swift; sourceTree = "<group>"; };
 		5AD310C01E72185F005F8368 /* AuthenticatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
 		5AD310C51E72188B005F8368 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		5AD310CB1E7219CF005F8368 /* PassphraseFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseFactoryDelegate.swift; sourceTree = "<group>"; };
@@ -124,11 +123,14 @@
 		6538690EC51E38B695C69F11 /* Pods-BuyBuddyKit iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuyBuddyKit iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BuyBuddyKit iOS/Pods-BuyBuddyKit iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6C360878A832ACDB13A71CC8 /* Pods-BuyBuddyKit iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuyBuddyKit iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuyBuddyKit iOS/Pods-BuyBuddyKit iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7C6D05D9149ECBC1EF66C8D5 /* Pods_BuyBuddyKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BuyBuddyKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDelegateResponse.swift; sourceTree = "<group>"; };
 		DC2AC3891ECA54B500D4B91F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyApi.swift; sourceTree = "<group>"; };
 		DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyUserJwt.swift; sourceTree = "<group>"; };
-		DC46D7C41ECB0962003FF533 /* BBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBResponse.swift; sourceTree = "<group>"; };
+		DC46D7C41ECB0962003FF533 /* BaseServiceModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceModels.swift; sourceTree = "<group>"; };
 		DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointCreator.swift; sourceTree = "<group>"; };
+		DC46D7D41ECB8FFD003FF533 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		DCB6A1AA1ECB96AE00B43A42 /* BuyBuddyJwtAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyJwtAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				2D5D74D31EBC7EDD009E75FC /* View.swift */,
 				2D80977E1EC21E1100FD1983 /* Color.swift */,
 				2D393D461EC4FC28008C7457 /* Animations.swift */,
+				DC46D7D41ECB8FFD003FF533 /* DateExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -348,7 +351,8 @@
 				2D52042D1E967B8C00F5EE0D /* ItemData.swift */,
 				2DC3A8371EBA04040011C93E /* Hitag.swift */,
 				2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */,
-				DC46D7C41ECB0962003FF533 /* BBResponse.swift */,
+				DC46D7C41ECB0962003FF533 /* BaseServiceModels.swift */,
+				DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,11 +361,10 @@
 			isa = PBXGroup;
 			children = (
 				5AD310B61E7216CD005F8368 /* UserFactory.swift */,
-				5AD310BB1E7216DE005F8368 /* PassphraseFactory.swift */,
-				2DC3A8251EBA03CD0011C93E /* BuyBuddyQr.swift */,
 				DC2AC38B1ECA563B00D4B91F /* BuyBuddyApi.swift */,
 				DC46D7571ECA6B6A003FF533 /* BuyBuddyUserJwt.swift */,
 				DC46D7C61ECB0F52003FF533 /* EndpointCreator.swift */,
+				DCB6A1AA1ECB96AE00B43A42 /* BuyBuddyJwtAdapter.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -533,11 +536,12 @@
 				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
 				2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */,
 				2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */,
-				DC46D7C51ECB0962003FF533 /* BBResponse.swift in Sources */,
+				DC46D7C51ECB0962003FF533 /* BaseServiceModels.swift in Sources */,
 				DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */,
 				2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */,
 				2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */,
 				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				DC295B781ECBD4FB004803C7 /* OrderDelegateResponse.swift in Sources */,
 				5AD310C61E72188B005F8368 /* Credentials.swift in Sources */,
 				5AD310B21E7216A0005F8368 /* EmailAssignmentNotAvailableError.swift in Sources */,
 				2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */,
@@ -552,6 +556,7 @@
 				2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */,
 				2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */,
 				DC2AC38C1ECA563B00D4B91F /* BuyBuddyApi.swift in Sources */,
+				DCB6A1AB1ECB96AE00B43A42 /* BuyBuddyJwtAdapter.swift in Sources */,
 				2D52042F1E967C1500F5EE0D /* ItemData.swift in Sources */,
 				5AD310A21E7211E4005F8368 /* UserRepository.swift in Sources */,
 				2D8097801EC21E1700FD1983 /* Color.swift in Sources */,
@@ -560,8 +565,7 @@
 				2D393D141EC4CD4F008C7457 /* ShoppingCartButton.swift in Sources */,
 				2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */,
 				2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */,
-				2D143A1C1ECADD1200D7C020 /* BuyBuddyQr.swift in Sources */,
-				5AD310BC1E7216DE005F8368 /* PassphraseFactory.swift in Sources */,
+				DC46D7D51ECB8FFD003FF533 /* DateExtension.swift in Sources */,
 				5AD310A81E72147F005F8368 /* PersonalInformationNotAvailableError.swift in Sources */,
 				2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */,
 				2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */,

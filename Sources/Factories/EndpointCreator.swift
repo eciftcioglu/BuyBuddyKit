@@ -23,6 +23,8 @@
 import Alamofire
 import Foundation
 
+
+
 public class Endpoint{
     
     public static func buildURL(endPoint: String, values: [String: AnyObject]? = nil) -> (method: HTTPMethod,
@@ -61,7 +63,7 @@ public class Endpoint{
             }
             
             
-            let URL = NSURL(string: BuyBuddyApi.getBaseUrl() + path)!
+            let URL = NSURL(string: BuyBuddyApi.getBaseUrl + path)!
             return (method, URL, otherValues)
     }
     

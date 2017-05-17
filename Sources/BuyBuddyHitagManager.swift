@@ -8,29 +8,33 @@
 
 import Foundation
 import CoreLocation
+import CoreBluetooth
 
-
-public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
+public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentralManagerDelegate{
     
     static private var sharedInstance: BuyBuddyHitagManager!
     var locationManager:CLLocationManager
     var hitags         : [String : CollectedHitag] = [:]
     var activeHitags   : [String : CollectedHitag] = [:]
     var passiveHitags  : [String : CollectedHitag] = [:]
-    let date = Date()
-
+    var centralManager : CBCentralManager!
+    var currentHitag     : String!
+    
     override init() {
         self.locationManager = CLLocationManager()
         
         super.init()
         
         self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest // The accuracy of the location data
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers // The accuracy of the location data
         self.locationManager.allowsBackgroundLocationUpdates = true
-
+        self.locationManager.pausesLocationUpdatesAutomatically = false
+        
         if CLLocationManager.authorizationStatus() == .notDetermined{
             self.locationManager.requestAlwaysAuthorization()
         }
+        //centralManager = CBCentralManager(delegate: self, queue: nil)
+        
     }
     
     public class func startHitagManager(){
@@ -40,13 +44,13 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     }
     
     func startRanging() {
-
+        
         for var serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
             let uuidStr = String("0000BEEF-6275-7962-7564-6479666565" + serialHex)
             let uuid   = NSUUID(uuidString: uuidStr!)
-            let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
+            let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: serialHex)
             self.locationManager.startRangingBeacons(in: region)
         }
     }
@@ -61,7 +65,8 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
             let serialHex = String(NSString(format:"%02X", serialNumber))
             let uuidStr = String("0000BEEF-6275-7962-7564-6479666565" + serialHex)
             let uuid   = NSUUID(uuidString: uuidStr!)
-            let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: "")
+            let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: serialHex)
+            region.notifyEntryStateOnDisplay = true
             self.locationManager.startMonitoring(for: region)
         }
     }
@@ -81,41 +86,103 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         self.startRanging()
         manager.startUpdatingLocation()
+        
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopRangingBeacons(in: region as! CLBeaconRegion)
         manager.stopUpdatingLocation()
-
+        
     }
-
+    
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!
         
         var data: CollectedHitag = CollectedHitag()
         
         for beacon in beaconsRanged!{
-            let beaconId = "UUUID SON 2 HANESI" +  String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true)
+            let uuidDigits = beacon.proximityUUID.uuidString as NSString
+            uuidDigits.substring(from: 33)
+            let beaconId = (uuidDigits as String) + String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true)
+            
             if activeHitags[beaconId] != nil{
                 let value = activeHitags[beaconId]
-                let calendar = Calendar.current
                 let previousTime = activeHitags[beaconId]?.timeStamp
-                let currentTime = calendar
-                if (currentTime > previousTime + 10){
+                let currentTime = CFAbsoluteTimeGetCurrent()
+                
+                if ((currentTime-previousTime!)>10){
                     activeHitags.removeValue(forKey: beaconId)
                     passiveHitags[beaconId] = value
-                
                 }
+                print("Passive:")
+                print(passiveHitags.count)
+                print("active:")
+                print(activeHitags.count)
             }
         }
+        
         if let beacon = beaconsRanged?.last {
-            let calendar = Calendar.current
-            //let hour = calendar.component(.hour, from: date)
-            //let minutes = calendar.component(.minute, from: date)
             
-            data = CollectedHitag(id: String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true), rssi: beacon.rssi, txPower: nil,timeStamp:calendar)
+            let seenTime = CFAbsoluteTimeGetCurrent()
+            let uuidDigits = beacon.proximityUUID.uuidString as NSString
+            uuidDigits.substring(from: 33)
+            
+            data = CollectedHitag(id: (uuidDigits as String) + String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true),
+                                  rssi: beacon.rssi, txPower: nil,timeStamp:seenTime)
             hitags[data.id!] = data
-            activeHitags[data.id!] = data
             
+            for (key,_) in passiveHitags{
+                
+                if (key == data.id){
+                    
+                    passiveHitags.removeValue(forKey: key)
+                }
+            }
+            if activeHitags[data.id!] == nil{
+                activeHitags[data.id!] = data
+            }
+        }
+    }
+    
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        
+        
+        if #available(iOS 10.0, *) {
+            if central.state ==  CBManagerState.poweredOn {
+                
+                let options : [String : AnyObject] = NSDictionary(object: NSNumber(value: true as Bool), forKey: CBCentralManagerScanOptionAllowDuplicatesKey as NSCopying) as! [String : AnyObject]
+                central.scanForPeripherals(withServices: nil, options: options)
+                
+            }
+            else {
+                print("Bluetooth switched off or not initialized")
+            }
+        } else {
+            if central.state.rawValue == CBCentralManagerState.poweredOn.rawValue {
+                
+                let options : [String : AnyObject] = NSDictionary(object: NSNumber(value: true as Bool), forKey: CBCentralManagerScanOptionAllowDuplicatesKey as NSCopying) as! [String : AnyObject]
+                central.scanForPeripherals(withServices: nil, options: options)
+            }
+            else {
+                print("Bluetooth switched off or not initialized")
+            }
+        }
+    }
+    
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject],
+            (list.contains { ($0 as? CBUUID)!.uuidString.contains("0000BEEF-6275-7962-7564-6479666565") } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
+            
+            let manufactererData = advertisementData["kCBAdvDataManufacturerData"] as? Data
+            let hitagDataString = NSString(data: manufactererData!, encoding: String.Encoding.utf8.rawValue)
+            let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "").replacingOccurrences(of: "\0", with: "") as NSString
+            
+            if hitagManufacturerData.length >= 10 {
+                
+                currentHitag = hitagManufacturerData.substring(to: 10) as String
+                
+                
+                
+            }
         }
     }
 }
