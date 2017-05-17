@@ -14,11 +14,11 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     
     static private var sharedInstance: BuyBuddyHitagManager!
     var locationManager:CLLocationManager
-    var hitags         : [String : CollectedHitag] = [:]
     var activeHitags   : [String : CollectedHitag] = [:]
-    var passiveHitags  : [String : CollectedHitag] = [:]
     var centralManager : CBCentralManager!
-    var currentHitag     : String!
+    var currentHitag   : String!
+    var passiveTimer   : Timer?
+    var serverTimer = 0
     
     override init() {
         self.locationManager = CLLocationManager()
@@ -28,12 +28,15 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers // The accuracy of the location data
         self.locationManager.allowsBackgroundLocationUpdates = true
-        self.locationManager.pausesLocationUpdatesAutomatically = false
+        self.locationManager.pausesLocationUpdatesAutomatically = true
         
         if CLLocationManager.authorizationStatus() == .notDetermined{
             self.locationManager.requestAlwaysAuthorization()
         }
-        //centralManager = CBCentralManager(delegate: self, queue: nil)
+        passiveTimer = Timer(timeInterval: 1, target: self, selector: #selector(self.passiveHitagHandler), userInfo: nil, repeats: true)
+        RunLoop.current.add(passiveTimer!, forMode: RunLoopMode.commonModes)
+        
+        centralManager = CBCentralManager(delegate: self, queue: nil)
         
     }
     
@@ -44,8 +47,8 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     }
     
     func startRanging() {
-        
-        for var serialNumber in 0..<20 {
+
+        for serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
             let uuidStr = String("0000BEEF-6275-7962-7564-6479666565" + serialHex)
@@ -60,7 +63,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         // NOTE:  The UUIDString here must match the UUID of your iBeacon.  If your
         //        iBeacon UUID is different, replace the string below accordingly!
         
-        for var serialNumber in 0..<20 {
+        for serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
             let uuidStr = String("0000BEEF-6275-7962-7564-6479666565" + serialHex)
@@ -86,60 +89,50 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         self.startRanging()
         manager.startUpdatingLocation()
-        
+
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopRangingBeacons(in: region as! CLBeaconRegion)
         manager.stopUpdatingLocation()
-        
+
     }
-    
+
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!
-        
         var data: CollectedHitag = CollectedHitag()
         
-        for beacon in beaconsRanged!{
-            let uuidDigits = beacon.proximityUUID.uuidString as NSString
-            uuidDigits.substring(from: 33)
-            let beaconId = (uuidDigits as String) + String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true)
-            
-            if activeHitags[beaconId] != nil{
-                let value = activeHitags[beaconId]
-                let previousTime = activeHitags[beaconId]?.timeStamp
-                let currentTime = CFAbsoluteTimeGetCurrent()
-                
-                if ((currentTime-previousTime!)>10){
-                    activeHitags.removeValue(forKey: beaconId)
-                    passiveHitags[beaconId] = value
-                }
-                print("Passive:")
-                print(passiveHitags.count)
-                print("active:")
-                print(activeHitags.count)
-            }
-        }
-        
         if let beacon = beaconsRanged?.last {
-            
+
             let seenTime = CFAbsoluteTimeGetCurrent()
             let uuidDigits = beacon.proximityUUID.uuidString as NSString
-            uuidDigits.substring(from: 33)
+            let lastTwoDigit = uuidDigits.substring(from: 34)
+        
+            data = CollectedHitag(id: (lastTwoDigit) + String(NSString(format:"%04X", Int(beacon.major))) + String(NSString(format:"%04X", Int(beacon.minor))), rssi: beacon.rssi, txPower: nil,timeStamp:seenTime)
             
-            data = CollectedHitag(id: (uuidDigits as String) + String(Int(beacon.major), radix: 16, uppercase: true) + String(Int(beacon.minor), radix: 16, uppercase: true),
-                                  rssi: beacon.rssi, txPower: nil,timeStamp:seenTime)
-            hitags[data.id!] = data
-            
-            for (key,_) in passiveHitags{
-                
-                if (key == data.id){
-                    
-                    passiveHitags.removeValue(forKey: key)
-                }
-            }
             if activeHitags[data.id!] == nil{
                 activeHitags[data.id!] = data
             }
+        }
+    }
+    
+    public func passiveHitagHandler(){
+        
+        for (key,_) in activeHitags{
+                let previousTime = activeHitags[key]?.timeStamp
+                let currentTime = CFAbsoluteTimeGetCurrent()
+                
+                if ((currentTime-previousTime!)>3){
+                    activeHitags.removeValue(forKey: key)
+                }
+            }
+        
+        serverTimer += 1
+        
+        if (serverTimer == 2){
+        
+            print(activeHitags)
+            //serverCall
+            serverTimer = 0
         }
     }
     
@@ -169,6 +162,9 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
+        var data: CollectedHitag = CollectedHitag()
+
         if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject],
             (list.contains { ($0 as? CBUUID)!.uuidString.contains("0000BEEF-6275-7962-7564-6479666565") } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
             
@@ -177,11 +173,16 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "").replacingOccurrences(of: "\0", with: "") as NSString
             
             if hitagManufacturerData.length >= 10 {
-                
+                let seenTime = CFAbsoluteTimeGetCurrent()
+
                 currentHitag = hitagManufacturerData.substring(to: 10) as String
                 
-                
-                
+                data = CollectedHitag(id:currentHitag, rssi: Int(RSSI), txPower: nil,timeStamp:seenTime)
+    
+                if activeHitags[data.id!] == nil{
+                    activeHitags[data.id!] = data
+                }
+
             }
         }
     }
