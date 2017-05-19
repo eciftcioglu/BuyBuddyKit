@@ -21,9 +21,9 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     fileprivate var blurCheck:Bool = true
     
     @IBInspectable
-    public var buttonImage = UIImage(named: "shopping_cart", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
+    public var badgeColor = UIColor.buddyGreen() {
         didSet {
-            self.setImage(buttonImage, for: UIControlState.normal)
+            self.countLabel.backgroundColor = badgeColor
         }
     }
     
@@ -31,6 +31,7 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         super.awakeFromNib()
         self.adjustImageAndTitleOffsets()
         self.addBlurEffect()
+        self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
     }
     
     public override init(frame: CGRect) {
@@ -41,15 +42,14 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
+        createLabel()
+        self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        createLabel()
         self.layer.cornerRadius = self.layer.frame.width / 2
         self.layer.masksToBounds = true
-        self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
     
     private func createLabel(){
@@ -90,7 +90,7 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         countLabel.text = data
     }
     
-    func adjustImageAndTitleOffsets () {
+    private func adjustImageAndTitleOffsets () {
         
         let spacing: CGFloat = 3.0
         let imageSize = self.imageView!.frame.size

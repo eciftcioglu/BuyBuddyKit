@@ -15,18 +15,18 @@ class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
     
 
     @IBOutlet var frame: UIView!
-    @IBOutlet var asd: ShoppingCartButton!
+    @IBOutlet var cartButton: ShoppingCartButton!
     
     var delegate: ShoppingCartDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        delegate = asd
+        delegate = cartButton
         delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
-        asd.delegate = self
+        cartButton.delegate = self
         
         //Bluetooth beacon scan
-
+        
         frame.layer.addCustomBorder(rightEdge:true ,leftEdge:true,topEdge:true,bottomEdge:true,color: UIColor.purple, thickness: 3)
         
         self.output.rectOfInterest = CGRect(x: 0, y: 0, width:0.7, height:1 )
@@ -38,7 +38,7 @@ class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
                 
                 DispatchQueue.main.async(execute:{
 
-                   
+                   BuyBuddyViewManager.callScannedProductView(viewController: self, cartButton: self.cartButton, hitagID: barcode.stringValue)
                     
                 })
             }
@@ -47,7 +47,7 @@ class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
 
  
     func buttonWasPressed(_ button: UIButton) {
-        BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.asd )
+        BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.cartButton )
 
     }
     override func viewDidLayoutSubviews() {

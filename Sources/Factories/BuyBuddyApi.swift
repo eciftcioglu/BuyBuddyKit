@@ -156,7 +156,7 @@ public class BuyBuddyApi {
                         success: @escaping  (SuccessHandler<ItemData>),
                         error: @escaping (ErrorHandler)){
         
-        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["collected_hitags" : hitags], method: HTTPMethod.post, success: success, error: error)
+        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["collected_hitags" : hitags], success: success, error: error)
     }
     
     public func createOrder(hitagsIds: [Int], sub_total: Float,

@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 import CoreBluetooth
+import UserNotifications
+import UIKit
 
 public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentralManagerDelegate{
     
@@ -37,7 +39,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         RunLoop.current.add(passiveTimer!, forMode: RunLoopMode.commonModes)
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
     }
     
     public class func startHitagManager(){
@@ -131,9 +132,10 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         if (serverTimer == 2){
         
             print(activeHitags)
-            //serverCall
+            //BuyBuddyApi.sharedInstance.postScanRecord(hitags: activeHitags.values, success: , error: )
             serverTimer = 0
         }
+        
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {

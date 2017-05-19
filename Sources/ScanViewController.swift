@@ -15,34 +15,41 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
     @IBOutlet var popUpScanView: PopUpScanView!
     @IBOutlet var cartButton: ShoppingCartButton!
     @IBOutlet var addButton: CircleButton!
-    var test: ItemData = ItemData()
+    
+    var product: ItemData = ItemData()
     var delegate: ShoppingCartDelegate?
     var userButtonDelegate: ShoppingCartDelegate?
     var userButton:ShoppingCartButton?
     let shapeLayerButton = CAShapeLayer()
-    
+    var hitagID:String?
+    var hitags: [String:String] = [:]
     var blemanager : BuyBuddyBLEManager?
-    public var hitags: [String:String] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        test.hitagId = "11123123"
-        test.size = "M"
-        test.color = UIColor.black
-        test.id = 123
-        test.code = "cdsfsdf"
-        test.price = Price(current_price: 123, discount_price: 100, ex_price: 250)
-        
+
         userButtonDelegate = userButton
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
         cartButton.delegate = self
         
+        if(hitagID != nil){
+        BuyBuddyApi.sharedInstance.getProductWith(hitagId: hitagID!, success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
+            
+            self.product = item.data!
+            
+        }) { (err, httpResponse) in
+            
+        }
+    }
+ 
+            /*
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
         blemanager = BuyBuddyBLEManager(products: hitags)
+ */
         
-        popUpScanView.setSizePrice(size: "S", price:test.price!)
+        //popUpScanView.centerImage = self.product.image_url
+        //popUpScanView.setSizePrice(size: product.size!, price:product.price!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,7 +82,7 @@ class ScanViewController:UIViewController,ShoppingCartButtonDelegate{
 
     @IBAction func addButtonAction(_ sender: Any) {
 
-        ShoppingCartManager.shared.basket[test.hitagId!] = test
+        ShoppingCartManager.shared.basket[product.hitagId!] = product
         let count = String(ShoppingCartManager.shared.basket.count)
         delegate?.countDidChange(count)
         userButtonDelegate?.countDidChange(count)

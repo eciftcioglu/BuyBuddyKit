@@ -17,6 +17,8 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     @IBOutlet var completionView: UIView!
     
     var state = false
+    var blemanager : BuyBuddyBLEManager?
+    var hitags: [String:String] = [:]
 
     fileprivate let sectionInsets = UIEdgeInsets(top:0, left:0, bottom:0, right:0)
 
@@ -30,7 +32,8 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didOpen(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         midView.blink(duration:1.5)
 
-
+        hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
+        blemanager = BuyBuddyBLEManager(products: hitags)
     }
 
     override func viewWillAppear(_ animated: Bool) {

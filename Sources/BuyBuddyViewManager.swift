@@ -11,13 +11,16 @@ import UIKit
 
 public class BuyBuddyViewManager{
     
-    public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton){
+    public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton,hitagID:String){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
             vc.userButton = cartButton
+            vc.hitagID = hitagID
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
-            viewController.present(vc, animated: true, completion: nil)
+            if (viewController.presentedViewController == nil){
+                viewController.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
@@ -27,7 +30,9 @@ public class BuyBuddyViewManager{
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
             vc.userButton = cartButton
-            viewController.present(vc, animated: true, completion: nil)
+            if (viewController.presentedViewController == nil){
+                viewController.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
@@ -36,7 +41,9 @@ public class BuyBuddyViewManager{
         {
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
-            viewController.present(vc, animated: true, completion: nil)
+            if (viewController.presentedViewController == nil){
+                viewController.present(vc, animated: true, completion: nil)
+            }
         }
     }
 }

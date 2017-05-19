@@ -43,7 +43,6 @@
                                 </constraints>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CZw-py-niR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P5O-hx-wQV"/>
                             <constraint firstItem="CZw-py-niR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q7b-33-CYj"/>
@@ -55,7 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="asd" destination="hkI-wj-dXG" id="tsO-cJ-8QZ"/>
+                        <outlet property="cartButton" destination="hkI-wj-dXG" id="vUP-NO-ONz"/>
                         <outlet property="frame" destination="LCO-9N-Wgw" id="mGy-qj-4fD"/>
                     </connections>
                 </viewController>

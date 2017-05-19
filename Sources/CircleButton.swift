@@ -34,9 +34,7 @@ class CircleButton : UIButton {
         
     }
     
-    
-    
-    func adjustImageAndTitleOffsets () {
+    private func adjustImageAndTitleOffsets () {
         
         let spacing: CGFloat = 3.0
         let imageSize = self.imageView!.frame.size
