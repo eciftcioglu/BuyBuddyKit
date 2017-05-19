@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         
         let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
-            BuyBuddyApi.sharedInstance.getProductWith(hitagId: "0100000001", success: { (item, response) in
+            BuyBuddyApi.sharedInstance.getProductWith(hitagId: "0Z00000001", success: { (item, response) in
                 print(item)
             }) { (err, response) in
                 print(err)

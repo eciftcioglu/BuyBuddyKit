@@ -98,7 +98,7 @@ public class BuyBuddyApi {
         self.tokenDelegate = invalidTokenDelegate
     }
     
-    public typealias SuccessHandler<T: Mappable> = (_ result: T, _ operation: HTTPURLResponse?)
+    public typealias SuccessHandler<T: Mappable> = (_ result: BuyBuddyObject<T>, _ operation: HTTPURLResponse?)
         -> Void
     public typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
         -> Void
@@ -125,28 +125,27 @@ public class BuyBuddyApi {
             .responseJSON { (response) in
             
                 if response.error != nil{
-                    print(response.error)
-                    return error(response.error!, response.response)
-                }
-                
-                switch response.result {
-                case .success(let value):
-                    let result = Mapper<T>().map(JSON: value as! [String: Any])
-                    
-                    if result != nil{
-                        success(result!, response.response)
-                    }else{
+                    error(response.error!, response.response)
+                }else{
+                    switch response.result {
+                    case .success(let value):
+                        let result = Mapper<BuyBuddyObject<T>>().map(JSON: value as! [String: Any])
                         
-                    }
-                    break
-                case .failure(let err):
-                    error(err, response.response)
+                        if result != nil{
+                            success(result!, response.response)
+                        }else{
+                            //error(Error, nil)
+                        }
+                        break
+                    case .failure(let err):
+                        error(err, response.response)
+                }
             }
         }
     }
 
     public func getProductWith(hitagId: String,
-                        success: @escaping  (SuccessHandler<BuyBuddyObject<ItemData>>),
+                        success: @escaping  (SuccessHandler<ItemData>),
                         error: @escaping (ErrorHandler)){
         
         call(endPoint: BuyBuddyEndpoint.QrHitag,
@@ -190,7 +189,7 @@ public class BuyBuddyApi {
     }
     
     public func getJwt(accessToken: String,
-                        success: @escaping  (SuccessHandler<BuyBuddyObject<BuyBuddyUserJwt>>),
+                        success: @escaping  (SuccessHandler<BuyBuddyUserJwt>),
                         error: @escaping (ErrorHandler)) {
         
         call(endPoint: BuyBuddyEndpoint.GetJwt,
