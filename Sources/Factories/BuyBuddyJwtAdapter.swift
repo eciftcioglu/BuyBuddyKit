@@ -29,7 +29,7 @@ class BuyBuddyJwtAdapter: RequestAdapter, RequestRetrier {
     
     func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
         lock.lock(); defer { lock.unlock() }
-        print("1")
+
         if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 {
             requestsToRetry.append(completion)
             

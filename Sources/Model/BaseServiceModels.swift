@@ -26,7 +26,7 @@ public class BuyBuddyApiError: Mappable{
 
 public class BuyBuddyBase : Mappable{
 
-    var errors: [BuyBuddyApiError]?
+    var errors: BuyBuddyApiError?
     
     required public init?(map: Map) {}
     
