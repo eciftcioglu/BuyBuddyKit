@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+
+public let orderServiceNotification = "orderServiceNotification"
+
 public class BuyBuddyViewManager{
     
+    
+   
     public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton,hitagID:String?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
@@ -31,6 +36,7 @@ public class BuyBuddyViewManager{
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
             vc.userButton = cartButton
+            
             if (viewController.presentedViewController == nil){
                 viewController.present(vc, animated: true, completion: nil)
             }
@@ -47,6 +53,12 @@ public class BuyBuddyViewManager{
             }
         }
     }
+    
+    class func sendCreateOrderNotification(_ isOrderCreated: OrderDelegateResponse) {
+        let connectionDetails = ["isOrderCreated": isOrderCreated]
+        NotificationCenter.default.post(name: Notification.Name(rawValue: orderServiceNotification), object: self, userInfo: connectionDetails)
+    }
+
 }
 
 

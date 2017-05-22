@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+
 class Utilities{
     
     private static func getUdKey(_ udKey: String) -> String {
@@ -35,4 +37,5 @@ class Utilities{
         }
         return data
     }
+    
 }

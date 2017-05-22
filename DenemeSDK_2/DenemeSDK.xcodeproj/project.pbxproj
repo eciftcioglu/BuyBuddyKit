@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09550EE9C5A28A5D03646DE6 /* Pods_DenemeSDKUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA4598E7713F4D87DB98EF3 /* Pods_DenemeSDKUITests.framework */; };
+		2D1C9FA31ED34145005EC5A3 /* PayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C9FA21ED34145005EC5A3 /* PayVC.swift */; };
 		2D291C391EC08EC900C9FB78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291C381EC08EC900C9FB78 /* AppDelegate.swift */; };
 		2D291C3B1EC08EC900C9FB78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291C3A1EC08EC900C9FB78 /* ViewController.swift */; };
 		2D291C3E1EC08EC900C9FB78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291C3C1EC08EC900C9FB78 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		0E3ED87946D209AD935F7898 /* Pods-DenemeSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DenemeSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DenemeSDKTests/Pods-DenemeSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0E67046CFB9D7E2B5653E5BD /* Pods_DenemeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DenemeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		165A8C04FFF3B90909649B32 /* Pods-DenemeSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DenemeSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DenemeSDKTests/Pods-DenemeSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D1C9FA21ED34145005EC5A3 /* PayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayVC.swift; sourceTree = "<group>"; };
 		2D291C351EC08EC900C9FB78 /* DenemeSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DenemeSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D291C381EC08EC900C9FB78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D291C3A1EC08EC900C9FB78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				2D291C381EC08EC900C9FB78 /* AppDelegate.swift */,
 				2D291C3A1EC08EC900C9FB78 /* ViewController.swift */,
+				2D1C9FA21ED34145005EC5A3 /* PayVC.swift */,
 				2D291C3C1EC08EC900C9FB78 /* Main.storyboard */,
 				2D291C3F1EC08EC900C9FB78 /* Assets.xcassets */,
 				2D291C411EC08EC900C9FB78 /* LaunchScreen.storyboard */,
@@ -478,6 +481,7 @@
 			files = (
 				2D291C3B1EC08EC900C9FB78 /* ViewController.swift in Sources */,
 				2D291C391EC08EC900C9FB78 /* AppDelegate.swift in Sources */,
+				2D1C9FA31ED34145005EC5A3 /* PayVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

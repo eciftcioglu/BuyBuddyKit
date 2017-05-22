@@ -102,7 +102,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
         
         for (key,_) in ShoppingBasketManager.shared.basket{
             
-            if(key == hitagID){
+            if(key == id){
                 DispatchQueue.main.async {
                     
                     let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in

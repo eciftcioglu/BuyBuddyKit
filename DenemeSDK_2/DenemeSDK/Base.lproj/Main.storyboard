@@ -62,5 +62,23 @@
             </objects>
             <point key="canvasLocation" x="45.600000000000001" y="97.601199400299862"/>
         </scene>
+        <!--PayVC-->
+        <scene sceneID="Taa-U0-AbL">
+            <objects>
+                <viewController id="LOY-Qo-o0X" customClass="PayVC" customModule="DenemeSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oVH-IN-cLh"/>
+                        <viewControllerLayoutGuide type="bottom" id="YEk-a8-SzZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y6p-ut-dPT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzw-VP-J0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890" y="98"/>
+        </scene>
     </scenes>
 </document>

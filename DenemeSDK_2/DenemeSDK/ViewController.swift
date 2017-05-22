@@ -27,6 +27,8 @@ class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate {
         delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
         cartButton.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.didCreate(_:)), name: NSNotification.Name(rawValue: orderServiceNotification), object: nil)
+
         //Bluetooth beacon scan
         
         frame.layer.addCustomBorder(rightEdge:true ,leftEdge:true,topEdge:true,bottomEdge:true,color: UIColor.purple, thickness: 3)
@@ -45,8 +47,15 @@ class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate {
             }
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: orderServiceNotification), object: nil)
+    }
 
- 
+    func didCreate(_ notification: Notification){
+        
+
+    }
     func buttonWasPressed(_ button: UIButton) {
         BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.cartButton )
 

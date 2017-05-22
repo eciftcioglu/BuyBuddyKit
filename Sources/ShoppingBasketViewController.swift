@@ -10,7 +10,6 @@ import UIKit
 
 
 
-
 class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
 
     @IBOutlet var titleText: UILabel!
@@ -26,6 +25,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     var delegate: ShoppingBasketDelegate?
     var hitagIds:[Int] = []
     var totalPrice:Float = 0
+    
 
     var blemanager : BuyBuddyBLEManager?
 
@@ -40,6 +40,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         tableView.dataSource = self
         
         createTableLabel()
+        
         //collectionView.dataSource = self
         //collectionView.delegate = self
         
@@ -68,11 +69,11 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
             collectionView.isHidden = false
             titleText.isHidden = false
         }
-        var total:Float = 0
+        totalPrice = 0
         for p in tableData{
-            total += p.price!.current_price!
+            totalPrice += p.price!.current_price!
         }
-        basketTotal.text = String(total) + " TL"
+        basketTotal.text = String(totalPrice) + " TL"
     }
     
     func createTableLabel(){
@@ -88,6 +89,9 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     
     }
     
+   
+    
+    
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -102,10 +106,14 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
-                BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
+                BuyBuddyViewManager.sendCreateOrderNotification(orderResponse.data!)
+
+                //BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
 
             }, error: { (err, httpResponse) in
-                
+                print(err)
+                print(httpResponse)
+
             })
         
         
