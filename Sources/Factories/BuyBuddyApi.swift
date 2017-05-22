@@ -39,7 +39,7 @@ public class BuyBuddyApi {
         return "https://" + (BuyBuddyApi.isSandBox ? BuyBuddyApi.sandBoxPrefix : BuyBuddyApi.productionPrefix) + ".buybuddy.co"
     }
     
-    public func sandBoxMode(isActive: Bool){
+    public func sandBoxMode(isActive: Bool = false){
         BuyBuddyApi.isSandBox = isActive
     }
 

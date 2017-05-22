@@ -21,23 +21,24 @@ class ShoppingCartTableViewCell:UITableViewCell{
 
     public func setData(data:ItemData){
     
-        if(data.code != nil){
-            setProductName(name: data.code!)}
-        if(data.color != nil){
+        if(data.description != nil){
+            setProductName(name: data.description!)}
+        if(data.metadata?.color != nil){
             
-            setProductColor(color: data.color!)}
-        if(data.size != nil){
+            setProductColor(color: (data.metadata?.color)!)}
+        if(data.metadata?.size != nil){
             
-            setProductSize(size:  data.size!)}
-        if(data.image_url != nil){
+            setProductSize(size:(data.metadata?.size)!)}
+        if(data.image != nil){
+            
+            setProductImage(image: UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+
             //setProductImage(image: data.image_url!)
         }
         if(data.price != nil){
             
             setProductPrice(price: data.price!.current_price!)}
-        
-
-    }
+        }
     private func setProductImage(image:UIImage){
         
         productImage.image = image
@@ -52,9 +53,9 @@ class ShoppingCartTableViewCell:UITableViewCell{
         productSize.text = size
         
     }
-    private func setProductColor(color:UIColor){
+    private func setProductColor(color:String){
         
-        productColor.backgroundColor = color
+        //productColor.backgroundColor = color
     }
     
     private func setProductPrice(price:Float){

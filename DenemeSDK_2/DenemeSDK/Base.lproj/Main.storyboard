@@ -36,19 +36,19 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkI-wj-dXG" customClass="ShoppingCartButton" customModule="BuyBuddyKit">
-                                <rect key="frame" x="300" y="592" width="75" height="75"/>
+                                <rect key="frame" x="292" y="584" width="75" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="Rh4-3h-7OU"/>
-                                    <constraint firstAttribute="height" constant="75" id="vY9-7b-abI"/>
+                                    <constraint firstAttribute="width" constant="75" id="Zfm-PQ-kHh"/>
+                                    <constraint firstAttribute="height" constant="75" id="i5p-38-Vop"/>
                                 </constraints>
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hkI-wj-dXG" secondAttribute="trailing" constant="8" id="OFo-ck-jRt"/>
                             <constraint firstItem="CZw-py-niR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P5O-hx-wQV"/>
                             <constraint firstItem="CZw-py-niR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q7b-33-CYj"/>
-                            <constraint firstAttribute="trailing" secondItem="hkI-wj-dXG" secondAttribute="trailing" id="YFo-Bo-Wcu"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hkI-wj-dXG" secondAttribute="bottom" id="hT1-6s-5Uu"/>
                             <constraint firstItem="LCO-9N-Wgw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jXW-Kh-LTM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hkI-wj-dXG" secondAttribute="bottom" constant="8" id="oeM-4x-Uky"/>
                             <constraint firstItem="LCO-9N-Wgw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sfO-Gs-9TL"/>
                             <constraint firstAttribute="trailing" secondItem="CZw-py-niR" secondAttribute="trailing" id="t6A-g9-KwQ"/>
                         </constraints>

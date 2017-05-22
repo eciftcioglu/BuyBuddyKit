@@ -17,6 +17,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     static private var sharedInstance: BuyBuddyHitagManager!
     var locationManager:CLLocationManager
     var activeHitags   : [String : CollectedHitag] = [:]
+    var collectedHitags: [CollectedHitag] = []
     var centralManager : CBCentralManager!
     var currentHitag   : String!
     var passiveTimer   : Timer?
@@ -24,7 +25,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     
     override init() {
         self.locationManager = CLLocationManager()
-        
         super.init()
         
         self.locationManager.delegate = self
@@ -32,9 +32,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         self.locationManager.allowsBackgroundLocationUpdates = true
         self.locationManager.pausesLocationUpdatesAutomatically = true
         
-        if CLLocationManager.authorizationStatus() == .notDetermined{
-            self.locationManager.requestAlwaysAuthorization()
-        }
         passiveTimer = Timer(timeInterval: 1, target: self, selector: #selector(self.passiveHitagHandler), userInfo: nil, repeats: true)
         RunLoop.current.add(passiveTimer!, forMode: RunLoopMode.commonModes)
         
@@ -60,10 +57,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     }
     
     func startMonitoring() {
-        
-        // NOTE:  The UUIDString here must match the UUID of your iBeacon.  If your
-        //        iBeacon UUID is different, replace the string below accordingly!
-        
+        if(locationManager.monitoredRegions.count != 20){
         for serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
@@ -72,6 +66,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             let region = CLBeaconRegion(proximityUUID: uuid! as UUID, identifier: serialHex)
             region.notifyEntryStateOnDisplay = true
             self.locationManager.startMonitoring(for: region)
+            }
         }
     }
     
@@ -79,7 +74,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         
         switch status {
         case .notDetermined:
-            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
             self.startMonitoring()
         case .denied, .restricted:
@@ -93,7 +88,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
 
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        manager.stopRangingBeacons(in: region as! CLBeaconRegion)
         manager.stopUpdatingLocation()
 
     }
@@ -132,9 +126,19 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         if (serverTimer == 2){
         
             print(activeHitags)
-            //BuyBuddyApi.sharedInstance.postScanRecord(hitags: activeHitags.values, success: , error: )
-            serverTimer = 0
+            
+            for (_,value) in activeHitags{
+            collectedHitags.append(value)
+            }
+        
+            BuyBuddyApi.sharedInstance.postScanRecord(hitags: collectedHitags,success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
+                
+                
+            }) { (err, httpResponse) in
+                
         }
+        serverTimer = 0
+      }
         
     }
     

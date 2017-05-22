@@ -11,18 +11,20 @@ import RSBarcodes_Swift
 import BuyBuddyKit
 
 
-class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
+class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate {
     
 
     @IBOutlet var frame: UIView!
     @IBOutlet var cartButton: ShoppingCartButton!
+
     
-    var delegate: ShoppingCartDelegate?
+    var delegate: ShoppingBasketDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = cartButton
-        delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
+        delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
         cartButton.delegate = self
         
         //Bluetooth beacon scan
@@ -34,7 +36,6 @@ class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
         self.cornersLayer.strokeColor = UIColor.yellow.cgColor
         self.barcodesHandler = { barcodes in
             for barcode in barcodes {
-                print(barcode)
                 
                 DispatchQueue.main.async(execute:{
 
@@ -52,7 +53,7 @@ class ViewController: RSCodeReaderViewController,ShoppingCartButtonDelegate {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        delegate?.countDidChange(String(ShoppingCartManager.shared.basket.count))
+        delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
 
         //StoryBoardInitializer.callStoryboard(param: self)
     }

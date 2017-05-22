@@ -34,6 +34,13 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
 
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
         blemanager = BuyBuddyBLEManager(products: hitags)
+        
+        BuyBuddyApi.sharedInstance.completeOrder(orderId: 2, hitagValidations:[:], success: { (orderResponse, httpResponse) in
+            
+            
+        }, error: { (err, httpResponse) in
+            
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {

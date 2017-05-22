@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
-public protocol ShoppingCartButtonDelegate:class {
+public protocol ShoppingBasketButtonDelegate:class {
     func buttonWasPressed(_ button:UIButton)
 }
-
+public protocol ShoppingBasketDelegate {
+    func countDidChange(_ data:String)
+    
+}
 @IBDesignable
-public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
+public class ShoppingCartButton:UIButton,ShoppingBasketDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
-    public weak var delegate:ShoppingCartButtonDelegate?
-    fileprivate var blurCheck:Bool = true
+    public weak var delegate:ShoppingBasketButtonDelegate?
     
     @IBInspectable
     public var badgeColor = UIColor.buddyGreen() {
@@ -36,6 +38,9 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.adjustImageAndTitleOffsets()
+        self.addBlurEffect()
+        self.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
         createLabel()
         self.setImage(UIImage(named: "shopping_cart", in: Bundle(for: type(of: self)), compatibleWith: nil), for: UIControlState.normal)
     }
@@ -68,21 +73,17 @@ public class ShoppingCartButton:UIButton,ShoppingCartDelegate{
         delegate?.buttonWasPressed(self)
     }
     
-    public func removeBlur(){
-        
-        let subViews = self.subviews
-        for subview in subViews{
-            if subview.tag == 100 && blurCheck == true{
-                blurCheck = false
-                subview.removeFromSuperview()
-            }
-        }
-    }
+    public func withBlur(blur:Bool = true){
     
-    public func addblur(){
-    
-        if (blurCheck == false){
+        if(blur){
             self.addBlurEffect()
+        }else{
+            let subViews = self.subviews
+            for subview in subViews{
+                if subview.tag == 100{
+                    subview.removeFromSuperview()
+                }
+            }
         }
     }
     

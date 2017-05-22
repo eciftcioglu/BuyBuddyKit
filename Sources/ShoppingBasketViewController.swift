@@ -8,9 +8,7 @@
 
 import UIKit
 
-public protocol ShoppingCartDelegate {
-    func countDidChange(_ data:String)
-}
+
 
 
 class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -22,10 +20,12 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     @IBOutlet var labelContainer: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var basketTotal: UILabel!
-    var userButtonDelegate: ShoppingCartDelegate?
+    var userButtonDelegate: ShoppingBasketDelegate?
     var userButton:ShoppingCartButton?
     var noDataLabel: UILabel = UILabel(frame:.zero)
-    var delegate: ShoppingCartDelegate?
+    var delegate: ShoppingBasketDelegate?
+    var hitagIds:[Int] = []
+    var totalPrice:Float = 0
 
     var blemanager : BuyBuddyBLEManager?
 
@@ -47,7 +47,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
 
         tableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle:Bundle(for: type(of: self))), forCellReuseIdentifier: "ShoppingCartTableViewCell")
         //collectionView.register(UINib(nibName: "SuggestionsCollectionViewCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "SuggestionsCollectionViewCell")
-        tableData = Array(ShoppingCartManager.shared.basket.values)
+        tableData = Array(ShoppingBasketManager.shared.basket.values)
         
     }
     
@@ -94,7 +94,21 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     
     @IBAction func callPaymentPage(_ sender: Any) {
         
-        BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
+        for item in tableData{
+        
+        hitagIds.append(item.id!)
+        
+        }
+        
+            BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
+                
+                BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
+
+            }, error: { (err, httpResponse) in
+                
+            })
+        
+        
 
         /*let product = ItemData(hitagId: "0100000001")
         blemanager = BuyBuddyBLEManager(products: [product])*/
@@ -105,7 +119,7 @@ extension ShoppingBasketViewController{
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(ShoppingCartManager.shared.basket.values.isEmpty){
+        if(ShoppingBasketManager.shared.basket.values.isEmpty){
     
             noDataLabel.isHidden = false
         }
@@ -134,7 +148,7 @@ extension ShoppingBasketViewController{
                 if(indexPath.row == i){
                     
                     let toDelete = tableData[i].hitagId
-                    ShoppingCartManager.shared.basket.removeValue(forKey: toDelete!)
+                    ShoppingBasketManager.shared.basket.removeValue(forKey: toDelete!)
                     tableData.remove(at: i)
                     
                 }
@@ -142,11 +156,11 @@ extension ShoppingBasketViewController{
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
         
-        var total:Float = 0
+        totalPrice = 0
         for p in tableData{
-            total += p.price!.current_price!
+            totalPrice += p.price!.current_price!
         }
-        basketTotal.text = String(total) + " TL"
+        basketTotal.text = String(totalPrice) + " TL"
         let count = String(tableData.count)
         delegate?.countDidChange(count)
         userButtonDelegate?.countDidChange(count)
@@ -166,8 +180,9 @@ extension ShoppingBasketViewController{
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCartTableViewCell", for: indexPath) as! ShoppingCartTableViewCell
-        let data = tableData[indexPath.row]
+        var data = tableData[indexPath.row]
         
+        data.description = "Grey Dress"
         cell.setData(data: data)
         return cell
     }

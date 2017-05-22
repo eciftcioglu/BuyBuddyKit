@@ -9,8 +9,8 @@
 import Foundation
 
 
-public class ShoppingCartManager {
-    public static let shared = ShoppingCartManager()
+public class ShoppingBasketManager {
+    public static let shared = ShoppingBasketManager()
     public var basket: [String:ItemData] = [:]
     
     private init() {

@@ -17,33 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        BuyBuddyHitagManager.startHitagManager()
+        
+        //Call this method to start monitoring and ranging for hitag devices
+        //BuyBuddyHitagManager.startHitagManager()
+        //Set to true to enable sandbox mode.Default is false
         BuyBuddyApi.sharedInstance.sandBoxMode(isActive: true)
         BuyBuddyApi.sharedInstance.set(invalidTokenDelegate: self)
-        BuyBuddyApi.sharedInstance.set(accessToken: "Z/+dSDxiTYCBXP60B5VVsuFFVfkm/0XZmmYF32fZT0AKETSpw15KT7xoG6moW44wTcxRz86zQP+YiTMO2nJPmA==")
+        BuyBuddyApi.sharedInstance.set(accessToken: "EGts2QfOQAW5nhQL29tLHad8PUA6gUiykKaZQ9kXfWsIO+AnuaRHYLHQAP3IoNVBx5J3uMf4QFqomeMgjHtEZA==")
         
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            BuyBuddyApi.sharedInstance.getProductWith(hitagId: "0Z00000001", success: { (item, response) in
-                print(item)
-            }) { (err, response) in
-                print(err)
-            }
-        }
-        
-        let when2 = DispatchTime.now() + 10 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when2) {
-            BuyBuddyApi.sharedInstance.createOrder(hitagsIds: [1], sub_total: 103.75, success: { (orderResponse, httpResponse) in
-                
-            }, error: { (err, httpResponse) in
-                
-            })
-        }
-        
-        BuyBuddyApi.sharedInstance
 
-        
-        
+
         return true
     }
     
