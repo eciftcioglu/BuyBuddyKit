@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRe-Up-Yqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.79999999999995" y="139.880059970015"/>
+            <point key="canvasLocation" x="919" y="140"/>
         </scene>
         <!--paymentFinalizer-->
         <scene sceneID="Rnj-BW-9r4">
@@ -323,16 +323,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="svh-Me-qfN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d54-z8-iQG">
                                 <rect key="frame" x="0.0" y="72" width="375" height="444"/>
@@ -421,7 +412,7 @@ Buy Buddy sayesinde 6 saniyede 3
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWk-v0-12S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1733.5999999999999" y="139.880059970015"/>
+            <point key="canvasLocation" x="1633" y="140"/>
         </scene>
     </scenes>
     <resources>

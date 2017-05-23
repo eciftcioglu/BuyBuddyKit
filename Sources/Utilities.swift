@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class Utilities{
     
@@ -38,4 +38,17 @@ class Utilities{
         return data
     }
     
+    public class func showError(viewController:UIViewController,message:String){
+        
+        DispatchQueue.main.async {
+            
+            let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
+                viewController.dismiss(animated: true, completion: nil)
+            }
+            let alertController = UIAlertController(title: "Uyarı!", message:message, preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(acceptAction)
+            viewController.present(alertController, animated: true, completion: nil)
+        }
+        
+    }
 }

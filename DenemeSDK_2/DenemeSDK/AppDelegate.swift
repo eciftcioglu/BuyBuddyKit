@@ -19,14 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         // Override point for customization after application launch.
         
         //Call this method to start monitoring and ranging for hitag devices
-        //BuyBuddyHitagManager.startHitagManager()
+        BuyBuddyHitagManager.startHitagManager()
+        
         //Set to true to enable sandbox mode.Default is false
         BuyBuddyApi.sharedInstance.sandBoxMode(isActive: true)
         BuyBuddyApi.sharedInstance.set(invalidTokenDelegate: self)
         BuyBuddyApi.sharedInstance.set(accessToken: "EGts2QfOQAW5nhQL29tLHad8PUA6gUiykKaZQ9kXfWsIO+AnuaRHYLHQAP3IoNVBx5J3uMf4QFqomeMgjHtEZA==")
         
-
-
         return true
     }
     

@@ -89,9 +89,6 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     
     }
     
-   
-    
-    
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -100,10 +97,10 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         
         for item in tableData{
         
-        hitagIds.append(item.id!)
+        hitagIds.append(item.h_id!)
         
         }
-        
+        print(totalPrice)
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
                 BuyBuddyViewManager.sendCreateOrderNotification(orderResponse.data!)
@@ -111,11 +108,27 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
                 //BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
 
             }, error: { (err, httpResponse) in
-                print(err)
-                print(httpResponse)
+                switch httpResponse!.statusCode{
+                    
+                case 422:
+                    //gönderilen parametre yanlış
+                    Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
+                    break
+                case 500:
+                    Utilities.showError(viewController:self,message: "Sistem hatası!")
+                    //sistem hatası
+                    break
+                case 404:
+                    Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
+                    //gönderiln parametrelere karşılık içerik bulunamadı
+                    break
+                    
+                default:
+                    return
+                }
 
+                
             })
-        
         
 
         /*let product = ItemData(hitagId: "0100000001")

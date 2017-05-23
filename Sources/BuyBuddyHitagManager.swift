@@ -12,11 +12,12 @@ import CoreBluetooth
 import UserNotifications
 import UIKit
 
+
 public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentralManagerDelegate{
-    
+      
     static private var sharedInstance: BuyBuddyHitagManager!
     var locationManager:CLLocationManager
-    var activeHitags   : [String : CollectedHitag] = [:]
+    public var activeHitags   : [String : CollectedHitag] = [:]
     var collectedHitags: [CollectedHitag] = []
     var centralManager : CBCentralManager!
     var currentHitag   : String!
@@ -42,6 +43,18 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         if sharedInstance == nil{
             sharedInstance = BuyBuddyHitagManager()
         }
+    }
+    
+     public class func validateHitag(hitagId:String)->Bool{
+        
+        for (key,_) in sharedInstance.activeHitags{
+            
+            if(key == hitagId){
+                return true
+
+            }
+        }
+        return false
     }
     
     func startRanging() {
@@ -89,7 +102,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopUpdatingLocation()
-
     }
 
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
@@ -106,6 +118,10 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             
             if activeHitags[data.id!] == nil{
                 activeHitags[data.id!] = data
+            }else{
+            
+                activeHitags[data.id!]?.timeStamp = seenTime
+
             }
         }
     }
@@ -122,7 +138,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             }
         
         serverTimer += 1
-        
         if (serverTimer == 2){
         
             print(activeHitags)
@@ -131,17 +146,22 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             collectedHitags.append(value)
             }
         
+            if !collectedHitags.isEmpty{
+                
             BuyBuddyApi.sharedInstance.postScanRecord(hitags: collectedHitags,success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
                 
                 
             }) { (err, httpResponse) in
                 
+                }
+        collectedHitags.removeAll()
+
         }
         serverTimer = 0
       }
         
     }
-    
+  
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         
         
@@ -187,9 +207,10 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     
                 if activeHitags[data.id!] == nil{
                     activeHitags[data.id!] = data
+                }else{
+                    activeHitags[data.id!]?.timeStamp = seenTime
                 }
-
-            }
-        }
+          }
+       }
     }
 }

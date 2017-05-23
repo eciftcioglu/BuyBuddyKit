@@ -25,6 +25,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     var hitagID:String?
     var hitags: [String:String] = [:]
     var blemanager : BuyBuddyBLEManager?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +36,11 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
         delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
         cartButton.delegate = self
         
-      
- 
+
         /*
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
         blemanager = BuyBuddyBLEManager(products: hitags)
  */
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,16 +51,38 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         userButton?.fadeOut()
+        addButton.isUserInteractionEnabled = false
         
         if(checkDuplicate(id: hitagID!) == false){
             BuyBuddyApi.sharedInstance.getProductWith(hitagId: hitagID!, success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
                 
                 self.product = item.data!
                 self.popUpScanView.setSizePrice(size: (self.product.metadata?.size)!, price:self.product.price!)
+                self.addButton.isUserInteractionEnabled = true
                 //popUpScanView.centerImage = self.product.image_url
                 //popUpScanView.setSizePrice(size: product.size!, price:product.price!)
                 
             }) { (err, httpResponse) in
+                
+                switch httpResponse!.statusCode{
+                    
+                case 422:
+                    //gönderilen parametre yanlış
+                    Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
+                    break
+                case 500:
+                    Utilities.showError(viewController:self,message: "Sistem hatası!")
+                    //sistem hatası
+                    break
+                case 404:
+                    Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
+                    //gönderiln parametrelere karşılık içerik bulunamadı
+                break
+                    
+                default:
+                    return
+                }
+     
                 
             }
         }
@@ -86,18 +106,23 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     @IBAction func addButtonAction(_ sender: Any) {
 
         if(product.hitagId != nil){
+            if(BuyBuddyHitagManager.validateHitag(hitagId: product.hitagId!)){
         ShoppingBasketManager.shared.basket[product.hitagId!] = product
         let count = String(ShoppingBasketManager.shared.basket.count)
         delegate?.countDidChange(count)
         userButtonDelegate?.countDidChange(count)
-            self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+            }
+            else{
+                Utilities.showError(viewController:self,message: "Eklemek istediğiniz ürün yanınızda olmalı!")
+            }
         }
     }
-    
+   
     func buttonWasPressed(_ data: UIButton) {
         performSegue(withIdentifier: "shoppingCart", sender: self)
-        
     }
+    
     func checkDuplicate(id:String)->Bool{
         
         for (key,_) in ShoppingBasketManager.shared.basket{
@@ -106,6 +131,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
                 DispatchQueue.main.async {
                     
                     let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
+                        self.dismiss(animated: true, completion: nil)
                     }
                     let alertController = UIAlertController(title: "Uyarı!", message:"Aynı Hitag birden fazla kez eklenememektedir.Başka bir hitag okutunuz.", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(acceptAction)

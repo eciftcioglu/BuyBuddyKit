@@ -33,6 +33,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var deviceWithError  : [String] = []
     var currentIndexPath : IndexPath?
     
+    var hitagCheck:Bool = false
+    
     override init() {
         super.init()
         
@@ -159,7 +161,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                     currentHitag = hitagManufacturerData.substring(to: 10) as String
                     centralManager.stopScan()
                     connectDevice(peripheral)
-                    
                 }
             }
         }
@@ -174,7 +175,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         self.currentDevice = peripheral
         self.currentDevice.delegate = self
         self.centralManager.connect(peripheral, options: nil)
-        
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

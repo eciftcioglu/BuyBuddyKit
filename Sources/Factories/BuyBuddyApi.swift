@@ -17,6 +17,7 @@ enum BuyBuddyEndpoint : String {
     case OrderDelegate = "POST /order/delegate"
 }
 
+
 public protocol BuyBuddyInvalidTokenDelegate{
     func tokenExpired()
 }
@@ -126,6 +127,7 @@ public class BuyBuddyApi {
             
                 if response.error != nil{
                     error(response.error!, response.response)
+                    
                 }else{
                     switch response.result {
                     case .success(let value):

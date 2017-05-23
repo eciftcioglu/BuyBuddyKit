@@ -17,6 +17,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     @IBOutlet var completionView: UIView!
     
     var orderId:Int?
+    var orderTotal:Float?
     var state = false
     var blemanager : BuyBuddyBLEManager?
     var hitags: [String:String] = [:]
@@ -38,8 +39,26 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         
         BuyBuddyApi.sharedInstance.completeOrder(orderId: orderId!, hitagValidations:[:], success: { (orderResponse, httpResponse) in
             
-            
         }, error: { (err, httpResponse) in
+            switch httpResponse!.statusCode{
+                
+            case 422:
+                //gönderilen parametre yanlış
+                Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
+                break
+            case 500:
+                Utilities.showError(viewController:self,message: "Sistem hatası!")
+                //sistem hatası
+                break
+            case 404:
+                Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
+                //gönderiln parametrelere karşılık içerik bulunamadı
+                break
+                
+            default:
+                return
+            }
+
             
         })
     }

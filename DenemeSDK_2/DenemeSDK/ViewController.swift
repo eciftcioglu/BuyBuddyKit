@@ -30,7 +30,6 @@ class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.didCreate(_:)), name: NSNotification.Name(rawValue: orderServiceNotification), object: nil)
 
         //Bluetooth beacon scan
-        
         frame.layer.addCustomBorder(rightEdge:true ,leftEdge:true,topEdge:true,bottomEdge:true,color: UIColor.purple, thickness: 3)
         
         self.output.rectOfInterest = CGRect(x: 0, y: 0, width:0.7, height:1 )
@@ -54,11 +53,14 @@ class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate {
 
     func didCreate(_ notification: Notification){
         
+        let saleID:Int = notification.userInfo?["sale_id"] as! Int
+        let total:Float = notification.userInfo?["grand_total"] as! Float
 
+        BuyBuddyViewManager.callPaymentFinalizerView(viewController: self, orderId:saleID,orderTotal:total)
     }
     func buttonWasPressed(_ button: UIButton) {
         BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.cartButton )
-
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

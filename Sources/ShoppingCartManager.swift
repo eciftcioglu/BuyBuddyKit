@@ -16,5 +16,4 @@ public class ShoppingBasketManager {
     private init() {
         
     }
-    
 }

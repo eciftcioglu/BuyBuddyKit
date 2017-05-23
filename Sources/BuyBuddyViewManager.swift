@@ -14,8 +14,6 @@ public let orderServiceNotification = "orderServiceNotification"
 
 public class BuyBuddyViewManager{
     
-    
-   
     public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton,hitagID:String?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
@@ -43,22 +41,24 @@ public class BuyBuddyViewManager{
         }
     }
     
-    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve){
+    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,orderId:Int?,orderTotal:Float?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: FinalizePaymentViewController.self)).instantiateViewController(withIdentifier: "paymentFinalizerView") as? FinalizePaymentViewController
         {
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
+            vc.orderId = orderId
+            vc.orderTotal = orderTotal
             if (viewController.presentedViewController == nil){
                 viewController.present(vc, animated: true, completion: nil)
             }
         }
     }
     
-    class func sendCreateOrderNotification(_ isOrderCreated: OrderDelegateResponse) {
-        let connectionDetails = ["isOrderCreated": isOrderCreated]
+    static func sendCreateOrderNotification(_ isOrderCreated: OrderDelegateResponse) {
+        
+        let connectionDetails:[String:Any] = ["sale_id": isOrderCreated.sale_id!, "grand_total": isOrderCreated.grand_total!]
         NotificationCenter.default.post(name: Notification.Name(rawValue: orderServiceNotification), object: self, userInfo: connectionDetails)
     }
-
 }
 
 

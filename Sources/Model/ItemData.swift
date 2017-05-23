@@ -21,6 +21,7 @@ public struct ItemData: Mappable{
 
     public mutating func mapping(map: Map) {
         hitagId     <- map["hitag_id"]
+        h_id        <- map["h_id"]
         name        <- map["name"]
         image       <- map["image"]
         metadata    <- map["metadata"]
@@ -30,13 +31,13 @@ public struct ItemData: Mappable{
     }
     
     public var hitagId: String?
+    public var h_id: Int?
     public var name:String?
     public var id : Int?
     public var metadata: ItemMetaData?
     public var image: String?
     public var description: String?
     public var price: Price?
-    //public var price: Price?
 
     init(){
         
