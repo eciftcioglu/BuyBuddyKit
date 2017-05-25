@@ -13,7 +13,7 @@ import UIKit
 public class PopUpScanView : UIView {
 
     fileprivate var sizePriceView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
-    fileprivate var centerImageView: UIImageView    = UIImageView(frame: .zero)
+    public var centerImageView: UIImageView    = UIImageView(frame: .zero)
     fileprivate var overlayView: UIView    = UIView(frame:.zero)
     fileprivate var sizeLabel: UILabel = UILabel(frame: .zero)
     fileprivate var priceLabel: UILabel = UILabel(frame: .zero)
@@ -23,11 +23,12 @@ public class PopUpScanView : UIView {
     fileprivate let strokeLayer = CAShapeLayer()
 
     
-   public var centerImage = UIImage(named: "Oval_2", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
+   public var centerImage = UIImage(named: "", in: Bundle(identifier:"BB.BuyBuddyKit-iOS"), compatibleWith: nil) {
         didSet {
             centerImageView.image = centerImage
         }
     }
+    
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,11 +90,12 @@ public class PopUpScanView : UIView {
     
     private func createCenterImageView(){
         
-        centerImageView.frame = CGRect(x:  self.frame.midX-self.frame.width*0.4, y: (self.frame.midY*0.7)-self.frame.width*0.4, width: self.frame.width*0.8, height: self.frame.width*0.8)
+        centerImageView.frame = CGRect(x:  (self.frame.midX-self.frame.width*0.4)+2.5, y: ((self.frame.midY*0.7)-self.frame.width*0.4)+2.5, width: self.frame.width*0.8-5, height: self.frame.width*0.8-5)
         centerImageView.layer.cornerRadius = self.centerImageView.layer.frame.width / 2
         centerImageView.image = centerImage
         centerImageView.contentMode = UIViewContentMode.scaleAspectFill
-        centerImageView.image = UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)
+        centerImageView.clipsToBounds = true
+        //centerImageView.image = UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)
         self.addSubview(centerImageView)
     }
     
@@ -103,6 +105,14 @@ public class PopUpScanView : UIView {
         strokeLayer.fillColor = UIColor.clear.cgColor
         strokeLayer.strokeColor = UIColor.white.cgColor
         strokeLayer.lineWidth = width
+        /*strokeLayer.shadowColor = UIColor.black.cgColor
+        strokeLayer.shadowOpacity = 1
+        strokeLayer.shadowOffset = CGSize.zero
+        strokeLayer.shadowRadius = 10
+        strokeLayer.shadowPath = circlePath.cgPath
+        strokeLayer.shouldRasterize = true*/
+
+
         self.layer.addSublayer(strokeLayer)
     }
     

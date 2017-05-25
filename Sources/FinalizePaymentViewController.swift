@@ -18,9 +18,10 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     
     var orderId:Int?
     var state = false
-    var hitagIds: [Int] = [] 
+    var hitagIds: [String] = []
     var blemanager : BuyBuddyBLEManager?
-    var hitags: [String:String] = [:]
+    var hitagValidations: [String : Int] = [:]
+    var hitags: [String : String] = [:]
 
     fileprivate let sectionInsets = UIEdgeInsets(top:0, left:0, bottom:0, right:0)
 
@@ -32,22 +33,23 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BorderedHitagCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "BorderedHitagCell")
         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didOpen(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didConnect(_:)), name: NSNotification.Name(rawValue: BLEServiceConnectionNotification), object: nil)
         midView.blink(duration:1.5)
         
-        var hitagValidationList: [String : Int] = [:]
-
-        for hitagId in hitagIds {
-            hitagValidationList[String(hitagId)] = 0
+        DispatchQueue.global().async {
+            self.hitagValidations = BuyBuddyHitagManager.getValidNumbersWith(hitagIds: self.hitagIds)
+            
+            DispatchQueue.main.async {
+                BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, hitagValidations: self.hitagValidations, success: { (orderResponse, httpResponse) in
+                    
+                    self.hitags = orderResponse.data!.hitag_passkeys!
+                    self.blemanager = BuyBuddyBLEManager(products: self.hitags)
+                    
+                }, error: { (err, httpResponse) in
+                    
+                })
+            }
         }
-        
-        BuyBuddyApi.sharedInstance.completeOrder(orderId: orderId!, hitagValidations:["2":1514], success: { (orderResponse, httpResponse) in
-            
-            self.hitags = orderResponse.data!.hitag_passkeys!
-            self.blemanager = BuyBuddyBLEManager(products: self.hitags)
-            
-        }, error: { (err, httpResponse) in
-        
-        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,38 +65,49 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
     }
     
+    
+    func didConnect(_ notification: Notification){
+        
+        let id =  notification.userInfo?["hitagId"] as! String
+        
+        BuyBuddyApi.sharedInstance.createHitagCompletion(orderId: orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
+            
+        }) { (err, httpResponse) in
+            
+        }
+}
+    
+    
     func didOpen(_ notification: Notification){
         
-        /*
-         DispatchQueue.main.async {
-         
-         let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
-         
-         self.passState()
-         self.popupController?.dismiss()
-         }
-         
-         let alertController = UIAlertController(title: "", message:
-         "Ödemeniz başarıyla tamamlanmıştır.", preferredStyle: UIAlertControllerStyle.alert)
-         alertController.addAction(acceptAction)
-         
-         self.present(alertController, animated: true, completion: nil)
-         }*/
-        
-        DispatchQueue.main.async {
-            self.paymentLabel.text = "Ödeme Tamamlandı"
-            self.midView.timer.invalidate()
-            self.midView.fadeOut(duration: 0.5)
-            self.completionView.fadeIn(duration: 0.5)
-            self.state = true
-            self.collectionView.reloadData()
+        let check = notification.userInfo?["isConnected"] as! Bool
+        let id =  notification.userInfo?["hitagId"] as! String
 
+        BuyBuddyApi
+        .sharedInstance.updateHitagCompletion(orderId: self.orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
+            
+            
+            if (check == true){
+                DispatchQueue.main.async {
+                    self.paymentLabel.text = "Ödeme Tamamlandı"
+                    self.midView.timer.invalidate()
+                    self.completionView.fadeIn(duration: 0.5)
+                    self.state = true
+                    self.midView.fadeOut()
+                    self.collectionView.reloadData()
+                    
+                }
+            }
+            
+        }) { (err, httpResponse) in
+            
         }
+    
     }
 }
 extension FinalizePaymentViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return hitagIds.count
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

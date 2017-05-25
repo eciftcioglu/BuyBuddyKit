@@ -10,36 +10,35 @@ import Foundation
 import UIKit
 
 
-class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
+class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate{
     
     @IBOutlet var popUpScanView: PopUpScanView!
-    @IBOutlet var cartButton: ShoppingCartButton!
+    @IBOutlet var cartButton: BuyBuddyCartButton!
     @IBOutlet var addButton: CircleButton!
     
-    
     var product: ItemData = ItemData()
-    var delegate: ShoppingBasketDelegate?
-    var userButtonDelegate: ShoppingBasketDelegate?
-    var userButton:ShoppingCartButton?
+    var delegate: BuyBuddyCartButtonBadgeDelegate?
+    var userButtonDelegate: BuyBuddyCartButtonBadgeDelegate?
+    var userButton:BuyBuddyCartButton?
     let shapeLayerButton = CAShapeLayer()
     var hitagID:String?
     var hitags: [String:String] = [:]
     var blemanager : BuyBuddyBLEManager?
-    
+    var cache:NSCache<AnyObject, AnyObject>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isToolbarHidden = true
+        self.cache = NSCache()
         userButtonDelegate = userButton
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
+        userButtonDelegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
         cartButton.delegate = self
 
         popUpScanView.setSizePrice(size: (self.product.metadata?.size)!, price:self.product.price!)
         addButton.isUserInteractionEnabled = true
         
-        
+        showActivityIndicatory(uiView: popUpScanView.centerImageView)
         downloadImage(imageURL: self.product.image!)
         /*
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
@@ -47,6 +46,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
  */
     }
     
+  
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         userButton?.fadeIn()
@@ -91,38 +91,62 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     func buttonWasPressed(_ data: UIButton) {
         performSegue(withIdentifier: "shoppingCart", sender: self)
     }
+    
+    
+   
+}
+extension ScanViewController{
 
+     func showActivityIndicatory(uiView: UIView) {
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRect(x:uiView.frame.width/2, y:uiView.frame.height/2, width:40.0, height:40.0)
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
     func downloadImage(imageURL:String){
-        let session = URLSession(configuration: .default)
-        let myURL = URL(string: imageURL)! // We can force unwrap because we are 100% certain the constructor will not return nil in this case.
-        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
-        let downloadPicTask = session.dataTask(with: myURL) { (data, response, error) in
-            // The download has finished.
-            if let e = error {
-                print("Error downloading picture: \(e)")
-            } else {
-                // No errors found.
-                // It would be weird if we didn't have a response, so check for that too.
-                if let res = response as? HTTPURLResponse {
-                    print("Downloaded cat picture with response code \(res.statusCode)")
-                    if let imageData = data {
-                        // Finally convert that Data into an image and do what you wish with it.
-                         let image = UIImage(data: imageData)
-                        DispatchQueue.main.async(execute:{
-                            if(image != nil){
-                                self.popUpScanView.centerImage = image
-                            }
-                        })
-                        // Do something with your image.
-                    } else {
-                        print("Couldn't get image: Image is nil")
-                    }
+        if self.cache.object(forKey: imageURL as AnyObject) != nil {
+            self.popUpScanView.centerImage = self.cache.object(forKey:imageURL as AnyObject) as? UIImage
+        }else{
+            let session = URLSession(configuration: .default)
+            let myURL = URL(string: imageURL)!
+            let downloadPicTask = session.dataTask(with: myURL) { (data, response, error) in
+                // The download has finished.
+                if let e = error {
+                    print("Error downloading picture: \(e)")
                 } else {
-                    print("Couldn't get response code for some reason")
+                    // No errors found.
+                    if let res = response as? HTTPURLResponse {
+                        print("Downloaded picture with response code \(res.statusCode)")
+                        if let imageData = data {
+                            // Finally convert that Data into an image and do what you wish with it.
+                            let image = UIImage(data: imageData)
+                            DispatchQueue.main.async(execute:{
+                                if(image != nil){
+                                    if ((self.cache.object(forKey: imageURL as AnyObject)) != nil){
+                                        self.popUpScanView.centerImage = self.cache.object(forKey:imageURL as AnyObject) as? UIImage
+                                    }
+                                    else{
+                                        self.popUpScanView.centerImage = image
+                                        self.cache.setObject(image!, forKey:imageURL as AnyObject)
+                                    }
+                                }
+                            })
+                            // Do something with your image.
+                        } else {
+                            print("Couldn't get image: Image is nil")
+                        }
+                    } else {
+                        print("Couldn't get response code for some reason")
+                    }
                 }
             }
-       }
-        downloadPicTask.resume()
+            downloadPicTask.resume()
+        }
     }
 }
 

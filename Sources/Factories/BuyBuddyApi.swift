@@ -16,8 +16,11 @@ enum BuyBuddyEndpoint : String {
     case GetJwt = "POST /iam/users/tokens"
     case OrderDelegate = "POST /order/delegate"
     case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
-}
+    case HitagCompletionCreate = "POST /order/overview/<sale_id>/hitag_completion"
+    case HitagCompletionUpdate = "PUT /order/overview/<sale_id>/hitag_completion/<compile_id>"
 
+
+}
 
 public protocol BuyBuddyInvalidTokenDelegate{
     func tokenExpired()
@@ -135,7 +138,6 @@ public class BuyBuddyApi {
         }
         
         let endPoint = Endpoint.buildURL(endPoint: endPoint.rawValue, values: parameters as [String : AnyObject])
-        
         buyBuddySessionManager.request(endPoint.URL.absoluteString!,
                                        method: endPoint.method,
                                        parameters: endPoint.otherValues,
@@ -218,6 +220,37 @@ public class BuyBuddyApi {
              error: error)
         
     }
+    
+    func createHitagCompletion(orderId: Int,
+                             compileId: String,
+                             success: @escaping  (SuccessHandler<HitagValidationResponse>),
+                             error: @escaping (ErrorHandler)) {
+        
+        call(endPoint: BuyBuddyEndpoint.HitagCompletionCreate,
+             parameters: ["sale_id" : orderId,
+                          "hitag_completion" : ["hitag_id" : compileId,"status":0]],
+             
+             success: success,
+             error: error)
+        
+    }
+    
+    func updateHitagCompletion(orderId: Int,
+                      compileId:String,
+                       success: @escaping  (SuccessHandler<HitagValidationResponse>),
+                       error: @escaping (ErrorHandler)) {
+        
+        call(endPoint: BuyBuddyEndpoint.HitagCompletionUpdate,
+             parameters: ["sale_id" : orderId,
+                          "hitag_id" : compileId,
+                          "compile_id" : compileId,
+                          "hitag_completion" : ["status":1]],
+             
+             success: success,
+             error: error)
+        
+    }
+ 
     
     public func getJwt(accessToken: String,
                         success: @escaping  (SuccessHandler<BuyBuddyUserJwt>),

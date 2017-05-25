@@ -11,29 +11,21 @@ import RSBarcodes_Swift
 import BuyBuddyKit
 
 
-class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate,BuyBuddyOrderCreatedDelegate{
+class ViewController: RSCodeReaderViewController,BuyBuddyCartButtonDelegate,BuyBuddyOrderCreatedDelegate{
     
 
     @IBOutlet var frame: UIView!
-    @IBOutlet var cartButton: ShoppingCartButton!
+    @IBOutlet var cartButton: BuyBuddyCartButton!
 
     var orderID:Int?
     var basketTotal:Float?
-    
-    var delegate: ShoppingBasketDelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        delegate = cartButton
-        delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
+
         cartButton.delegate = self
         
         BuyBuddyApi.sharedInstance.set(orderDelegate: self)
-
-        //NotificationCenter.default.addObserver(self, selector: #selector(ViewController.didCreate(_:)), name: NSNotification.Name(rawValue: orderServiceNotification), object: nil)
-
+        
         //Bluetooth beacon scan
         frame.layer.addCustomBorder(rightEdge:true ,leftEdge:true,topEdge:true,bottomEdge:true,color: UIColor.purple, thickness: 3)
         
@@ -72,15 +64,8 @@ class ViewController: RSCodeReaderViewController,ShoppingBasketButtonDelegate,Bu
         BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.cartButton )
         
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
 
-        //StoryBoardInitializer.callStoryboard(param: self)
-    }
 }
-
-
 extension CALayer{
 
     

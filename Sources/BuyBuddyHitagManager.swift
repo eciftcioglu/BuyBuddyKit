@@ -45,11 +45,33 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         }
     }
     
+    public class func getValidNumbersWith(hitagIds: [String]) -> [String : Int] {
+        
+        var waitingIds : Set = Set<String>()
+        var hitagValidations: [String : Int] = [:]
+        
+        for hitagId in hitagIds {
+            waitingIds.insert(hitagId)
+        }
+
+        while hitagIds.count != hitagValidations.count{
+            for hitagId in waitingIds {
+                if let hitag = sharedInstance.activeHitags[hitagId] {
+                    if hitag.validPassCheck != nil {
+                        hitagValidations[hitagId] = hitag.validPassCheck!
+                        waitingIds.remove(hitagId)
+                    }
+                }
+            }
+        }
+        
+        return hitagValidations
+    }
+    
     public class func validateActiveHitag(hitagId:String)->Bool{
         
         for (key,_) in sharedInstance.activeHitags{
             print("active Hitags Here:")
-            print(sharedInstance.activeHitags)
             if(key == hitagId){
                 return true
             }
@@ -132,7 +154,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
                 let previousTime = activeHitags[key]?.timeStamp
                 let currentTime = CFAbsoluteTimeGetCurrent()
                 
-                if ((currentTime-previousTime!)>3){
+                if ((currentTime-previousTime!)>10){
                     activeHitags.removeValue(forKey: key)
                 }
             }
@@ -213,16 +235,16 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             validationArray.append(hitagDataByte[12])
             validationArray.append(hitagDataByte[13])
             
-            if let value = UInt16(Utilities.byteArrayToHexString(validationArray), radix: 16) {
-                data.validPassCheck = Int(value)
-            }
-            
             let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue)
             let seenTime = CFAbsoluteTimeGetCurrent()
 
             currentHitag = hitagDataString! as String
             
             data = CollectedHitag(id:currentHitag, rssi: Int(RSSI), txPower: nil,timeStamp:seenTime)
+            
+            if let value = UInt16(Utilities.byteArrayToHexString(validationArray), radix: 16) {
+                data.validPassCheck = Int(value)
+            }
     
             if activeHitags[data.id!] == nil{
                 activeHitags[data.id!] = data

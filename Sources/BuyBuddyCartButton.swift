@@ -9,18 +9,19 @@
 import Foundation
 import UIKit
 
-public protocol ShoppingBasketButtonDelegate:class {
+public protocol BuyBuddyCartButtonDelegate:class {
     func buttonWasPressed(_ button:UIButton)
+
 }
-public protocol ShoppingBasketDelegate {
+public protocol BuyBuddyCartButtonBadgeDelegate {
     func countDidChange(_ data:String)
     
 }
 @IBDesignable
-public class ShoppingCartButton:UIButton,ShoppingBasketDelegate{
+public class BuyBuddyCartButton:UIButton,BuyBuddyCartButtonBadgeDelegate{
     
     fileprivate var countLabel: UILabel = UILabel(frame: .zero)
-    public weak var delegate:ShoppingBasketButtonDelegate?
+    public weak var delegate:BuyBuddyCartButtonDelegate?
     
     @IBInspectable
     public var badgeColor = UIColor.buddyGreen() {
@@ -63,9 +64,10 @@ public class ShoppingCartButton:UIButton,ShoppingBasketDelegate{
         countLabel.backgroundColor = UIColor.buddyGreen()
         countLabel.textColor = UIColor.white
         countLabel.layer.masksToBounds = true
+        countLabel.text = "0"
         countLabel.font = UIFont(name: "Avenir-Heavy", size: 13)
         countLabel.layer.cornerRadius = countLabel.layer.frame.width / 2
-        
+
         self.addSubview(countLabel)
     }
     

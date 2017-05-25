@@ -19,16 +19,13 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     @IBOutlet var labelContainer: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var basketTotal: UILabel!
-    var userButtonDelegate: ShoppingBasketDelegate?
-    var userButton:ShoppingCartButton?
+    var userButtonDelegate: BuyBuddyCartButtonBadgeDelegate?
+    var userButton:BuyBuddyCartButton?
     var noDataLabel: UILabel = UILabel(frame:.zero)
-    var delegate: ShoppingBasketDelegate?
+    var delegate: BuyBuddyCartButtonBadgeDelegate?
     var hitagIds:[Int] = []
     var totalPrice:Float = 0
-    
-
     var blemanager : BuyBuddyBLEManager?
-
     var tableData : [ItemData] = []
     var suggestedData : [ItemData] = []
     
@@ -117,13 +114,9 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
                     if(hitagIds[index] == id.h_id!){
                         hitagIds.remove(at: index)
                     }
-                
                 }
             }
-        
         }
-        
-        
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
                 DispatchQueue.main.async(execute:{

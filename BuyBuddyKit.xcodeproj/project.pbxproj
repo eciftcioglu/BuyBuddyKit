@@ -16,12 +16,13 @@
 		2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */; };
 		2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
 		2D393CDA1EC4C870008C7457 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097831EC22C9D00FD1983 /* Utilities.swift */; };
-		2D393D141EC4CD4F008C7457 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */; };
+		2D393D141EC4CD4F008C7457 /* BuyBuddyCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D101EC4CCF9008C7457 /* BuyBuddyCartButton.swift */; };
 		2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D121EC4CD0B008C7457 /* CircleButton.swift */; };
 		2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D431EC4F9CB008C7457 /* FinalizePaymentViewController.swift */; };
 		2D393D481EC4FC30008C7457 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D461EC4FC28008C7457 /* Animations.swift */; };
 		2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393D491EC4FD20008C7457 /* BorderedHitagCell.swift */; };
 		2D393D4D1EC4FD54008C7457 /* BorderedHitagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D393D4C1EC4FD54008C7457 /* BorderedHitagCell.xib */; };
+		2D439EBF1ED7153B00DFCA7E /* HitagValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D439EBE1ED7153B00DFCA7E /* HitagValidationResponse.swift */; };
 		2D52042C1E967ABE00F5EE0D /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310B61E7216CD005F8368 /* UserFactory.swift */; };
 		2D52042F1E967C1500F5EE0D /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52042D1E967B8C00F5EE0D /* ItemData.swift */; };
 		2D5204351E968CAA00F5EE0D /* ResponseObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */; };
@@ -76,12 +77,13 @@
 		2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
 		2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyHitagManager.swift; sourceTree = "<group>"; };
 		2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectedHitag.swift; sourceTree = "<group>"; };
-		2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartButton.swift; sourceTree = "<group>"; };
+		2D393D101EC4CCF9008C7457 /* BuyBuddyCartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyCartButton.swift; sourceTree = "<group>"; };
 		2D393D121EC4CD0B008C7457 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		2D393D431EC4F9CB008C7457 /* FinalizePaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalizePaymentViewController.swift; sourceTree = "<group>"; };
 		2D393D461EC4FC28008C7457 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		2D393D491EC4FD20008C7457 /* BorderedHitagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedHitagCell.swift; sourceTree = "<group>"; };
 		2D393D4C1EC4FD54008C7457 /* BorderedHitagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BorderedHitagCell.xib; sourceTree = "<group>"; };
+		2D439EBE1ED7153B00DFCA7E /* HitagValidationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitagValidationResponse.swift; sourceTree = "<group>"; };
 		2D52042D1E967B8C00F5EE0D /* ItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		2D5204341E968CAA00F5EE0D /* ResponseObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseObjectSerializable.swift; path = Extensions/ResponseObjectSerializable.swift; sourceTree = "<group>"; };
 		2D5C0B731EBB57C5000CE7E9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
@@ -164,7 +166,7 @@
 		2D393D0F1EC4CC9B008C7457 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				2D393D101EC4CCF9008C7457 /* ShoppingCartButton.swift */,
+				2D393D101EC4CCF9008C7457 /* BuyBuddyCartButton.swift */,
 				2D393D121EC4CD0B008C7457 /* CircleButton.swift */,
 				2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */,
 			);
@@ -361,6 +363,7 @@
 				DC46D7C41ECB0962003FF533 /* BaseServiceModels.swift */,
 				DC295B771ECBD4FB004803C7 /* OrderDelegateResponse.swift */,
 				DC295B791ECCAC4B004803C7 /* HitagPassKeyResponse.swift */,
+				2D439EBE1ED7153B00DFCA7E /* HitagValidationResponse.swift */,
 				2D1C9F9E1ED2FF3A005EC5A3 /* Price.swift */,
 				2D1C9FA01ED3021C005EC5A3 /* ItemMetaData.swift */,
 			);
@@ -535,6 +538,7 @@
 				5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
 				2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */,
 				2D8097161EC1C1F300FD1983 /* ShoppingBasketViewController.swift in Sources */,
+				2D439EBF1ED7153B00DFCA7E /* HitagValidationResponse.swift in Sources */,
 				2D393CDA1EC4C870008C7457 /* Utilities.swift in Sources */,
 				5AD3109B1E720F8E005F8368 /* User.swift in Sources */,
 				2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */,
@@ -566,7 +570,7 @@
 				2D8097801EC21E1700FD1983 /* Color.swift in Sources */,
 				DC46D7581ECA6B6A003FF533 /* BuyBuddyUserJwt.swift in Sources */,
 				5AD310D11E7219FE005F8368 /* Passphrase.swift in Sources */,
-				2D393D141EC4CD4F008C7457 /* ShoppingCartButton.swift in Sources */,
+				2D393D141EC4CD4F008C7457 /* BuyBuddyCartButton.swift in Sources */,
 				2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */,
 				2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */,
 				DC46D7D51ECB8FFD003FF533 /* DateExtension.swift in Sources */,

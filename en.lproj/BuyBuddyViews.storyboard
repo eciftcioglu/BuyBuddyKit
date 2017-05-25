@@ -30,7 +30,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tr4-uh-JTV">
                                 <rect key="frame" x="0.0" y="492.5" width="375" height="174.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42W-nu-FrA" customClass="ShoppingCartButton" customModule="BuyBuddyKit" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42W-nu-FrA" customClass="BuyBuddyCartButton" customModule="BuyBuddyKit" customModuleProvider="target">
                                         <rect key="frame" x="150" y="50" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="42W-nu-FrA" secondAttribute="height" multiplier="1:1" id="3cb-OA-EyW"/>
@@ -351,7 +351,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-nN-Hk2" customClass="ButtonWithFrame" customModule="BuyBuddyKit" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="186.5" width="250" height="42"/>
+                                        <rect key="frame" x="63" y="186.5" width="250" height="42.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                         <state key="normal" title="Maille Gönder" image="mail_icon"/>

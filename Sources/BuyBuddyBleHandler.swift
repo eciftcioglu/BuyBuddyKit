@@ -12,6 +12,7 @@ import CoreBluetooth
 
 
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
+let BLEServiceConnectionNotification = "didConnectToDevice"
 
 
 class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BuyBuddyBlePeripheralDelegate{
@@ -112,9 +113,11 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                 if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
                     deviceWithError.append(currentHitag)
                     devicesToOpen.remove(at: index)
+                    print("I am current Device:")
+                    print(currentHitag)
                 }
             }
-            self.sendBTServiceNotificationWithIsBluetoothConnected(false)
+            //self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag)
             decideIfNextProduct()
 
         case HitagResponse.Success:
@@ -122,10 +125,14 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                 if(currentHitag == devicesToOpen[index]){
                   openedDevices.append(currentHitag)
                   devicesToOpen.remove(at: index)
+                    print("I am current Device:")
+                    print(currentHitag)
                 }
             }
-        self.sendBTServiceNotificationWithIsBluetoothConnected(true)
-        decideIfNextProduct()
+            decideIfNextProduct()
+            if(devicesToOpen.count == 0){
+                self.sendBTServiceNotificationWithIsBluetoothConnected(true,hitag: currentHitag)
+            }
             
         case HitagResponse.Unknown:
             print("Error")
@@ -133,9 +140,11 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                 if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
                         deviceWithError.append(currentHitag)
                         devicesToOpen.remove(at: index)
+                    print("I am current Device:")
+                    print(currentHitag)
                 }
             }
-            self.sendBTServiceNotificationWithIsBluetoothConnected(false)
+            //self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag)
             decideIfNextProduct()
 
         default:
@@ -143,8 +152,18 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         }
     }
     
-    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool) {
-        let connectionDetails = ["isConnected": isBluetoothConnected]
+    func sendBTServiceNotificationDidConnect(_ hitag:String) {
+        var connectionDetails:[String:Any]?
+        connectionDetails = ["hitagId": hitag]
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceConnectionNotification), object: self, userInfo: connectionDetails)
+    }
+    
+    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool,hitag:String) {
+        var connectionDetails:[String:Any] = [:]
+        connectionDetails["isConnected"] = isBluetoothConnected
+        connectionDetails["hitagId"] = hitag
+
         NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
     }
     
@@ -192,6 +211,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         let increment = hitagsTried[currentHitag]! + 1
         hitagsTried.updateValue(increment, forKey: currentHitag)
+        self.sendBTServiceNotificationDidConnect(currentHitag)
         uartConnect = BuyBuddyBlePeripheral(peripheral: self.currentDevice, delegate: self)
         uartConnect?.didConnect(connectionMode)
     }

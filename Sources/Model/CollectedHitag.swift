@@ -15,16 +15,14 @@ public class CollectedHitag: Mappable{
     internal(set) public var timeStamp: CFAbsoluteTime?
     internal(set) public var rssi: Int?
     internal(set) public var txPower: Int?
-    public var validPassCheck: Int?
+    internal(set) public var validPassCheck: Int?
 
     
-    init(id:String,rssi:Int,txPower:Int?,timeStamp:CFAbsoluteTime?, validPassCount: Int? = nil) {
+    init(id:String,rssi:Int,txPower:Int?,timeStamp:CFAbsoluteTime?) {
         self.id = id
         self.timeStamp = timeStamp
         self.rssi = rssi
         self.txPower = txPower
-        self.validPassCheck = validPassCount
-        
     }
     
     public func mapping(map: Map) {
