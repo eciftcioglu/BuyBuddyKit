@@ -17,8 +17,8 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     @IBOutlet var completionView: UIView!
     
     var orderId:Int?
-    var orderTotal:Float?
     var state = false
+    var hitagIds: [Int] = [] 
     var blemanager : BuyBuddyBLEManager?
     var hitags: [String:String] = [:]
 
@@ -33,33 +33,20 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         collectionView.register(UINib(nibName: "BorderedHitagCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "BorderedHitagCell")
         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didOpen(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         midView.blink(duration:1.5)
-
-        hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
-        blemanager = BuyBuddyBLEManager(products: hitags)
         
-        BuyBuddyApi.sharedInstance.completeOrder(orderId: orderId!, hitagValidations:[:], success: { (orderResponse, httpResponse) in
+        var hitagValidationList: [String : Int] = [:]
+
+        for hitagId in hitagIds {
+            hitagValidationList[String(hitagId)] = 0
+        }
+        
+        BuyBuddyApi.sharedInstance.completeOrder(orderId: orderId!, hitagValidations:["2":1514], success: { (orderResponse, httpResponse) in
+            
+            self.hitags = orderResponse.data!.hitag_passkeys!
+            self.blemanager = BuyBuddyBLEManager(products: self.hitags)
             
         }, error: { (err, httpResponse) in
-            switch httpResponse!.statusCode{
-                
-            case 422:
-                //gönderilen parametre yanlış
-                Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
-                break
-            case 500:
-                Utilities.showError(viewController:self,message: "Sistem hatası!")
-                //sistem hatası
-                break
-            case 404:
-                Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
-                //gönderiln parametrelere karşılık içerik bulunamadı
-                break
-                
-            default:
-                return
-            }
-
-            
+        
         })
     }
 

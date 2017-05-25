@@ -17,13 +17,26 @@ public class BuyBuddyViewManager{
     public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:ShoppingCartButton,hitagID:String?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
-            vc.userButton = cartButton
-            vc.hitagID = hitagID
-            vc.modalTransitionStyle = transitionStyle
-            vc.modalPresentationStyle = .overFullScreen
-            
             if (viewController.presentedViewController == nil ){
-                viewController.present(vc, animated: true, completion: nil)
+                if(checkDuplicate(id: hitagID!,view:viewController) == false){
+                    BuyBuddyApi.sharedInstance.getProductWith(hitagId:hitagID!, success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
+                        vc.product = item.data!
+                        vc.userButton = cartButton
+                        vc.hitagID = hitagID
+                        vc.modalTransitionStyle = transitionStyle
+                        vc.modalPresentationStyle = .overFullScreen
+                        if(item.data != nil){
+                            if (viewController.presentedViewController == nil){
+                                viewController.present(vc, animated: true, completion: nil)
+                            }
+                        }
+
+                        //popUpScanView.centerImage = self.product.image_url
+                        //popUpScanView.setSizePrice(size: product.size!, price:product.price!)
+                        
+                    }) { (err, httpResponse) in
+                    }
+                }
             }
         }
     }
@@ -41,16 +54,18 @@ public class BuyBuddyViewManager{
         }
     }
     
-    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,orderId:Int?,orderTotal:Float?){
+    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,orderId:Int?, hitagIds:[Int]){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: FinalizePaymentViewController.self)).instantiateViewController(withIdentifier: "paymentFinalizerView") as? FinalizePaymentViewController
         {
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
             vc.orderId = orderId
-            vc.orderTotal = orderTotal
+            vc.hitagIds = hitagIds
+            
             if (viewController.presentedViewController == nil){
                 viewController.present(vc, animated: true, completion: nil)
             }
+            
         }
     }
     
@@ -58,6 +73,26 @@ public class BuyBuddyViewManager{
         
         let connectionDetails:[String:Any] = ["sale_id": isOrderCreated.sale_id!, "grand_total": isOrderCreated.grand_total!]
         NotificationCenter.default.post(name: Notification.Name(rawValue: orderServiceNotification), object: self, userInfo: connectionDetails)
+    }
+    
+    private class func checkDuplicate(id:String,view:UIViewController)->Bool{
+        
+        for (key,_) in ShoppingBasketManager.shared.basket{
+            
+            if(key == id){
+                DispatchQueue.main.async {
+                    
+                    let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
+                        view.dismiss(animated: true, completion: nil)
+                    }
+                    let alertController = UIAlertController(title: "Uyarı!", message:"Aynı Hitag birden fazla kez eklenememektedir.Başka bir hitag okutunuz.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(acceptAction)
+                    view.present(alertController, animated: true, completion: nil)
+                }
+                return true
+            }
+        }
+        return false
     }
 }
 

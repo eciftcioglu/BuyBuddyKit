@@ -31,6 +31,8 @@
 		2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */; };
 		2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */; };
 		2D7A2F851EC0859900C2DD75 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C0B731EBB57C5000CE7E9 /* images.xcassets */; };
+		2D7BC7311ED5B8F600934568 /* BuyBuddyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7BC7301ED5B8F600934568 /* BuyBuddyValidator.swift */; };
+		2D7BC7331ED5D3AB00934568 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7BC7321ED5D3AB00934568 /* UIImageView.swift */; };
 		2D8097161EC1C1F300FD1983 /* ShoppingBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097141EC1C1D000FD1983 /* ShoppingBasketViewController.swift */; };
 		2D80971B1EC1CE5400FD1983 /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8097191EC1CE4A00FD1983 /* ShoppingCartTableViewCell.swift */; };
 		2D80971C1EC1CE5F00FD1983 /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8097181EC1CE3300FD1983 /* ShoppingCartTableViewCell.xib */; };
@@ -88,6 +90,8 @@
 		2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithFrame.swift; sourceTree = "<group>"; };
 		2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyViewManager.swift; sourceTree = "<group>"; };
+		2D7BC7301ED5B8F600934568 /* BuyBuddyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyValidator.swift; sourceTree = "<group>"; };
+		2D7BC7321ED5D3AB00934568 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		2D8097141EC1C1D000FD1983 /* ShoppingBasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingBasketViewController.swift; sourceTree = "<group>"; };
 		2D8097181EC1CE3300FD1983 /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		2D8097191EC1CE4A00FD1983 /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				2D80977E1EC21E1100FD1983 /* Color.swift */,
 				2D393D461EC4FC28008C7457 /* Animations.swift */,
 				DC46D7D41ECB8FFD003FF533 /* DateExtension.swift */,
+				2D7BC7321ED5D3AB00934568 /* UIImageView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				2D8097831EC22C9D00FD1983 /* Utilities.swift */,
+				2D7BC7301ED5B8F600934568 /* BuyBuddyValidator.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				2D80971B1EC1CE5400FD1983 /* ShoppingCartTableViewCell.swift in Sources */,
 				2D1C9F9F1ED2FF3B005EC5A3 /* Price.swift in Sources */,
 				2D393D481EC4FC30008C7457 /* Animations.swift in Sources */,
+				2D7BC7311ED5B8F600934568 /* BuyBuddyValidator.swift in Sources */,
 				5AD310CC1E7219CF005F8368 /* PassphraseFactoryDelegate.swift in Sources */,
 				2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */,
 				2D8097161EC1C1F300FD1983 /* ShoppingBasketViewController.swift in Sources */,
@@ -539,6 +546,7 @@
 				2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */,
 				2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */,
 				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
+				2D7BC7331ED5D3AB00934568 /* UIImageView.swift in Sources */,
 				DC295B781ECBD4FB004803C7 /* OrderDelegateResponse.swift in Sources */,
 				5AD310C61E72188B005F8368 /* Credentials.swift in Sources */,
 				2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */,

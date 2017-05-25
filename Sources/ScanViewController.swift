@@ -30,13 +30,17 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        self.navigationController?.isToolbarHidden = true
         userButtonDelegate = userButton
         delegate = cartButton
         delegate?.countDidChange(String(ShoppingBasketManager.shared.basket.count))
         cartButton.delegate = self
-        
 
+        popUpScanView.setSizePrice(size: (self.product.metadata?.size)!, price:self.product.price!)
+        addButton.isUserInteractionEnabled = true
+        
+        
+        downloadImage(imageURL: self.product.image!)
         /*
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
         blemanager = BuyBuddyBLEManager(products: hitags)
@@ -51,41 +55,6 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         userButton?.fadeOut()
-        addButton.isUserInteractionEnabled = false
-        
-        if(checkDuplicate(id: hitagID!) == false){
-            BuyBuddyApi.sharedInstance.getProductWith(hitagId: hitagID!, success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
-                
-                self.product = item.data!
-                self.popUpScanView.setSizePrice(size: (self.product.metadata?.size)!, price:self.product.price!)
-                self.addButton.isUserInteractionEnabled = true
-                //popUpScanView.centerImage = self.product.image_url
-                //popUpScanView.setSizePrice(size: product.size!, price:product.price!)
-                
-            }) { (err, httpResponse) in
-                
-                switch httpResponse!.statusCode{
-                    
-                case 422:
-                    //gönderilen parametre yanlış
-                    Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
-                    break
-                case 500:
-                    Utilities.showError(viewController:self,message: "Sistem hatası!")
-                    //sistem hatası
-                    break
-                case 404:
-                    Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
-                    //gönderiln parametrelere karşılık içerik bulunamadı
-                break
-                    
-                default:
-                    return
-                }
-     
-                
-            }
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,7 +75,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     @IBAction func addButtonAction(_ sender: Any) {
 
         if(product.hitagId != nil){
-            if(BuyBuddyHitagManager.validateHitag(hitagId: product.hitagId!)){
+            if(BuyBuddyHitagManager.validateActiveHitag(hitagId: product.hitagId!)){
         ShoppingBasketManager.shared.basket[product.hitagId!] = product
         let count = String(ShoppingBasketManager.shared.basket.count)
         delegate?.countDidChange(count)
@@ -114,7 +83,7 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
         self.dismiss(animated: true, completion: nil)
             }
             else{
-                Utilities.showError(viewController:self,message: "Eklemek istediğiniz ürün yanınızda olmalı!")
+                Utilities.showError(viewController:self,message: "Bluetooth'unuzun açık ve okuttuğunuz ürünün yakınınızda olduğundan emin olunuz!")
             }
         }
     }
@@ -122,25 +91,38 @@ class ScanViewController:UIViewController,ShoppingBasketButtonDelegate{
     func buttonWasPressed(_ data: UIButton) {
         performSegue(withIdentifier: "shoppingCart", sender: self)
     }
-    
-    func checkDuplicate(id:String)->Bool{
-        
-        for (key,_) in ShoppingBasketManager.shared.basket{
-            
-            if(key == id){
-                DispatchQueue.main.async {
-                    
-                    let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
-                        self.dismiss(animated: true, completion: nil)
+
+    func downloadImage(imageURL:String){
+        let session = URLSession(configuration: .default)
+        let myURL = URL(string: imageURL)! // We can force unwrap because we are 100% certain the constructor will not return nil in this case.
+        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
+        let downloadPicTask = session.dataTask(with: myURL) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded cat picture with response code \(res.statusCode)")
+                    if let imageData = data {
+                        // Finally convert that Data into an image and do what you wish with it.
+                         let image = UIImage(data: imageData)
+                        DispatchQueue.main.async(execute:{
+                            if(image != nil){
+                                self.popUpScanView.centerImage = image
+                            }
+                        })
+                        // Do something with your image.
+                    } else {
+                        print("Couldn't get image: Image is nil")
                     }
-                    let alertController = UIAlertController(title: "Uyarı!", message:"Aynı Hitag birden fazla kez eklenememektedir.Başka bir hitag okutunuz.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(acceptAction)
-                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    print("Couldn't get response code for some reason")
                 }
-                return true
             }
-        }
-        return false
+       }
+        downloadPicTask.resume()
     }
 }
 

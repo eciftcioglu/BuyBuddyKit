@@ -150,18 +150,30 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject], (list.contains { ($0 as? CBUUID)?.uuidString == "0000BEEF-6275-7962-7564-647966656565" } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
+        if let list = advertisementData["kCBAdvDataServiceUUIDs"] as? [AnyObject],
+            (list.contains { ($0 as? CBUUID)!.uuidString.contains("0000BEEF-6275-7962-7564-6479666565") } && advertisementData["kCBAdvDataManufacturerData"] != nil) {
             
             let manufactererData = advertisementData["kCBAdvDataManufacturerData"] as? Data
-            let hitagDataString = NSString(data: manufactererData!, encoding: String.Encoding.utf8.rawValue)
-            let hitagManufacturerData : NSString = hitagDataString!.replacingOccurrences(of: "Y\0", with: "").replacingOccurrences(of: "\0", with: "") as NSString
+            let hitagDataByte = [UInt8](manufactererData!)
+            //print(hitagDataByte[11])
+            //print(hitagDataByte[12])
             
-            if hitagManufacturerData.length >= 10 {
-                if devicesToOpen.contains(hitagManufacturerData.substring(to: 10) as String) {
-                    currentHitag = hitagManufacturerData.substring(to: 10) as String
-                    centralManager.stopScan()
-                    connectDevice(peripheral)
-                }
+            var hitagIdArray: [UInt8] = [UInt8]()
+            
+            if hitagDataByte.count < 10{
+                return
+            }
+             
+            for index in 2..<12 {
+                hitagIdArray.append(hitagDataByte[index])
+            }
+            
+            let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue)
+            
+            if devicesToOpen.contains(hitagDataString! as String) {
+                currentHitag = hitagDataString! as String
+                centralManager.stopScan()
+                connectDevice(peripheral)
             }
         }
     }

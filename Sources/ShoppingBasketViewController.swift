@@ -90,43 +90,50 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     }
     
     @IBAction func dismissAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if(self.navigationController != nil){
+            self.navigationController?.dismiss(animated: true, completion:nil)
+        }
+        else{
+        
+            self.dismiss(animated: true, completion: nil)
+
+        }
     }
     
     @IBAction func callPaymentPage(_ sender: Any) {
         
-        for item in tableData{
-        
-        hitagIds.append(item.h_id!)
-        
+        hitagIds.removeAll()
+        for item in ShoppingBasketManager.shared.basket.values{
+            hitagIds.append(item.h_id!)
         }
         print(totalPrice)
+        
+        for id in ShoppingBasketManager.shared.basket.values{
+        
+            if(!BuyBuddyHitagManager.validateActiveHitag(hitagId: id.hitagId!)){
+                
+                for index in 0..<hitagIds.count{
+                
+                    if(hitagIds[index] == id.h_id!){
+                        hitagIds.remove(at: index)
+                    }
+                
+                }
+            }
+        
+        }
+        
+        
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
-                BuyBuddyViewManager.sendCreateOrderNotification(orderResponse.data!)
+                DispatchQueue.main.async(execute:{
 
-                //BuyBuddyViewManager.callPaymentFinalizerView(viewController: self)
-
+                    self.dismiss(animated: true, completion: { 
+                        BuyBuddyApi.sharedInstance.orderDelegate?.BuyBuddyOrderCreated(orderId: orderResponse.data!.sale_id!, basketTotal: orderResponse.data!.grand_total!)
+                    })
+                })
+                
             }, error: { (err, httpResponse) in
-                switch httpResponse!.statusCode{
-                    
-                case 422:
-                    //gönderilen parametre yanlış
-                    Utilities.showError(viewController:self,message: "Gönderilen parametre hatalı!")
-                    break
-                case 500:
-                    Utilities.showError(viewController:self,message: "Sistem hatası!")
-                    //sistem hatası
-                    break
-                case 404:
-                    Utilities.showError(viewController:self,message: "Gönderilen parametrelere karşılık içerik bulunamadı")
-                    //gönderiln parametrelere karşılık içerik bulunamadı
-                    break
-                    
-                default:
-                    return
-                }
-
                 
             })
         

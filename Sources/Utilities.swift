@@ -43,12 +43,31 @@ class Utilities{
         DispatchQueue.main.async {
             
             let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
-                viewController.dismiss(animated: true, completion: nil)
             }
             let alertController = UIAlertController(title: "Uyarı!", message:message, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(acceptAction)
             viewController.present(alertController, animated: true, completion: nil)
         }
         
+    }
+    
+    private static let CHexLookup : [Character] =
+        [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ]
+    
+    
+    // Mark: - Public methods
+    
+    /// Method to convert a byte array into a string containing hex characters, without any
+    /// additional formatting.
+    public static func byteArrayToHexString(_ byteArray : [UInt8]) -> String {
+        
+        var stringToReturn = ""
+        
+        for oneByte in byteArray {
+            let asInt = Int(oneByte)
+            stringToReturn.append(self.CHexLookup[asInt >> 4])
+            stringToReturn.append(self.CHexLookup[asInt & 0x0f])
+        }
+        return stringToReturn
     }
 }

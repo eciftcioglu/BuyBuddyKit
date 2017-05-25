@@ -15,11 +15,20 @@ enum BuyBuddyEndpoint : String {
     case ScanHitag = "POST /iot/scan_record"
     case GetJwt = "POST /iam/users/tokens"
     case OrderDelegate = "POST /order/delegate"
+    case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
 }
 
 
 public protocol BuyBuddyInvalidTokenDelegate{
     func tokenExpired()
+}
+
+public protocol BuyBuddyApiErrorDelegate{
+    func BuyBuddyApiDidErrorReceived(_ errorCode:NSInteger,errorResponse:HTTPURLResponse)
+}
+
+public protocol BuyBuddyOrderCreatedDelegate{
+    func BuyBuddyOrderCreated(orderId: Int, basketTotal: Float)
 }
 
 public class BuyBuddyApi {
@@ -34,6 +43,9 @@ public class BuyBuddyApi {
     private var userCurrentJwt = BuyBuddyUserJwt.getCurrentJwt()
     private var currentAccessToken: String?
     var tokenDelegate: BuyBuddyInvalidTokenDelegate?
+    var errorDelegate: BuyBuddyApiErrorDelegate?
+    var orderDelegate: BuyBuddyOrderCreatedDelegate?
+    
     var isAccessTokenSet = false
     
     public static var getBaseUrl: String {
@@ -55,6 +67,12 @@ public class BuyBuddyApi {
         }
     }
     
+    public func set(orderDelegate: BuyBuddyOrderCreatedDelegate){
+        self.orderDelegate = orderDelegate
+    }
+    public func set(errorDelegate:BuyBuddyApiErrorDelegate ){
+        self.errorDelegate = errorDelegate
+    }
     public func set(accessToken: String){
         Utilities.saveToUd(key: "access_token", value: accessToken)
         currentAccessToken = accessToken
@@ -127,20 +145,31 @@ public class BuyBuddyApi {
             
                 if response.error != nil{
                     error(response.error!, response.response)
-                    
+                    self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                
                 }else{
                     switch response.result {
                     case .success(let value):
-                        let result = Mapper<BuyBuddyObject<T>>().map(JSON: value as! [String: Any])
                         
-                        if result != nil{
-                            success(result!, response.response)
-                        }else{
-                            //error(Error, nil)
+                        
+                        if value is [String: Any] {
+                            let result = Mapper<BuyBuddyObject<T>>().map(JSON: value as! [String: Any])
+                            
+                            if result != nil{
+                                success(result!, response.response)
+                            }else{
+                                self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                            }
+
                         }
-                        break
+                        else {
+                            self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                        }
+
+                                                break
                     case .failure(let err):
                         error(err, response.response)
+                        self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
                 }
             }
         }
@@ -150,17 +179,19 @@ public class BuyBuddyApi {
                         success: @escaping  (SuccessHandler<ItemData>),
                         error: @escaping (ErrorHandler)){
         
+        let replaced_hitag_id = hitagId.replacingOccurrences(of: " ", with: "")
+        
         call(endPoint: BuyBuddyEndpoint.QrHitag,
-             parameters: ["hitag_id" : hitagId],
+             parameters: ["hitag_id" : replaced_hitag_id],
              success: success,
              error: error)
     }
     
     func postScanRecord(hitags: [CollectedHitag],
-                        success: @escaping  (SuccessHandler<ItemData>),
+                        success: @escaping  (SuccessHandler<BuyBuddyBase>),
                         error: @escaping (ErrorHandler)){
         
-        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["collected_hitags" : hitags], success: success, error: error)
+        call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["scan_record" : hitags.toJSON()], success: success, error: error)
 
     }
     
@@ -180,9 +211,9 @@ public class BuyBuddyApi {
                        success: @escaping  (SuccessHandler<HitagPassKeyResponse>),
                        error: @escaping (ErrorHandler)) {
         
-        call(endPoint: BuyBuddyEndpoint.GetJwt,
-             parameters: ["order_delegate_sale_id" : orderId,
-                          "hitag_release_params" : hitagValidations],
+        call(endPoint: BuyBuddyEndpoint.OrderCompletion,
+             parameters: ["sale_id" : orderId,
+                          "hitag_release_params" : ["hitags" : hitagValidations]],
              success: success,
              error: error)
         

@@ -10,7 +10,7 @@ import UIKit
 import BuyBuddyKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDelegate,BuyBuddyApiErrorDelegate {
 
     var window: UIWindow?
 
@@ -22,11 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         BuyBuddyHitagManager.startHitagManager()
         
         //Set to true to enable sandbox mode.Default is false
+        
         BuyBuddyApi.sharedInstance.sandBoxMode(isActive: true)
+        
+        BuyBuddyApi.sharedInstance.set(errorDelegate: self)
         BuyBuddyApi.sharedInstance.set(invalidTokenDelegate: self)
         BuyBuddyApi.sharedInstance.set(accessToken: "EGts2QfOQAW5nhQL29tLHad8PUA6gUiykKaZQ9kXfWsIO+AnuaRHYLHQAP3IoNVBx5J3uMf4QFqomeMgjHtEZA==")
         
         return true
+    }
+    
+    func BuyBuddyApiDidErrorReceived(_ errorCode: NSInteger, errorResponse: HTTPURLResponse) {
+        
+        print(errorCode)
+        print(errorResponse)
     }
     
     func tokenExpired() {

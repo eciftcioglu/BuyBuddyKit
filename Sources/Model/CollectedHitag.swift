@@ -7,36 +7,39 @@
 //
 
 import Foundation
+import ObjectMapper
 
-
-public class CollectedHitag{
+public class CollectedHitag: Mappable{
     
     internal(set) public var id: String?
     internal(set) public var timeStamp: CFAbsoluteTime?
     internal(set) public var rssi: Int?
     internal(set) public var txPower: Int?
+    public var validPassCheck: Int?
 
     
-    init(id:String,rssi:Int,txPower:Int?,timeStamp:CFAbsoluteTime?) {
+    init(id:String,rssi:Int,txPower:Int?,timeStamp:CFAbsoluteTime?, validPassCount: Int? = nil) {
         self.id = id
         self.timeStamp = timeStamp
         self.rssi = rssi
         self.txPower = txPower
+        self.validPassCheck = validPassCount
         
     }
+    
+    public func mapping(map: Map) {
+        id <- map["id"]
+        timeStamp <- map["timestamp"]
+        rssi <- map["rssi"]
+        txPower <- map["tx_power"]
+        validPassCheck <- map["valid_pass_check"]
+    }
+    
+    public required init?(map: Map) {
+        
+    }
+    
     init() {
         
-    }
-    init?(json: [String:Any]) throws{
-        guard
-            let id = json["id"] as? String,
-            let rssi = json["rssi"] as? Int,
-            let txPower = json["txPower"] as? Int
-            else { return nil }
-        
-        self.id = id
-        self.rssi = rssi
-        self.txPower = txPower
-
     }
 }

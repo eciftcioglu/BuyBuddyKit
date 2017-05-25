@@ -16,6 +16,7 @@ public class OrderDelegateResponse: Mappable{
     var employee_id: Int?
     var grand_total: Float?
     var status_flag: Int?
+    var hitag_ids : [Int]?
     
     public func mapping(map: Map) {
         sale_id <- map["sale_id"]
@@ -23,6 +24,7 @@ public class OrderDelegateResponse: Mappable{
         employee_id <- map["employee_id"]
         grand_total <- map["grand_total"]
         status_flag <- map["status_flag"]
+        hitag_ids   <- map["hitag_ids"]
     }
     
     required public init?(map: Map) {
