@@ -35,8 +35,9 @@ class ViewController: RSCodeReaderViewController,BuyBuddyCartButtonDelegate,BuyB
         self.barcodesHandler = { barcodes in
             for barcode in barcodes {
                 DispatchQueue.main.async(execute:{
-                    
+                    self.session.stopRunning()
                     if let validHitagId = BuyBuddyHitagValidator.isValidPatternForHitag(hitagId: barcode.stringValue) {
+                        self.session.startRunning()
                         BuyBuddyViewManager.callScannedProductView(viewController: self, cartButton: self.cartButton, hitagID: validHitagId)
                     }else {
                     print("error")

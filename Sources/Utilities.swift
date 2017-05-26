@@ -39,17 +39,14 @@ class Utilities{
     }
     
     public class func showError(viewController:UIViewController,message:String){
-        
         DispatchQueue.main.async {
-            
             let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
             }
             let alertController = UIAlertController(title: "Uyarı!", message:message, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(acceptAction)
             viewController.present(alertController, animated: true, completion: nil)
         }
-        
-    }
+}
     
 
     private static let CHexLookup : [Character] =

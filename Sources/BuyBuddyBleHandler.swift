@@ -32,16 +32,32 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var devicesToOpen    : [String] = []
     var openedDevices    : [String] = []
     var deviceWithError  : [String] = []
-    var currentIndexPath : IndexPath?
-    
-    var hitagCheck:Bool = false
+
     
     override init() {
         super.init()
         
     }
     
-    init(products : [String:String]) {
+    func sendPassword(password: String) -> Bool{
+        if connected {
+            self.uartConnect?.writeHexString(password)
+            return true
+        }
+        return false
+    }
+    
+    func disconnectFromHitag() -> Bool{
+        if connected {
+            if currentDevice != nil {
+                self.centralManager.cancelPeripheralConnection(self.currentDevice)
+                return true
+            }
+        }
+        return false
+    }
+    
+    /*init(products : [String:String]) {
         super.init()
         self.hitagsPasswords = products
         
@@ -51,6 +67,13 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             devicesToOpen.append(key)
         }
         
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+    }*/
+    
+    init(hitagId: String) {
+        super.init()
+        devicesToOpen.append(hitagId)
+        hitagsTried[hitagId] = 0
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
@@ -69,11 +92,12 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
             
-            self.uartConnect?.writeHexString( self.hitagsPasswords[self.currentHitag]!)
-            
+            //self.uartConnect?.writeHexString( self.hitagsPasswords[self.currentHitag]!)
             //self.centralManager.cancelPeripheralConnection(self.currentDevice)
         }
     }
+    
+    
     
     func uartDidEncounterError(_ error: NSString) {
         
@@ -107,47 +131,26 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     func didReceiveData(_ newData: Data) {
         
         switch newData {
+        case HitagResponse.Starting:
+            print("HitagResponse : Starting");
+            
+        case HitagResponse.ValidationSuccess:
+            print("HitagResponse : ValidationSuccess")
+            
         case HitagResponse.Error:
-            print("Error")
-            for index in 0..<devicesToOpen.count{
-                if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
-                    deviceWithError.append(currentHitag)
-                    devicesToOpen.remove(at: index)
-                    print("I am current Device:")
-                    print(currentHitag)
-                }
-            }
-            //self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag)
-            decideIfNextProduct()
-
+            print("HitagResponse : Error");
+            self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: currentHitag, 2)
+            
         case HitagResponse.Success:
-            for index in 0..<devicesToOpen.count{
-                if(currentHitag == devicesToOpen[index]){
-                  openedDevices.append(currentHitag)
-                  devicesToOpen.remove(at: index)
-                    print("I am current Device:")
-                    print(currentHitag)
-                }
-            }
-            decideIfNextProduct()
-            if(devicesToOpen.count == 0){
-                self.sendBTServiceNotificationWithIsBluetoothConnected(true,hitag: currentHitag)
-            }
+            print("HitagResponse : Success");
+            self.sendBTServiceNotificationWithIsBluetoothConnected(true, hitag: currentHitag, 1)
             
         case HitagResponse.Unknown:
-            print("Error")
-            for index in 0..<devicesToOpen.count{
-                if(currentHitag == devicesToOpen[index] && hitagsTried[currentHitag] == 2){
-                        deviceWithError.append(currentHitag)
-                        devicesToOpen.remove(at: index)
-                    print("I am current Device:")
-                    print(currentHitag)
-                }
-            }
-            //self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag)
-            decideIfNextProduct()
-
+            print("HitagResponse : Unknown")
+            self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: currentHitag, -1000)
+            
         default:
+            self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag, -1000)
             return
         }
     }
@@ -159,11 +162,12 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceConnectionNotification), object: self, userInfo: connectionDetails)
     }
     
-    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool,hitag:String) {
+    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool,hitag:String, _ responseCode: Int) {
         var connectionDetails:[String:Any] = [:]
         connectionDetails["isConnected"] = isBluetoothConnected
         connectionDetails["hitagId"] = hitag
-
+        connectionDetails["responseCode"] = responseCode
+ 
         NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
     }
     

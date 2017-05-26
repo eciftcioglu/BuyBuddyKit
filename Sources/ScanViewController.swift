@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate{
+class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAlertDelegate{
     
     @IBOutlet var popUpScanView: PopUpScanView!
     @IBOutlet var cartButton: BuyBuddyCartButton!
@@ -46,7 +46,9 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate{
  */
     }
     
-  
+    func stateChange() {
+        
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         userButton?.fadeIn()

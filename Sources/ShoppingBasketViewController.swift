@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BluetoothAlertDelegate, BuyBuddyHitagManagerListenerDelegate{
 
     @IBOutlet var titleText: UILabel!
     @IBOutlet var tableViewContainer: UIView!
@@ -28,8 +28,9 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
     var blemanager : BuyBuddyBLEManager?
     var tableData : [ItemData] = []
     var suggestedData : [ItemData] = []
-    
-    
+    var hitagValidations: [String : Int] = [:]
+    var hitagStringIds: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addBlurEffect()
@@ -49,6 +50,9 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         
     }
     
+    func stateChange() {
+        
+    }
     override func viewDidLayoutSubviews() {
         labelContainer.roundedBottomCorner()
         tableViewContainer.roundedTopCorner()
@@ -97,6 +101,10 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         }
     }
     
+    func scanResponse(hitag: CollectedHitag) {
+        
+    }
+    
     @IBAction func callPaymentPage(_ sender: Any) {
         
         hitagIds.removeAll()
@@ -108,20 +116,20 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         for id in ShoppingBasketManager.shared.basket.values{
         
             if(!BuyBuddyHitagManager.validateActiveHitag(hitagId: id.hitagId!)){
-                
-                for index in 0..<hitagIds.count{
-                
-                    if(hitagIds[index] == id.h_id!){
-                        hitagIds.remove(at: index)
-                    }
-                }
+                print("error")
+                return
             }
         }
+        
+        hitagStringIds = Array(ShoppingBasketManager.shared.basket.keys)
+
+        if BuyBuddyHitagManager.getValidNumbersWith(hitagIds: hitagStringIds) != nil{
+            
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
                 DispatchQueue.main.async(execute:{
-
-                    self.dismiss(animated: true, completion: { 
+                    
+                    self.dismiss(animated: true, completion: {
                         BuyBuddyApi.sharedInstance.orderDelegate?.BuyBuddyOrderCreated(orderId: orderResponse.data!.sale_id!, basketTotal: orderResponse.data!.grand_total!)
                     })
                 })
@@ -129,6 +137,12 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
             }, error: { (err, httpResponse) in
                 
             })
+            
+        }else{
+            print("Hitag Validationları eksik durumda")
+        }
+
+        
         
 
         /*let product = ItemData(hitagId: "0100000001")

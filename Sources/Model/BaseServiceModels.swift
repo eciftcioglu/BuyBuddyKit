@@ -11,16 +11,16 @@ import ObjectMapper
 
 public class BuyBuddyApiError: Mappable{
     
-    var name: String?
-    var detail: String?
+    var tracemessage: String?
+    var tracecode: String?
     
     required public init?(map: Map) {
         
     }
     
     public func mapping(map: Map) {
-        name <- map["name"]
-        detail <- map["detail"]
+        tracecode    <- map["tracecode"]
+        tracemessage <- map["tracemessage"]
     }
 }
 

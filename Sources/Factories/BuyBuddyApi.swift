@@ -16,7 +16,7 @@ enum BuyBuddyEndpoint : String {
     case GetJwt = "POST /iam/users/tokens"
     case OrderDelegate = "POST /order/delegate"
     case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
-    case HitagCompletionCreate = "POST /order/overview/<sale_id>/hitag_completion"
+    //case HitagCompletionCreate = "POST /order/overview/<sale_id>/hitag_completion"
     case HitagCompletionUpdate = "PUT /order/overview/<sale_id>/hitag_completion/<compile_id>"
 
 
@@ -143,39 +143,43 @@ public class BuyBuddyApi {
                                        parameters: endPoint.otherValues,
                                        encoding: JSONEncoding.default)
             .validate()
-            .responseJSON { (response) in
-            
-                if response.error != nil{
-                    error(response.error!, response.response)
-                    self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+            .responseString { (response) in
                 
-                }else{
-                    switch response.result {
-                    case .success(let value):
-                        
-                        
-                        if value is [String: Any] {
-                            let result = Mapper<BuyBuddyObject<T>>().map(JSON: value as! [String: Any])
-                            
-                            if result != nil{
-                                success(result!, response.response)
-                            }else{
-                                self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
-                            }
-
-                        }
-                        else {
-                            self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
-                        }
-
-                                                break
-                    case .failure(let err):
-                        error(err, response.response)
+                //if response.data != nil{
+                //    if let jsonString = String(data: response.data!, encoding: .utf8) {
+                //        if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                //            print(baseError.errors)
+                //        }
+                //    }
+                //}
+                
+                switch response.result {
+                case .success(let value):
+                    
+                    let result = Mapper<BuyBuddyObject<T>>().map(JSONString: value )
+                    
+                    if result != nil{
+                        success(result!, response.response)
+                    }else{
                         self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                    }
+                    
+                    break
+                case .failure(let err):
+                    error(err, response.response)
+                    self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                    
+                    if response.data != nil{
+                        if let jsonString = String(data: response.data!, encoding: .utf8) {
+                            if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                                print(baseError)
+                            }
+                        }
+                    }
                 }
             }
         }
-    }
+    
 
     public func getProductWith(hitagId: String,
                         success: @escaping  (SuccessHandler<ItemData>),
@@ -221,7 +225,7 @@ public class BuyBuddyApi {
         
     }
     
-    func createHitagCompletion(orderId: Int,
+    /*func createHitagCompletion(orderId: Int,
                              compileId: String,
                              success: @escaping  (SuccessHandler<HitagValidationResponse>),
                              error: @escaping (ErrorHandler)) {
@@ -233,7 +237,7 @@ public class BuyBuddyApi {
              success: success,
              error: error)
         
-    }
+    }*/
     
     func updateHitagCompletion(orderId: Int,
                       compileId:String,
