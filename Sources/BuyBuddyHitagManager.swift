@@ -145,6 +145,8 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopUpdatingLocation()
     }
+    
+    
 
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!

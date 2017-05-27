@@ -25,6 +25,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var centralManager : CBCentralManager!
     var currentDevice  : CBPeripheral!
     var connected      : Bool = false
+    private let connectionTimeOutIntvl:TimeInterval = 5
+    private var connectionTimer:Timer?
     
     var hitagsPasswords  : [String : String] = [:]
     var hitagsTried      : [String : Int] = [:]
@@ -90,15 +92,19 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         
         connected = true
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
-            
-            //self.uartConnect?.writeHexString( self.hitagsPasswords[self.currentHitag]!)
-            //self.centralManager.cancelPeripheralConnection(self.currentDevice)
-        }
+        connectionTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
     }
     
-    
-    
+    func connectionTimedOut() {
+       
+        connectionTimer?.invalidate()
+        self.centralManager.cancelPeripheralConnection(currentDevice)
+         let tried = hitagsTried[currentHitag]
+        if (tried != nil && tried! < 2){
+        
+            self.connectDevice(currentDevice)
+        }
+    }
     func uartDidEncounterError(_ error: NSString) {
         
     }
@@ -128,10 +134,14 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         }
     }
     
+
     func didReceiveData(_ newData: Data) {
         
         switch newData {
         case HitagResponse.Starting:
+            connectionTimer?.invalidate()
+            connectionTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
+
             print("HitagResponse : Starting");
             
         case HitagResponse.ValidationSuccess:
@@ -143,6 +153,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             
         case HitagResponse.Success:
             print("HitagResponse : Success");
+            connectionTimer?.invalidate()
             self.sendBTServiceNotificationWithIsBluetoothConnected(true, hitag: currentHitag, 1)
             
         case HitagResponse.Unknown:

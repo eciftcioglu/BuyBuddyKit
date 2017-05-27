@@ -113,16 +113,14 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             }else{
                 //FINISH !!!
                 
-                DispatchQueue.main.async {
+                _ = self.blemanager!.bleHandler.disconnectFromHitag()
+                self.midView.timer.invalidate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.paymentLabel.text = "Ödeme Tamamlandı"
-                    self.midView.timer.invalidate()
                     self.completionView.fadeIn(duration: 0.5)
                     self.state = true
-                    DispatchQueue.main.async {
-                        self.midView.fadeOut()
-                    }
-                    self.collectionView.reloadData()
-                }
+                    self.midView.fadeOut()
+                    self.collectionView.reloadData()                }
             }
         
             BuyBuddyApi.sharedInstance.updateHitagCompletion(orderId: self.orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
