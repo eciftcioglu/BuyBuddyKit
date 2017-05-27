@@ -27,7 +27,7 @@ public protocol BuyBuddyInvalidTokenDelegate{
 }
 
 public protocol BuyBuddyApiErrorDelegate{
-    func BuyBuddyApiDidErrorReceived(_ errorCode:NSInteger,errorResponse:HTTPURLResponse)
+    func BuyBuddyApiDidErrorReceived(_ errorCode:NSInteger,errorResponse:BuyBuddyBase?)
 }
 
 public protocol BuyBuddyOrderCreatedDelegate{
@@ -161,18 +161,32 @@ public class BuyBuddyApi {
                     if result != nil{
                         success(result!, response.response)
                     }else{
-                        self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+                        if let jsonString = String(data: response.data!, encoding: .utf8) {
+                            if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                            self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: baseError)
+                            }
+                        }
                     }
-                    
                     break
                 case .failure(let err):
+                    
                     error(err, response.response)
-                    self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: response.response!)
+            
+                    if response.response == nil {
+                        self.errorDelegate?.BuyBuddyApiDidErrorReceived(-1 ,errorResponse: nil)
+                    }else{
+                        if let jsonString = String(data: response.data!, encoding: .utf8) {
+                            if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                            self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: baseError)
+                            }
+                        }
+                    }
                     
                     if response.data != nil{
                         if let jsonString = String(data: response.data!, encoding: .utf8) {
                             if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
                                 print(baseError)
+                        self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: baseError)
                             }
                         }
                     }

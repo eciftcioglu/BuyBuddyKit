@@ -44,6 +44,7 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
         blemanager = BuyBuddyBLEManager(products: hitags)
  */
+
     }
     
     func stateChange() {
@@ -92,10 +93,8 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
    
     func buttonWasPressed(_ data: UIButton) {
         performSegue(withIdentifier: "shoppingCart", sender: self)
+        
     }
-    
-    
-   
 }
 extension ScanViewController{
 

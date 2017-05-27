@@ -70,8 +70,10 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     
     func didConnect(_ notification: Notification){
         
+        
         let id =  notification.userInfo?["hitagId"] as! String
         
+        if(!Reachability.isConnectedToNetwork()){
         BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, hitagValidations: [id : hitagValidations[id]!], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
@@ -82,6 +84,12 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         }, error: { (err, httpResponse) in
             
         })
+        
+        }else{
+        
+        Utilities.showError(viewController: self, message: "You do not have internet connection!")
+        
+        }
         
         
         /*BuyBuddyApi.sharedInstance.createHitagCompletion(orderId: orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in

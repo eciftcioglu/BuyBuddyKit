@@ -31,10 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         return true
     }
     
-    func BuyBuddyApiDidErrorReceived(_ errorCode: NSInteger, errorResponse: HTTPURLResponse) {
+    func BuyBuddyApiDidErrorReceived(_ errorCode: NSInteger, errorResponse: BuyBuddyBase?) {
         
         print(errorCode)
-        print(errorResponse)
+        if(errorResponse != nil){
+            print(errorResponse!)
+        }
     }
     
     func tokenExpired() {
