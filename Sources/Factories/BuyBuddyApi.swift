@@ -145,14 +145,7 @@ public class BuyBuddyApi {
             .validate()
             .responseString { (response) in
                 
-                //if response.data != nil{
-                //    if let jsonString = String(data: response.data!, encoding: .utf8) {
-                //        if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
-                //            print(baseError.errors)
-                //        }
-                //    }
-                //}
-                
+     
                 switch response.result {
                 case .success(let value):
                     
@@ -173,7 +166,8 @@ public class BuyBuddyApi {
                     error(err, response.response)
             
                     if response.response == nil {
-                        self.errorDelegate?.BuyBuddyApiDidErrorReceived(-1 ,errorResponse: nil)
+                    let error = BuyBuddyBase(error: BuyBuddyApiError(tracemessage: "Unknown Message", tracecode: "9000"))
+                        self.errorDelegate?.BuyBuddyApiDidErrorReceived(-1 ,errorResponse: error)
                     }else{
                         if let jsonString = String(data: response.data!, encoding: .utf8) {
                             if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {

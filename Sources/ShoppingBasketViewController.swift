@@ -116,7 +116,7 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         for id in ShoppingBasketManager.shared.basket.values{
         
             if(!BuyBuddyHitagManager.validateActiveHitag(hitagId: id.hitagId!)){
-                print("error")
+                print("Cannot Validate Hitags in Basket")
                 return
             }
         }

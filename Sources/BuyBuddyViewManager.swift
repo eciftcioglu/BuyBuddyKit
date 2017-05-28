@@ -19,6 +19,7 @@ public class BuyBuddyViewManager{
         {
             if (viewController.presentedViewController == nil ){
                 if(checkDuplicate(id: hitagID!,view:viewController) == false){
+                    showActivityIndicatory(uiView: viewController.view)
                     BuyBuddyApi.sharedInstance.getProductWith(hitagId:hitagID!, success: { (item: BuyBuddyObject<ItemData>, httpResponse) in
                         vc.product = item.data!
                         vc.userButton = cartButton
@@ -27,6 +28,11 @@ public class BuyBuddyViewManager{
                         vc.modalPresentationStyle = .overFullScreen
                         if(item.data != nil){
                             if (viewController.presentedViewController == nil){
+                                for view in viewController.view.subviews{
+                                    if let anim = view as? UIActivityIndicatorView{
+                                        anim.stopAnimating()
+                                    }
+                                }
                                 viewController.present(vc, animated: true, completion: nil)
                             }
                         }
@@ -73,6 +79,18 @@ public class BuyBuddyViewManager{
         
         let connectionDetails:[String:Any] = ["sale_id": isOrderCreated.sale_id!, "grand_total": isOrderCreated.grand_total!]
         NotificationCenter.default.post(name: Notification.Name(rawValue: orderServiceNotification), object: self, userInfo: connectionDetails)
+    }
+    
+    
+    private class func showActivityIndicatory(uiView: UIView) {
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRect(x:uiView.frame.width/2, y:uiView.frame.height/2, width:40.0, height:40.0)
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
     }
     
     private class func checkDuplicate(id:String,view:UIViewController)->Bool{

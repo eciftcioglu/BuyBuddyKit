@@ -18,13 +18,13 @@ let BLEServiceConnectionNotification = "didConnectToDevice"
 class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BuyBuddyBlePeripheralDelegate{
     
     var singleBuy      : Bool = false
-    
     var connectionMode : ConnectionMode = ConnectionMode.uart
     var delegate       : BuyBuddyBlePeripheralDelegate!
     var uartConnect    : BuyBuddyBlePeripheral?
     var centralManager : CBCentralManager!
     var currentDevice  : CBPeripheral!
     var connected      : Bool = false
+    var timeOutCheck:Bool = false
     private let connectionTimeOutIntvl:TimeInterval = 5
     private var connectionTimer:Timer?
     
@@ -59,19 +59,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         return false
     }
     
-    /*init(products : [String:String]) {
-        super.init()
-        self.hitagsPasswords = products
-        
-        for (key,_) in hitagsPasswords
-        {
-            hitagsTried[key] = 0
-            devicesToOpen.append(key)
-        }
-        
-        centralManager = CBCentralManager(delegate: self, queue: nil)
-    }*/
-    
     init(hitagId: String) {
         super.init()
         devicesToOpen.append(hitagId)
@@ -80,7 +67,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     }
     
     func decideIfNextProduct(){
-        
         if(devicesToOpen.count != 0){
         
             let options : [String : AnyObject] = NSDictionary(object: NSNumber(value: true as Bool), forKey: CBCentralManagerScanOptionAllowDuplicatesKey as NSCopying) as! [String : AnyObject]
@@ -91,18 +77,24 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     func connectionFinalized() {
         
         connected = true
-        
         connectionTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
     }
     
     func connectionTimedOut() {
-       
         connectionTimer?.invalidate()
         self.centralManager.cancelPeripheralConnection(currentDevice)
-         let tried = hitagsTried[currentHitag]
-        if (tried != nil && tried! < 2){
+        timeOutCheck = true
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
+        if(timeOutCheck){
+        let tried = hitagsTried[currentHitag]
+        if (tried != nil && tried! < 3){
+            print("Trying Again")
+            timeOutCheck = false
             self.connectDevice(currentDevice)
+            }
         }
     }
     func uartDidEncounterError(_ error: NSString) {
@@ -189,9 +181,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             
             let manufactererData = advertisementData["kCBAdvDataManufacturerData"] as? Data
             let hitagDataByte = [UInt8](manufactererData!)
-            //print(hitagDataByte[11])
-            //print(hitagDataByte[12])
-            
             var hitagIdArray: [UInt8] = [UInt8]()
             
             if hitagDataByte.count < 10{
@@ -201,13 +190,13 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             for index in 2..<12 {
                 hitagIdArray.append(hitagDataByte[index])
             }
-            
-            let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue)
-            
-            if devicesToOpen.contains(hitagDataString! as String) {
-                currentHitag = hitagDataString! as String
+      
+        if let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue){
+            if devicesToOpen.contains(hitagDataString as String) {
+                currentHitag = hitagDataString as String
                 centralManager.stopScan()
                 connectDevice(peripheral)
+                }
             }
         }
     }
@@ -217,14 +206,13 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         if centralManager.isScanning {
             self.centralManager.stopScan()
         }
-        
         self.currentDevice = peripheral
         self.currentDevice.delegate = self
         self.centralManager.connect(peripheral, options: nil)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let increment = hitagsTried[currentHitag]! + 1
+        let increment: Int = hitagsTried[currentHitag]! + 1
         hitagsTried.updateValue(increment, forKey: currentHitag)
         self.sendBTServiceNotificationDidConnect(currentHitag)
         uartConnect = BuyBuddyBlePeripheral(peripheral: self.currentDevice, delegate: self)

@@ -65,21 +65,20 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         var allHitags: [String : Int] = [:]
         
         for id in hitagIds {
-            if let hitag = BuyBuddyHitagManager.sharedInstance.activeHitags[id] {
-                if hitag.validPassCheck != nil {
-                    allHitags[id] = hitag.validPassCheck
-                }
-            }else if let hitag = BuyBuddyHitagManager.sharedInstance.activeHitags[id] {
-                if hitag.validPassCheck != nil {
-                    allHitags[id] = hitag.validPassCheck
-                }
+            if let passCheck = BuyBuddyHitagManager.sharedInstance.activeHitags[id]?.validPassCheck {
+                allHitags[id] = passCheck
+            }else if let passCheck = BuyBuddyHitagManager.sharedInstance.passiveHitags[id]?.validPassCheck {
+                allHitags[id] = passCheck
             }
         }
+
         
         if hitagIds.count == allHitags.count {
             return allHitags
         }
         
+     
+
         return nil
     }
     

@@ -38,7 +38,6 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
         popUpScanView.setSizePrice(size: (self.product.metadata?.size)!, price:self.product.price!)
         addButton.isUserInteractionEnabled = true
         
-        showActivityIndicatory(uiView: popUpScanView.centerImageView)
         downloadImage(imageURL: self.product.image!)
         /*
         hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
@@ -98,16 +97,6 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
 }
 extension ScanViewController{
 
-     func showActivityIndicatory(uiView: UIView) {
-        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-        actInd.frame = CGRect(x:uiView.frame.width/2, y:uiView.frame.height/2, width:40.0, height:40.0)
-        actInd.center = uiView.center
-        actInd.hidesWhenStopped = true
-        actInd.activityIndicatorViewStyle =
-            UIActivityIndicatorViewStyle.whiteLarge
-        uiView.addSubview(actInd)
-        actInd.startAnimating()
-    }
     
     func downloadImage(imageURL:String){
         if self.cache.object(forKey: imageURL as AnyObject) != nil {

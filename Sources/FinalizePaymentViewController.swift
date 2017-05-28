@@ -44,12 +44,13 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         for hitag in hitagIds {
             devicesToOpen.insert(hitag)
         }
-        
+  
         if let validations = BuyBuddyHitagManager.getValidNumbersWith(hitagIds: self.hitagIds) {
             self.hitagValidations = validations
-            
             self.currentHitag = self.devicesToOpen.first!
             self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
+        }else {
+            print("Validations error")
         }
 
     }
@@ -73,7 +74,6 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         
         let id =  notification.userInfo?["hitagId"] as! String
         
-        if(!Reachability.isConnectedToNetwork()){
         BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, hitagValidations: [id : hitagValidations[id]!], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
@@ -84,14 +84,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         }, error: { (err, httpResponse) in
             
         })
-        
-        }else{
-        
-        Utilities.showError(viewController: self, message: "You do not have internet connection!")
-        
-        }
-        
-        
+
         /*BuyBuddyApi.sharedInstance.createHitagCompletion(orderId: orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
             
         }) { (err, httpResponse) in
@@ -176,10 +169,12 @@ extension FinalizePaymentViewController{
             
             DispatchQueue.main.async {
                 cell.shapeLayer.strokeColor = UIColor(red: 0x12/255,green: 0xc3/255,blue: 0x9f/255,alpha: 1.0).cgColor
+                cell.timer.invalidate()
             }
         }else {
             DispatchQueue.main.async {
                 cell.shapeLayer.strokeColor = UIColor.clear.cgColor
+                cell.blink(duration:1.5)
             }
             cell.setProductImage(image: UIImage(named: "buddyLogo", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
         }

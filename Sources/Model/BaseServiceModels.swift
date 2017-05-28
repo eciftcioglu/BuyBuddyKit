@@ -18,6 +18,11 @@ public class BuyBuddyApiError: Mappable{
         
     }
     
+    init(tracemessage:String,tracecode:String?) {
+        self.tracemessage = tracemessage
+        self.tracecode = tracecode
+    }
+    
     public func mapping(map: Map) {
         tracecode    <- map["tracecode"]
         tracemessage <- map["tracemessage"]
@@ -27,8 +32,12 @@ public class BuyBuddyApiError: Mappable{
 public class BuyBuddyBase : Mappable{
 
     var errors: BuyBuddyApiError?
-    
+
     required public init?(map: Map) {}
+    
+    init(error:BuyBuddyApiError) {
+        self.errors = error
+    }
     
     public func mapping(map: Map) {
         errors  <- map["errors"]
