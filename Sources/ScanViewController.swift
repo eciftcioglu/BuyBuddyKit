@@ -113,11 +113,11 @@ extension ScanViewController{
             let downloadPicTask = session.dataTask(with: myURL) { (data, response, error) in
                 // The download has finished.
                 if let e = error {
-                    print("Error downloading picture: \(e)")
+                    //print("Error downloading picture: \(e)")
                 } else {
                     // No errors found.
                     if let res = response as? HTTPURLResponse {
-                        print("Downloaded picture with response code \(res.statusCode)")
+                        //print("Downloaded picture with response code \(res.statusCode)")
                         if let imageData = data {
                             // Finally convert that Data into an image and do what you wish with it.
                             let image = UIImage(data: imageData)
@@ -132,11 +132,11 @@ extension ScanViewController{
                             // Do something with your image.
                         } else {
                             self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                            print("Couldn't get image: Image is nil")
+                            //print("Couldn't get image: Image is nil")
                         }
                     } else {
                         self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                        print("Couldn't get response code for some reason")
+                        //print("Couldn't get response code for some reason")
                     }
                 }
             }

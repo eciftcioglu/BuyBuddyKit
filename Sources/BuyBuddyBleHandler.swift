@@ -102,7 +102,6 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         if(timeOutCheck){
             let tried = hitagsTried[currentHitag]
             if (tried != nil && tried! < 3){
-                print("Trying Again")
                 timeOutCheck = false
                 self.connectDevice(currentDevice)
             }

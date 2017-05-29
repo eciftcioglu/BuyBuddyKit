@@ -71,9 +71,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         
         let id =  notification.userInfo?["hitagId"] as! String
         let validationCode = notification.userInfo?["validationCode"] as! Int
-        
-        print(id + " CONNECTED")
-        
+                
         BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [id : validationCode], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
@@ -119,7 +117,6 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             }
         
             BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
-                print(HitagValidationResponse)
                 
             }) { (err, httpResponse) in
                 

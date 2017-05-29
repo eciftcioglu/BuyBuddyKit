@@ -89,7 +89,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     public class func validateActiveHitag(hitagId:String)->Bool{
         
         for (key,_) in sharedInstance.activeHitags{
-            print("active Hitags Here:")
             if(key == hitagId){
                 return true
             }
@@ -183,8 +182,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
         
         serverTimer += 1
         if (serverTimer == 3){
-        
-            print(activeHitags)
             
             for (_,value) in activeHitags{
             collectedHitags.append(value)
@@ -196,7 +193,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
 
                 
             }) { (err, httpResponse) in
-                print(err)
+
                 }
         collectedHitags.removeAll()
         }

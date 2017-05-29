@@ -111,20 +111,18 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
         for item in ShoppingBasketManager.shared.basket.values{
             hitagIds.append(item.h_id!)
         }
-        print(totalPrice)
         
         for id in ShoppingBasketManager.shared.basket.values{
         
             if(!BuyBuddyHitagManager.validateActiveHitag(hitagId: id.hitagId!)){
-                print("Cannot Validate Hitags in Basket")
+                //print("Cannot Validate Hitags in Basket")
                 return
             }
         }
         
         hitagStringIds = Array(ShoppingBasketManager.shared.basket.keys)
 
-        if BuyBuddyHitagManager.getValidNumbersWith(hitagIds: hitagStringIds) != nil{
-            
+        
             BuyBuddyApi.sharedInstance.createOrder(hitagsIds: hitagIds, sub_total:totalPrice, success: { (orderResponse, httpResponse) in
                 
                 DispatchQueue.main.async(execute:{
@@ -137,13 +135,6 @@ class ShoppingBasketViewController:UIViewController,UITableViewDelegate,UITableV
             }, error: { (err, httpResponse) in
                 
             })
-            
-        }else{
-            print("Hitag Validationları eksik durumda")
-        }
-
-        
-        
 
         /*let product = ItemData(hitagId: "0100000001")
         blemanager = BuyBuddyBLEManager(products: [product])*/
