@@ -23,7 +23,7 @@ class PayVC:UIViewController{
 
     @IBAction func test(_ sender: Any) {
         BuyBuddyViewManager.callPaymentFinalizerView(viewController: self, orderId: orderId, hitagIds: ["0100000001","0100000002"])
-
+        
+     
     }
- 
 }

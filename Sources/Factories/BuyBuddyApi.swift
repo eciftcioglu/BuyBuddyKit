@@ -117,18 +117,6 @@ public class BuyBuddyApi {
         self.tokenDelegate = invalidTokenDelegate
     }
     
-    public func getUncompletedOrder(){
-
-                BuyBuddyApi.sharedInstance.retryIncompleteOrder(success: { (orderResponse, httpResponse) in
-                    
-                }, error: { (err, httpResponse) in
-                    
-                    if (httpResponse?.statusCode == 403){
-                        print("Unothorized")
-                        
-                    }
-                })
-    }
     public typealias SuccessHandler<T: Mappable> = (_ result: BuyBuddyObject<T>, _ operation: HTTPURLResponse?)
         -> Void
     public typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
@@ -261,7 +249,7 @@ public class BuyBuddyApi {
         
     }
  
-    func retryIncompleteOrder(success: @escaping  (SuccessHandler<IncompleteOrderResponse>),
+    public func retryIncompleteOrder(success: @escaping  (SuccessHandler<IncompleteOrderResponse>),
                                error: @escaping (ErrorHandler)) {
         
         call(endPoint: BuyBuddyEndpoint.HitagIncompleteOrder,

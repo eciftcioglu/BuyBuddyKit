@@ -47,7 +47,7 @@ class ViewController: RSCodeReaderViewController,BuyBuddyCartButtonDelegate,BuyB
             }
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! PayVC
         detailVC.orderId = orderID

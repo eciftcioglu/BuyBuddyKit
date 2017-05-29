@@ -26,7 +26,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
 
     var devicesToOpen: Set<String> = []
     var openedDevices: Set<String> = []
+    var devicesWithError: Set<String> = []
     var currentHitag: String = ""
+    var errors:String = ""
 
     fileprivate let sectionInsets = UIEdgeInsets(top:0, left:0, bottom:0, right:0)
 
@@ -46,14 +48,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             hitagsTried[hitag] = 0
         }
   
-        if let validations = BuyBuddyHitagManager.getValidNumbersWith(hitagIds: self.hitagIds) {
-            self.hitagValidations = validations
-            self.currentHitag = self.devicesToOpen.first!
-            self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
-        }else {
-            print("Validations error")
-        }
-
+        //self.hitagValidations = validations
+        self.currentHitag = self.devicesToOpen.first!
+        self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,10 +70,11 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     func didConnect(_ notification: Notification){
         
         let id =  notification.userInfo?["hitagId"] as! String
+        let validationCode = notification.userInfo?["validationCode"] as! Int
         
         print(id + " CONNECTED")
         
-        BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [id : hitagValidations[id]!], success: { (orderResponse, httpResponse) in
+        BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [id : validationCode], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
             if (self.blemanager?.bleHandler.sendPassword(password: self.hitags[id]!))! {
@@ -93,6 +91,10 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         let id =  notification.userInfo?["hitagId"] as! String
         let statusCode = notification.userInfo?["responseCode"] as! Int
         
+        if(check == false && statusCode == 2){
+            devicesToOpen.remove(self.currentHitag)
+            devicesWithError.insert(self.currentHitag)
+        }
         if check {
             self.openedDevices.insert(self.currentHitag)
             self.devicesToOpen.remove(self.currentHitag)
@@ -122,7 +124,6 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             }) { (err, httpResponse) in
                 
             }
-        
         }else if(statusCode == -9000){
             if (hitagsTried[currentHitag]! < 3){
                 hitagsTried[currentHitag] = 1 + hitagsTried[currentHitag]!
@@ -131,6 +132,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 currentHitag = devicesToOpen.first!
                 self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
             }else{
+                if(!devicesWithError.contains(currentHitag)){
+                    devicesWithError.insert(currentHitag)
+                }
                 DispatchQueue.main.async {
                     let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
                         _ = self.blemanager!.bleHandler.disconnectFromHitag()
@@ -143,7 +147,11 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                             self.collectionView.reloadData()
                         }
                     }
-                    let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı"+self.currentHitag+"numaralı cihanız açılamamıştır.En yakın mağza çalışanına haber verilmiştir.", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    for device in self.devicesWithError{
+                        self.errors += device+" "
+                    }
+                    let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı"+self.errors+"numaralı cihanız açılamamıştır.En yakın mağza çalışanına haber verilmiştir.", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(acceptAction)
                     self.present(alertController, animated: true, completion: nil)
                 }

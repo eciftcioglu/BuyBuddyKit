@@ -46,7 +46,7 @@ public class BuyBuddyBase : Mappable{
 
 public class BuyBuddyObject<T:Mappable> : BuyBuddyBase{
     
-    var data: T?
+    public var data: T?
     
     required public init?(map: Map) {
         super.init(map: map)

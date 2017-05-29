@@ -11,7 +11,7 @@ import ObjectMapper
 
 public struct IncompleteOrderResponse:Mappable{
     
-    public var sale_id: Int?
+    public var order_id: Int?
     public var hitag_ids: [String]?
     public var hitag_completion_count: Int?
     public var hitag_count: Int?
@@ -24,7 +24,7 @@ public struct IncompleteOrderResponse:Mappable{
     }
     
     public mutating func mapping(map: Map) {
-        sale_id     <- map["sale_id"]
+        order_id     <- map["sale_id"]
         hitag_ids   <- map["hitag_ids"]
         hitag_completion_count   <- map["hitag_completion_count"]
         hitag_count <- map["hitag_count"]

@@ -22,12 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         
         //Set to true to enable sandbox mode.Default is false
         
-        BuyBuddyApi.sharedInstance.getUncompletedOrder()
+      
         BuyBuddyApi.sharedInstance.sandBoxMode(isActive: true)
         BuyBuddyApi.sharedInstance.set(errorDelegate: self)
         BuyBuddyApi.sharedInstance.set(invalidTokenDelegate: self)
         BuyBuddyApi.sharedInstance.set(accessToken:"Eo6L4FCRRU+/tzIWEBlOYjOrewLxCkqjmPyYdbOH8h1p3vxcTrVNgJu+k430Ns1NKh5huFgjQse/b+tOIwDgJA==")
         
+        
+   
         
         return true
     }

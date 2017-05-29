@@ -36,6 +36,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var openedDevices    : [String] = []
     var deviceWithError  : [String] = []
     var initHitagId      :  String?
+    var validationCode   : Int = 0
     
     override init() {
         super.init()
@@ -170,7 +171,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     
     func sendBTServiceNotificationDidConnect(_ hitag:String) {
         var connectionDetails:[String:Any]?
-        connectionDetails = ["hitagId": hitag]
+        connectionDetails = ["hitagId" : hitag,
+                             "validationCode" : validationCode]
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceConnectionNotification), object: self, userInfo: connectionDetails)
     }
@@ -200,12 +202,23 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             for index in 2..<12 {
                 hitagIdArray.append(hitagDataByte[index])
             }
+            
+            var validationArray: [UInt8] = []
+            validationArray.append(hitagDataByte[12])
+            validationArray.append(hitagDataByte[13])
+            
+            
       
-        if let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue){
-            if devicesToOpen.contains(hitagDataString as String) {
-                currentHitag = hitagDataString as String
-                centralManager.stopScan()
-                connectDevice(peripheral)
+            if let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue){
+                if devicesToOpen.contains(hitagDataString as String) {
+                    currentHitag = hitagDataString as String
+                    centralManager.stopScan()
+                    if let value = UInt16(Utilities.byteArrayToHexString(validationArray), radix: 16) {
+                        validationCode = Int(value)
+                    }else{
+                        validationCode = 0
+                    }
+                    connectDevice(peripheral)
                 }
             }
         }
