@@ -22,7 +22,8 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     var blemanager : BuyBuddyBLEManager?
     var hitagValidations: [String : Int] = [:]
     var hitags: [String : String] = [:]
-    
+    var hitagsTried      : [String : Int] = [:]
+
     var devicesToOpen: Set<String> = []
     var openedDevices: Set<String> = []
     var currentHitag: String = ""
@@ -37,12 +38,13 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BorderedHitagCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "BorderedHitagCell")
-        NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didOpen(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didReceiveData(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didConnect(_:)), name: NSNotification.Name(rawValue: BLEServiceConnectionNotification), object: nil)
         midView.blink(duration:1.5)
         
         for hitag in hitagIds {
             devicesToOpen.insert(hitag)
+            hitagsTried[hitag] = 0
         }
   
         if let validations = BuyBuddyHitagManager.getValidNumbersWith(hitagIds: self.hitagIds) {
@@ -71,9 +73,19 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     
     func didConnect(_ notification: Notification){
         
-        
         let id =  notification.userInfo?["hitagId"] as! String
-        
+   
+        /*if(hitagsTried[currentHitag] != nil){
+        if(hitagsTried[currentHitag]! > 0){
+            BuyBuddyApi.sharedInstance.retryIncompleteOrder(success: { (orderResponse, httpResponse) in
+                
+            }, error: { (err, httpResponse) in
+                if (httpResponse?.statusCode == 403){
+                    print("Unothorized")
+                }
+            })
+            }
+        }*/
         BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, hitagValidations: [id : hitagValidations[id]!], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
@@ -84,17 +96,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         }, error: { (err, httpResponse) in
             
         })
-
-        /*BuyBuddyApi.sharedInstance.createHitagCompletion(orderId: orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
-            
-        }) { (err, httpResponse) in
-            
-        }*/
 }
     
-    
-    
-    func didOpen(_ notification: Notification){
+    func didReceiveData(_ notification: Notification){
         
         let check = notification.userInfo?["isConnected"] as! Bool
         let id =  notification.userInfo?["hitagId"] as! String
@@ -113,7 +117,6 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 
             }else{
                 //FINISH !!!
-                
                 _ = self.blemanager!.bleHandler.disconnectFromHitag()
                 self.midView.timer.invalidate()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -131,6 +134,31 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 
             }
         
+        }else if(statusCode == -9000){
+            if (hitagsTried[currentHitag]! < 3){
+                hitagsTried[currentHitag] = 1 + hitagsTried[currentHitag]!
+                 let change = self.devicesToOpen.popFirst()
+                devicesToOpen.insert(change!)
+                currentHitag = devicesToOpen.first!
+                self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
+            }else{
+                DispatchQueue.main.async {
+                    let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
+                        _ = self.blemanager!.bleHandler.disconnectFromHitag()
+                        self.midView.timer.invalidate()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.paymentLabel.text = "Ödeme Tamamlandı"
+                            self.completionView.fadeIn(duration: 0.5)
+                            self.state = true
+                            self.midView.fadeOut()
+                            self.collectionView.reloadData()
+                        }
+                    }
+                    let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı"+self.currentHitag+"numaralı cihanız açılamamıştır.En yakın mağza çalışanına haber verilmiştir.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(acceptAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
     }
     

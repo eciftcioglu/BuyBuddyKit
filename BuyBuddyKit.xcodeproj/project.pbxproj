@@ -46,6 +46,7 @@
 		2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
 		2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */; };
 		2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
+		2DA7B3491EDB936700893DCD /* IncompleteOrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */; };
 		2DC97FEA1ED9D38800D612D0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC97FE91ED9D38800D612D0 /* Reachability.swift */; };
 		5A77C80F1E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5AD3109B1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
@@ -106,6 +107,7 @@
 		2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEManager.swift; sourceTree = "<group>"; };
 		2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBleHandler.swift; sourceTree = "<group>"; };
 		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBlePeripheral.swift; sourceTree = "<group>"; };
+		2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompleteOrderResponse.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
 		2DC97FE91ED9D38800D612D0 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				2D439EBE1ED7153B00DFCA7E /* HitagValidationResponse.swift */,
 				2D1C9F9E1ED2FF3A005EC5A3 /* Price.swift */,
 				2D1C9FA01ED3021C005EC5A3 /* ItemMetaData.swift */,
+				2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				DC295B7A1ECCAC4B004803C7 /* HitagPassKeyResponse.swift in Sources */,
 				2D393D4B1EC4FD23008C7457 /* BorderedHitagCell.swift in Sources */,
 				2DC97FEA1ED9D38800D612D0 /* Reachability.swift in Sources */,
+				2DA7B3491EDB936700893DCD /* IncompleteOrderResponse.swift in Sources */,
 				DC46D7C51ECB0962003FF533 /* BaseServiceModels.swift in Sources */,
 				2D1C9FA11ED3021C005EC5A3 /* ItemMetaData.swift in Sources */,
 				DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */,

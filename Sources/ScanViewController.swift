@@ -24,7 +24,8 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
     var hitagID:String?
     var hitags: [String:String] = [:]
     var blemanager : BuyBuddyBLEManager?
-    var cache:NSCache<AnyObject, AnyObject>!
+    var cache:NSCache<AnyObject, UIImage>!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,8 +100,10 @@ extension ScanViewController{
 
     
     func downloadImage(imageURL:String){
-        if self.cache.object(forKey: imageURL as AnyObject) != nil {
-            self.popUpScanView.centerImage = self.cache.object(forKey:imageURL as AnyObject) as? UIImage
+        
+        
+        if let image = self.cache.object(forKey: imageURL as AnyObject){
+                    self.popUpScanView.centerImage = image 
         }else{
             let session = URLSession(configuration: .default)
             let myURL = URL(string: imageURL)!
@@ -117,20 +120,18 @@ extension ScanViewController{
                             let image = UIImage(data: imageData)
                             DispatchQueue.main.async(execute:{
                                 if(image != nil){
-                                    if ((self.cache.object(forKey: imageURL as AnyObject)) != nil){
-                                        self.popUpScanView.centerImage = self.cache.object(forKey:imageURL as AnyObject) as? UIImage
-                                    }
-                                    else{
-                                        self.popUpScanView.centerImage = image
-                                        self.cache.setObject(image!, forKey:imageURL as AnyObject)
-                                    }
+                            
+                                    self.popUpScanView.centerImage = image
+                                    self.cache.setObject(image!, forKey:imageURL as AnyObject!)
                                 }
                             })
                             // Do something with your image.
                         } else {
+                            self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
                             print("Couldn't get image: Image is nil")
                         }
                     } else {
+                        self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
                         print("Couldn't get response code for some reason")
                     }
                 }

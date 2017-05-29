@@ -13,7 +13,7 @@ import UIKit
 public class PopUpScanView : UIView {
 
     fileprivate var sizePriceView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
-    public var centerImageView: UIImageView    = UIImageView(frame: .zero)
+    fileprivate var centerImageView: UIImageView    = UIImageView(frame: .zero)
     fileprivate var overlayView: UIView    = UIView(frame:.zero)
     fileprivate var sizeLabel: UILabel = UILabel(frame: .zero)
     fileprivate var priceLabel: UILabel = UILabel(frame: .zero)
@@ -29,6 +29,10 @@ public class PopUpScanView : UIView {
         }
     }
     
+    public func setScale(){
+    
+    
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

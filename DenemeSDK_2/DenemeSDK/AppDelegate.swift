@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BuyBuddyInvalidTokenDeleg
         BuyBuddyApi.sharedInstance.set(invalidTokenDelegate: self)
         BuyBuddyApi.sharedInstance.set(accessToken:"Eo6L4FCRRU+/tzIWEBlOYjOrewLxCkqjmPyYdbOH8h1p3vxcTrVNgJu+k430Ns1NKh5huFgjQse/b+tOIwDgJA==")
         
+        
+        
         return true
     }
     

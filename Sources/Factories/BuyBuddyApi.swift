@@ -16,10 +16,8 @@ enum BuyBuddyEndpoint : String {
     case GetJwt = "POST /iam/users/tokens"
     case OrderDelegate = "POST /order/delegate"
     case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
-    //case HitagCompletionCreate = "POST /order/overview/<sale_id>/hitag_completion"
     case HitagCompletionUpdate = "PUT /order/overview/<sale_id>/hitag_completion/<compile_id>"
-
-
+    case HitagIncompleteOrder = "GET /order/uncompleted"
 }
 
 public protocol BuyBuddyInvalidTokenDelegate{
@@ -80,8 +78,6 @@ public class BuyBuddyApi {
         Utilities.saveToUd(key: "access_token", value: accessToken)
         currentAccessToken = accessToken
         isAccessTokenSet = true
-        
-        
         
         if userCurrentJwt == nil{
             getJwt(accessToken: accessToken, success: { (jwt :BuyBuddyObject<BuyBuddyUserJwt>, response) in
@@ -233,19 +229,6 @@ public class BuyBuddyApi {
         
     }
     
-    /*func createHitagCompletion(orderId: Int,
-                             compileId: String,
-                             success: @escaping  (SuccessHandler<HitagValidationResponse>),
-                             error: @escaping (ErrorHandler)) {
-        
-        call(endPoint: BuyBuddyEndpoint.HitagCompletionCreate,
-             parameters: ["sale_id" : orderId,
-                          "hitag_completion" : ["hitag_id" : compileId,"status":0]],
-             
-             success: success,
-             error: error)
-        
-    }*/
     
     func updateHitagCompletion(orderId: Int,
                       compileId:String,
@@ -263,6 +246,15 @@ public class BuyBuddyApi {
         
     }
  
+    func retryIncompleteOrder(success: @escaping  (SuccessHandler<IncompleteOrderResponse>),
+                               error: @escaping (ErrorHandler)) {
+        
+        call(endPoint: BuyBuddyEndpoint.HitagIncompleteOrder,
+             parameters: [:],
+             
+             success: success,
+             error: error)
+    }
     
     public func getJwt(accessToken: String,
                         success: @escaping  (SuccessHandler<BuyBuddyUserJwt>),
