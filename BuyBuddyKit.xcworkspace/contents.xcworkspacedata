@@ -5,9 +5,6 @@
       location = "group:BuyBuddyKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DenemeSDK_2/DenemeSDK.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
