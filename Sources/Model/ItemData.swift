@@ -36,6 +36,7 @@ public struct ItemData: Mappable{
     public var id : Int?
     public var metadata: ItemMetaData?
     public var image: String?
+    public var realImage: UIImage?
     public var description: String?
     public var price: Price?
 

@@ -62,9 +62,9 @@ public class BuyBuddyApi {
             currentAccessToken = accessToken
             userCurrentJwt = BuyBuddyUserJwt.getCurrentJwt()
             set(accessToken: accessToken)
-            self.isAccessTokenSet = false
-        }else{
             self.isAccessTokenSet = true
+        }else{
+            self.isAccessTokenSet = false
         }
     }
     
@@ -78,6 +78,7 @@ public class BuyBuddyApi {
         Utilities.saveToUd(key: "access_token", value: accessToken)
         currentAccessToken = accessToken
         isAccessTokenSet = true
+        BuyBuddyHitagManager.startHitagManager()
         
         if userCurrentJwt == nil{
             getJwt(accessToken: accessToken, success: { (jwt :BuyBuddyObject<BuyBuddyUserJwt>, response) in
@@ -116,6 +117,18 @@ public class BuyBuddyApi {
         self.tokenDelegate = invalidTokenDelegate
     }
     
+    public func getUncompletedOrder(){
+
+                BuyBuddyApi.sharedInstance.retryIncompleteOrder(success: { (orderResponse, httpResponse) in
+                    
+                }, error: { (err, httpResponse) in
+                    
+                    if (httpResponse?.statusCode == 403){
+                        print("Unothorized")
+                        
+                    }
+                })
+    }
     public typealias SuccessHandler<T: Mappable> = (_ result: BuyBuddyObject<T>, _ operation: HTTPURLResponse?)
         -> Void
     public typealias ErrorHandler = (_ error: Error, _ operation: HTTPURLResponse?)
@@ -152,6 +165,7 @@ public class BuyBuddyApi {
                     }else{
                         if let jsonString = String(data: response.data!, encoding: .utf8) {
                             if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                                print(baseError)
                             self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: baseError)
                             }
                         }
@@ -167,6 +181,7 @@ public class BuyBuddyApi {
                     }else{
                         if let jsonString = String(data: response.data!, encoding: .utf8) {
                             if let baseError = Mapper<BuyBuddyBase>().map(JSONString: jsonString) {
+                                print(baseError)
                             self.errorDelegate?.BuyBuddyApiDidErrorReceived((response.response?.statusCode)!,errorResponse: baseError)
                             }
                         }
@@ -216,7 +231,7 @@ public class BuyBuddyApi {
              error: error)
     }
     
-    func completeOrder(orderId: Int,
+    func validateOrder(orderId: Int,
                        hitagValidations: [String: Int],
                        success: @escaping  (SuccessHandler<HitagPassKeyResponse>),
                        error: @escaping (ErrorHandler)) {
@@ -230,7 +245,7 @@ public class BuyBuddyApi {
     }
     
     
-    func updateHitagCompletion(orderId: Int,
+    func completeOrder(orderId: Int,
                       compileId:String,
                        success: @escaping  (SuccessHandler<HitagValidationResponse>),
                        error: @escaping (ErrorHandler)) {

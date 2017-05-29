@@ -217,7 +217,8 @@ extension ShoppingBasketViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCartTableViewCell", for: indexPath) as! ShoppingCartTableViewCell
         var data = tableData[indexPath.row]
         
-        data.description = "Grey Dress"
+        // data.description = "Grey Dress"
+    
         cell.setData(data: data)
         return cell
     }

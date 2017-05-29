@@ -126,6 +126,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         switch status {
+            
         case .notDetermined:
             self.locationManager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
@@ -139,13 +140,11 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         manager.startUpdatingLocation()
-
+        self.startRanging()
     }
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopUpdatingLocation()
     }
-    
-    
 
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         let beaconsRanged = beacons as [CLBeacon]!
@@ -166,7 +165,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             }else{
             
                 activeHitags[data.id!]?.timeStamp = seenTime
-
             }
         }
     }

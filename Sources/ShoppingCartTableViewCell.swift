@@ -31,9 +31,9 @@ class ShoppingCartTableViewCell:UITableViewCell{
             setProductSize(size:(data.metadata?.size)!)}
         if(data.image != nil){
             
-            setProductImage(image: UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+            //setProductImage(image: UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
 
-            //setProductImage(image: data.image_url!)
+            setProductImage(image: data.realImage!)
         }
         if(data.price != nil){
             

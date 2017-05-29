@@ -27,14 +27,15 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var timeOutCheck:Bool = false
     private let connectionTimeOutIntvl:TimeInterval = 5
     private var connectionTimer:Timer?
-    
+    private var initTimer:Timer?
+
     var hitagsPasswords  : [String : String] = [:]
     var hitagsTried      : [String : Int] = [:]
     var currentHitag     : String!
     var devicesToOpen    : [String] = []
     var openedDevices    : [String] = []
     var deviceWithError  : [String] = []
-
+    var initHitagId      :  String?
     
     override init() {
         super.init()
@@ -62,10 +63,10 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     init(hitagId: String) {
         super.init()
         devicesToOpen.append(hitagId)
-        currentHitag = devicesToOpen.first
+        initHitagId = hitagId
         hitagsTried[hitagId] = 0
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        connectionTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
+        initTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
     }
     
     func decideIfNextProduct(){
@@ -79,6 +80,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     func connectionFinalized() {
         
         connected = true
+        initTimer?.invalidate()
         connectionTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
     }
     
@@ -88,20 +90,20 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         self.centralManager.cancelPeripheralConnection(currentDevice)
             timeOutCheck = true
         }else{
-        
-        self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: currentHitag, -9000)
+            if(initHitagId != nil){
+                self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: initHitagId!, -9000)
+            }
         }
-
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         connected=false
         if(timeOutCheck){
-        let tried = hitagsTried[currentHitag]
-        if (tried != nil && tried! < 3){
-            print("Trying Again")
-            timeOutCheck = false
-            self.connectDevice(currentDevice)
+            let tried = hitagsTried[currentHitag]
+            if (tried != nil && tried! < 3){
+                print("Trying Again")
+                timeOutCheck = false
+                self.connectDevice(currentDevice)
             }
         }
     }
@@ -201,7 +203,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
       
         if let hitagDataString = NSString(data: Data(hitagIdArray), encoding: String.Encoding.utf8.rawValue){
             if devicesToOpen.contains(hitagDataString as String) {
-                //currentHitag = hitagDataString as String
+                currentHitag = hitagDataString as String
                 centralManager.stopScan()
                 connectDevice(peripheral)
                 }

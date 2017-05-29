@@ -25,6 +25,7 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
     var hitags: [String:String] = [:]
     var blemanager : BuyBuddyBLEManager?
     var cache:NSCache<AnyObject, UIImage>!
+    var downloadedImage = UIImage()
     
 
     override func viewDidLoad() {
@@ -80,6 +81,8 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
         if(product.hitagId != nil){
             if(BuyBuddyHitagManager.validateActiveHitag(hitagId: product.hitagId!)){
         ShoppingBasketManager.shared.basket[product.hitagId!] = product
+        ShoppingBasketManager.shared.basket[product.hitagId!]?.realImage = downloadedImage
+                
         let count = String(ShoppingBasketManager.shared.basket.count)
         delegate?.countDidChange(count)
         userButtonDelegate?.countDidChange(count)
@@ -122,6 +125,7 @@ extension ScanViewController{
                                 if(image != nil){
                             
                                     self.popUpScanView.centerImage = image
+                                    self.downloadedImage = image!
                                     self.cache.setObject(image!, forKey:imageURL as AnyObject!)
                                 }
                             })
