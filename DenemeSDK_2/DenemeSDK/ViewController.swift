@@ -62,7 +62,6 @@ class ViewController: RSCodeReaderViewController,BuyBuddyCartButtonDelegate,BuyB
     }
     
     func buttonWasPressed(_ button: UIButton) {
-        BuyBuddyViewManager.callShoppingBasketView(viewController: self,transitionStyle:.crossDissolve,cartButton:self.cartButton )
         
     }
 

@@ -73,6 +73,7 @@ public class BuyBuddyCartButton:UIButton,BuyBuddyCartButtonBadgeDelegate{
     
     func buttonPress(button:UIButton) {
         delegate?.buttonWasPressed(self)
+        BuyBuddyViewManager.callShoppingBasketView(viewController:self.parentViewController! ,transitionStyle:.crossDissolve,cartButton:self)
     }
     
     public func withBlur(blur:Bool = true){

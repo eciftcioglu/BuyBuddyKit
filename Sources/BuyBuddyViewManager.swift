@@ -14,6 +14,7 @@ public let orderServiceNotification = "orderServiceNotification"
 
 public class BuyBuddyViewManager{
     
+    
     public class  func callScannedProductView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,cartButton:BuyBuddyCartButton,hitagID:String?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: ScanViewController.self)).instantiateViewController(withIdentifier: "scannedProductView") as? ScanViewController
         {
@@ -36,7 +37,7 @@ public class BuyBuddyViewManager{
                                 viewController.present(vc, animated: true, completion: nil)
                             }
                         }
-
+                        
                         //popUpScanView.centerImage = self.product.image_url
                         //popUpScanView.setSizePrice(size: product.size!, price:product.price!)
                         
