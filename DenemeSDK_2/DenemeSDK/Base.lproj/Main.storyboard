@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DenemeSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-9N-Wgw">
+                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="KTU-wm-fcb"/>
+                                    <constraint firstAttribute="width" constant="240" id="eP3-RQ-63d"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZw-py-niR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="vYF-w5-T9h"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkI-wj-dXG" customClass="BuyBuddyCartButton" customModule="BuyBuddyKit">
+                                <rect key="frame" x="292" y="584" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="Zfm-PQ-kHh"/>
+                                    <constraint firstAttribute="height" constant="75" id="i5p-38-Vop"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hkI-wj-dXG" secondAttribute="trailing" constant="8" id="OFo-ck-jRt"/>
+                            <constraint firstItem="CZw-py-niR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P5O-hx-wQV"/>
+                            <constraint firstItem="CZw-py-niR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q7b-33-CYj"/>
+                            <constraint firstItem="LCO-9N-Wgw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jXW-Kh-LTM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hkI-wj-dXG" secondAttribute="bottom" constant="8" id="oeM-4x-Uky"/>
+                            <constraint firstItem="LCO-9N-Wgw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sfO-Gs-9TL"/>
+                            <constraint firstAttribute="trailing" secondItem="CZw-py-niR" secondAttribute="trailing" id="t6A-g9-KwQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cartButton" destination="hkI-wj-dXG" id="vUP-NO-ONz"/>
+                        <outlet property="frame" destination="LCO-9N-Wgw" id="mGy-qj-4fD"/>
+                        <segue destination="LOY-Qo-o0X" kind="show" identifier="payThis" id="9Ba-yw-ncg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45.600000000000001" y="97.601199400299862"/>
+        </scene>
+        <!--PayVC-->
+        <scene sceneID="Taa-U0-AbL">
+            <objects>
+                <viewController id="LOY-Qo-o0X" customClass="PayVC" customModule="DenemeSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oVH-IN-cLh"/>
+                        <viewControllerLayoutGuide type="bottom" id="YEk-a8-SzZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y6p-ut-dPT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We2-Pd-WJn">
+                                <rect key="frame" x="164" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="test:" destination="LOY-Qo-o0X" eventType="touchUpInside" id="WX4-di-eo5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="We2-Pd-WJn" firstAttribute="centerY" secondItem="Y6p-ut-dPT" secondAttribute="centerY" id="3VL-ak-NRA"/>
+                            <constraint firstItem="We2-Pd-WJn" firstAttribute="centerX" secondItem="Y6p-ut-dPT" secondAttribute="centerX" id="Zak-yF-lbr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzw-VP-J0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890" y="98"/>
+        </scene>
+    </scenes>
+</document>
