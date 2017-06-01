@@ -409,6 +409,7 @@ Buy Buddy sayesinde 6 saniyede 3
                         <outlet property="completionView" destination="d54-z8-iQG" id="Jb4-WZ-UDf"/>
                         <outlet property="midView" destination="JWM-bB-LEF" id="POr-1a-kEB"/>
                         <outlet property="paymentLabel" destination="9Q6-bT-9Yq" id="2wQ-k0-5UE"/>
+                        <outlet property="topInfoLabel" destination="vXL-L7-Cd1" id="gEa-mU-N8R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWk-v0-12S" userLabel="First Responder" sceneMemberID="firstResponder"/>

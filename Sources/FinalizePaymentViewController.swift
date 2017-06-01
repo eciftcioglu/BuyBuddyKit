@@ -15,6 +15,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     @IBOutlet var midView: UIView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var completionView: UIView!
+    @IBOutlet var topInfoLabel: UILabel!
     
     var orderId:Int?
     var state = false
@@ -26,7 +27,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
 
     var devicesToOpen: Set<String> = []
     var openedDevices: Set<String> = []
-    var devicesWithError: Set<String> = []
+    var devicesWithConnectionError: Set<String> = []
+    var indexCheck:[Int] = []
+
     var currentHitag: String = ""
     var errors:String = ""
 
@@ -54,11 +57,32 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
 
     override func viewWillAppear(_ animated: Bool) {
         completionView.alpha = 0
+
     }
     
     @IBAction func dismissPage(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func connectionTimeOut(hitagId: String) {
+        
+        
+            if (hitagsTried[hitagId]! < 3){
+                hitagsTried[hitagId] = 1 + hitagsTried[hitagId]!
+                let change = self.devicesToOpen.popFirst()
+                devicesToOpen.insert(change!)
+                currentHitag = devicesToOpen.first!
+                self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
+            }else{
+                if(!devicesWithConnectionError.contains(hitagId)){
+                    devicesWithConnectionError.insert(hitagId)
+                    devicesToOpen.remove(hitagId)
+                }
+                if(devicesToOpen.count == 0){
+                    completionCheck()
+                }
+            }
+        }
     
     
     func connectionComplete(hitagId: String, validateId: Int) {
@@ -78,13 +102,15 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     
     func devicePasswordSent(dataSent: Bool, hitagId: String, responseCode: Int) {
         
-        if(dataSent == false && responseCode == 2){
+        if(dataSent == false && responseCode == 0){
             devicesToOpen.remove(self.currentHitag)
-            devicesWithError.insert(self.currentHitag)
+            if(!devicesWithConnectionError.contains(hitagId)){
+                devicesWithConnectionError.insert(hitagId)
+            }
         }
         if dataSent {
-            self.openedDevices.insert(self.currentHitag)
-            self.devicesToOpen.remove(self.currentHitag)
+            self.openedDevices.insert(hitagId)
+            self.devicesToOpen.remove(hitagId)
             if self.devicesToOpen.count > 0 {
                 if let device = self.devicesToOpen.first{
                     self.currentHitag = device
@@ -95,14 +121,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 
             }else{
                 //FINISH !!!
-                _ = self.blemanager!.bleHandler.disconnectFromHitag()
-                self.midView.timer.invalidate()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.paymentLabel.text = "Ödeme Tamamlandı"
-                    self.completionView.fadeIn(duration: 0.5)
-                    self.state = true
-                    self.midView.fadeOut()
-                    self.collectionView.reloadData()                }
+                completionCheck()
             }
             
             BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, compileId: hitagId, success: { (HitagValidationResponse, httpResponse) in
@@ -110,42 +129,60 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             }) { (err, httpResponse) in
                 
             }
-        }else if(responseCode == -2000){
-            if (hitagsTried[currentHitag]! < 3){
-                hitagsTried[currentHitag] = 1 + hitagsTried[currentHitag]!
-                let change = self.devicesToOpen.popFirst()
-                devicesToOpen.insert(change!)
-                currentHitag = devicesToOpen.first!
-                self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
-            }else{
-                if(!devicesWithError.contains(currentHitag)){
-                    devicesWithError.insert(currentHitag)
-                }
-                DispatchQueue.main.async {
-                    let acceptAction = UIAlertAction(title: "Tamam", style: UIAlertActionStyle.default) { (_) -> Void in
-                        _ = self.blemanager!.bleHandler.disconnectFromHitag()
-                        self.midView.timer.invalidate()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            self.paymentLabel.text = "Ödeme Tamamlandı"
-                            self.completionView.fadeIn(duration: 0.5)
-                            self.state = true
-                            self.midView.fadeOut()
-                            self.collectionView.reloadData()
-                        }
-                    }
-                    
-                    for device in self.devicesWithError{
-                        self.errors += device+" "
-                    }
-                    let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı"+self.errors+"numaralı cihanız açılamamıştır.En yakın mağza çalışanına haber verilmiştir.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(acceptAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }
         }
         
     }
   
+    func completionCheck(){
+        
+        let acceptAction = UIAlertAction(title: "Tekrar Dene", style: UIAlertActionStyle.default) { (_) -> Void in
+            self.state = false
+            for hitag in self.devicesWithConnectionError {
+                self.devicesToOpen.insert(hitag)
+                self.hitagsTried[hitag] = 0
+            }
+            self.devicesWithConnectionError.removeAll()
+            self.currentHitag = self.devicesToOpen.first!
+            self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Iptal", style: UIAlertActionStyle.cancel) {(_) -> Void in
+            _ = self.blemanager!.bleHandler.disconnectFromHitag()
+            self.midView.timer.invalidate()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.topInfoLabel.text = "Ödeme Hatası!"
+                self.completionView.fadeIn(duration: 0.5)
+                self.state = true
+                self.midView.fadeOut()
+                self.collectionView.reloadData()
+            }
+        }
+        
+        if(devicesWithConnectionError.count == 0){
+        _ = self.blemanager!.bleHandler.disconnectFromHitag()
+        self.midView.timer.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.topInfoLabel.text = "Ödeme Tamamlandı"
+            self.completionView.fadeIn(duration: 0.5)
+            self.state = true
+            self.midView.fadeOut()
+            self.collectionView.reloadData()
+            }
+        
+        }else{
+            
+        _ = self.blemanager!.bleHandler.disconnectFromHitag()
+        DispatchQueue.main.async {
+            for device in self.devicesWithConnectionError{
+                self.errors += device+" "
+            }
+            let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı "+self.errors+"numaralı cihanız açılamamıştır.Tekrar Denemek için tuşa basınız.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(acceptAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
     
     func stateChange() {
         

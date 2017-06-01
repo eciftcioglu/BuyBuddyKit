@@ -19,6 +19,7 @@ let BLEServiceConnectionNotification = "didConnectToDevice"
 public protocol BluetoothConnectionDelegate{
     func connectionComplete(hitagId:String,validateId:Int)
     func devicePasswordSent(dataSent:Bool,hitagId:String,responseCode:Int)
+    func connectionTimeOut(hitagId:String)
 }
 
 class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BuyBuddyBlePeripheralDelegate{
@@ -73,7 +74,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         viewDelegate = viewController
         devicesToOpen.append(hitagId)
         initHitagId = hitagId
-        hitagsTried[hitagId] = 0
+        //hitagsTried[hitagId] = 0
         centralManager = CBCentralManager(delegate: self, queue: nil)
         initTimer = Timer.scheduledTimer(timeInterval: connectionTimeOutIntvl, target: self, selector:#selector(BuyBuddyBleHandler.connectionTimedOut) , userInfo: nil, repeats: false)
     }
@@ -97,15 +98,18 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         connectionTimer?.invalidate()
         if(connected){
         self.centralManager.cancelPeripheralConnection(currentDevice)
-            timeOutCheck = true
+        centralManager.stopScan()
+        viewDelegate?.connectionTimeOut(hitagId: initHitagId!)
         }else{
             if(initHitagId != nil){
-                viewDelegate?.devicePasswordSent(dataSent: false, hitagId: initHitagId!, responseCode: -2000)
+        centralManager.stopScan()
+        viewDelegate?.connectionTimeOut(hitagId: initHitagId!)
+                //viewDelegate?.devicePasswordSent(dataSent: false, hitagId: initHitagId!, responseCode: -2000)
             }
         }
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    /*func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         connected=false
         if(timeOutCheck){
             let tried = hitagsTried[currentHitag]
@@ -114,7 +118,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
                 self.connectDevice(currentDevice)
             }
         }
-    }
+    }*/
     func uartDidEncounterError(_ error: NSString) {
         
     }
@@ -159,19 +163,23 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             
         case HitagResponse.Error:
             print("HitagResponse : Error");
+            centralManager.stopScan()
             viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: 0)
             
             
         case HitagResponse.Success:
             print("HitagResponse : Success");
             connectionTimer?.invalidate()
+            centralManager.stopScan()
             viewDelegate?.devicePasswordSent(dataSent: true, hitagId: currentHitag, responseCode: 1)
             
         case HitagResponse.Unknown:
             print("HitagResponse : Unknown")
+            centralManager.stopScan()
             viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: -1000)
             
         default:
+            centralManager.stopScan()
             viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: -1000)
             return
         }
@@ -243,8 +251,8 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let increment: Int = hitagsTried[currentHitag]! + 1
-        hitagsTried.updateValue(increment, forKey: currentHitag)
+        //let increment: Int = hitagsTried[currentHitag]! + 1
+        //hitagsTried.updateValue(increment, forKey: currentHitag)
         viewDelegate?.connectionComplete(hitagId: currentHitag, validateId: validationCode)
         uartConnect = BuyBuddyBlePeripheral(peripheral: self.currentDevice, delegate: self)
         uartConnect?.didConnect(connectionMode)
