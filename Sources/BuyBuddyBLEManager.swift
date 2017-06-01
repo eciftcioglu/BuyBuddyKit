@@ -7,10 +7,8 @@
 //
 
 import Foundation
-
-
-import Foundation
 import CoreBluetooth
+import UIKit
 
 struct HitagResponse{
     public static let Error   = Utilities.dataFrom(hex: "ffff")
@@ -28,11 +26,7 @@ class BuyBuddyBLEManager {
         self.bleHandler = BuyBuddyBleHandler()        
     }
     
-    /*init(products: [String:String]){
-        self.bleHandler = BuyBuddyBleHandler(products: products)
-    }*/
-    
-    init(hitagId: String) {
-        self.bleHandler = BuyBuddyBleHandler(hitagId: hitagId)
+    init(hitagId:String,viewController:BluetoothConnectionDelegate) {
+        self.bleHandler = BuyBuddyBleHandler(hitagId: hitagId,viewController:viewController)
     }
 }

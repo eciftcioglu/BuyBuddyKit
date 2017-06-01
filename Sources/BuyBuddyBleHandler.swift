@@ -8,12 +8,18 @@
 
 import Foundation
 import CoreBluetooth
-
+import UIKit
 
 
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 let BLEServiceConnectionNotification = "didConnectToDevice"
 
+
+
+public protocol BluetoothConnectionDelegate{
+    func connectionComplete(hitagId:String,validateId:Int)
+    func devicePasswordSent(dataSent:Bool,hitagId:String,responseCode:Int)
+}
 
 class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BuyBuddyBlePeripheralDelegate{
     
@@ -21,6 +27,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     var connectionMode : ConnectionMode = ConnectionMode.uart
     var delegate       : BuyBuddyBlePeripheralDelegate!
     var uartConnect    : BuyBuddyBlePeripheral?
+    var viewDelegate   : BluetoothConnectionDelegate?
     var centralManager : CBCentralManager!
     var currentDevice  : CBPeripheral!
     var connected      : Bool = false
@@ -61,8 +68,9 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         return false
     }
     
-    init(hitagId: String) {
+    init(hitagId: String,viewController:BluetoothConnectionDelegate) {
         super.init()
+        viewDelegate = viewController
         devicesToOpen.append(hitagId)
         initHitagId = hitagId
         hitagsTried[hitagId] = 0
@@ -92,7 +100,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             timeOutCheck = true
         }else{
             if(initHitagId != nil){
-                self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: initHitagId!, -9000)
+                viewDelegate?.devicePasswordSent(dataSent: false, hitagId: initHitagId!, responseCode: -2000)
             }
         }
     }
@@ -151,19 +159,20 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             
         case HitagResponse.Error:
             print("HitagResponse : Error");
-            self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: currentHitag, 2)
+            viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: 0)
+            
             
         case HitagResponse.Success:
             print("HitagResponse : Success");
             connectionTimer?.invalidate()
-            self.sendBTServiceNotificationWithIsBluetoothConnected(true, hitag: currentHitag, 1)
+            viewDelegate?.devicePasswordSent(dataSent: true, hitagId: currentHitag, responseCode: 1)
             
         case HitagResponse.Unknown:
             print("HitagResponse : Unknown")
-            self.sendBTServiceNotificationWithIsBluetoothConnected(false, hitag: currentHitag, -1000)
+            viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: -1000)
             
         default:
-            self.sendBTServiceNotificationWithIsBluetoothConnected(false,hitag: currentHitag, -1000)
+            viewDelegate?.devicePasswordSent(dataSent: false, hitagId: currentHitag, responseCode: -1000)
             return
         }
     }
@@ -236,7 +245,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         let increment: Int = hitagsTried[currentHitag]! + 1
         hitagsTried.updateValue(increment, forKey: currentHitag)
-        self.sendBTServiceNotificationDidConnect(currentHitag)
+        viewDelegate?.connectionComplete(hitagId: currentHitag, validateId: validationCode)
         uartConnect = BuyBuddyBlePeripheral(peripheral: self.currentDevice, delegate: self)
         uartConnect?.didConnect(connectionMode)
     }

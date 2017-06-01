@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BluetoothAlertDelegate{
+class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BluetoothAlertDelegate,BluetoothConnectionDelegate{
     @IBOutlet var paymentLabel: UILabel!
     @IBOutlet var midView: UIView!
     @IBOutlet var collectionView: UICollectionView!
@@ -39,8 +39,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BorderedHitagCell", bundle:Bundle(for: type(of: self))), forCellWithReuseIdentifier: "BorderedHitagCell")
-        NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didReceiveData(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(FinalizePaymentViewController.didConnect(_:)), name: NSNotification.Name(rawValue: BLEServiceConnectionNotification), object: nil)
+   
         midView.blink(duration:1.5)
         
         for hitag in hitagIds {
@@ -48,9 +47,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
             hitagsTried[hitag] = 0
         }
   
-        //self.hitagValidations = validations
+
         self.currentHitag = self.devicesToOpen.first!
-        self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
+        self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,45 +61,35 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     }
     
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
-    }
-    
-    
-    func didConnect(_ notification: Notification){
+    func connectionComplete(hitagId: String, validateId: Int) {
+
         
-        let id =  notification.userInfo?["hitagId"] as! String
-        let validationCode = notification.userInfo?["validationCode"] as! Int
-                
-        BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [id : validationCode], success: { (orderResponse, httpResponse) in
+        BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [hitagId : validateId], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
-            if (self.blemanager?.bleHandler.sendPassword(password: self.hitags[id]!))! {
+            if (self.blemanager?.bleHandler.sendPassword(password: self.hitags[hitagId]!))! {
             }
             
         }, error: { (err, httpResponse) in
             
         })
-}
+        
+    }
     
-    func didReceiveData(_ notification: Notification){
+    func devicePasswordSent(dataSent: Bool, hitagId: String, responseCode: Int) {
         
-        let check = notification.userInfo?["isConnected"] as! Bool
-        let id =  notification.userInfo?["hitagId"] as! String
-        let statusCode = notification.userInfo?["responseCode"] as! Int
-        
-        if(check == false && statusCode == 2){
+        if(dataSent == false && responseCode == 2){
             devicesToOpen.remove(self.currentHitag)
             devicesWithError.insert(self.currentHitag)
         }
-        if check {
+        if dataSent {
             self.openedDevices.insert(self.currentHitag)
             self.devicesToOpen.remove(self.currentHitag)
             if self.devicesToOpen.count > 0 {
                 if let device = self.devicesToOpen.first{
-                self.currentHitag = device
+                    self.currentHitag = device
                     if self.blemanager!.bleHandler.disconnectFromHitag() {
-                    self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
+                        self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
                     }
                 }
                 
@@ -115,19 +104,19 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                     self.midView.fadeOut()
                     self.collectionView.reloadData()                }
             }
-        
-            BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, compileId: id, success: { (HitagValidationResponse, httpResponse) in
+            
+            BuyBuddyApi.sharedInstance.completeOrder(orderId: self.orderId!, compileId: hitagId, success: { (HitagValidationResponse, httpResponse) in
                 
             }) { (err, httpResponse) in
                 
             }
-        }else if(statusCode == -9000){
+        }else if(responseCode == -2000){
             if (hitagsTried[currentHitag]! < 3){
                 hitagsTried[currentHitag] = 1 + hitagsTried[currentHitag]!
-                 let change = self.devicesToOpen.popFirst()
+                let change = self.devicesToOpen.popFirst()
                 devicesToOpen.insert(change!)
                 currentHitag = devicesToOpen.first!
-                self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag)
+                self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
             }else{
                 if(!devicesWithError.contains(currentHitag)){
                     devicesWithError.insert(currentHitag)
@@ -154,7 +143,9 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 }
             }
         }
+        
     }
+  
     
     func stateChange() {
         

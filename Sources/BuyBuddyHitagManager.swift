@@ -188,7 +188,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             }
         
             if !collectedHitags.isEmpty{
-                
+                print(activeHitags)
             BuyBuddyApi.sharedInstance.postScanRecord(hitags: collectedHitags,success: { (item: BuyBuddyObject<BuyBuddyBase>, httpResponse) in
 
                 
