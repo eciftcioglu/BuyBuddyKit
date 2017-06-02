@@ -15,9 +15,10 @@ enum BuyBuddyEndpoint : String {
     case ScanHitag = "POST /iot/scan_record"
     case GetJwt = "POST /iam/users/tokens"
     case OrderDelegate = "POST /order/delegate"
-    case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
     case HitagCompletionUpdate = "PUT /order/overview/<sale_id>/hitag_completion/<compile_id>"
+    case OrderCompletion = "POST /order/delegate/<sale_id>/hitag_release"
     case HitagIncompleteOrder = "GET /order/uncompleted"
+    case OrderDetail = "GET /order/overview/<sale_id>/detail"
 }
 
 public protocol BuyBuddyInvalidTokenDelegate{
@@ -207,6 +208,15 @@ public class BuyBuddyApi {
         call(endPoint: BuyBuddyEndpoint.ScanHitag, parameters: ["scan_record" : hitags.toJSON()], success: success, error: error)
 
     }
+    
+    func getOrderDetail(saleId: Int,
+                        success: @escaping  (SuccessHandler<OrderDetail>),
+                        error: @escaping (ErrorHandler)){
+        
+        call(endPoint: BuyBuddyEndpoint.OrderDetail, parameters: ["sale_id" : saleId], success: success, error: error)
+        
+    }
+
     
     public func createOrder(hitagsIds: [Int], sub_total: Float,
                      success: @escaping  (SuccessHandler<OrderDelegateResponse>),

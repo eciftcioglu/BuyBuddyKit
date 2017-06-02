@@ -20,6 +20,7 @@ public protocol BluetoothConnectionDelegate{
     func connectionComplete(hitagId:String,validateId:Int)
     func devicePasswordSent(dataSent:Bool,hitagId:String,responseCode:Int)
     func connectionTimeOut(hitagId:String)
+    func disconnectionComplete(hitagId:String)
 }
 
 class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BuyBuddyBlePeripheralDelegate{
@@ -109,6 +110,9 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
         }
     }
     
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        viewDelegate?.disconnectionComplete(hitagId: currentHitag)
+    }
     /*func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         connected=false
         if(timeOutCheck){
@@ -184,23 +188,7 @@ class BuyBuddyBleHandler: NSObject, CBCentralManagerDelegate, CBPeripheralDelega
             return
         }
     }
-    
-    func sendBTServiceNotificationDidConnect(_ hitag:String) {
-        var connectionDetails:[String:Any]?
-        connectionDetails = ["hitagId" : hitag,
-                             "validationCode" : validationCode]
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceConnectionNotification), object: self, userInfo: connectionDetails)
-    }
-    
-    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool,hitag:String, _ responseCode: Int) {
-        var connectionDetails:[String:Any] = [:]
-        connectionDetails["isConnected"] = isBluetoothConnected
-        connectionDetails["hitagId"] = hitag
-        connectionDetails["responseCode"] = responseCode
- 
-        NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
-    }
+
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         

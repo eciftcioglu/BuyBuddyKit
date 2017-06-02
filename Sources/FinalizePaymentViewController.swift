@@ -24,6 +24,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     var hitagValidations: [String : Int] = [:]
     var hitags: [String : String] = [:]
     var hitagsTried      : [String : Int] = [:]
+    var orderDetails: OrderDetail = OrderDetail()
 
     var devicesToOpen: Set<String> = []
     var openedDevices: Set<String> = []
@@ -38,6 +39,8 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hitagIds = orderDetails.hitag_ids!
+        orderId = orderDetails.sale_id
         self.view.addBlurEffect(dark: true)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -69,10 +72,11 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         
             if (hitagsTried[hitagId]! < 3){
                 hitagsTried[hitagId] = 1 + hitagsTried[hitagId]!
-                let change = self.devicesToOpen.popFirst()
-                devicesToOpen.insert(change!)
+                if let change = self.devicesToOpen.popFirst(){
+                devicesToOpen.insert(change)
                 currentHitag = devicesToOpen.first!
                 self.blemanager = BuyBuddyBLEManager(hitagId: self.currentHitag,viewController: self)
+                }
             }else{
                 if(!devicesWithConnectionError.contains(hitagId)){
                     devicesWithConnectionError.insert(hitagId)
@@ -86,8 +90,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
     
     
     func connectionComplete(hitagId: String, validateId: Int) {
-
-        
+        print(validateId)
         BuyBuddyApi.sharedInstance.validateOrder(orderId: self.orderId!, hitagValidations: [hitagId : validateId], success: { (orderResponse, httpResponse) in
             
             self.hitags = orderResponse.data!.hitag_passkeys!
@@ -97,6 +100,10 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
         }, error: { (err, httpResponse) in
             
         })
+        
+    }
+    
+    func disconnectionComplete(hitagId: String) {
         
     }
     
@@ -177,6 +184,7 @@ class FinalizePaymentViewController:UIViewController,UICollectionViewDataSource,
                 self.errors += device+" "
             }
             let alertController = UIAlertController(title: "Uyarı!", message:"Cihazla ilgili bir sorundan dolayı "+self.errors+"numaralı cihanız açılamamıştır.Tekrar Denemek için tuşa basınız.", preferredStyle: UIAlertControllerStyle.alert)
+            self.errors = ""
             alertController.addAction(acceptAction)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)

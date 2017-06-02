@@ -61,16 +61,24 @@ public class BuyBuddyViewManager{
         }
     }
     
-    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,orderId:Int?, hitagIds:[String]){
+    public class  func callPaymentFinalizerView(viewController:UIViewController,transitionStyle:UIModalTransitionStyle = .crossDissolve,orderId:Int?){
         if let vc = UIStoryboard(name: "BuyBuddyViews", bundle: Bundle(for: FinalizePaymentViewController.self)).instantiateViewController(withIdentifier: "paymentFinalizerView") as? FinalizePaymentViewController
         {
             vc.modalTransitionStyle = transitionStyle
             vc.modalPresentationStyle = .overFullScreen
-            vc.orderId = orderId
-            vc.hitagIds = hitagIds
+    
             
             if (viewController.presentedViewController == nil){
-                viewController.present(vc, animated: true, completion: nil)
+                BuyBuddyApi.sharedInstance.getOrderDetail(saleId: orderId!, success: { (item:BuyBuddyObject<OrderDetail>, httpResponse) in
+                    
+                    if let data = item.data{
+                        vc.orderDetails = data
+                    }
+                    viewController.present(vc, animated: true, completion: nil)
+                    
+                }, error: { (err, httpResponse) in
+                    
+                })
             }
             
         }
