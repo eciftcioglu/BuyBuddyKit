@@ -71,13 +71,9 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
                 allHitags[id] = passCheck
             }
         }
-
-        
         if hitagIds.count == allHitags.count {
             return allHitags
         }
-        
-     
 
         return nil
     }

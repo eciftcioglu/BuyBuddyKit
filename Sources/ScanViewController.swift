@@ -41,10 +41,7 @@ class ScanViewController:UIViewController,BuyBuddyCartButtonDelegate,BluetoothAl
         addButton.isUserInteractionEnabled = true
         
         downloadImage(imageURL: self.product.image!)
-        /*
-        hitags["01AABBCCDD"] = "4368d274e72d0b6865861aae4413e092744368d274e72d0b6865861aae4413e0920e5c"
-        blemanager = BuyBuddyBLEManager(products: hitags)
- */
+  
 
     }
     
@@ -127,6 +124,9 @@ extension ScanViewController{
                                     self.popUpScanView.centerImage = image
                                     self.downloadedImage = image!
                                     self.cache.setObject(image!, forKey:imageURL as AnyObject!)
+                                }else {
+                                    self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
+                                    //print("Couldn't get image: Image is nil")
                                 }
                             })
                             // Do something with your image.

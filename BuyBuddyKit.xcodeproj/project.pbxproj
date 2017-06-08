@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D143A1D1ECADD1900D7C020 /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
-		2D143A241ECADE1000D7C020 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A221ECADE1000D7C020 /* Alamofire.framework */; };
-		2D143A251ECADE1000D7C020 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A231ECADE1000D7C020 /* ObjectMapper.framework */; };
 		2D1C9F9F1ED2FF3B005EC5A3 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C9F9E1ED2FF3A005EC5A3 /* Price.swift */; };
 		2D1C9FA11ED3021C005EC5A3 /* ItemMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C9FA01ED3021C005EC5A3 /* ItemMetaData.swift */; };
 		2D291BF01EC08BA100C9FB78 /* BuyBuddyViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */; };
@@ -29,6 +27,8 @@
 		2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C0B781EBB6813000CE7E9 /* PopUpScanView.swift */; };
 		2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D74D31EBC7EDD009E75FC /* View.swift */; };
 		2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
+		2D7172731EE7FF9C00B535ED /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1E1ECADD7300D7C020 /* Alamofire.framework */; };
+		2D7172741EE7FF9C00B535ED /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1F1ECADD7300D7C020 /* ObjectMapper.framework */; };
 		2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */; };
 		2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */; };
 		2D7A2F851EC0859900C2DD75 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C0B731EBB57C5000CE7E9 /* images.xcassets */; };
@@ -152,8 +152,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D143A241ECADE1000D7C020 /* Alamofire.framework in Frameworks */,
-				2D143A251ECADE1000D7C020 /* ObjectMapper.framework in Frameworks */,
+				2D7172731EE7FF9C00B535ED /* Alamofire.framework in Frameworks */,
+				2D7172741EE7FF9C00B535ED /* ObjectMapper.framework in Frameworks */,
 				D45E6BCD0622E31B887E51F5 /* Pods_BuyBuddyKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,11 +694,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/build/Release-iphoneos/ObjectMapper",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -769,11 +765,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/build/Release-iphoneos/ObjectMapper",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
