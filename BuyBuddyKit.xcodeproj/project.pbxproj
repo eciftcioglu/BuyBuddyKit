@@ -27,8 +27,6 @@
 		2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C0B781EBB6813000CE7E9 /* PopUpScanView.swift */; };
 		2D5D74D51EBC7EEE009E75FC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D74D31EBC7EDD009E75FC /* View.swift */; };
 		2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D626A941EC5C2C000DE62B3 /* ButtonWithFrame.swift */; };
-		2D7172731EE7FF9C00B535ED /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1E1ECADD7300D7C020 /* Alamofire.framework */; };
-		2D7172741EE7FF9C00B535ED /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1F1ECADD7300D7C020 /* ObjectMapper.framework */; };
 		2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F1A1EC07ADF00C2DD75 /* ScanViewController.swift */; };
 		2D7A2F2F1EC07C9C00C2DD75 /* BuyBuddyViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2F2D1EC07B5E00C2DD75 /* BuyBuddyViewManager.swift */; };
 		2D7A2F851EC0859900C2DD75 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C0B731EBB57C5000CE7E9 /* images.xcassets */; };
@@ -49,6 +47,9 @@
 		2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
 		2DA7B3491EDB936700893DCD /* IncompleteOrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */; };
 		2DC97FEA1ED9D38800D612D0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC97FE91ED9D38800D612D0 /* Reachability.swift */; };
+		2DE7BE511EEAD3E500FAF3EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1E1ECADD7300D7C020 /* Alamofire.framework */; };
+		2DE7BE521EEAD3E500FAF3EA /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE7BE4C1EEAD24B00FAF3EA /* AlamofireImage.framework */; };
+		2DE7BE531EEAD3E500FAF3EA /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D143A1F1ECADD7300D7C020 /* ObjectMapper.framework */; };
 		5A77C80F1E61E038008D1143 /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5AD3109B1E720F8E005F8368 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3109A1E720F8E005F8368 /* User.swift */; };
 		5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD310AC1E721537005F8368 /* EmailAssignment.swift */; };
@@ -113,6 +114,7 @@
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
 		2DC97FE91ED9D38800D612D0 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		2DE7BE4C1EEAD24B00FAF3EA /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/BuyBuddyKit-afeebzkjiscmmeblsgiucbxizget/Build/Products/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		5A77C7D81E61DDF6008D1143 /* BuyBuddyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A77C80A1E61E038008D1143 /* BuyBuddyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBuddyKit.h; sourceTree = "<group>"; };
 		5A77C80B1E61E038008D1143 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -152,8 +154,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7172731EE7FF9C00B535ED /* Alamofire.framework in Frameworks */,
-				2D7172741EE7FF9C00B535ED /* ObjectMapper.framework in Frameworks */,
+				2DE7BE511EEAD3E500FAF3EA /* Alamofire.framework in Frameworks */,
+				2DE7BE521EEAD3E500FAF3EA /* AlamofireImage.framework in Frameworks */,
+				2DE7BE531EEAD3E500FAF3EA /* ObjectMapper.framework in Frameworks */,
 				D45E6BCD0622E31B887E51F5 /* Pods_BuyBuddyKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +348,7 @@
 		5AB53B4E1E72EF2800C5D49E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DE7BE4C1EEAD24B00FAF3EA /* AlamofireImage.framework */,
 				2D143A221ECADE1000D7C020 /* Alamofire.framework */,
 				2D143A231ECADE1000D7C020 /* ObjectMapper.framework */,
 				2D143A1E1ECADD7300D7C020 /* Alamofire.framework */,

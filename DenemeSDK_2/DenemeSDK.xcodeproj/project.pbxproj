@@ -16,9 +16,9 @@
 		2D291C431EC08EC900C9FB78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291C411EC08EC900C9FB78 /* LaunchScreen.storyboard */; };
 		2D291C4E1EC08EC900C9FB78 /* DenemeSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291C4D1EC08EC900C9FB78 /* DenemeSDKTests.swift */; };
 		2D291C591EC08EC900C9FB78 /* DenemeSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291C581EC08EC900C9FB78 /* DenemeSDKUITests.swift */; };
+		2DE7BE541EEAD49200FAF3EA /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC46D7D11ECB368F003FF533 /* BuyBuddyKit.framework */; };
+		2DE7BE551EEAD49200FAF3EA /* BuyBuddyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC46D7D11ECB368F003FF533 /* BuyBuddyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF87892EBECE6C9AA4D05C54 /* Pods_DenemeSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B477874821347ADA490EC38 /* Pods_DenemeSDKTests.framework */; };
-		DC46D7D21ECB368F003FF533 /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC46D7D11ECB368F003FF533 /* BuyBuddyKit.framework */; };
-		DC46D7D31ECB368F003FF533 /* BuyBuddyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC46D7D11ECB368F003FF533 /* BuyBuddyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DC46D7741ECA9130003FF533 /* Embed Frameworks */ = {
+		2DE7BE561EEAD49200FAF3EA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DC46D7D31ECB368F003FF533 /* BuyBuddyKit.framework in Embed Frameworks */,
+				2DE7BE551EEAD49200FAF3EA /* BuyBuddyKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC46D7D21ECB368F003FF533 /* BuyBuddyKit.framework in Frameworks */,
+				2DE7BE541EEAD49200FAF3EA /* BuyBuddyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +202,7 @@
 				2D291C331EC08EC900C9FB78 /* Resources */,
 				E7555ACB59511690A3E8D6DB /* [CP] Embed Pods Frameworks */,
 				A65C6F6B29857E8866F922DF /* [CP] Copy Pods Resources */,
-				DC46D7741ECA9130003FF533 /* Embed Frameworks */,
+				2DE7BE561EEAD49200FAF3EA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -394,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7322D93310B40F72BEB2C4A7 /* [CP] Check Pods Manifest.lock */ = {
@@ -409,7 +409,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A65C6F6B29857E8866F922DF /* [CP] Copy Pods Resources */ = {
@@ -439,7 +439,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E5A60A44CED680155582F3AB /* [CP] Copy Pods Resources */ = {

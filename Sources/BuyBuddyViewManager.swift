@@ -83,14 +83,7 @@ public class BuyBuddyViewManager{
             
         }
     }
-    
-    static func sendCreateOrderNotification(_ isOrderCreated: OrderDelegateResponse) {
-        
-        let connectionDetails:[String:Any] = ["sale_id": isOrderCreated.sale_id!, "grand_total": isOrderCreated.grand_total!]
-        NotificationCenter.default.post(name: Notification.Name(rawValue: orderServiceNotification), object: self, userInfo: connectionDetails)
-    }
-    
-    
+
     private class func showActivityIndicatory(uiView: UIView) {
         let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
         actInd.frame = CGRect(x:uiView.frame.width/2, y:uiView.frame.height/2, width:40.0, height:40.0)

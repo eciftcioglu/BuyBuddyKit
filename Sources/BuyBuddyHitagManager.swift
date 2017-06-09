@@ -105,7 +105,7 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
     }
     
     func startMonitoring() {
-        if(locationManager.monitoredRegions.count != 20){
+
         for serialNumber in 0..<20 {
             
             let serialHex = String(NSString(format:"%02X", serialNumber))
@@ -115,7 +115,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             region.notifyEntryStateOnDisplay = true
             self.locationManager.startMonitoring(for: region)
             }
-        }
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

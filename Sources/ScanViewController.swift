@@ -126,17 +126,13 @@ extension ScanViewController{
                                     self.cache.setObject(image!, forKey:imageURL as AnyObject!)
                                 }else {
                                     self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                                    //print("Couldn't get image: Image is nil")
                                 }
                             })
-                            // Do something with your image.
                         } else {
                             self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                            //print("Couldn't get image: Image is nil")
                         }
                     } else {
                         self.popUpScanView.centerImage = UIImage(named: "missingImage", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                        //print("Couldn't get response code for some reason")
                     }
                 }
             }
