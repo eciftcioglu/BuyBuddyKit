@@ -9,5 +9,4 @@ target 'BuyBuddyKit iOS' do
   pod 'Alamofire', '~> 4.4'
   pod 'AlamofireImage', '~> 3.1'
   pod 'ObjectMapper', '~> 2.2'
-  pod 'RSBarcodes_Swift', '~> 3.0.1'
 end

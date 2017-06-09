@@ -191,7 +191,6 @@ SWIFT_CLASS("_TtC11BuyBuddyKit18BuyBuddyBleHandler")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (BOOL)sendPasswordWithPassword:(NSString * _Nonnull)password SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)disconnectFromHitag SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithHitagId:(NSString * _Nonnull)hitagId OBJC_DESIGNATED_INITIALIZER;
 - (void)decideIfNextProduct;
 - (void)connectionFinalized;
 - (void)connectionTimedOut;
@@ -199,8 +198,6 @@ SWIFT_CLASS("_TtC11BuyBuddyKit18BuyBuddyBleHandler")
 - (void)uartDidEncounterError:(NSString * _Nonnull)error;
 - (void)centralManagerDidUpdateState:(CBCentralManager * _Nonnull)central;
 - (void)didReceiveData:(NSData * _Nonnull)newData;
-- (void)sendBTServiceNotificationDidConnect:(NSString * _Nonnull)hitag;
-- (void)sendBTServiceNotificationWithIsBluetoothConnected:(BOOL)isBluetoothConnected hitag:(NSString * _Nonnull)hitag :(NSInteger)responseCode;
 - (void)centralManager:(CBCentralManager * _Nonnull)central didDiscoverPeripheral:(CBPeripheral * _Nonnull)peripheral advertisementData:(NSDictionary<NSString *, id> * _Nonnull)advertisementData RSSI:(NSNumber * _Nonnull)RSSI;
 - (void)connectDevice:(CBPeripheral * _Nonnull)peripheral;
 - (void)centralManager:(CBCentralManager * _Nonnull)central didConnectPeripheral:(CBPeripheral * _Nonnull)peripheral;
@@ -315,6 +312,7 @@ SWIFT_CLASS("_TtC11BuyBuddyKit29FinalizePaymentViewController")
 @property (nonatomic, strong) IBOutlet UIView * _Null_unspecified midView;
 @property (nonatomic, strong) IBOutlet UICollectionView * _Null_unspecified collectionView;
 @property (nonatomic, strong) IBOutlet UIView * _Null_unspecified completionView;
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified topInfoLabel;
 @property (nonatomic) BOOL state;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull hitagIds;
 @property (nonatomic, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull hitagValidations;
@@ -322,14 +320,18 @@ SWIFT_CLASS("_TtC11BuyBuddyKit29FinalizePaymentViewController")
 @property (nonatomic, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull hitagsTried;
 @property (nonatomic, copy) NSSet<NSString *> * _Nonnull devicesToOpen;
 @property (nonatomic, copy) NSSet<NSString *> * _Nonnull openedDevices;
-@property (nonatomic, copy) NSSet<NSString *> * _Nonnull devicesWithError;
+@property (nonatomic, copy) NSSet<NSString *> * _Nonnull devicesWithConnectionError;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull indexCheck;
 @property (nonatomic, copy) NSString * _Nonnull currentHitag;
 @property (nonatomic, copy) NSString * _Nonnull errors;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)dismissPage:(id _Nonnull)sender;
-- (void)didConnect:(NSNotification * _Nonnull)notification;
-- (void)didReceiveData:(NSNotification * _Nonnull)notification;
+- (void)connectionTimeOutWithHitagId:(NSString * _Nonnull)hitagId;
+- (void)connectionCompleteWithHitagId:(NSString * _Nonnull)hitagId validateId:(NSInteger)validateId;
+- (void)disconnectionCompleteWithHitagId:(NSString * _Nonnull)hitagId;
+- (void)devicePasswordSentWithDataSent:(BOOL)dataSent hitagId:(NSString * _Nonnull)hitagId responseCode:(NSInteger)responseCode;
+- (void)completionCheck;
 - (void)stateChange;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -471,6 +473,7 @@ SWIFT_CLASS("_TtC11BuyBuddyKit29SuggestionsCollectionViewCell")
 
 
 @interface UIView (SWIFT_EXTENSION(BuyBuddyKit))
+@property (nonatomic, readonly, strong) UIViewController * _Nullable parentViewController;
 - (void)addblurView;
 - (void)addBlurEffectWithDark:(BOOL)dark;
 - (UIImage * _Nonnull)imageWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
