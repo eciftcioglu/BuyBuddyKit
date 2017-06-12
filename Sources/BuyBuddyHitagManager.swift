@@ -183,7 +183,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
             }
         
             if !collectedHitags.isEmpty{
-                print(activeHitags)
             BuyBuddyApi.sharedInstance.postScanRecord(hitags: collectedHitags,success: { (item: BuyBuddyObject<BuyBuddyBase>, httpResponse) in
 
                 
@@ -268,7 +267,6 @@ public class BuyBuddyHitagManager : NSObject, CLLocationManagerDelegate,CBCentra
                 activeHitags[data.id!]?.timeStamp = seenTime
                 activeHitags[data.id!]?.validPassCheck = data.validPassCheck
             }
-            
             listenerDelegate?.scanResponse(hitag: data)
        }
     }

@@ -10,6 +10,7 @@
 		2D143A1D1ECADD1900D7C020 /* ProductScanFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */; };
 		2D1C9F9F1ED2FF3B005EC5A3 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C9F9E1ED2FF3A005EC5A3 /* Price.swift */; };
 		2D1C9FA11ED3021C005EC5A3 /* ItemMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C9FA01ED3021C005EC5A3 /* ItemMetaData.swift */; };
+		2D1F29921EEE87D00059032A /* BuyBuddyHitagReleaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F29911EEE87D00059032A /* BuyBuddyHitagReleaser.swift */; };
 		2D291BF01EC08BA100C9FB78 /* BuyBuddyViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D291BF21EC08BA100C9FB78 /* BuyBuddyViews.storyboard */; };
 		2D393CAB1EC4A54C008C7457 /* BuyBuddyHitagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */; };
 		2D393CAE1EC4ACA9008C7457 /* CollectedHitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D393CAC1EC4A70E008C7457 /* CollectedHitag.swift */; };
@@ -41,9 +42,9 @@
 		2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */; };
 		2D8097801EC21E1700FD1983 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80977E1EC21E1100FD1983 /* Color.swift */; };
 		2D8992CE1EE194BE0066028C /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8992CD1EE194BE0066028C /* OrderDetail.swift */; };
-		2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */; };
+		2D9547A21EC3D05E00D197B9 /* BuyBuddyBLEPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547A01EC3CFFF00D197B9 /* BuyBuddyBLEPeripheral.swift */; };
 		2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */; };
-		2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */; };
+		2D9547A41EC3D06400D197B9 /* BuyBuddyBLEHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9547911EC3C84000D197B9 /* BuyBuddyBLEHandler.swift */; };
 		2D9547B71EC3D6E600D197B9 /* Hitag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3A8371EBA04040011C93E /* Hitag.swift */; };
 		2DA7B3491EDB936700893DCD /* IncompleteOrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */; };
 		2DC97FEA1ED9D38800D612D0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC97FE91ED9D38800D612D0 /* Reachability.swift */; };
@@ -77,6 +78,7 @@
 		2D143A231ECADE1000D7C020 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Release-iphoneos/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		2D1C9F9E1ED2FF3A005EC5A3 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		2D1C9FA01ED3021C005EC5A3 /* ItemMetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemMetaData.swift; sourceTree = "<group>"; };
+		2D1F29911EEE87D00059032A /* BuyBuddyHitagReleaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyHitagReleaser.swift; sourceTree = "<group>"; };
 		2D291BF11EC08BA100C9FB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/BuyBuddyViews.storyboard; sourceTree = "<group>"; };
 		2D291DE11EC0D43100C9FB78 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
 		2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyHitagManager.swift; sourceTree = "<group>"; };
@@ -108,8 +110,8 @@
 		2D8097831EC22C9D00FD1983 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2D8992CD1EE194BE0066028C /* OrderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
 		2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEManager.swift; sourceTree = "<group>"; };
-		2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBleHandler.swift; sourceTree = "<group>"; };
-		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBlePeripheral.swift; sourceTree = "<group>"; };
+		2D9547911EC3C84000D197B9 /* BuyBuddyBLEHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEHandler.swift; sourceTree = "<group>"; };
+		2D9547A01EC3CFFF00D197B9 /* BuyBuddyBLEPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyBuddyBLEPeripheral.swift; sourceTree = "<group>"; };
 		2DA7B3481EDB936700893DCD /* IncompleteOrderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompleteOrderResponse.swift; sourceTree = "<group>"; };
 		2DC3A8371EBA04040011C93E /* Hitag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitag.swift; sourceTree = "<group>"; };
 		2DC3A8391EBA078B0011C93E /* ProductScanFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScanFactoryDelegate.swift; sourceTree = "<group>"; };
@@ -279,10 +281,11 @@
 		2D95478E1EC3C80A00D197B9 /* BuyBuddyBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
-				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBlePeripheral.swift */,
-				2D9547911EC3C84000D197B9 /* BuyBuddyBleHandler.swift */,
+				2D9547A01EC3CFFF00D197B9 /* BuyBuddyBLEPeripheral.swift */,
+				2D9547911EC3C84000D197B9 /* BuyBuddyBLEHandler.swift */,
 				2D95478F1EC3C83100D197B9 /* BuyBuddyBLEManager.swift */,
 				2D393CA91EC4A280008C7457 /* BuyBuddyHitagManager.swift */,
+				2D1F29911EEE87D00059032A /* BuyBuddyHitagReleaser.swift */,
 			);
 			name = BuyBuddyBlueTooth;
 			sourceTree = "<group>";
@@ -563,7 +566,7 @@
 				2D1C9FA11ED3021C005EC5A3 /* ItemMetaData.swift in Sources */,
 				DC46D7C71ECB0F52003FF533 /* EndpointCreator.swift in Sources */,
 				2D393D451EC4F9D5008C7457 /* FinalizePaymentViewController.swift in Sources */,
-				2D9547A41EC3D06400D197B9 /* BuyBuddyBleHandler.swift in Sources */,
+				2D9547A41EC3D06400D197B9 /* BuyBuddyBLEHandler.swift in Sources */,
 				5AD310AD1E721537005F8368 /* EmailAssignment.swift in Sources */,
 				2D7BC7331ED5D3AB00934568 /* UIImageView.swift in Sources */,
 				DC295B781ECBD4FB004803C7 /* OrderDelegateResponse.swift in Sources */,
@@ -571,7 +574,7 @@
 				2D7A2F2C1EC07B0300C2DD75 /* ScanViewController.swift in Sources */,
 				2D143A1D1ECADD1900D7C020 /* ProductScanFactoryDelegate.swift in Sources */,
 				5AD310C11E72185F005F8368 /* AuthenticatedUser.swift in Sources */,
-				2D9547A21EC3D05E00D197B9 /* BuyBuddyBlePeripheral.swift in Sources */,
+				2D9547A21EC3D05E00D197B9 /* BuyBuddyBLEPeripheral.swift in Sources */,
 				2D5D74C21EBC74E1009E75FC /* PopUpScanView.swift in Sources */,
 				2D626AA61EC5C2CC00DE62B3 /* ButtonWithFrame.swift in Sources */,
 				2D9547A31EC3D06200D197B9 /* BuyBuddyBLEManager.swift in Sources */,
@@ -588,6 +591,7 @@
 				2D393D141EC4CD4F008C7457 /* BuyBuddyCartButton.swift in Sources */,
 				2D80972A1EC1E6C500FD1983 /* ShoppingCartManager.swift in Sources */,
 				2D393D171EC4CD54008C7457 /* CircleButton.swift in Sources */,
+				2D1F29921EEE87D00059032A /* BuyBuddyHitagReleaser.swift in Sources */,
 				2D8992CE1EE194BE0066028C /* OrderDetail.swift in Sources */,
 				DC46D7D51ECB8FFD003FF533 /* DateExtension.swift in Sources */,
 				DC295B821ECCB720004803C7 /* Errors.swift in Sources */,

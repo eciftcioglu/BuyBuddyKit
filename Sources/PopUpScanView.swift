@@ -96,10 +96,9 @@ public class PopUpScanView : UIView {
         
         centerImageView.frame = CGRect(x:  (self.frame.midX-self.frame.width*0.4)+2.5, y: ((self.frame.midY*0.7)-self.frame.width*0.4)+2.5, width: self.frame.width*0.8-5, height: self.frame.width*0.8-5)
         centerImageView.layer.cornerRadius = self.centerImageView.layer.frame.width / 2
-        centerImageView.image = centerImage
+        //centerImageView.image = centerImage
         centerImageView.contentMode = UIViewContentMode.scaleAspectFill
         centerImageView.clipsToBounds = true
-        //centerImageView.image = UIImage(named: "Oval_2", in: Bundle(for: type(of: self)), compatibleWith: nil)
         self.addSubview(centerImageView)
     }
     

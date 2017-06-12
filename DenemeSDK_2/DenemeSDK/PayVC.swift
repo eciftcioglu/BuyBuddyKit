@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import BuyBuddyKit
 
-class PayVC:UIViewController{
+class PayVC:UIViewController,BuyBuddyHitagReleaserDelegate{
     
     var orderId:Int?
     var basketTotal:Float?
@@ -22,8 +22,24 @@ class PayVC:UIViewController{
     }
 
     @IBAction func test(_ sender: Any) {
-        BuyBuddyViewManager.callPaymentFinalizerView(viewController: self, orderId: orderId)
+        //BuyBuddyViewManager.callPaymentFinalizerView(viewController: self, orderId: orderId)
         
-     
+        BuyBuddyApi.sharedInstance.getOrderDetail(saleId: orderId!, success: { (item:BuyBuddyObject<OrderDetail>, httpResponse) in
+            
+            if let data = item.data{
+                BuyBuddyHitagReleaser(orderDetails: data, delegate: self)
+            }
+            
+        }, error: { (err, httpResponse) in
+            
+        })
+    }
+    
+    func hitagReleaseSuccess() {
+        print("Success")
+    }
+    
+    func hitagReleaseError() {
+        
     }
 }

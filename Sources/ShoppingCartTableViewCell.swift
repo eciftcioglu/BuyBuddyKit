@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 class ShoppingCartTableViewCell:UITableViewCell{
 
     @IBOutlet private var productImage: CircleImageView!

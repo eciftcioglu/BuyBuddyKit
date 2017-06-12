@@ -209,7 +209,7 @@ public class BuyBuddyApi {
 
     }
     
-    func getOrderDetail(saleId: Int,
+    public func getOrderDetail(saleId: Int,
                         success: @escaping  (SuccessHandler<OrderDetail>),
                         error: @escaping (ErrorHandler)){
         

@@ -20,13 +20,13 @@ struct HitagResponse{
 
 class BuyBuddyBLEManager {
     var centralManager : CBCentralManager!
-    var bleHandler     : BuyBuddyBleHandler
+    var bleHandler     : BuyBuddyBLEHandler
     
     init(){
-        self.bleHandler = BuyBuddyBleHandler()        
+        self.bleHandler = BuyBuddyBLEHandler()
     }
     
     init(hitagId:String,viewController:BluetoothConnectionDelegate) {
-        self.bleHandler = BuyBuddyBleHandler(hitagId: hitagId,viewController:viewController)
+        self.bleHandler = BuyBuddyBLEHandler(hitagId: hitagId,viewController:viewController)
     }
 }

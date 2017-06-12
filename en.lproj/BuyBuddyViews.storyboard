@@ -351,7 +351,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-nN-Hk2" customClass="ButtonWithFrame" customModule="BuyBuddyKit" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="186.5" width="250" height="42"/>
+                                        <rect key="frame" x="63" y="186.5" width="250" height="42.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                         <state key="normal" title="Maille Gönder" image="mail_icon"/>

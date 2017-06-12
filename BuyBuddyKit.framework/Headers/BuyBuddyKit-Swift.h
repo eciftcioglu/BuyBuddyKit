@@ -165,16 +165,16 @@ SWIFT_CLASS("_TtC11BuyBuddyKit15ButtonWithFrame")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class BuyBuddyBlePeripheral;
+@class BuyBuddyBLEPeripheral;
 @class CBCentralManager;
 @class CBPeripheral;
 @class NSString;
 @class NSNumber;
 
-SWIFT_CLASS("_TtC11BuyBuddyKit18BuyBuddyBleHandler")
-@interface BuyBuddyBleHandler : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+SWIFT_CLASS("_TtC11BuyBuddyKit18BuyBuddyBLEHandler")
+@interface BuyBuddyBLEHandler : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 @property (nonatomic) BOOL singleBuy;
-@property (nonatomic, strong) BuyBuddyBlePeripheral * _Nullable uartConnect;
+@property (nonatomic, strong) BuyBuddyBLEPeripheral * _Nullable uartConnect;
 @property (nonatomic, strong) CBCentralManager * _Null_unspecified centralManager;
 @property (nonatomic, strong) CBPeripheral * _Null_unspecified currentDevice;
 @property (nonatomic) BOOL connected;
@@ -207,8 +207,8 @@ SWIFT_CLASS("_TtC11BuyBuddyKit18BuyBuddyBleHandler")
 @class CBCharacteristic;
 @class CBUUID;
 
-SWIFT_CLASS("_TtC11BuyBuddyKit21BuyBuddyBlePeripheral")
-@interface BuyBuddyBlePeripheral : NSObject <CBPeripheralDelegate>
+SWIFT_CLASS("_TtC11BuyBuddyKit21BuyBuddyBLEPeripheral")
+@interface BuyBuddyBLEPeripheral : NSObject <CBPeripheralDelegate>
 @property (nonatomic, strong) CBPeripheral * _Null_unspecified currentPeripheral;
 @property (nonatomic, strong) CBService * _Nullable uartService;
 @property (nonatomic, strong) CBCharacteristic * _Nullable rxCharacteristic;
