@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RSBarcodes_Swift
 import BuyBuddyKit
 
 
