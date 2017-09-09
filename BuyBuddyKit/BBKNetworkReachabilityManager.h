@@ -58,20 +58,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;
 
 /**
- Whether or not the network is currently reachable via WiFi.
+ Whether or not the network is currently reachable via WLAN.
  */
-@property (readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;
+@property (readonly, nonatomic, assign, getter = isReachableViaWLAN) BOOL reachableViaWLAN;
 
 ///---------------------
 /// @name Initialization
 ///---------------------
 
 /**
- Creates and returns a network reachability manager with the default socket address.
- 
- @return An initialized network reachability manager, actively monitoring the default socket address.
+ Initializes an instance of a network reachability manager from the specified reachability object.
+ @param reachability The reachability object to monitor.
+ @return An initialized network reachability manager, actively monitoring the specified reachability.
  */
-+ (id)sharedManager;
+- (instancetype)initWithReachability:(SCNetworkReachabilityRef _Nonnull)reachability NS_DESIGNATED_INITIALIZER;
+
+/**
+ *  Initializes an instance of a network reachability manager
+ *
+ *  @return nil as this method is unavailable
+ */
+- (nullable instancetype)init NS_UNAVAILABLE;
 
 ///--------------------------------------------------
 /// @name Starting & Stopping Reachability Monitoring
@@ -86,16 +93,6 @@ NS_ASSUME_NONNULL_BEGIN
  Stops monitoring for changes in network reachability status.
  */
 - (void)stopPolling;
-
-
-///-------------------------------------------------
-/// @name Getting Localized Reachability Description
-///-------------------------------------------------
-
-/**
- Returns a localized string representation of the current network reachability status.
- */
-- (NSString * _Nonnull)localizedNetworkReachabilityStatusString;
 
 ///---------------------------------------------------
 /// @name Setting Network Reachability Change Callback
@@ -117,21 +114,27 @@ NS_ASSUME_NONNULL_BEGIN
  ## Network Reachability
  The following constants are provided by `BBKNetworkReachabilityManager` as possible network reachability statuses.
  enum {
- BBKNetworkReachabilityStatusUnknown,
- BBKNetworkReachabilityStatusNotReachable,
- BBKNetworkReachabilityStatusReachableViaWWAN,
- BBKNetworkReachabilityStatusReachableViaWiFi,
+    BBKNetworkReachabilityStatusUnknown,
+    BBKNetworkReachabilityStatusNotReachable,
+    BBKNetworkReachabilityStatusReachableViaWWAN,
+    BBKNetworkReachabilityStatusReachableViaWLAN,
  }
+ 
  `BBKNetworkReachabilityStatusUnknown`
  The `baseURL` host reachability is not known.
+ 
  `BBKNetworkReachabilityStatusNotReachable`
  The `baseURL` host cannot be reached.
+ 
  `BBKNetworkReachabilityStatusReachableViaWWAN`
  The `baseURL` host can be reached via a cellular connection, such as EDGE or GPRS.
+ 
  `BBKNetworkReachabilityStatusReachableViaWLAN`
  The `baseURL` host can be reached via a Wi-Fi connection.
+ 
  ### Keys for Notification UserInfo Dictionary
  Strings that are used as keys in a `userInfo` dictionary in a network reachability status change notification.
+ 
  `BBKNetworkingReachabilityNotificationStatusItem`
  A key in the userInfo dictionary in a `BBKNetworkingReachabilityDidChangeNotification` notification.
  The corresponding value is an `NSNumber` object representing the `BBKNetworkReachabilityStatus` value for the current reachability status.
@@ -159,5 +162,9 @@ FOUNDATION_EXPORT NSString * const BBKNetworkingReachabilityNotificationStatusIt
 FOUNDATION_EXPORT NSString * _Nonnull BBKStringFromNetworkReachabilityStatus(BBKNetworkReachabilityStatus status);
 
 NS_ASSUME_NONNULL_END
+
+#import "BBKNetworkReachabilityManager+DomainReachability.h"
+#import "BBKNetworkReachabilityManager+AddressReachability.h"
+#import "BBKNetworkReachabilityManager+Localization.h"
 
 #endif

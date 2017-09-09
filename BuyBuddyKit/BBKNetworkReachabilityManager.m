@@ -22,8 +22,6 @@
 
 #import "BBKNetworkReachabilityManager.h"
 
-#import <netinet/in.h>
-#import <netinet6/in6.h>
 #import <arpa/inet.h>
 #import <ifaddrs.h>
 #import <netdb.h>
@@ -34,12 +32,6 @@
 
 #ifndef NIL_FLAG
 #define NIL_FLAG 0
-#endif
-
-#if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 90000) || (defined(__MAC_OS_X_VERSION_MIN_REQUIRED) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-#define BBK_INET_V6_AVAILABLE
-#elif (defined(BBK_INET_V6_AVAILABLE))
-#undef BBK_INET_V6_AVAILABLE
 #endif
 
 NSString * const BBKNetworkingReachabilityDidChangeNotification = @"com.buybuddy.networking.reachability.change";
@@ -67,42 +59,23 @@ static void BBKNetworkReachabilityReleaseCallback(const void *info);
 
 @implementation BBKNetworkReachabilityManager
 
-+ (id)sharedManager
-{
-    static BBKNetworkReachabilityManager *sharedManager = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedManager = [[self alloc] init];
-    });
-    
-    return sharedManager;
-}
-
 #pragma mark - Object lifecycle
 
-- (instancetype)init
+- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability
 {
     self = [super init];
     
     if (self) {
-#ifdef BBK_INET_V6_AVAILABLE
-        struct sockaddr_in6 address;
-        bzero(&address, sizeof(address));
-        address.sin6_len = sizeof(address);
-        address.sin6_family = AF_INET6;
-#else
-        struct sockaddr_in address;
-        bzero(&address, sizeof(address));
-        address.sin_len = sizeof(address);
-        address.sin_family = AF_INET;
-#endif
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)&address);
         _reachability = CFRetain(reachability);
         self.networkReachabilityStatus = BBKNetworkReachabilityStatusUnknown;
     }
     
     return self;
+}
+
+- (instancetype)init NS_UNAVAILABLE
+{
+    return nil;
 }
 
 - (void)dealloc
@@ -154,15 +127,8 @@ static void BBKNetworkReachabilityReleaseCallback(const void *info);
     }
 }
 
-#pragma mark - Localization
-
-- (NSString *)localizedNetworkReachabilityStatusString
-{
-    return BBKStringFromNetworkReachabilityStatus(self.networkReachabilityStatus);
-}
-
-
 #pragma mark - Accessors & mutators
+
 - (void)setReachabilityStatusChangeBlock:(void (^)(BBKNetworkReachabilityStatus status))blk
 {
     self.networkReachabilityStatusBlock = blk;
@@ -170,7 +136,7 @@ static void BBKNetworkReachabilityReleaseCallback(const void *info);
 
 - (BOOL)isReachable
 {
-    return [self isReachableViaWWAN] || [self isReachableViaWiFi];
+    return [self isReachableViaWWAN] || [self isReachableViaWLAN];
 }
 
 - (BOOL)isReachableViaWWAN
@@ -189,14 +155,14 @@ NSString * _Nonnull BBKStringFromNetworkReachabilityStatus(BBKNetworkReachabilit
 {
     switch (status) {
         case BBKNetworkReachabilityStatusNotReachable:
-            return NSLocalizedStringFromTable(@"Not Reachable", @"AFNetworking", nil);
+            return NSLocalizedStringFromTable(@"Not Reachable", @"BuyBuddyKit", nil);
         case BBKNetworkReachabilityStatusReachableViaWWAN:
-            return NSLocalizedStringFromTable(@"Reachable via WWAN", @"AFNetworking", nil);
+            return NSLocalizedStringFromTable(@"Reachable via WWAN", @"BuyBuddyKit", nil);
         case BBKNetworkReachabilityStatusReachableViaWLAN:
-            return NSLocalizedStringFromTable(@"Reachable via WiFi", @"AFNetworking", nil);
+            return NSLocalizedStringFromTable(@"Reachable via WLAN", @"BuyBuddyKit", nil);
         case BBKNetworkReachabilityStatusUnknown:
         default:
-            return NSLocalizedStringFromTable(@"Unknown", @"AFNetworking", nil);
+            return NSLocalizedStringFromTable(@"Unknown", @"BuyBuddyKit", nil);
     }
 }
 
@@ -209,6 +175,7 @@ static BBKNetworkReachabilityStatus BBKNetworkReachabilityStatusForFlags(SCNetwo
     BOOL isNetworkReachable = (isReachable && (!needsConnection || canConnectWithoutUserInteraction));
     
     BBKNetworkReachabilityStatus status = BBKNetworkReachabilityStatusUnknown;
+    
     if (isNetworkReachable == NO) {
         status = BBKNetworkReachabilityStatusNotReachable;
     }

@@ -27,27 +27,34 @@
 
 @interface BBKNetworkReachabilityManagerTests : BBKTestCase
 @property (nonatomic, strong) BBKNetworkReachabilityManager *addressReachability;
+@property (nonatomic, strong) BBKNetworkReachabilityManager *domainReachability;
 @end
 
 @implementation BBKNetworkReachabilityManagerTests
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
     
-    self.addressReachability = [BBKNetworkReachabilityManager sharedManager];
+    self.domainReachability = [BBKNetworkReachabilityManager managerForDomain:@"localhost"];
+    self.addressReachability = [BBKNetworkReachabilityManager managerForDefaultAddress];
 }
 
 - (void)tearDown
 {
     [self.addressReachability stopPolling];
+    [self.domainReachability stopPolling];
     
     [super tearDown];
 }
 
-- (void)testAddressReachabilityStartsInUnknownState
-{
+- (void)testAddressReachabilityStartsInUnknownState {
     XCTAssertEqual(self.addressReachability.networkReachabilityStatus,
+                   BBKNetworkReachabilityStatusUnknown,
+                   @"Reachability should start in an unknown state");
+}
+
+- (void)testDomainReachabilityStartsInUnknownState {
+    XCTAssertEqual(self.domainReachability.networkReachabilityStatus,
                    BBKNetworkReachabilityStatusUnknown,
                    @"Reachability should start in an unknown state");
 }
@@ -69,10 +76,12 @@
     [self waitForExpectationsWithCommonTimeout];
 }
 
-- (void)testAddressReachabilityNotification
-
-{
+- (void)testAddressReachabilityNotification {
     [self verifyReachabilityNotificationGetsPostedWithManager:self.addressReachability];
+}
+
+- (void)testDomainReachabilityNotification {
+    [self verifyReachabilityNotificationGetsPostedWithManager:self.domainReachability];
 }
 
 - (void)verifyReachabilityStatusBlockGetsCalledWithManager:(BBKNetworkReachabilityManager *)manager
@@ -95,9 +104,12 @@
     
 }
 
-- (void)testAddressReachabilityBlock
-{
+- (void)testAddressReachabilityBlock {
     [self verifyReachabilityStatusBlockGetsCalledWithManager:self.addressReachability];
+}
+
+- (void)testDomainReachabilityBlock {
+    [self verifyReachabilityStatusBlockGetsCalledWithManager:self.domainReachability];
 }
 
 @end
