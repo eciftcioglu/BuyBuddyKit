@@ -3,13 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5A974E6E1F63CFF80066F83A /* BuyBuddyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A974E641F63CFF80066F83A /* BuyBuddyKit.framework */; };
 		5A974E731F63CFF80066F83A /* BuyBuddyKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E721F63CFF80066F83A /* BuyBuddyKitTests.m */; };
 		5A974E751F63CFF80066F83A /* BuyBuddyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A974E671F63CFF80066F83A /* BuyBuddyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A974E941F63E3100066F83A /* BBKNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A974E921F63E3100066F83A /* BBKNetworkReachabilityManager.h */; };
+		5A974E951F63E3100066F83A /* BBKNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E931F63E3100066F83A /* BBKNetworkReachabilityManager.m */; };
+		5A974E981F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */; };
+		5A974E9C1F6409960066F83A /* BBKTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E9B1F6409960066F83A /* BBKTestCase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,11 @@
 		5A974E6D1F63CFF80066F83A /* BuyBuddyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuyBuddyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A974E721F63CFF80066F83A /* BuyBuddyKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyBuddyKitTests.m; sourceTree = "<group>"; };
 		5A974E741F63CFF80066F83A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A974E921F63E3100066F83A /* BBKNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		5A974E931F63E3100066F83A /* BBKNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBKNetworkReachabilityManagerTests.m; path = BuyBuddyKitTests/BBKNetworkReachabilityManagerTests.m; sourceTree = "<group>"; };
+		5A974E9A1F6409960066F83A /* BBKTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKTestCase.h; path = BuyBuddyKitTests/BBKTestCase.h; sourceTree = "<group>"; };
+		5A974E9B1F6409960066F83A /* BBKTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBKTestCase.m; path = BuyBuddyKitTests/BBKTestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +62,8 @@
 		5A974E5A1F63CFF70066F83A = {
 			isa = PBXGroup;
 			children = (
-				5A974E661F63CFF80066F83A /* BuyBuddyKit */,
+				5A974E961F64078C0066F83A /* Tests */,
+				5A974E661F63CFF80066F83A /* Source */,
 				5A974E711F63CFF80066F83A /* BuyBuddyKitTests */,
 				5A974E651F63CFF80066F83A /* Products */,
 			);
@@ -68,12 +78,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5A974E661F63CFF80066F83A /* BuyBuddyKit */ = {
+		5A974E661F63CFF80066F83A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5A974E911F63D0780066F83A /* Networking */,
 				5A974E671F63CFF80066F83A /* BuyBuddyKit.h */,
 				5A974E681F63CFF80066F83A /* Info.plist */,
 			);
+			name = Source;
 			path = BuyBuddyKit;
 			sourceTree = "<group>";
 		};
@@ -86,6 +98,33 @@
 			path = BuyBuddyKitTests;
 			sourceTree = "<group>";
 		};
+		5A974E911F63D0780066F83A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5A974E921F63E3100066F83A /* BBKNetworkReachabilityManager.h */,
+				5A974E931F63E3100066F83A /* BBKNetworkReachabilityManager.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		5A974E961F64078C0066F83A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5A974E991F6409740066F83A /* BuyBuddyKit Tests */,
+				5A974E9A1F6409960066F83A /* BBKTestCase.h */,
+				5A974E9B1F6409960066F83A /* BBKTestCase.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		5A974E991F6409740066F83A /* BuyBuddyKit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */,
+			);
+			name = "BuyBuddyKit Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -93,6 +132,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A974E941F63E3100066F83A /* BBKNetworkReachabilityManager.h in Headers */,
 				5A974E751F63CFF80066F83A /* BuyBuddyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,18 +187,16 @@
 				TargetAttributes = {
 					5A974E631F63CFF80066F83A = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = X4R5K8NKGR;
 						ProvisioningStyle = Automatic;
 					};
 					5A974E6C1F63CFF80066F83A = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = X4R5K8NKGR;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 5A974E5E1F63CFF70066F83A /* Build configuration list for PBXProject "BuyBuddyKit" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -197,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A974E951F63E3100066F83A /* BBKNetworkReachabilityManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +244,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A974E731F63CFF80066F83A /* BuyBuddyKitTests.m in Sources */,
+				5A974E981F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m in Sources */,
+				5A974E9C1F6409960066F83A /* BBKTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,4 +1,4 @@
-// BuyBuddyKit.h
+// BBKTestCase.m
 // Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
@@ -19,14 +19,58 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import <Foundation/Foundation.h>
 
-//! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BuyBuddyKitVersionNumber;
+#import "BBKTestCase.h"
 
-//! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BuyBuddyKitVersionString[];
+@implementation BBKTestCase
 
-// In this header, you should import all the public headers of your framework using statements like #import <BuyBuddyKit/PublicHeader.h>
+- (void)setUp
+{
+    [super setUp];
+    self.networkTimeout = 20.0;
+}
 
+- (void)tearDown
+{
+    [super tearDown];
+}
 
+#pragma mark -
+
+- (NSURL *)baseURL
+{
+    NSDictionary *environment = [[NSProcessInfo processInfo] environment];
+    return [NSURL URLWithString:environment[@"HTTPBIN_BASE_URL"] ?: @"https://httpbin.org"];
+}
+
+- (NSURL *)pngURL
+{
+    return [self.baseURL URLByAppendingPathComponent:@"image/png"];
+}
+
+- (NSURL *)jpegURL
+{
+    return [self.baseURL URLByAppendingPathComponent:@"image/jpeg"];
+}
+
+- (NSURL *)delayURL
+{
+    return [self.baseURL URLByAppendingPathComponent:@"delay/1"];
+}
+
+- (NSURL *)URLWithStatusCode:(NSInteger)statusCode
+{
+    return [self.baseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"status/%@", @(statusCode)]];
+}
+
+- (void)waitForExpectationsWithCommonTimeout
+{
+    [self waitForExpectationsWithCommonTimeoutUsingHandler:nil];
+}
+
+- (void)waitForExpectationsWithCommonTimeoutUsingHandler:(XCWaitCompletionHandler)handler
+{
+    [self waitForExpectationsWithTimeout:self.networkTimeout handler:handler];
+}
+
+@end

@@ -1,4 +1,4 @@
-// BuyBuddyKit.h
+// BBKTestCase.h
 // Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
@@ -19,14 +19,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import <Foundation/Foundation.h>
 
-//! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BuyBuddyKitVersionNumber;
+#import <XCTest/XCTest.h>
 
-//! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BuyBuddyKitVersionString[];
+@interface BBKTestCase : XCTestCase
 
-// In this header, you should import all the public headers of your framework using statements like #import <BuyBuddyKit/PublicHeader.h>
+@property (nonatomic, strong, readonly) NSURL *baseURL;
+@property (nonatomic, strong, readonly) NSURL *pngURL;
+@property (nonatomic, strong, readonly) NSURL *jpegURL;
+@property (nonatomic, strong, readonly) NSURL *delayURL;
+- (NSURL *)URLWithStatusCode:(NSInteger)statusCode;
 
+@property (nonatomic, assign) NSTimeInterval networkTimeout;
 
+- (void)waitForExpectationsWithCommonTimeout;
+- (void)waitForExpectationsWithCommonTimeoutUsingHandler:(XCWaitCompletionHandler)handler;
+
+@end
