@@ -32,7 +32,8 @@
 
 @implementation BBKNetworkReachabilityManagerTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
     
     self.domainReachability = [BBKNetworkReachabilityManager managerForDomain:@"localhost"];
@@ -47,13 +48,15 @@
     [super tearDown];
 }
 
-- (void)testAddressReachabilityStartsInUnknownState {
+- (void)testAddressReachabilityStartsInUnknownState
+{
     XCTAssertEqual(self.addressReachability.networkReachabilityStatus,
                    BBKNetworkReachabilityStatusUnknown,
                    @"Reachability should start in an unknown state");
 }
 
-- (void)testDomainReachabilityStartsInUnknownState {
+- (void)testDomainReachabilityStartsInUnknownState
+{
     XCTAssertEqual(self.domainReachability.networkReachabilityStatus,
                    BBKNetworkReachabilityStatusUnknown,
                    @"Reachability should start in an unknown state");
@@ -76,11 +79,13 @@
     [self waitForExpectationsWithCommonTimeout];
 }
 
-- (void)testAddressReachabilityNotification {
+- (void)testAddressReachabilityNotification
+{
     [self verifyReachabilityNotificationGetsPostedWithManager:self.addressReachability];
 }
 
-- (void)testDomainReachabilityNotification {
+- (void)testDomainReachabilityNotification
+{
     [self verifyReachabilityNotificationGetsPostedWithManager:self.domainReachability];
 }
 
@@ -104,11 +109,13 @@
     
 }
 
-- (void)testAddressReachabilityBlock {
+- (void)testAddressReachabilityBlock
+{
     [self verifyReachabilityStatusBlockGetsCalledWithManager:self.addressReachability];
 }
 
-- (void)testDomainReachabilityBlock {
+- (void)testDomainReachabilityBlock
+{
     [self verifyReachabilityStatusBlockGetsCalledWithManager:self.domainReachability];
 }
 
