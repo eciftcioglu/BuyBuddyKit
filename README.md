@@ -25,7 +25,7 @@ Our software development kit supports various installation methods.
 - Add *BuyBuddyKit* as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
 
   ```bash
-  $ git submodule add https://github.com/Alamofire/Alamofire.git Library/BuyBuddyKit
+  $ git submodule add https://github.com/heybuybuddy/BuyBuddyKit.git Library/BuyBuddyKit
   ```
   
 - Open the new `BuyBuddyKit` folder, and drag the `BuyBuddyKit.xcodeproj` into the Project Navigator of your application's Xcode project.
