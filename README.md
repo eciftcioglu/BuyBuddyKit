@@ -57,7 +57,7 @@ You can install it with the following command:
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1+ is required to build BuyBuddyKit 4.0+.
+> CocoaPods 1.1+ is required to build BuyBuddyKit 2.0+.
 
 To integrate BuyBuddyKit into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -67,7 +67,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'BuyBuddyKit', '~> 1.0'
+    pod 'BuyBuddyKit', '~> 2.0'
 end
 ```
 
@@ -91,7 +91,7 @@ $ brew install carthage
 To integrate BuyBuddyKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "heybuybuddy/BuyBuddyKit" ~> 1.0
+github "heybuybuddy/BuyBuddyKit" ~> 2.0
 ```
 
 Run `carthage update` to build the framework and drag the built `BuyBuddyKit.framework` into your Xcode project.
@@ -105,7 +105,7 @@ Once you have your Swift package set up, adding BuyBuddyKit as a dependency is a
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/heybuybuddy/BuyBuddyKit.git", majorVersion: 1)
+    .Package(url: "https://github.com/heybuybuddy/BuyBuddyKit.git", majorVersion: 2)
 ]
 ```
 
