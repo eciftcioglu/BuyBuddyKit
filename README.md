@@ -10,11 +10,20 @@ This library provides a generic abstraction layer to access BuyBuddy platform in
 To get started, navigate to [Apple Devices Integration Guide](https://github.com/heybuybuddy/BuyBuddyKit/).
 
 ### Features
-- **Device management**: Dealing with BuyBuddy licensed devices has become easier with our asynchronous device management API. We want to remove your concerns while using a Bluetooth Low Energy® (BLE) device in your application.
 - **Platform management**: An object-oriented abstraction of platform management to not deal with underlying HATEOAS API. Every single entity found in our platform can be managed with this library.
 - **Simplified payments**: You might use your own payment system, or you can use existing ones found in APIs.
 - **Toll-free bridging**: This framework is also used by our [open-source management application](https://github.com/heybuybuddy/Manager-macOS/). We offer toll-free bridging between clients and our web services, which means you can use every feature found in our licensed applications.
-- **Core Data support**: You may use our seperate [Core Data wrapper library](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper) if you want *first-class* support for offline persistence.
+- **Core Data support**: You may use our seperate [Core Data wrapper library](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/) if you want *first-class* support for offline persistence.
+
+### Frameworks Visualization
+
+![Frameworks Visualization](https://github.com/heybuybuddy/BuyBuddyKit/raw/refactor/Documentation/FrameworksVisualization.png)
+
+We have four seperate libraries for Apple devices, including this repository.
+- [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/): The library responsible for consuming our HATEOAS web services in an elegant way.
+- [**IoTKit**](https://github.com/heybuybuddy/IoTKit/): Device management, consolidation tools, Bluetooth Low Energy® (BLE) wrappers.
+- [**Core Data Wrapper**](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/): [Core Data](https://developer.apple.com/documentation/coredata) wrapper for **CoreKit** to achieve offline persistence and caching.
+- [**UIKit (iOS only)**](https://github.com/heybuybuddy/BuyBuddyUIKit/): Convenience classes for easy integration on iOS devices.
 
 ## Installation
 Our software development kit supports various installation methods.
