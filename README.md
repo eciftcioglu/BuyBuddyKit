@@ -15,14 +15,14 @@ To get started, navigate to [Apple Devices Integration Guide](https://github.com
 - **Toll-free bridging**: This framework is also used by our [open-source management application](https://github.com/heybuybuddy/Manager-macOS/). We offer toll-free bridging between clients and our web services, which means you can use every feature found in our licensed applications.
 - **Core Data support**: You may use our seperate [Core Data wrapper library](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/) if you want *first-class* support for offline persistence.
 
-### Frameworks Visualization
+### Libraries
 
 ![Frameworks Visualization](https://github.com/heybuybuddy/BuyBuddyKit/raw/refactor/Documentation/FrameworksVisualization.png)
 
 We have four seperate libraries for Apple devices, including this repository.
 - [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/): The library responsible for consuming our HATEOAS web services in an elegant way.
 - [**IoTKit**](https://github.com/heybuybuddy/IoTKit/): Device management, consolidation tools, Bluetooth Low Energy® (BLE) wrappers.
-- [**Core Data Wrapper**](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/): [Core Data](https://developer.apple.com/documentation/coredata) wrapper for **CoreKit** to achieve offline persistence and caching.
+- [**Core Data Wrapper**](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/): [Core Data](https://developer.apple.com/documentation/coredata) wrapper for [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/) to achieve offline persistence and caching.
 - [**UIKit (iOS only)**](https://github.com/heybuybuddy/BuyBuddyUIKit/): Convenience classes for easy integration on iOS devices.
 
 ## Installation
