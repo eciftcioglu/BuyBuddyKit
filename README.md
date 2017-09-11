@@ -139,6 +139,13 @@ Finally, please read our [Code of Conduct](https://github.com/heybuybuddy/BuyBud
 3. Select corresponding scheme for your platform.
 4. Run `Test` target.
 
+### Releases
+
+| Version         | Stability   | Development                         | Purpose                                         |
+| --------------: | :---------: | :---------------------------------: | :---------------------------------------------- |
+| active 2.0      | Unstable    | Actively developed.                 | Unstable, new library under development.        |
+| legacy 1.x      | Stable      | Bug fixes, will be deprecated soon. | Former library before refactor of web services. |
+
 ## Attributions
 
 We apprecicate the efforts of the communities of [Alamofire](https://github.com/Alamofire/Alamofire), [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [Stripe](https://stripe.com) to providing lean frameworks to teach us how a Objective-C/Swift library should be constituted.
