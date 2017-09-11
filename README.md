@@ -9,6 +9,8 @@ To get started, navigate to [Apple Devices Integration Guide](https://github.com
 - **Device management**: Dealing with BuyBuddy licensed devices has become easier with our asynchronous device management API. We want to remove your concerns while using a Bluetooth Low Energy® (BLE) device in your application.
 - **Platform management**: An object-oriented abstraction of platform management to not deal with underlying HATEOAS API. Every single entity found in our platform can be managed with this library.
 - **Simplified payments**: You might use your own payment system, or you can use existing ones found in APIs.
+- **Toll-free bridging**: This framework is also used by our [open-source management application](https://github.com/heybuybuddy/Manager-macOS/). We offer toll-free bridging between clients and our web services, which means you can use every feature found in our licensed applications.
+- **Core Data support**: You may use our seperate [Core Data wrapper library](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper) if you want *first-class* support for offline persistence.
 
 ## Installation
 Our software development kit supports various installation methods.
