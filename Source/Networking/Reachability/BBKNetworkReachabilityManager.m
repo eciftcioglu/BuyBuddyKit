@@ -43,7 +43,7 @@ NSString * _Nonnull BBKStringFromNetworkReachabilityStatus(BBKNetworkReachabilit
 static BBKNetworkReachabilityStatus BBKNetworkReachabilityStatusForFlags(SCNetworkReachabilityFlags flags);
 static void BBKPostReachabilityStatusChange(SCNetworkReachabilityFlags flags,
                                             BBKNetworkReachabilityStatusBlock block);
-static void BBKNetworkReachabilityCallback(SCNetworkReachabilityRef __unused target,
+static void BBKNetworkReachabilityCallback(SCNetworkReachabilityRef target,
                                            SCNetworkReachabilityFlags flags,
                                            void *info);
 static const void * BBKNetworkReachabilityRetainCallback(const void *info);
