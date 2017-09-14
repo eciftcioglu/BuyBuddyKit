@@ -39,7 +39,6 @@
 		D5C478581F6A8A09009A2973 /* BBKUser+DelegationRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C478561F6A8A09009A2973 /* BBKUser+DelegationRegistry.m */; };
 		D5C4785B1F6A8B67009A2973 /* BBKUser+RegistrationInformation.h in Headers */ = {isa = PBXBuildFile; fileRef = D5C478591F6A8B67009A2973 /* BBKUser+RegistrationInformation.h */; };
 		D5C4785C1F6A8B67009A2973 /* BBKUser+RegistrationInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C4785A1F6A8B67009A2973 /* BBKUser+RegistrationInformation.m */; };
-		D5C478691F6AA3C7009A2973 /* BBKUser.md in Sources */ = {isa = PBXBuildFile; fileRef = D5C478681F6AA3C7009A2973 /* BBKUser.md */; };
 		D5E93A881F64403000B3B47B /* BBKNetworkReachabilityManager+DomainReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D5E93A861F64403000B3B47B /* BBKNetworkReachabilityManager+DomainReachability.h */; };
 		D5E93A891F64403000B3B47B /* BBKNetworkReachabilityManager+DomainReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E93A871F64403000B3B47B /* BBKNetworkReachabilityManager+DomainReachability.m */; };
 		D5E93A8C1F64410800B3B47B /* BBKNetworkReachabilityManager+AddressReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D5E93A8A1F64410800B3B47B /* BBKNetworkReachabilityManager+AddressReachability.h */; };
@@ -331,7 +330,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /bin/sh;
-			buildWorkingDirectory = "/Users/chatatata/Development/Manager-macOS/Library/BuyBuddyKit";
+			buildWorkingDirectory = /Users/chatatata/Development/BuyBuddy/Library/BuyBuddyKit;
 			dependencies = (
 			);
 			name = Documentation;
@@ -446,7 +445,6 @@
 				D58BB0F11F67C0DF00ABF448 /* BBKUser+AuthenticationPreferences.m in Sources */,
 				D5C4785C1F6A8B67009A2973 /* BBKUser+RegistrationInformation.m in Sources */,
 				D5E93A8D1F64410800B3B47B /* BBKNetworkReachabilityManager+AddressReachability.m in Sources */,
-				D5C478691F6AA3C7009A2973 /* BBKUser.md in Sources */,
 				D58BB0BF1F66737000ABF448 /* BBKConnectionContext.m in Sources */,
 				D5C478541F6A89BD009A2973 /* BBKUser+Delegation.m in Sources */,
 				D58BB0E11F67BBB700ABF448 /* BBKUser+PersonalInformation.m in Sources */,
