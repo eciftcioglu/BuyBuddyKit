@@ -1,6 +1,5 @@
-// BuyBuddyKit.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
-//               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
+// BBKConnectionContext.h
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,22 +18,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 #import <Foundation/Foundation.h>
-#import <Availability.h>
 
-//! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BBKVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BBKVersionString[];
+@interface BBKConnectionContext : NSObject
 
-#ifndef _BUYBUDDYKIT_
-#define _BUYBUDDYKIT_
+@end
 
-#import "BBKUser.h"
-
-#if !TARGET_OS_WATCH
-#import "BBKNetworkReachabilityManager.h"
-#endif
-
-#endif
+NS_ASSUME_NONNULL_END

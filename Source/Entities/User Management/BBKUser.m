@@ -1,6 +1,5 @@
-// BuyBuddyKit.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
-//               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
+// BBKUser.m
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,22 +18,52 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#import <Foundation/Foundation.h>
-#import <Availability.h>
-
-//! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BBKVersionNumber;
-
-//! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BBKVersionString[];
-
-#ifndef _BUYBUDDYKIT_
-#define _BUYBUDDYKIT_
 
 #import "BBKUser.h"
 
-#if !TARGET_OS_WATCH
-#import "BBKNetworkReachabilityManager.h"
-#endif
+@interface BBKUser ()
 
-#endif
+@property (nonatomic, strong, nonnull, readwrite) NSNumber *ID;
+@property (nonatomic, strong, nullable, readwrite) NSString *email;
+@property (nonatomic, weak, nullable, readwrite) id boundContext;
+
+@end
+
+@implementation BBKUser
+
+- (instancetype)initWithID:(NSNumber *)ID
+                     email:(NSString *)email
+          isBoundToContext:(id)context
+{
+    self = [super init];
+    
+    if (self) {
+        _ID = ID;
+        _email = email;
+        _boundContext = context;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithID:(NSNumber *)ID email:(NSString *)email
+{
+    return [self initWithID:ID
+                      email:email
+           isBoundToContext:nil];
+}
+
+- (instancetype)init NS_UNAVAILABLE
+{
+    return nil;
+}
+
+@end
+
+@interface BBKUser (Internals)
+
+@end
+
+@implementation BBKUser (Internals)
+
+@end
