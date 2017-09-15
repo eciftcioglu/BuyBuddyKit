@@ -33,7 +33,7 @@
 
 - (instancetype)initWithID:(NSNumber *)ID
                      email:(NSString *)email
-          isBoundToContext:(id)context
+             bindToContext:(id _Nullable)context
 {
     self = [super init];
     
@@ -50,7 +50,7 @@
 {
     return [self initWithID:ID
                       email:email
-           isBoundToContext:nil];
+              bindToContext:nil];
 }
 
 - (instancetype)init NS_UNAVAILABLE

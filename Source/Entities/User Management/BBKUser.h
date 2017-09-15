@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// :nodoc:
 - (instancetype _Nonnull)initWithID:(NSNumber * _Nonnull)ID
                               email:(NSString * _Nonnull)email
-                   isBoundToContext:(id _Nullable)context NS_DESIGNATED_INITIALIZER;
+                      bindToContext:(id _Nullable)context NS_DESIGNATED_INITIALIZER;
 
 /// :nodoc:
 - (instancetype _Nonnull)initWithID:(NSNumber * _Nonnull)ID
@@ -62,6 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
+#import "BBKUser+FoundationConformance.h"
 #import "BBKUser+RegistrationInformation.h"
 #import "BBKUser+PersonalInformation.h"
 #import "BBKUser+EmploymentInformation.h"
