@@ -38,8 +38,9 @@ typedef NS_OPTIONS(NSUInteger, BBKUserFetchingOptions) {
     BBKUserFetchBrandRegistrations = 1 << 7,
     BBKUserFetchStoreRegistrations = 1 << 8,
     BBKUserFetchDepartmentRegistrations = 1 << 9,
-    BBKUserFetchProductRegistration = 1 << 10,
-    BBKUserFetchDelegateRegistration = 1 << 11
+    BBKUserFetchProductRegistrations = 1 << 10,
+    BBKUserFetchDelegateRegistrations = 1 << 11,
+    BBKUserFetchRegistrationInformation = 1 << 12
 };
 
 @interface BBKUser (EntityFetching) <BBKEntityFetching>
