@@ -23,9 +23,9 @@
 
 @interface BBKUser (RegistrationInformation)
 
-///-------------------------------
-/// @name Registration Information
-///-------------------------------
+/**
+ @name Registration Information
+ */
 
 /**
  Specifies the registration date of the user.

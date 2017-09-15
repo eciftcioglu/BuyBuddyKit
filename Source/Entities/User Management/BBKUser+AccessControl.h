@@ -23,9 +23,9 @@
 
 @interface BBKUser (AccessControl)
 
-///------------------
-/// @name Permissions
-///------------------
+/**
+ @name Permissions
+ */
 
 /**
  Permission set bound to the user.

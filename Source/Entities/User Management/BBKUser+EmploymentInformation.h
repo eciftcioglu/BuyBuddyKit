@@ -22,9 +22,10 @@
 #import "BBKUser.h"
 
 @interface BBKUser (EmploymentInformation)
-///-----------------------------
-/// @name Employment Information
-///-----------------------------
+
+/**
+ @name Employment Information
+ */
 
 /**
  Specifies the affiliate user is currently an employee of.

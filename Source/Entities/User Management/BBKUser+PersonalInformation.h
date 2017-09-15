@@ -23,9 +23,9 @@
 
 @interface BBKUser (PersonalInformation)
 
-///---------------------------
-/// @name Personal Information
-///---------------------------
+/**
+ @name Personal Information
+ */
 
 /**
  Specifies first name of the user.

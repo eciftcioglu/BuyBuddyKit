@@ -44,9 +44,9 @@ typedef NS_OPTIONS(NSUInteger, BBKUserFetchingOptions) {
 
 @interface BBKUser (EntityFetching) <BBKEntityFetching>
 
-///---------------------------------
-/// @name Entity Fetching
-///---------------------------------
+/**
+ @name Entity Fetching
+ */
 
 /**
  Fetches specified property groups of a `BBKUser` object asynchronously.

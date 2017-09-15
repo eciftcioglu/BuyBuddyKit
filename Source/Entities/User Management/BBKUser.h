@@ -30,9 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface BBKUser : NSObject
 
-///---------------------
-/// @name Identification
-///---------------------
+/**
+ @name Identification
+ */
 
 /**
  Specifies database identifier of the user.

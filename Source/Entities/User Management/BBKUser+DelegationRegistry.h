@@ -23,9 +23,9 @@
 
 @interface BBKUser (DelegationRegistry)
 
-///--------------------------
-/// @name Delegation Registry
-///--------------------------
+/**
+ @name Delegation Registry
+ */
 
 /**
  Contains delegates registered by the user.

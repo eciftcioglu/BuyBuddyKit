@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  `BBKNetworkReachabilityManager` monitors the reachability of domains, and addresses for both WWAN and WiFi network interfaces.
  Reachability can be used to determine background information about why a network operation failed, or to trigger a network operation retrying when a connection is established. It should not be used to prevent a user from initiating a network request, as it's possible that an initial request may be required to establish reachability.
  See Apple's Reachability Sample Code ( https://developer.apple.com/library/ios/samplecode/reachability/ )
+ 
  @warning Instances of `BBKNetworkReachabilityManager` must be started with `-startMonitoring` before reachability status can be determined.
  */
 @interface BBKNetworkReachabilityManager : NSObject
@@ -62,27 +63,28 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (readonly, nonatomic, assign, getter = isReachableViaWLAN) BOOL reachableViaWLAN;
 
-///---------------------
-/// @name Initialization
-///---------------------
+/**
+ @name Initialization
+ */
 
 /**
  Initializes an instance of a network reachability manager from the specified reachability object.
+ 
  @param reachability The reachability object to monitor.
  @return An initialized network reachability manager, actively monitoring the specified reachability.
  */
 - (instancetype)initWithReachability:(SCNetworkReachabilityRef _Nonnull)reachability NS_DESIGNATED_INITIALIZER;
 
 /**
- *  Initializes an instance of a network reachability manager
- *
- *  @return nil as this method is unavailable
+ Initializes an instance of a network reachability manager
+ 
+ @return `nil` as this method is unavailable.
  */
 - (nullable instancetype)init NS_UNAVAILABLE;
 
-///--------------------------------------------------
-/// @name Starting & Stopping Reachability Monitoring
-///--------------------------------------------------
+/**
+ @name Starting & Stopping Reachability Monitoring
+ */
 
 /**
  Starts monitoring for changes in network reachability status.
@@ -94,12 +96,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)stopPolling;
 
-///---------------------------------------------------
-/// @name Setting Network Reachability Change Callback
-///---------------------------------------------------
+/**
+ @name Setting Network Reachability Change Callback
+ */
 
 /**
  Sets a callback to be executed when the network availability of the `baseURL` host changes.
+ 
  @param block A block object to be executed when the network availability of the `baseURL` host changes. This block has no return value and takes a single argument which represents the various reachability states from the device to the `baseURL`.
  */
 - (void)setReachabilityStatusChangeBlock:(nullable void (^)(BBKNetworkReachabilityStatus status))block;
@@ -140,9 +143,9 @@ NS_ASSUME_NONNULL_BEGIN
  The corresponding value is an `NSNumber` object representing the `BBKNetworkReachabilityStatus` value for the current reachability status.
  */
 
-///--------------------
-/// @name Notifications
-///--------------------
+/**
+ @name Notifications
+ */
 
 /**
  Posted when network reachability changes.
@@ -156,9 +159,9 @@ FOUNDATION_EXPORT NSString * const BBKNetworkingReachabilityDidChangeNotificatio
  */
 FOUNDATION_EXPORT NSString * const BBKNetworkingReachabilityNotificationStatusItem;
 
-///--------------------
-/// @name Functions
-///--------------------
+/**
+ @name Functions
+ */
 
 /**
  Returns a localized string representation of an `BBKNetworkReachabilityStatus` value.

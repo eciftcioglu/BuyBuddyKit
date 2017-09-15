@@ -24,11 +24,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/*!
- @class BBKPredicateMarshaller
- 
- @brief The @p BBKPredicateMarshaller class is responsible for marshalling given @p BBKPredicate to be send over network.
- 
+/**
+ The `BBKPredicateMarshaller` class is responsible for marshalling given `BBKPredicate` to be send over network.
  */
 @interface BBKPredicateMarshaller : NSObject
 

@@ -23,9 +23,9 @@
 
 @interface BBKUser (AuthenticationPreferences)
 
-///---------------------------------
-/// @name Authentication Preferences
-///---------------------------------
+/**
+ @name Authentication Preferences
+ */
 
 /**
  Specifies the two-factor authentication preference of the user as a boolean value.

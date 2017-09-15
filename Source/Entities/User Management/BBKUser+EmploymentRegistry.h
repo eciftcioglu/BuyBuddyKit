@@ -22,9 +22,10 @@
 #import "BBKUser.h"
 
 @interface BBKUser (EmploymentRegistry)
-///--------------------------
-/// @name Employment Registry
-///--------------------------
+
+/**
+ @name Employment Registry
+ */
 
 /**
  Contains affiliates registered by the user.

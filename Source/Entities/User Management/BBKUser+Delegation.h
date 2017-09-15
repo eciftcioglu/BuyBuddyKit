@@ -23,9 +23,9 @@
 
 @interface BBKUser (Delegation)
 
-///-----------------
-/// @name Delegation
-///-----------------
+/**
+ @name Delegation
+ */
 
 /**
  Specifies the delegate user is currently bound to.
