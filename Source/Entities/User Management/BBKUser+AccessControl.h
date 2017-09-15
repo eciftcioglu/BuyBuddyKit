@@ -30,8 +30,8 @@
 /**
  Permission set bound to the user.
 
- This parameter is fetched using `BBKUserFetchAffiliateEmployment` option of `BBKUserFetchingOptions` bitmask
- enumeration.
+ This parameter is fetched using `BBKUserFetchAffiliateEmployment` option of 
+ `BBKUserFetchingOptions` bitmask enumeration.
 */
 @property (nonatomic, strong, nullable, readonly) NSObject *permissionSet;
 
@@ -39,11 +39,11 @@
  Contains granted permission sets to the user.
  A permission set grant changes permission set currently bound to the user.
  
- Even though this property is not an indexed linear container, like `NSArray`, the permission set grant with highest
- identifier determines the current permission set grant.
+ Even though this property is not an indexed linear container, like `NSArray`, the permission set 
+ grant with highest identifier determines the current permission set grant.
  
- This parameter is fetched using `BBKUserFetchAffiliateEmployment` option of `BBKUserFetchingOptions` bitmask 
- enumeration.
+ This parameter is fetched using `BBKUserFetchAffiliateEmployment` option of 
+ `BBKUserFetchingOptions` bitmask enumeration.
  */
 @property (nonatomic, strong, nullable, readonly) NSSet<NSObject *> *permissionSetGrants;
 

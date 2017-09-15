@@ -30,7 +30,8 @@
 /**
  Specifies the delegate user is currently bound to.
  
- This parameter is fetched using `BBKUserFetchDelegate` option of `BBKUserFetchingOptions` bitmask enumeration.
+ This parameter is fetched using `BBKUserFetchDelegate` option of `BBKUserFetchingOptions`
+ bitmask enumeration.
  */
 @property (nonatomic, strong, nullable, readonly) NSObject *delegate;
 

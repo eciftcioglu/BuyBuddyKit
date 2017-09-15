@@ -109,9 +109,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-///----------------
-/// @name Constants
-///----------------
+/**
+ @name Constants
+ */
 
 /**
  ## Network Reachability

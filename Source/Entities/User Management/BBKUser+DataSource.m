@@ -1,4 +1,4 @@
-// BBKUser+DelegationRegistry.h
+// BBKUser+DataSource.m
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,20 +19,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKUser.h"
+#import "BBKUser+DataSource.h"
 
-@interface BBKUser (DelegationRegistry)
-
-/**
- @name Delegation Registry
- */
-
-/**
- Contains delegates registered by the user.
-
- This parameter is fetched using `BBKUserFetchDelegateRegistrations` option of 
- `BBKUserFetchingOptions` bitmask enumeration.
-*/
-@property (nonatomic, strong, nullable, readonly) NSSet<NSObject *> *registeredDelegates;
+@implementation BBKUser (DataSource)
 
 @end

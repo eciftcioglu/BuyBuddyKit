@@ -33,12 +33,13 @@
 @property (nonatomic, strong, nullable, readonly) NSNumber *usesTwoFactorAuthentication;
 
 /**
- A boolean value indicating preference of a user to authenticate every time, without storing passphrase information.
+ A boolean value indicating preference of a user to authenticate every time, without storing 
+ passphrase information.
  
  ## Caveat
  
- If this property is a truthy value, the underlying connection context will store the passphrase as encrypted in
- memory, but it will not persist the data in the keychain.
+ If this property is a truthy value, the underlying connection context will store the passphrase 
+ as encrypted in memory, but it will not persist the data in the keychain.
  */
 @property (nonatomic, strong, nullable, readonly) NSNumber *requiresLoginEverytime;
 
