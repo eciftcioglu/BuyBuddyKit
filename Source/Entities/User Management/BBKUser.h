@@ -26,7 +26,34 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The `BBKUser` model class represents a user registered to the platform.
  
- Every
+ Every single user in the platform could be represented as instances of this class, directly.
+ There is no distriction between different types of platform users (i.e. customers, managers,
+ administrators), all belong to the same class.
+ 
+ ### Identification of a user
+ 
+ Since `BBKUser` objects provided by this software development kit are proxies of the objects found
+ in platform, you might need to fetch the same user repeatedly in various contexts.
+ Sometimes those contexts might concur with each other, ultimately you might have two instances
+ proxying representation of the same entity in the platform.
+ You may compare two instances with their instance method `-isEqualToUser:`, which will provide you a
+ identifier-based comparison.
+ This ensures that those two objects refer to the same entity in the platform, however it does not
+ guarantee the validity of the information.
+ 
+ ### Permissions
+ 
+ Due to the nature of the APIs, you will need to perform operations on the platform and every 
+ operation is performed on behalf of our web services, hence it is tested against an access
+ control system.
+ 
+ Every user might be bound to a permission set, or not. Users without permission sets are not able
+ to pass any authorization check on our APIs. Users with permission sets are challenged to be
+ eligible to access & mutate some entity, by resolving their *permission*s.
+ 
+ Operations failed due to the access control layer raise `NSException` instances and you should not
+ try to catch those exceptions, since they will happen regardless of the time, unless you are not
+ being granted a new permission set.
  */
 @interface BBKUser : NSObject
 
