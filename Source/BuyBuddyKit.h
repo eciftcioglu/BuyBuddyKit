@@ -32,6 +32,8 @@ FOUNDATION_EXPORT const unsigned char BBKVersionString[];
 #define _BUYBUDDYKIT_
 
 #import "BBKUser.h"
+#import "BBKPassphrase.h"
+#import "BBKPassphraseKeychainPersistenceCoordinator.h"
 
 #if !TARGET_OS_WATCH
 #import "BBKNetworkReachabilityManager.h"
