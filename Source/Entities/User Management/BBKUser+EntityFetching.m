@@ -21,6 +21,38 @@
 
 #import "BBKUser+EntityFetching.h"
 
+BBKUserFetchingOptions const BBKUserFetchAllProperties =
+    BBKUserFetchName |
+    BBKUserFetchDateOfBirth |
+    BBKUserFetchAffiliateEmployment |
+    BBKUserFetchBrandEmployment |
+    BBKUserFetchStoreEmployment |
+    BBKUserFetchDepartmentEmployment |
+    BBKUserFetchAffiliateRegistrations |
+    BBKUserFetchBrandRegistrations |
+    BBKUserFetchStoreRegistrations |
+    BBKUserFetchDepartmentRegistrations |
+    BBKUserFetchProductRegistrations |
+    BBKUserFetchDelegateRegistrations |
+    BBKUserFetchRegistrationInformation |
+    BBKUserFetchDataSourceRegistration;
+
+BBKUserFetchingOptions const BBKUserFetchPersonalInformation =
+    BBKUserFetchName |
+    BBKUserFetchDateOfBirth;
+
+BBKUserFetchingOptions const BBKUserFetchEmploymentInformation =
+    BBKUserFetchAffiliateEmployment |
+    BBKUserFetchBrandEmployment |
+    BBKUserFetchStoreEmployment |
+    BBKUserFetchDepartmentEmployment;
+
+BBKUserFetchingOptions const BBKUserFetchEmploymentRegistrationInformation =
+    BBKUserFetchAffiliateRegistrations |
+    BBKUserFetchBrandRegistrations |
+    BBKUserFetchStoreRegistrations |
+    BBKUserFetchDepartmentRegistrations;
+
 @implementation BBKUser (EntityFetching)
 
 @end

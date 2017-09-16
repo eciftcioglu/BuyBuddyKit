@@ -40,7 +40,8 @@ typedef NS_OPTIONS(NSUInteger, BBKUserFetchingOptions) {
     BBKUserFetchDepartmentRegistrations = 1 << 9,
     BBKUserFetchProductRegistrations = 1 << 10,
     BBKUserFetchDelegateRegistrations = 1 << 11,
-    BBKUserFetchRegistrationInformation = 1 << 12
+    BBKUserFetchRegistrationInformation = 1 << 12,
+    BBKUserFetchDataSourceRegistration = 1 << 13
 };
 
 @interface BBKUser (EntityFetching) <BBKEntityFetching>
@@ -58,3 +59,88 @@ typedef NS_OPTIONS(NSUInteger, BBKUserFetchingOptions) {
                      failure:(nullable void (^)(NSError * _Nonnull error))failure;
 
 @end
+
+/**
+ @name Constants
+ */
+
+/**
+ An alias of `BBKUserFetchingOptions` bitmask enumeration to fetch all properties of the user.
+ 
+ This alias consists all cases of the enumeration.
+ 
+ #### Discussion
+ 
+ Use of this enumeration may result in raise of `BBKInsufficientPermissionException` due to
+ use of high-order permissions in this fetch operation.
+ 
+ Also, this may incur in performance penalty since there will be many HTTP requests in parallel
+ made to the remote API.
+ */
+FOUNDATION_EXPORT BBKUserFetchingOptions const BBKUserFetchAllProperties;
+
+/**
+ An alias of `BBKUserFetchingOptions` bitmask enumeration to fetch personal information related
+ properties of the user.
+ 
+ This alias consists `BBKUserFetchName` and `BBKUserFetchDateOfBirth` options of the enumeration.
+ */
+FOUNDATION_EXPORT BBKUserFetchingOptions const BBKUserFetchPersonalInformation;
+
+/**
+ An alias of `BBKUserFetchingOptions` bitmask enumeration to fetch employment related properties of
+ the user.
+ 
+ This alias consists `BBKUserFetchAffiliateEmployment`, `BBKUserFetchBrandEmployment`,
+ `BBKUserFetchStoreEmployment`, `BBKUserFetchDepartmentEmployment`.
+ */
+FOUNDATION_EXPORT BBKUserFetchingOptions const BBKUserFetchEmploymentInformation;
+
+/**
+ An alias of `BBKUserFetchingOptions` bitmask enumeration to fetch employment registration 
+ related properties of the user.
+ 
+ This alias consists `BBKUserFetchAffiliateRegistrations`, `BBKUserFetchBrandRegistrations`,
+ `BBKUserFetchStoreRegistrations`, `BBKUserFetchDepartmentRegistrations`.
+ */
+FOUNDATION_EXPORT BBKUserFetchingOptions const BBKUserFetchEmploymentRegistrationInformation;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
