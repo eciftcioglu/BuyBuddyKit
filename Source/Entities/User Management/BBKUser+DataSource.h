@@ -23,4 +23,17 @@
 
 @interface BBKUser (DataSource)
 
+/**
+ @name Data Sourcing
+ */
+
+/**
+ Specifies data source registration of a user.
+ `nil` if user does not provide data to the platform.
+ 
+ This parameter is fetched using `BBKUserFetchDataSourceRegistration` option of 
+ `BBKUserFetchingOptions` bitmask enumeration.
+ */
+@property (nonatomic, strong, nullable, readonly) NSObject *dataSourceRegistration;
+
 @end
