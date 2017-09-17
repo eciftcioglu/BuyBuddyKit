@@ -28,7 +28,6 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <Security/Security.h>
 #import <CoreServices/CoreServices.h>
-#import <objc/objc-sync.h>
 
 UInt8 const BBKPassphraseKeychainStorageKey[] = "com.buybuddy.buybuddykit.Keychain\0";
 static void RaiseExceptionIfStatusIsAnError(const OSStatus *status);
@@ -293,10 +292,10 @@ NS_ASSUME_NONNULL_END
         RaiseExceptionIfStatusIsAnError(&keychainErr);
     }
     
-    objc_sync_enter(self);
-    self.lastWriteTimestamp = [[NSDate alloc] init];
-    self.lastReadTimestamp = [[NSDate alloc] init];
-    objc_sync_exit(self);
+    @synchronized (self) {
+        self.lastWriteTimestamp = [[NSDate alloc] init];
+        self.lastReadTimestamp = [[NSDate alloc] init];
+    }
 }
 
 @end
