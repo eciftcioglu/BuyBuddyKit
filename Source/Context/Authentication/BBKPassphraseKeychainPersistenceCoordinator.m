@@ -27,10 +27,22 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <Security/Security.h>
+
+#if TARGET_OS_MAC
 #import <CoreServices/CoreServices.h>
+#elif TARGET_OS_IOS
+#import <CFNetwork/CFNetwork.h>
+#endif
 
 UInt8 const BBKPassphraseKeychainStorageKey[] = "com.buybuddy.buybuddykit.Keychain\0";
+#if TARGET_OS_MAC
+NSString * const BBKPassphraseKeychainStorageErrorUserInfoKey = @"SecCopyErrorMessageString";
+#endif
+NSString * const BBKPassphraseKeychainStorageItemLabel = @"BuyBuddy stored passphrase";
+NSString * const BBKPassphraseKeychainStorageItemDescription = @"An access token to authenticate to BuyBuddy services.";
 static void RaiseExceptionIfStatusIsAnError(const OSStatus *status);
+static void ExecuteDynBlockAtomic(_Nonnull dispatch_block_t blk);
+static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,8 +78,6 @@ NS_ASSUME_NONNULL_END
     self = [super init];
     
     if (self) {
-        OSStatus keychainErr = noErr;
-        
         //  Initialize keychain search dictionary
         self.genericPasswordQuery = [[NSMutableDictionary alloc] init];
         
@@ -96,33 +106,37 @@ NS_ASSUME_NONNULL_END
         [self.genericPasswordQuery setObject:(__bridge id)kCFBooleanTrue
                                       forKey:(__bridge id)kSecReturnAttributes];
         
-        //  Initialize the dictionary used to hold return data from the keychain
-        CFMutableDictionaryRef outDictionary = nil;
-        
-        //  If the keychain item exists, return the attributes of the item
-        keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
-                                          (CFTypeRef *)&outDictionary);
-        
-        if (keychainErr == noErr) {
-            //  Convert the data dictionary into the format used by the library
-            self.keychainData = [self secItemFormatToDictionary:(__bridge_transfer NSMutableDictionary *)outDictionary];
-        } else if (keychainErr == errSecItemNotFound) {
-            [self resetKeychainItem];
+        ExecuteDynBlockAtomic(^{
+            //  Initialize the dictionary used to hold return data from the keychain
+            CFMutableDictionaryRef outDictionary = nil;
             
-            //  Release the dictionary if exists
-            if (outDictionary) {
-                CFRelease(outDictionary);
-            }
-        } else {
-            //  Release the dictionary before raising exception to ensure strong exception-guarantee
-            if (outDictionary) {
-                CFRelease(outDictionary);
-            }
+            //  If the keychain item exists, return the attributes of the item
+            OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
+                                                       (CFTypeRef *)&outDictionary);
             
-            RaiseExceptionIfStatusIsAnError(&keychainErr);
-        }
+            if (keychainErr == noErr) {
+                //  Convert the data dictionary into the format used by the library
+                self.keychainData = [self secItemFormatToDictionary:(__bridge_transfer NSMutableDictionary *)outDictionary];
+            } else if (keychainErr == errSecItemNotFound) {
+                [self resetKeychainItem];
+                
+                //  Release the dictionary if exists
+                if (outDictionary) {
+                    CFRelease(outDictionary);
+                }
+            } else {
+                //  Release the dictionary before raising exception to ensure strong exception-guarantee
+                if (outDictionary) {
+                    CFRelease(outDictionary);
+                }
+                
+                RaiseExceptionIfStatusIsAnError(&keychainErr);
+            }
+        });
         
-        self.lastReadTimestamp = [[NSDate alloc] init];
+        ExecuteStaBlockAtomic(^{
+            self.lastReadTimestamp = [[NSDate alloc] init];
+        });
     }
     
     return self;
@@ -142,12 +156,34 @@ NS_ASSUME_NONNULL_END
         RaiseExceptionIfStatusIsAnError(&keychainErr);
         
         //  Set values for proper keys
-        [self.keychainData setObject:@"Item label" forKey:(__bridge id)kSecAttrLabel];
-        [self.keychainData setObject:@"Item description" forKey:(__bridge id)kSecAttrDescription];
-        [self.keychainData setObject:@"Account" forKey:(__bridge id)kSecAttrAccount];
-        [self.keychainData setObject:@"Service" forKey:(__bridge id)kSecAttrService];
-        [self.keychainData setObject:@"Comment" forKey:(__bridge id)kSecAttrComment];
-        [self.keychainData setObject:[NSData new] forKey:(__bridge id)kSecValueData];
+        [self.keychainData setObject:BBKPassphraseKeychainStorageItemLabel
+                              forKey:(__bridge id)kSecAttrLabel];
+        [self.keychainData setObject:BBKPassphraseKeychainStorageItemDescription
+                              forKey:(__bridge id)kSecAttrDescription];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanDecrypt];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanEncrypt];
+        [self.keychainData setObject:(__bridge id)kCFBooleanTrue
+                              forKey:(__bridge id)kSecAttrCanDerive];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanSign];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanVerify];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanWrap];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrCanUnwrap];
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrIsPermanent];
+#if TARGET_OS_MACOS
+        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
+                              forKey:(__bridge id)kSecAttrAccess];
+#elif TARGET_OS_IOS
+        
+#endif
+        [self.keychainData setObject:[NSData new]
+                              forKey:(__bridge id)kSecValueData];
     }
 }
 
@@ -230,20 +266,24 @@ NS_ASSUME_NONNULL_END
     [returnDictionary setObject:(__bridge id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
     [returnDictionary setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
     
-    //  Then call Keychain Services to get the password
-    CFDataRef passwordData = NULL;
+    ExecuteDynBlockAtomic(^{
+        //  Then call Keychain Services to get the password
+        CFDataRef passwordData = NULL;
+        
+        OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary,
+                                                   (CFTypeRef *)&passwordData);
+        
+        //  Release password data if it exists to ensure strong exception guarantee
+        if (passwordData) {
+            CFRelease(passwordData);
+        }
+        
+        RaiseExceptionIfStatusIsAnError(&keychainErr);
+    });
     
-    OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary,
-                                               (CFTypeRef *)&passwordData);
-    
-    //  Release password data if it exists to ensure strong exception guarantee
-    if (passwordData) {
-        CFRelease(passwordData);
-    }
-    
-    RaiseExceptionIfStatusIsAnError(&keychainErr);
-    
-    self.lastReadTimestamp = [[NSDate alloc] init];
+    ExecuteStaBlockAtomic(^{
+        self.lastReadTimestamp = [[NSDate alloc] init];
+    });
     
     return returnDictionary;
 }
@@ -267,11 +307,14 @@ NS_ASSUME_NONNULL_END
         //  Remove the class, it's not a keychain attribute
         [tempCheck removeObjectForKey:(__bridge id)kSecClass];
         
-        //  You can update only a single keychain item at a time
-        OSStatus keychainErr = SecItemUpdate((__bridge CFDictionaryRef)updateItem,
-                                             (__bridge CFDictionaryRef)tempCheck);
-        
-        RaiseExceptionIfStatusIsAnError(&keychainErr);
+        //  Execute operation atomically
+        ExecuteDynBlockAtomic(^{
+            //  You can update only a single keychain item at a time
+            OSStatus keychainErr = SecItemUpdate((__bridge CFDictionaryRef)updateItem,
+                                                 (__bridge CFDictionaryRef)tempCheck);
+            
+            RaiseExceptionIfStatusIsAnError(&keychainErr);
+        });
     } else {
         //  No previous item found, add the new item.
         //
@@ -282,30 +325,41 @@ NS_ASSUME_NONNULL_END
         //  No pointer to the newly-added items is needed, so pass NULL for the second parameter
         NSDictionary *persistedDict = [self dictionaryToSecItemFormat:self.keychainData];
         
-        OSStatus keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, NULL);
-        
-        //  Release if attributes exists
-        if (attributes) {
-            CFRelease(attributes);
-        }
-        
-        RaiseExceptionIfStatusIsAnError(&keychainErr);
+        //  Execute operation atomically
+        ExecuteDynBlockAtomic(^{
+            OSStatus keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, NULL);
+            
+            //  Release if attributes exists
+            if (attributes) {
+                CFRelease(attributes);
+            }
+            
+            RaiseExceptionIfStatusIsAnError(&keychainErr);
+        });
     }
     
-    @synchronized (self) {
+    ExecuteStaBlockAtomic(^{
         self.lastWriteTimestamp = [[NSDate alloc] init];
         self.lastReadTimestamp = [[NSDate alloc] init];
-    }
+    });
 }
 
 @end
 
 static void RaiseExceptionIfStatusIsAnError(const OSStatus *status)
 {
+    NSCAssert(status != NULL, @"parameter status should not be NULL");
+    
     if (*status != noErr) {
+#if TARGET_OS_MAC
+        NSDictionary *userInfo = @{BBKPassphraseKeychainStorageErrorUserInfoKey: (__bridge NSString *)SecCopyErrorMessageString(*status, NULL)};
+#elif TARGET_OS_IOS
+        NSDictionary *userInfo = nil;
+#endif
+        
         NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain
                                              code:*status
-                                         userInfo:nil];
+                                         userInfo:userInfo];
         
         [NSException raise:NSInternalInconsistencyException
                     format:@"Persistence coordinator encountered an error: %@", error.description];
@@ -313,4 +367,85 @@ static void RaiseExceptionIfStatusIsAnError(const OSStatus *status)
         return;
     }
 }
+
+static void ExecuteDynBlockSync(_Nonnull dispatch_block_t blk,
+                                NSLock * _Nonnull lock)
+{
+    NSCAssert(blk != NULL, @"parameter blk should not be NULL");
+    NSCAssert(lock != nil, @"parameter lck should not be nil");
+    
+    [lock lock];
+    @try {
+        blk();
+    } @finally {
+        [lock unlock];
+    }
+}
+
+static void ExecuteDynBlockAtomic(_Nonnull dispatch_block_t blk)
+{
+    NSCAssert(blk != NULL, @"parameter blk should not be NULL");
+    
+    static NSLock *mutex = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        mutex = [[NSLock alloc] init];
+    });
+    
+    ExecuteDynBlockSync(blk, mutex);
+}
+
+static void ExecuteStaBlockSync(_Nonnull dispatch_block_t blk,
+                                _Nonnull dispatch_semaphore_t dsema)
+{
+    NSCAssert(blk != NULL, @"parameter blk should not be NULL");
+    NSCAssert(dsema != NULL, @"parameter dsema should not be NULL");
+    
+    dispatch_semaphore_wait(dsema, DISPATCH_TIME_FOREVER);
+    @try {
+        blk();
+    } @finally {
+        dispatch_semaphore_signal(dsema);
+    }
+}
+
+static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk)
+{
+    NSCAssert(blk != NULL, @"parameter blk should not be NULL");
+    
+    static dispatch_semaphore_t semaphore;
+    static dispatch_once_t onceToken;
+    
+    //  Lazily initialize the mutex if not initialized
+    dispatch_once(&onceToken, ^{
+        semaphore = dispatch_semaphore_create(1ULL);
+    });
+    
+    ExecuteStaBlockSync(blk, semaphore);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

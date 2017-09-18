@@ -4,20 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Core Kit Unit Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Core Kit.xcscheme</key>
+		<key>Core Kit (iOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Documentation.xcscheme</key>
+		<key>Core Kit (macOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>3</integer>
+		</dict>
+		<key>Core Kit (tvOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Core Kit (watchOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Core Kit Documentation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Core Kit Unit Tests (iOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Core Kit Unit Tests (macOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Core Kit Unit Tests (tvOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -28,6 +53,31 @@
 			<true/>
 		</dict>
 		<key>5A974E6C1F63CFF80066F83A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D552B1AA1F6FBA9500E89ADC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D552B1B21F6FBA9500E89ADC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D552B1C61F6FBAE600E89ADC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D552B1D31F6FBB0600E89ADC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D552B1DB1F6FBB0600E89ADC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
