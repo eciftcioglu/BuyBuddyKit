@@ -17,8 +17,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A974E6C1F63CFF80066F83A"
-               BuildableName = "BuyBuddyKitTests.xctest"
-               BlueprintName = "BuyBuddyKitTests"
+               BuildableName = "BuyBuddyKit (macOS) Tests.xctest"
+               BlueprintName = "BuyBuddyKit (macOS) Tests"
                ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

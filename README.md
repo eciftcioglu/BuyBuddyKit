@@ -2,6 +2,8 @@
 
 Lead maintainers: [Emir Çiftçioğlu (eciftcioglu)](https://github.com/eciftcioglu/), [Buğra Ekuklu (Chatatata)](https://github.com/Chatatata/).
 
+**If you're searching for our licensed application, go to [BuyBuddy.app](https://github.com/heybuybuddy/BuyBuddy.app).**
+
 ## Abstract
 
 The BuyBuddy Apple Devices Software Development Kit makes your application to integrate easily with BuyBuddy platform to create astonishing shopping experience. 
@@ -17,7 +19,7 @@ To get started, navigate to [Apple Devices Integration Guide](https://github.com
 
 ### Libraries
 
-![Frameworks Visualization](https://github.com/heybuybuddy/BuyBuddyKit/raw/refactor/Documentation/FrameworksVisualization.png)
+![Frameworks Visualization](https://github.com/heybuybuddy/BuyBuddyKit/raw/master/Documentation/FrameworksVisualization.png)
 
 We have four seperate libraries for Apple devices, including this repository.
 - [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/): The library responsible for consuming our HATEOAS web services in an elegant way.
@@ -137,7 +139,12 @@ Finally, please read our [Code of Conduct](https://github.com/heybuybuddy/BuyBud
 1. Clone the repository to your local: `git clone https://github.com/heybuybuddy/BuyBuddyKit/`.
 2. Open `BuyBuddyKit.xcodeproj`.
 3. Select corresponding scheme for your platform.
-4. Run `Test` target.
+4. Run test target corresponding to your device.
+
+### Generating Documentation
+1. Install [realm/jazzy](https://github.com/realm/jazzy).
+2. Run `gendoc.sh` in your terminal, or `Documentation` target in Xcode.
+3. Open `Documentation/_build/index.html` in your browser of choice.
 
 ### Releases
 

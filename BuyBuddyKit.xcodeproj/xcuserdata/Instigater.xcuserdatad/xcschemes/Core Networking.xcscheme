@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A974E631F63CFF80066F83A"
-               BuildableName = "BuyBuddyKit.framework"
-               BlueprintName = "BuyBuddyKit"
+               BuildableName = "BuyBuddyKitmacOS.framework"
+               BlueprintName = "BuyBuddyKit (macOS)"
                ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A974E6C1F63CFF80066F83A"
-               BuildableName = "BuyBuddyKitTests.xctest"
-               BlueprintName = "BuyBuddyKitTests"
+               BuildableName = "BuyBuddyKit (macOS) Tests.xctest"
+               BlueprintName = "BuyBuddyKit (macOS) Tests"
                ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A974E631F63CFF80066F83A"
-            BuildableName = "BuyBuddyKit.framework"
-            BlueprintName = "BuyBuddyKit"
+            BuildableName = "BuyBuddyKitmacOS.framework"
+            BlueprintName = "BuyBuddyKit (macOS)"
             ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A974E631F63CFF80066F83A"
-            BuildableName = "BuyBuddyKit.framework"
-            BlueprintName = "BuyBuddyKit"
+            BuildableName = "BuyBuddyKitmacOS.framework"
+            BlueprintName = "BuyBuddyKit (macOS)"
             ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A974E631F63CFF80066F83A"
-            BuildableName = "BuyBuddyKit.framework"
-            BlueprintName = "BuyBuddyKit"
+            BuildableName = "BuyBuddyKitmacOS.framework"
+            BlueprintName = "BuyBuddyKit (macOS)"
             ReferencedContainer = "container:BuyBuddyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
