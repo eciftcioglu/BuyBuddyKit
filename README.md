@@ -27,6 +27,8 @@ We have four seperate libraries for Apple devices, including this repository.
 - [**Core Data Wrapper**](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/): [Core Data](https://developer.apple.com/documentation/coredata) wrapper for [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/) to achieve offline persistence and caching.
 - [**UIKit (iOS only)**](https://github.com/heybuybuddy/BuyBuddyUIKit/): Convenience classes for easy integration on iOS devices.
 
+**To see a _proof of concept_ application, you can check out our implementation at [BuyBuddy.app](https://github.com/heybuybuddy/BuyBuddy.app).**
+
 ## Installation
 Our software development kit supports various installation methods.
 
