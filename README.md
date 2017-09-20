@@ -6,7 +6,7 @@ Lead maintainers: [Emir Çiftçioğlu (eciftcioglu)](https://github.com/eciftcio
 
 ## Abstract
 
-The BuyBuddy Apple Devices Software Development Kit makes your application to integrate easily with BuyBuddy platform to create astonishing shopping experience. 
+The BuyBuddy Apple Devices Software Development Kit makes your application integrate easily with BuyBuddy platform to create astonishing shopping experience. 
 This library provides a generic abstraction layer to access BuyBuddy platform in a modular way.
 
 To get started, navigate to [Apple Devices Integration Guide](https://github.com/heybuybuddy/BuyBuddyKit/).
