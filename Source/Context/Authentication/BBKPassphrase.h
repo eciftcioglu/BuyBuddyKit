@@ -24,7 +24,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class BBKUser;
-@protocol BBKPassphrasePersistenceCoordination;
+@protocol BBKCredentialsPersistenceCoordination;
 
 /**
  Passphrase represents an access key to perform an authentication of the user.
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  Passphrases constitute main data structure of *stealth authentication* and resulting artifact of
  *concrete authentication*. 
- Passphrases are stored by its co-class `BBKPassphrasePersistenceCoordination`.
+ Passphrases are stored by its co-class `BBKCredentialsPersistenceCoordination`.
  
  To see more information, navigate to **Authentication** guide.
  */

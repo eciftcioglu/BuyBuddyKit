@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The persistence coordinator who is in charge of storing the passphrase and loading it back.
  */
-@property (nonatomic, weak, nullable, readonly) id<BBKPassphrasePersistenceCoordination> coordinator;
+@property (nonatomic, weak, nullable, readonly) id<BBKCredentialsPersistenceCoordination> coordinator;
 
 /**
  Persists passphrase immediately.

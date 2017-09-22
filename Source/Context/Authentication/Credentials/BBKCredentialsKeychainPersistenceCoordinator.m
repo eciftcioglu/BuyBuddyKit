@@ -1,4 +1,4 @@
-// BBKPassphraseKeychainPersistenceCoordinator.m
+// BBKCredentialsKeychainPersistenceCoordinator.m
 // Copyright (c) 2003-2016 Apple LLC
 //               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKPassphraseKeychainPersistenceCoordinator.h"
-#import "BBKPassphrase.h"
+#import "BBKCredentialsKeychainPersistenceCoordinator.h"
+#import "BBKCredentials.h"
 #import "BBKErrorDomain.h"
 
 #import <Foundation/Foundation.h>
@@ -34,19 +34,22 @@
 #import <CFNetwork/CFNetwork.h>
 #endif
 
-UInt8 const BBKPassphraseKeychainStorageKey[] = "com.buybuddy.buybuddykit.Keychain\0";
+UInt8 const BBKCredentialsKeychainStorageKey[] = "com.buybuddy.buybuddykit.Keychain\0";
 #if TARGET_OS_MAC
-NSString * const BBKPassphraseKeychainStorageErrorUserInfoKey = @"SecCopyErrorMessageString";
+NSString * const BBKCredentialsKeychainStorageErrorUserInfoKey = @"SecCopyErrorMessageString";
 #endif
-NSString * const BBKPassphraseKeychainStorageItemLabel = @"BuyBuddy stored passphrase";
-NSString * const BBKPassphraseKeychainStorageItemDescription = @"An access token to authenticate to BuyBuddy services.";
+NSString * const BBKCredentialsKeychainStorageItemLabel = @"BuyBuddy Credentials";
+NSString * const BBKCredentialsKeychainStorageItemDescription = @"Stored user credentials to authenticate in BuyBuddy platform";
+NSString * const BBKCredentialsKeychainStorageNullField = @"(null)";
+NSString * const BBKCredentialsKeychainStorageComment = @"Stored credentials with email-password tuple.";
+NSString * const BBKCredentialsKeychainStorageServiceName = @"BuyBuddy";
 static void RaiseExceptionIfStatusIsAnError(const OSStatus *status);
 static void ExecuteDynBlockAtomic(_Nonnull dispatch_block_t blk);
 static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BBKPassphraseKeychainPersistenceCoordinator ()
+@interface BBKCredentialsKeychainPersistenceCoordinator ()
 
 @property (nonatomic, strong, nonnull, readwrite) NSMutableDictionary *keychainData;
 @property (nonatomic, strong, nonnull, readwrite) NSMutableDictionary *genericPasswordQuery;
@@ -56,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface BBKPassphraseKeychainPersistenceCoordinator (Internals)
+@interface BBKCredentialsKeychainPersistenceCoordinator (Internals)
 
 //  The following two methods translate dictionaries between the format used by
 //  the library (NSString *) and the Keychain Services API:
@@ -69,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-@implementation BBKPassphraseKeychainPersistenceCoordinator
+@implementation BBKCredentialsKeychainPersistenceCoordinator
 
 #pragma mark Instantiation
 
@@ -81,17 +84,17 @@ NS_ASSUME_NONNULL_END
         //  Initialize keychain search dictionary
         self.genericPasswordQuery = [[NSMutableDictionary alloc] init];
         
-        //  Keychain item is a cryptographic key
-        [self.genericPasswordQuery setObject:(__bridge id)kSecClassKey
+        //  Keychain item is a generic password
+        [self.genericPasswordQuery setObject:(__bridge id)kSecClassGenericPassword
                                       forKey:(__bridge id)kSecClass];
         
         //  Length of the unique key
-        size_t stringLength = strlen((const char *)BBKPassphraseKeychainStorageKey);
+        size_t stringLength = strlen((const char *)BBKCredentialsKeychainStorageKey);
         
         //  kSecAttrGeneric attribute is used to store a unique string that is used
         //  to easily identify and find this keychain item. The string is first
         //  converted to an NSData object
-        NSData *keychainItemID = [NSData dataWithBytes:BBKPassphraseKeychainStorageKey
+        NSData *keychainItemID = [NSData dataWithBytes:BBKCredentialsKeychainStorageKey
                                                 length:stringLength];
         
         [self.genericPasswordQuery setObject:keychainItemID
@@ -99,40 +102,38 @@ NS_ASSUME_NONNULL_END
         
         //  Return the attributes of the first match only
         [self.genericPasswordQuery setObject:(__bridge id)kSecMatchLimitOne
-                                      forKey:(__bridge id)kSecReturnAttributes];
+                                      forKey:(__bridge id)kSecMatchLimit];
         
         //  Return the attributes of the keychain item (the password is acquired in
         //  the secItemFormatToDictionary: method)
         [self.genericPasswordQuery setObject:(__bridge id)kCFBooleanTrue
                                       forKey:(__bridge id)kSecReturnAttributes];
         
-        ExecuteDynBlockAtomic(^{
-            //  Initialize the dictionary used to hold return data from the keychain
-            CFMutableDictionaryRef outDictionary = nil;
+        //  Initialize the dictionary used to hold return data from the keychain
+        CFMutableDictionaryRef outDictionary = nil;
+        
+        //  If the keychain item exists, return the attributes of the item
+        OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
+                                                   (CFTypeRef *)&outDictionary);
+        
+        if (keychainErr == noErr) {
+            //  Convert the data dictionary into the format used by the library
+            self.keychainData = [self secItemFormatToDictionary:(__bridge_transfer NSMutableDictionary *)outDictionary];
+        } else if (keychainErr == errSecItemNotFound) {
+            [self resetKeychainItem];
             
-            //  If the keychain item exists, return the attributes of the item
-            OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
-                                                       (CFTypeRef *)&outDictionary);
-            
-            if (keychainErr == noErr) {
-                //  Convert the data dictionary into the format used by the library
-                self.keychainData = [self secItemFormatToDictionary:(__bridge_transfer NSMutableDictionary *)outDictionary];
-            } else if (keychainErr == errSecItemNotFound) {
-                [self resetKeychainItem];
-                
-                //  Release the dictionary if exists
-                if (outDictionary) {
-                    CFRelease(outDictionary);
-                }
-            } else {
-                //  Release the dictionary before raising exception to ensure strong exception-guarantee
-                if (outDictionary) {
-                    CFRelease(outDictionary);
-                }
-                
-                RaiseExceptionIfStatusIsAnError(&keychainErr);
+            //  Release the dictionary if exists
+            if (outDictionary) {
+                CFRelease(outDictionary);
             }
-        });
+        } else {
+            //  Release the dictionary before raising exception to ensure strong exception-guarantee
+            if (outDictionary) {
+                CFRelease(outDictionary);
+            }
+            
+            RaiseExceptionIfStatusIsAnError(&keychainErr);
+        }
         
         ExecuteStaBlockAtomic(^{
             self.lastReadTimestamp = [[NSDate alloc] init];
@@ -147,97 +148,84 @@ NS_ASSUME_NONNULL_END
 - (void)resetKeychainItem
 {
     if (!self.keychainData) {
+        //  There is no keychain data, initialize it
         self.keychainData = [[NSMutableDictionary alloc] init];
     } else {
-        NSMutableDictionary *tmpDictionary = [self dictionaryToSecItemFormat:self.keychainData];
+        //  There is keychain data, convert it to the format needed for a query
+        NSMutableDictionary *temporaryDictionary = [self dictionaryToSecItemFormat:self.keychainData];
         
-        OSStatus keychainErr = SecItemDelete((__bridge CFDictionaryRef)tmpDictionary);
+        OSStatus keychainErr = SecItemDelete((__bridge CFDictionaryRef)temporaryDictionary);
         
         RaiseExceptionIfStatusIsAnError(&keychainErr);
-        
-        //  Set values for proper keys
-        [self.keychainData setObject:BBKPassphraseKeychainStorageItemLabel
-                              forKey:(__bridge id)kSecAttrLabel];
-        [self.keychainData setObject:BBKPassphraseKeychainStorageItemDescription
-                              forKey:(__bridge id)kSecAttrDescription];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanDecrypt];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanEncrypt];
-        [self.keychainData setObject:(__bridge id)kCFBooleanTrue
-                              forKey:(__bridge id)kSecAttrCanDerive];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanSign];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanVerify];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanWrap];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrCanUnwrap];
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrIsPermanent];
-#if TARGET_OS_MACOS
-        [self.keychainData setObject:(__bridge id)kCFBooleanFalse
-                              forKey:(__bridge id)kSecAttrAccess];
-#elif TARGET_OS_IOS
-        
-#endif
-        [self.keychainData setObject:[NSData new]
-                              forKey:(__bridge id)kSecValueData];
     }
-}
-
-#pragma mark - Passphrase persistence coordination conformance
-
-- (void)persistPassphrase:(BBKPassphrase *)passphrase
-                  success:(void (^)(BBKPassphrase * _Nonnull))success
-                  failure:(void (^)(NSError * _Nonnull))failure
-{
-    //  Create the archive
-    NSData *archive = [NSKeyedArchiver archivedDataWithRootObject:passphrase];
     
-    //  Alter the data
-    [self.keychainData setObject:archive
+    [self.keychainData setObject:BBKCredentialsKeychainStorageItemLabel
+                          forKey:(__bridge id)kSecAttrLabel];
+    
+    [self.keychainData setObject:BBKCredentialsKeychainStorageItemDescription
+                          forKey:(__bridge id)kSecAttrDescription];
+    
+    [self.keychainData setObject:BBKCredentialsKeychainStorageNullField
+                          forKey:(__bridge id)kSecAttrAccount];
+    
+    [self.keychainData setObject:BBKCredentialsKeychainStorageServiceName
+                          forKey:(__bridge id)kSecAttrService];
+    
+    [self.keychainData setObject:BBKCredentialsKeychainStorageComment
+                          forKey:(__bridge id)kSecAttrComment];
+    
+    [self.keychainData setObject:BBKCredentialsKeychainStorageNullField
                           forKey:(__bridge id)kSecValueData];
-    
-    //  Persist in the keychain
-    [self writeToKeychain];
-    
-    //  Fire the callback
-    success(passphrase);
 }
 
-- (void)loadPassphraseWithCompletion:(void (^)(BBKPassphrase * _Nullable,
-                                               NSError * _Nullable))completion
+#pragma mark - Credentials persistence coordination conformance
+
+- (void)persistCredentials:(BBKCredentials *)credentials
+                   success:(void (^)(BBKCredentials * _Nonnull))success
+                   failure:(void (^)(NSError * _Nonnull))failure
 {
-    //  Fetch the archive
-    NSData *archive = [self.keychainData objectForKey:(__bridge id)kSecValueData];
+    NSAssert(credentials != nil, @"credentials parameter should not be nil");
     
-    if (!archive || [archive length] == 0) {
-        completion(nil, [NSError errorWithDomain:BBKErrorDomain
-                                            code:BBKPassphraseKeychainPersistencePassphraseDoesNotExist
-                                        userInfo:nil]);
+    id password = [self.keychainData objectForKey:(__bridge id)kSecValueData];
+    
+    if (![password isEqual:credentials.password]) {
+        [self.keychainData setObject:credentials.password forKey:(__bridge id)kSecValueData];
         
-        return;
+        [self writeToKeychain];
     }
     
-    //  Unmarshall it to a passphrase
-    BBKPassphrase *passphrase = (BBKPassphrase *)[NSKeyedUnarchiver unarchiveObjectWithData:archive];
+    if (success) success(credentials);
+}
+
+- (void)loadCredentialsWithCompletion:(void (^)(BBKCredentials * _Nullable, NSError * _Nullable))completion
+{
+    NSString *password = [self.keychainData objectForKey:(__bridge id)kSecValueData];
+    NSString *email = [self.keychainData objectForKey:(__bridge id)kSecValueData];
     
-    completion(passphrase, nil);
+    if (password) {
+        if (completion) completion([[BBKCredentials alloc] initWithEmail:@"" password:password], nil);
+    } else {
+        NSError *error = [NSError errorWithDomain:BBKErrorDomain
+                                             code:BBKCredentialsKeychainPersistenceCredentialsDoesNotExist
+                                         userInfo:nil];
+        
+        if (completion) completion(nil, error);
+    }
 }
 
 @end
 
-@implementation BBKPassphraseKeychainPersistenceCoordinator (Internals)
+@implementation BBKCredentialsKeychainPersistenceCoordinator (Internals)
+
+#pragma mark - Conversion
 
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert
 {
     NSMutableDictionary *returnDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionaryToConvert];
     
     //  Length of the unique key
-    size_t stringLength = strlen((const char *)BBKPassphraseKeychainStorageKey);
-    NSData *keychainItemID = [NSData dataWithBytes:BBKPassphraseKeychainStorageKey
+    size_t stringLength = strlen((const char *)BBKCredentialsKeychainStorageKey);
+    NSData *keychainItemID = [NSData dataWithBytes:BBKCredentialsKeychainStorageKey
                                             length:stringLength];
     
     //  Add the keychain item class and the generic attribute
@@ -245,8 +233,9 @@ NS_ASSUME_NONNULL_END
     [returnDictionary setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
     
     //  Convert the password NSString to NSData to fit the API paradigm
-    NSString *passphraseString = [dictionaryToConvert objectForKey:(__bridge id)kSecValueData];
-    [returnDictionary setObject:[passphraseString dataUsingEncoding:NSUTF8StringEncoding]
+    NSString *passwordString = [dictionaryToConvert objectForKey:(__bridge id)kSecValueData];
+    
+    [returnDictionary setObject:[passwordString dataUsingEncoding:NSUTF8StringEncoding]
                          forKey:(__bridge id)kSecValueData];
     
     return returnDictionary;
@@ -263,8 +252,10 @@ NS_ASSUME_NONNULL_END
     
     //  To acquire the password data from the keychain item, first add the search key and class
     //  attribute required to obtain the password
-    [returnDictionary setObject:(__bridge id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
-    [returnDictionary setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
+    [returnDictionary setObject:(__bridge id)kCFBooleanTrue
+                         forKey:(__bridge id)kSecReturnData];
+    [returnDictionary setObject:(__bridge id)kSecClassGenericPassword
+                         forKey:(__bridge id)kSecClass];
     
     ExecuteDynBlockAtomic(^{
         //  Then call Keychain Services to get the password
@@ -272,6 +263,17 @@ NS_ASSUME_NONNULL_END
         
         OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary,
                                                    (CFTypeRef *)&passwordData);
+        
+        //  Remove the data return key, we don't need it anymore
+        [returnDictionary removeObjectForKey:(__bridge id)kSecReturnData];
+        
+        //  Convert the password to an NSString and add it to the return dictionary
+        NSString *password = [[NSString alloc] initWithBytes:[(__bridge_transfer NSData * _Nonnull)passwordData bytes]
+                                                      length:[(__bridge_transfer NSData * _Nonnull)passwordData length]
+                                                    encoding:NSUTF8StringEncoding];
+        
+        [returnDictionary setObject:password
+                             forKey:(__bridge id)kSecValueData];
         
         //  Release password data if it exists to ensure strong exception guarantee
         if (passwordData) {
@@ -293,9 +295,11 @@ NS_ASSUME_NONNULL_END
     CFDictionaryRef attributes = nil;
     NSMutableDictionary *updateItem = nil;
     
+    __block OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
+                                                       (CFTypeRef *)&attributes);
+    
     //  If the keychain item already exists, modify it
-    if (SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
-                            (CFTypeRef *)&attributes)) {
+    if (keychainErr != noErr) {
         //  First, get the attributes returned from the keychain and add them to the dictionary
         //  that controls the update
         [updateItem setObject:[self.genericPasswordQuery objectForKey:(__bridge id)kSecClass]
@@ -310,8 +314,8 @@ NS_ASSUME_NONNULL_END
         //  Execute operation atomically
         ExecuteDynBlockAtomic(^{
             //  You can update only a single keychain item at a time
-            OSStatus keychainErr = SecItemUpdate((__bridge CFDictionaryRef)updateItem,
-                                                 (__bridge CFDictionaryRef)tempCheck);
+            keychainErr = SecItemUpdate((__bridge CFDictionaryRef)updateItem,
+                                        (__bridge CFDictionaryRef)tempCheck);
             
             RaiseExceptionIfStatusIsAnError(&keychainErr);
         });
@@ -327,7 +331,8 @@ NS_ASSUME_NONNULL_END
         
         //  Execute operation atomically
         ExecuteDynBlockAtomic(^{
-            OSStatus keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, NULL);
+            //  Passing NULL as result is not required
+            keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, NULL);
             
             //  Release if attributes exists
             if (attributes) {
@@ -352,7 +357,7 @@ static void RaiseExceptionIfStatusIsAnError(const OSStatus *status)
     
     if (*status != noErr) {
 #if TARGET_OS_MAC
-        NSDictionary *userInfo = @{BBKPassphraseKeychainStorageErrorUserInfoKey: (__bridge NSString *)SecCopyErrorMessageString(*status, NULL)};
+        NSDictionary *userInfo = @{BBKCredentialsKeychainStorageErrorUserInfoKey: (__bridge NSString *)SecCopyErrorMessageString(*status, NULL)};
 #elif TARGET_OS_IOS
         NSDictionary *userInfo = nil;
 #endif
