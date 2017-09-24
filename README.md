@@ -4,6 +4,11 @@ Lead maintainers: [Emir Çiftçioğlu (eciftcioglu)](https://github.com/eciftcio
 
 **If you're searching for our licensed application, go to [BuyBuddy.app](https://github.com/heybuybuddy/BuyBuddy.app).**
 
+![Build status](https://img.shields.io/travis/heybuybuddy/BuyBuddyKit.svg)
+![Supported platforms](https://img.shields.io/badge/platform-ios%20%7C%20macos%20%7C%20watchos%20%7C%20tvos-lightgrey.svg)
+![Code coverage](https://img.shields.io/badge/coverage-85%25-green.svg)
+![Documentation](https://img.shields.io/badge/docs-88%25-brightgreen.svg)
+
 ## Abstract
 
 The BuyBuddy Apple Devices Software Development Kit makes your application integrate easily with BuyBuddy platform to create astonishing shopping experience. 
