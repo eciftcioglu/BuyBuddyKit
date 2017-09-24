@@ -1,4 +1,4 @@
-// BBKPassphrasePersistenceCoordination.h
+// BBKCredentialsPersistenceCoordination.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,10 +21,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class BBKPassphrase;
+@class BBKCredentials;
 
 /**
- The protocol `BBKPassphrasePersistenceCoordination` is adopted by an object who mediates the
+ The protocol `BBKCredentialsPersistenceCoordination` is adopted by an object who mediates the
  coordination of persistence of passphrases in a storage back-end.
  Later, the object should be able to reoccupy that previously persisted object.
  
@@ -36,37 +36,37 @@ NS_ASSUME_NONNULL_BEGIN
  
  ## Implementation
  
- Persisting a passphrase is directly related with **Privacy Policy** of our platform.
- An insecure implementation may lead to leaked passphrases, which will eventually affect the users.
- We do not force you to store the passphrase somewhere (like Keychain), nevertheless one should
+ Persisting a user credential is directly related with **Privacy Policy** of our platform.
+ An insecure implementation may lead to leaked sensitive information of users.
+ We do not force you to store the user credentials somewhere (like Keychain), nevertheless one should
  think twice before implementing this protocol in a homebrew coordinator.
- We highly encourage you to check out `BBKPassphraseKeychainPersistenceCoordinator` concrete class
+ We highly encourage you to check out `BBKCredentialsKeychainPersistenceCoordinator` concrete class
  and its implementation.
  */
-@protocol BBKPassphrasePersistenceCoordination <NSObject>
+@protocol BBKCredentialsPersistenceCoordination <NSObject>
 
 /**
  Persisting & Loading Objects
  */
 @required
 /**
- Persists given passphrase in persistence layer.
+ Persists given credentials in persistence layer.
  
- @param passphrase Passphrase to be stored by the coordinator.
+ @param credentials Credentials to be stored by the coordinator.
  @param success Block that gets executed when persistence operation is successful.
  @param failure Block that gets executed in case of an error.
  */
-- (void)persistPassphrase:(nonnull BBKPassphrase *)passphrase
-                  success:(nullable void (^)(BBKPassphrase * _Nonnull passphrase))success
-                  failure:(nullable void (^)(NSError * _Nonnull error))failure;
+- (void)persistCredentials:(nonnull BBKCredentials *)credentials
+                   success:(nullable void (^)(BBKCredentials * _Nonnull credentials))success
+                   failure:(nullable void (^)(NSError * _Nonnull error))failure;
 
 /**
- Loads passphrase from persistence layer.
+ Loads user credentials from persistence layer.
  
  @param completion The completion block which gets executed when operation is completed.
  */
-- (void)loadPassphraseWithCompletion:(nonnull void (^)(BBKPassphrase * _Nullable passphrase,
-                                                       NSError * _Nullable error))completion;
+- (void)loadCredentialsWithCompletion:(nonnull void (^)(BBKCredentials * _Nullable credentials,
+                                                        NSError * _Nullable error))completion;
 
 @end
 

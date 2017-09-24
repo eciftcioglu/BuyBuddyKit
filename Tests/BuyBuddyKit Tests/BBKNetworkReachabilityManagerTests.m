@@ -1,4 +1,4 @@
-// BBKNetworkReachabilityManagerTests.h
+// BBKNetworkReachabilityManagerTests.m
 // Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //

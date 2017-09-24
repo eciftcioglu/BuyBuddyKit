@@ -1,4 +1,4 @@
-// BBKPassphraseKeychainPersistenceCoordinator.h
+// BBKCredentialsKeychainPersistenceCoordinator.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,37 +20,36 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "BBKPassphrasePersistenceCoordination.h"
+#import "BBKCredentialsPersistenceCoordination.h"
 
 #if TARGET_OS_IOS || TARGET_OS_MAC
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- A concrete implementation of `BBKPassphrasePersistenceCoordination` protocol, which uses
+ A concrete implementation of `BBKCredentialsPersistenceCoordination` protocol, which uses
  *Keychain Services* of *iOS* and *macOS* platforms.
  
  Keychains can be used to store passwords, cryptographic keys, certificates & identities and notes.
- A passphrase is a cryptographic key providing user to retain an authentication token from the
- server, making resending user-sensitive data (i.e. usernames, passwords) in each authentication.
+ User credentials contain a email-password tuple in order to authenticate in the platform.
  
  ![Keychain Services](https://github.com/heybuybuddy/BuyBuddyKit/raw/refactor/Documentation/Assets/keychain_services_api.png)
  Reference: [Apple Keychain Services Reference](https://developer.apple.com/documentation/security/keychain_services)
  */
-@interface BBKPassphraseKeychainPersistenceCoordinator :
-    NSObject<BBKPassphrasePersistenceCoordination>
+@interface BBKCredentialsKeychainPersistenceCoordinator :
+    NSObject<BBKCredentialsPersistenceCoordination>
 
 /**
  @name Read & Write Information
  */
 
 /**
- Specifies the last date a passphrase persisted.
+ Specifies the last date a user credentials object persisted.
  */
 @property (nonatomic, strong, nullable, readonly) NSDate *lastWriteTimestamp;
 
 /**
- Specifies the last date a passphrase retrieved.
+ Specifies the last date a user credentials object retrieved.
  */
 @property (nonatomic, strong, nullable, readonly) NSDate *lastReadTimestamp;
 
@@ -65,6 +64,6 @@ NS_ASSUME_NONNULL_END
 /**
  Unique string used to identify the keychain item.
  */
-extern UInt8 const BBKPassphraseKeychainStorageKey[];
+extern UInt8 const BBKCredentialKeychainStorageKey[];
 
 #endif

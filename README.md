@@ -4,9 +4,14 @@ Lead maintainers: [Emir Çiftçioğlu (eciftcioglu)](https://github.com/eciftcio
 
 **If you're searching for our licensed application, go to [BuyBuddy.app](https://github.com/heybuybuddy/BuyBuddy.app).**
 
+![Build status](https://img.shields.io/travis/heybuybuddy/BuyBuddyKit.svg)
+![Supported platforms](https://img.shields.io/badge/platform-ios%20%7C%20macos%20%7C%20watchos%20%7C%20tvos-lightgrey.svg)
+![Code coverage](https://img.shields.io/badge/coverage-85%25-green.svg)
+![Documentation](https://img.shields.io/badge/docs-88%25-brightgreen.svg)
+
 ## Abstract
 
-The BuyBuddy Apple Devices Software Development Kit makes your application to integrate easily with BuyBuddy platform to create astonishing shopping experience. 
+The BuyBuddy Apple Devices Software Development Kit makes your application integrate easily with BuyBuddy platform to create astonishing shopping experience. 
 This library provides a generic abstraction layer to access BuyBuddy platform in a modular way.
 
 To get started, navigate to [Apple Devices Integration Guide](https://github.com/heybuybuddy/BuyBuddyKit/).
@@ -26,6 +31,8 @@ We have four seperate libraries for Apple devices, including this repository.
 - [**IoTKit**](https://github.com/heybuybuddy/IoTKit/): Device management, consolidation tools, Bluetooth Low Energy® (BLE) wrappers.
 - [**Core Data Wrapper**](https://github.com/heybuybuddy/BuyBuddyKitCoreDataWrapper/): [Core Data](https://developer.apple.com/documentation/coredata) wrapper for [**CoreKit**](https://github.com/heybuybuddy/BuyBuddyKit/) to achieve offline persistence and caching.
 - [**UIKit (iOS only)**](https://github.com/heybuybuddy/BuyBuddyUIKit/): Convenience classes for easy integration on iOS devices.
+
+**To see a _proof of concept_ application, you can check out our implementation at [BuyBuddy.app](https://github.com/heybuybuddy/BuyBuddy.app).**
 
 ## Installation
 Our software development kit supports various installation methods.

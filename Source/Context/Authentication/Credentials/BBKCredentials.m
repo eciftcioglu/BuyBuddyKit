@@ -23,4 +23,24 @@
 
 @implementation BBKCredentials
 
+#pragma mark Initialization
+
+- (instancetype)initWithEmail:(NSString *)email
+                     password:(NSString *)password
+{
+    self = [super init];
+    
+    if (self) {
+        _email = [email copy];
+        _password = [password copy];
+    }
+    
+    return self;
+}
+
+- (instancetype)init NS_UNAVAILABLE
+{
+    return nil;
+}
+
 @end

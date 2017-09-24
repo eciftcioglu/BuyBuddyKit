@@ -21,6 +21,49 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ A class that contains user credentials for challenging the platform's
+ authentication authority with email (aka BuyBuddy ID) and password.
+ 
+ ## Discussion
+ 
+ A `BBKCredentials` object should not be persisted in an unsafe way since
+ this information belongs to platform users, and highly sensitive.
+ 
+ #### Persistence
+ 
+ We provide credential persistence helper protocol 
+ `BBKCredentialsPersistenceCoordination` in order to store passwords.
+ An concrete implementation of this protocol can be found in class
+ `BBKCredentialsKeychainPersistenceCoordinator`, which persists instances
+ of this class in *Keychain* included in *Apple's Security Framework*.
+ 
+ Please read **Privacy Policy** of our services before implementing with
+ this class.
+ 
+ ## Subclassing
+ 
+ `BBKCredentials` class should not be subclassed in any way since it
+ contains critical information about user access.
+ */
 @interface BBKCredentials : NSObject
+
+/**
+ @name Sensitive Information
+ */
+
+/**
+ Specifies user's identity in *BuyBuddy* platform as an email.
+ */
+@property (nonatomic, strong, nonnull, readonly) NSString *email;
+
+/**
+ Specifies user's password.
+ */
+@property (nonatomic, strong, nonnull, readonly) NSString *password;
+
+/// :nodoc:
+- (instancetype _Nonnull)initWithEmail:(NSString * _Nonnull)email
+                              password:(NSString * _Nonnull)password;
 
 @end
