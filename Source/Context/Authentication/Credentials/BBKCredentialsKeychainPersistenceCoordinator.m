@@ -203,7 +203,7 @@ NS_ASSUME_NONNULL_END
     NSString *email = [self.keychainData objectForKey:(__bridge id)kSecValueData];
     
     if (password) {
-        if (completion) completion([[BBKCredentials alloc] initWithEmail:@"" password:password], nil);
+        if (completion) completion([[BBKCredentials alloc] initWithEmail:email password:password], nil);
     } else {
         NSError *error = [NSError errorWithDomain:BBKErrorDomain
                                              code:BBKCredentialsKeychainPersistenceCredentialsDoesNotExist
@@ -248,7 +248,7 @@ NS_ASSUME_NONNULL_END
     //  key/value pairs for the keychain item.
     
     //  Create a return dictionary populated with the attributes
-    NSMutableDictionary *returnDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionaryToConvert];
+    NSMutableDictionary *returnDictionary = [dictionaryToConvert mutableCopy];
     
     //  To acquire the password data from the keychain item, first add the search key and class
     //  attribute required to obtain the password
@@ -256,6 +256,12 @@ NS_ASSUME_NONNULL_END
                          forKey:(__bridge id)kSecReturnData];
     [returnDictionary setObject:(__bridge id)kSecClassGenericPassword
                          forKey:(__bridge id)kSecClass];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrLabel];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrModificationDate];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrDescription];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrComment];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrService];
+    [returnDictionary removeObjectForKey:(__bridge id)kSecAttrCreationDate];
     
     ExecuteDynBlockAtomic(^{
         //  Then call Keychain Services to get the password
@@ -300,6 +306,8 @@ NS_ASSUME_NONNULL_END
     
     //  If the keychain item already exists, modify it
     if (keychainErr != noErr) {
+        updateItem = [NSMutableDictionary dictionaryWithDictionary:(__bridge_transfer NSDictionary * _Nonnull)attributes];
+        
         //  First, get the attributes returned from the keychain and add them to the dictionary
         //  that controls the update
         [updateItem setObject:[self.genericPasswordQuery objectForKey:(__bridge id)kSecClass]
