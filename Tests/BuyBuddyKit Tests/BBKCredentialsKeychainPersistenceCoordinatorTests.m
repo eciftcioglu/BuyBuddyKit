@@ -25,7 +25,7 @@
 #import "BBKCredentialsKeychainPersistenceCoordinator.h"
 
 NSString * const Email = @"test@mail.com";
-NSString * const Password = @"123456789";
+NSString * const Password = @"234234234";
 NSTimeInterval const TestDuration = 5.00f;
 
 NS_ASSUME_NONNULL_BEGIN

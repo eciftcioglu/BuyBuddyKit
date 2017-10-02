@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_END
                                       forKey:(__bridge id)kSecReturnAttributes];
         
         //  Initialize the dictionary used to hold return data from the keychain
-        CFMutableDictionaryRef outDictionary = nil;
+        CFMutableDictionaryRef outDictionary = NULL;
         
         //  If the keychain item exists, return the attributes of the item
         OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
@@ -298,14 +298,14 @@ NS_ASSUME_NONNULL_END
 
 - (void)writeToKeychain
 {
-    CFDictionaryRef attributes = nil;
+    CFMutableDictionaryRef attributes = NULL;
     NSMutableDictionary *updateItem = nil;
     
     __block OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
                                                        (CFTypeRef *)&attributes);
     
     //  If the keychain item already exists, modify it
-    if (keychainErr != noErr) {
+    if (keychainErr == noErr) {
         updateItem = [NSMutableDictionary dictionaryWithDictionary:(__bridge_transfer NSDictionary * _Nonnull)attributes];
         
         //  First, get the attributes returned from the keychain and add them to the dictionary
@@ -327,7 +327,7 @@ NS_ASSUME_NONNULL_END
             
             RaiseExceptionIfStatusIsAnError(&keychainErr);
         });
-    } else {
+    } else if (keychainErr == errKCDuplicateItem) {
         //  No previous item found, add the new item.
         //
         //  The new value was added to the keychainData dictionary in the
@@ -340,12 +340,7 @@ NS_ASSUME_NONNULL_END
         //  Execute operation atomically
         ExecuteDynBlockAtomic(^{
             //  Passing NULL as result is not required
-            keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, NULL);
-            
-            //  Release if attributes exists
-            if (attributes) {
-                CFRelease(attributes);
-            }
+            keychainErr = SecItemAdd((__bridge  CFDictionaryRef)persistedDict, NULL);
             
             RaiseExceptionIfStatusIsAnError(&keychainErr);
         });
