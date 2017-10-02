@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0553A11F8278E500A57FAF /* Security.framework */; };
 		5A3CBDFD1F6C1EED003C8D93 /* BBKUser+DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */; };
 		5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */; };
 		5A3CBE0A1F6C4B55003C8D93 /* BBKPassphrase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBE081F6C4B55003C8D93 /* BBKPassphrase.h */; };
@@ -185,6 +186,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0553A11F8278E500A57FAF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BBKUser+DataSource.h"; path = "Entities/User Management/BBKUser+DataSource.h"; sourceTree = "<group>"; };
 		5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BBKUser+DataSource.m"; path = "Entities/User Management/BBKUser+DataSource.m"; sourceTree = "<group>"; };
 		5A3CBE081F6C4B55003C8D93 /* BBKPassphrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKPassphrase.h; path = Source/Context/Authentication/BBKPassphrase.h; sourceTree = SOURCE_ROOT; };
@@ -290,6 +292,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +329,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0553A01F8278E500A57FAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D0553A11F8278E500A57FAF /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A3CBDFF1F6C4ABA003C8D93 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +383,7 @@
 				5A87F6BC1F6D58FE00704ABC /* CODE_OF_CONDUCT.md */,
 				5A87F6BD1F6D58FE00704ABC /* LICENSE.md */,
 				5A87F6BE1F6D58FE00704ABC /* README.md */,
+				2D0553A01F8278E500A57FAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -785,7 +797,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BBK;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = BuyBuddy;
 				TargetAttributes = {
 					5A974E631F63CFF80066F83A = {

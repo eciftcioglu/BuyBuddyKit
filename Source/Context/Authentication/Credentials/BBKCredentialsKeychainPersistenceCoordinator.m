@@ -28,7 +28,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <Security/Security.h>
 
-#if TARGET_OS_MAC
+#if TARGET_OS_OSX
 #import <CoreServices/CoreServices.h>
 #elif TARGET_OS_IOS
 #import <CFNetwork/CFNetwork.h>
@@ -266,7 +266,7 @@ NS_ASSUME_NONNULL_END
     ExecuteDynBlockAtomic(^{
         //  Then call Keychain Services to get the password
         CFDataRef passwordData = NULL;
-        
+
         OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary,
                                                    (CFTypeRef *)&passwordData);
         
@@ -274,8 +274,8 @@ NS_ASSUME_NONNULL_END
         [returnDictionary removeObjectForKey:(__bridge id)kSecReturnData];
         
         //  Convert the password to an NSString and add it to the return dictionary
-        NSString *password = [[NSString alloc] initWithBytes:[(__bridge_transfer NSData * _Nonnull)passwordData bytes]
-                                                      length:[(__bridge_transfer NSData * _Nonnull)passwordData length]
+        NSString *password = [[NSString alloc] initWithBytes:[(__bridge NSData * _Nonnull)passwordData bytes]
+                                                      length:[(__bridge NSData * _Nonnull)passwordData length]
                                                     encoding:NSUTF8StringEncoding];
         
         [returnDictionary setObject:password
@@ -364,7 +364,7 @@ static void RaiseExceptionIfStatusIsAnError(const OSStatus *status)
     NSCAssert(status != NULL, @"parameter status should not be NULL");
     
     if (*status != noErr) {
-#if TARGET_OS_MAC
+#if TARGET_OS_OSX
         NSDictionary *userInfo = @{BBKCredentialsKeychainStorageErrorUserInfoKey: (__bridge NSString *)SecCopyErrorMessageString(*status, NULL)};
 #elif TARGET_OS_IOS
         NSDictionary *userInfo = nil;
