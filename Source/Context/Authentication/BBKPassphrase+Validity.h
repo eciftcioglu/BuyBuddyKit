@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, nonnull, readonly) NSDate *validUntil;
 
+/**
+ Returns truthy value if passphrase is valid.
+ 
+ @discussion This method returns of comparison with now and `validUntil`.
+ */
 @property (nonatomic, strong, nullable, readonly) NSNumber *isValid;
 
 @end
