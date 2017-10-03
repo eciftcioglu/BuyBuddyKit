@@ -189,6 +189,7 @@ NS_ASSUME_NONNULL_END
     id password = [self.keychainData objectForKey:(__bridge id)kSecValueData];
     
     if (![password isEqual:credentials.password]) {
+        [self.keychainData setObject:credentials.email forKey:(__bridge id)kSecAttrAccount];
         [self.keychainData setObject:credentials.password forKey:(__bridge id)kSecValueData];
         
         [self writeToKeychain];
@@ -304,8 +305,32 @@ NS_ASSUME_NONNULL_END
     __block OSStatus keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)self.genericPasswordQuery,
                                                        (CFTypeRef *)&attributes);
     
-    //  If the keychain item already exists, modify it
-    if (keychainErr == noErr) {
+    //  If the keychain item does not exist, add it
+    if (keychainErr == errSecItemNotFound) {
+        //  No previous item found, add the new item.
+        //
+        //  The new value was added to the keychainData dictionary in the
+        //  persistPassphraseWithSuccess:failure: routine, and the other values were added to the
+        //  keychainData dictionary previously.
+        //
+        //  No pointer to the newly-added items is needed, so pass NULL for the second parameter
+        NSDictionary *persistedDict = [self dictionaryToSecItemFormat:self.keychainData];
+        
+        //  Execute operation atomically
+        ExecuteDynBlockAtomic(^{
+            //  Passing NULL as result is not required
+            keychainErr = SecItemAdd((__bridge  CFDictionaryRef)persistedDict, NULL);
+            
+            RaiseExceptionIfStatusIsAnError(&keychainErr);
+        });
+        
+        ExecuteStaBlockAtomic(^{
+            self.lastWriteTimestamp = [[NSDate alloc] init];
+            self.lastReadTimestamp = [[NSDate alloc] init];
+        });
+    } else {
+        RaiseExceptionIfStatusIsAnError(&keychainErr);
+        
         updateItem = [NSMutableDictionary dictionaryWithDictionary:(__bridge_transfer NSDictionary * _Nonnull)attributes];
         
         //  First, get the attributes returned from the keychain and add them to the dictionary
@@ -327,29 +352,12 @@ NS_ASSUME_NONNULL_END
             
             RaiseExceptionIfStatusIsAnError(&keychainErr);
         });
-    } else if (keychainErr == errKCDuplicateItem) {
-        //  No previous item found, add the new item.
-        //
-        //  The new value was added to the keychainData dictionary in the
-        //  persistPassphraseWithSuccess:failure: routine, and the other values were added to the
-        //  keychainData dictionary previously.
-        //
-        //  No pointer to the newly-added items is needed, so pass NULL for the second parameter
-        NSDictionary *persistedDict = [self dictionaryToSecItemFormat:self.keychainData];
         
-        //  Execute operation atomically
-        ExecuteDynBlockAtomic(^{
-            //  Passing NULL as result is not required
-            keychainErr = SecItemAdd((__bridge  CFDictionaryRef)persistedDict, NULL);
-            
-            RaiseExceptionIfStatusIsAnError(&keychainErr);
+        ExecuteStaBlockAtomic(^{
+            self.lastWriteTimestamp = [[NSDate alloc] init];
+            self.lastReadTimestamp = [[NSDate alloc] init];
         });
     }
-    
-    ExecuteStaBlockAtomic(^{
-        self.lastWriteTimestamp = [[NSDate alloc] init];
-        self.lastReadTimestamp = [[NSDate alloc] init];
-    });
 }
 
 @end
