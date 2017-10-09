@@ -1,4 +1,4 @@
-// BBKConnectionContext.h
+// BBKConnectionContext.m
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,12 +19,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "BBKConnectionContext.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation BBKConnectionContext
 
-@interface BBKConnectionContext : NSObject
++ (instancetype)connectionContextWithDefaultStorage
+{
+    static NSURLSessionConfiguration *defaultConfiguration = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    });
+    
+    return [[[self class] alloc] initWithConfiguration:defaultConfiguration];
+}
+
++ (instancetype)connectionContextWithEphemeralStorage
+{
+    static NSURLSessionConfiguration *ephemeralConfiguration = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        ephemeralConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    });
+    
+    return [[[self class] alloc] initWithConfiguration:ephemeralConfiguration];
+}
+
+- (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration
+{
+    self = [super init];
+    
+    if (self) {
+        _configuration = configuration;
+    }
+    
+    return self;
+}
+
+- (instancetype)init NS_UNAVAILABLE
+{
+    return nil;
+}
 
 @end
-
-NS_ASSUME_NONNULL_END

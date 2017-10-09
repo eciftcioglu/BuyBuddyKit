@@ -1,4 +1,4 @@
-// BBKConnectionContext.m
+// BBKConnectionContext.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,8 +19,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKConnectionContext.h"
+#import <Foundation/Foundation.h>
 
-@implementation BBKConnectionContext
+NS_ASSUME_NONNULL_BEGIN
+
+/**
+ A `BBKConnectionContext` object handles data transfer operation performed with
+ HTTP connection established to platform services.
+ */
+@interface BBKConnectionContext : NSObject <NSURLSessionDelegate>
+
+@property (nonatomic, weak, nullable, readonly) NSURLSessionConfiguration *configuration;
+
+/**
+ @name Instantiation
+ */
+
+/**
+ Instantiates a new `BBKConnectionContext` object with default storage.
+ */
++ (instancetype _Nonnull)connectionContextWithDefaultStorage;
+
+/**
+ Instantiates a new `BBKConnectionContext` object with ephemeral storage.
+ */
++ (instancetype _Nonnull)connectionContextWithEphemeralStorage;
+
+/**
+ Initializes a `BBKConnectionContext` object with given configuration.
+ 
+ @param configuration `NSURLSessionConfiguration` object to be used in underlying connection session.
+ */
+- (instancetype _Nonnull)initWithConfiguration:(NSURLSessionConfiguration * _Nonnull)configuration NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#include "BBKConnectionContext+DataDelegate.h"
