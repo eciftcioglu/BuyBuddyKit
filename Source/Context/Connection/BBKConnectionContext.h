@@ -29,8 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface BBKConnectionContext : NSObject <NSURLSessionDelegate>
 
-@property (nonatomic, weak, nullable, readonly) NSURLSessionConfiguration *configuration;
-
 /**
  @name Instantiation
  */
@@ -52,8 +50,37 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype _Nonnull)initWithConfiguration:(NSURLSessionConfiguration * _Nonnull)configuration NS_DESIGNATED_INITIALIZER;
 
+/**
+ @name Session Behavior
+ */
+
+/**
+ Configuration object currently used by session.
+ */
+@property (nonatomic, weak, nullable, readonly) NSURLSessionConfiguration *configuration;
+
 @end
+
+/**
+ @name Constants
+ */
+
+/**
+ Label of the intrinsic dispatch queue used by `BBKConnectionContext` objects.
+ */
+FOUNDATION_EXPORT NSString * const BBKConnectionContextDispatchQueueLabel;
+
+/**
+ A boolean value determining whether underlying dispatch queue of the connection
+ context is going to be concurrent or not.
+ 
+ Defaults to `NO`.
+ Do not change the value unless you really know what you are doing.
+ */
+FOUNDATION_EXPORT BOOL BBKConnectionContextDispatchQueueForceConcurrent;
 
 NS_ASSUME_NONNULL_END
 
 #include "BBKConnectionContext+DataDelegate.h"
+#include "BBKConnectionContext+DownloadDelegate.h"
+#include "BBKConnectionContext+RemoteAction.h"

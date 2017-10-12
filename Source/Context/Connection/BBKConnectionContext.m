@@ -21,7 +21,34 @@
 
 #import "BBKConnectionContext.h"
 
+NSString * const BBKConnectionContextDispatchQueueLabel = @"com.buybuddy.buybuddykit.connectionContextQueue";
+BOOL BBKConnectionContextDispatchQueueForceConcurrent = NO;
+
+/*
+ Branch prediction helpers of LLVM Branch Weight Metadata.
+ */
+#define __likely(arg) __builtin_expect(!!(arg), 1)
+#define __unlikely(arg) __builtin_expect(!!(arg), 0)
+
+static dispatch_queue_t BBKGetConnectionDispatchQueue();
+
+@interface BBKConnectionContext ()
+
+@property (nonatomic, weak, nullable, readwrite) NSURLSessionConfiguration *configuration;
+@property (nonatomic, strong, nullable, readwrite) NSOperationQueue *operationQueue;
+@property (nonatomic, strong, nullable, readwrite) NSURLSession *managedSession;
+
+@end
+
+@interface BBKConnectionContext (Internals)
+
+- (void)instantiateSessionObject;
+
+@end
+
 @implementation BBKConnectionContext
+
+#pragma mark - Instantiation
 
 + (instancetype)connectionContextWithDefaultStorage
 {
@@ -53,6 +80,11 @@
     
     if (self) {
         _configuration = configuration;
+        _operationQueue = [[NSOperationQueue alloc] init];
+        
+        [_operationQueue setUnderlyingQueue:BBKGetConnectionDispatchQueue()];
+        
+        [self instantiateSessionObject];
     }
     
     return self;
@@ -63,4 +95,67 @@
     return nil;
 }
 
+#pragma mark - NSURLSessionDelegate conformance
+
+- (void)URLSession:(NSURLSession *)session
+didBecomeInvalidWithError:(NSError *)error
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition,
+                             NSURLCredential * _Nullable))completionHandler
+{
+    
+}
+
 @end
+
+@implementation BBKConnectionContext (Internals)
+
+- (void)instantiateSessionObject
+{
+    self.managedSession = [NSURLSession sessionWithConfiguration:self.configuration
+                                                        delegate:self
+                                                   delegateQueue:self.operationQueue];
+}
+
+@end
+
+static dispatch_queue_t BBKGetConnectionDispatchQueue()
+{
+    static dispatch_queue_t dispQueue;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dispatch_queue_attr_t attr;
+    
+        if (__unlikely(BBKConnectionContextDispatchQueueForceConcurrent)) {
+            attr = DISPATCH_QUEUE_CONCURRENT;
+        } else {
+            attr = DISPATCH_QUEUE_SERIAL;
+        }
+        
+        dispQueue = dispatch_queue_create([BBKConnectionContextDispatchQueueLabel cStringUsingEncoding:NSASCIIStringEncoding], attr);
+    });
+    
+    return dispQueue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
