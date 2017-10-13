@@ -57,8 +57,8 @@ NSString * const BBKDummyJSONString = @"{\"name\":\"67078ed0-82c4-42d5-b6b3-0231
     self = [super init];
     
     if (self) {
-        _name = [[NSUUID UUID] UUIDString];
-        _length = 1837UL;
+        _name = name;
+        _length = length;
         _zeroField = nil;
     }
     
@@ -85,33 +85,89 @@ NSString * const BBKDummyJSONString = @"{\"name\":\"67078ed0-82c4-42d5-b6b3-0231
                    forKey:@"name"];
     [dictionary setObject:[NSNumber numberWithUnsignedInteger:self.length]
                    forKey:@"length"];
-    [dictionary setObject:self.zeroField
-                   forKey:@"zeroField"];
+    
+    if (self.zeroField) {
+        [dictionary setObject:self.zeroField
+                       forKey:@"zeroField"];
+    }
 }
 
 @end
 
 #pragma mark - Unit tests
 
+NSString * const BBKMakeDummyJSONData(const NSString *name, NSUInteger length);
+
 @interface BBKSerializationTests : BBKTestCase
+
+@property (nonatomic, strong, nonnull, readwrite) BBKSerializableMock *mock;
 
 @end
 
 @implementation BBKSerializationTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    static NSUInteger counter = 0UL;
+    
+    self.mock = [[BBKSerializableMock alloc] initWithName:[NSString stringWithFormat:@"Mocqy Mocqy - %lu", counter]
+                                                   length:500UL - counter
+                                                zeroField:nil];
+    
+    counter += 1;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+- (void)testSerializesToJSON
+{
+    NSError *ptr = NULL;
+    
+    NSData *serialization = [BBKEntitySerialization dataWithEntity:self.mock
+                                                           options:0
+                                                             error:&ptr];
+    
+    NSString *string = [[NSString alloc] initWithData:serialization
+                                             encoding:NSUTF8StringEncoding];
+    
+    XCTAssert(ptr == NULL);
+    XCTAssert([string isEqualToString:BBKMakeDummyJSONData(self.mock.name,
+                                                           self.mock.length)]);
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testDeserializesEntity
+{
+    NSError *ptr = NULL;
+    
+    NSData *serialization = [BBKSerializableMock dummyJSONData];
+    
+    BBKSerializableMock *mock = [BBKEntitySerialization entityWithData:serialization
+                                                              keyClass:[BBKSerializableMock class]
+                                                                 error:&ptr];
+    
+    XCTAssert(ptr == NULL);
+    XCTAssert([mock.name isEqualToString:@"67078ed0-82c4-42d5-b6b3-023191c3f109"]);
+    XCTAssert(mock.length == 28UL);
+}
+
+- (void)testBadInputSerialization
+{
+    NSError *ptr = NULL;
+    
+    NSData *serialization = [@"bad-input" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    BBKSerializableMock *mock = [BBKEntitySerialization entityWithData:serialization
+                                                              keyClass:[BBKSerializableMock class]
+                                                                 error:&ptr];
+    
+    XCTAssert(ptr.code == 3840);
+    XCTAssert(ptr.domain == NSCocoaErrorDomain);
+    XCTAssertNil(mock);
 }
 
 @end
+
+NSString * const BBKMakeDummyJSONData(const NSString *name, NSUInteger length)
+{
+    return [NSString stringWithFormat:@"{\"name\":\"%@\",\"length\":%lu}", name, length];
+}
