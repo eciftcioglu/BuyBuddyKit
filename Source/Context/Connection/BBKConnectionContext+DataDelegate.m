@@ -23,4 +23,41 @@
 
 @implementation BBKConnectionContext (DataDelegate)
 
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * _Nullable))completionHandler
+{
+    
+}
+
 @end
