@@ -21,6 +21,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, BBKConnectionContextSessionPreference) {
+    BBKConnectionContextSessionPreferenceDefault,
+    BBKConnectionContextSessionPreferenceSecureEphemeral,
+    BBKConnectionContextSessionPreferenceInsecureEphemeral
+};
+
+typedef NS_ENUM(NSUInteger, BBKConnectionContextRemoteAction) {
+    BBKConnectionContextRemoteActionIndex,
+    BBKConnectionContextRemoteActionShow,
+    BBKConnectionContextRemoteActionCreate,
+    BBKConnectionContextRemoteActionUpdate,
+    BBKConnectionContextRemoteActionDelete
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -34,21 +48,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /**
- Instantiates a new `BBKConnectionContext` object with default storage.
- */
-+ (instancetype _Nonnull)connectionContextWithDefaultStorage;
-
-/**
- Instantiates a new `BBKConnectionContext` object with ephemeral storage.
- */
-+ (instancetype _Nonnull)connectionContextWithEphemeralStorage;
-
-/**
- Initializes a `BBKConnectionContext` object with given configuration.
+ Initializes a `BBKConnectionContext` object with given URL, action and
+ session preferences.
  
- @param configuration `NSURLSessionConfiguration` object to be used in underlying connection session.
+ @param URL The URL to connect.
+ @param action The action connection attempts to perform.
+ @param preference Session preference regarding redirections, caching etc.
  */
-- (instancetype _Nonnull)initWithConfiguration:(NSURLSessionConfiguration * _Nonnull)configuration NS_DESIGNATED_INITIALIZER;
+- (instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL
+                        remoteAction:(BBKConnectionContextRemoteAction)action
+                   sessionPreference:(BBKConnectionContextSessionPreference)preference NS_DESIGNATED_INITIALIZER;
+
+/**
+ Initializes a `BBKConnectionContext` object with given URL, action and
+ default session preferences.
+ 
+ @param URL The URL to connect.
+ @param action The action connection attempts to perform.
+ */
+- (instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL
+                        remoteAction:(BBKConnectionContextRemoteAction)action;
 
 /**
  @name Session Behavior
@@ -58,6 +77,15 @@ NS_ASSUME_NONNULL_BEGIN
  Configuration object currently used by session.
  */
 @property (nonatomic, weak, nullable, readonly) NSURLSessionConfiguration *configuration;
+
+/**
+ @name Connection Properties
+ */
+
+/**
+ The `NSURL` object the underlying `NSURLSession` instance connects to.
+ */
+@property (nonatomic, strong, nullable, readonly) NSURL *URL;
 
 @end
 
