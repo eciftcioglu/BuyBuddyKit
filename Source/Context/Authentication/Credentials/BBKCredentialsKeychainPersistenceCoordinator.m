@@ -369,7 +369,7 @@ static void RaiseExceptionIfStatusIsAnError(const OSStatus *status)
     if (*status != noErr) {
 #if TARGET_OS_OSX
         NSDictionary *userInfo = @{BBKCredentialsKeychainStorageErrorUserInfoKey: (__bridge NSString *)SecCopyErrorMessageString(*status, NULL)};
-#elif TARGET_OS_IOS
+#else
         NSDictionary *userInfo = nil;
 #endif
         
