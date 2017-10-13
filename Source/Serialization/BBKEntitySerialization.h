@@ -37,7 +37,6 @@
  */
 + (id _Nullable)entityWithData:(NSData * _Nonnull)data
                       keyClass:(Class _Nonnull)className
-                       options:(NSJSONReadingOptions)options
                          error:(NSError * __autoreleasing _Nullable * _Nullable)errorPtr;
 
 /**

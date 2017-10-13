@@ -27,7 +27,6 @@
 
 + (id)entityWithData:(NSData *)data
             keyClass:(Class)className
-             options:(NSJSONReadingOptions)options
                error:(NSError * _Nullable __autoreleasing *)errorPtr
 {
     NSAssert([className conformsToProtocol:@protocol(BBKSerialization)],
@@ -36,7 +35,7 @@
     NSError *ptr;
     
     id obj = [[self class] JSONObjectWithData:data
-                                      options:options
+                                      options:0
                                         error:&ptr];
     
     if (ptr) {
