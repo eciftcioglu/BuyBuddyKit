@@ -50,12 +50,6 @@ NS_ASSUME_NONNULL_END
     self.coordinator = [[BBKCredentialsKeychainPersistenceCoordinator alloc] init];
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testStoringCredentials
 {
     XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"Store passphrase"];
