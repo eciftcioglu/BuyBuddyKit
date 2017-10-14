@@ -42,6 +42,11 @@
 		<key>Core Kit Documentation.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>Core Kit Generic Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
 		<key>Core Kit Unit Tests (iOS).xcscheme</key>
