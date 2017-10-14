@@ -150,7 +150,7 @@ NSString * const BBKMakeDummyJSONData(const NSString *name, NSUInteger length);
     XCTAssert(mock.length == 28UL);
 }
 
-- (void)testBadInputSerialization
+- (void)testBadInputSerializationWithErrorPtr
 {
     NSError *ptr = NULL;
     
@@ -162,6 +162,17 @@ NSString * const BBKMakeDummyJSONData(const NSString *name, NSUInteger length);
     
     XCTAssert(ptr.code == 3840);
     XCTAssert(ptr.domain == NSCocoaErrorDomain);
+    XCTAssertNil(mock);
+}
+
+- (void)testBadInputSerializationWithoutErrorPtr
+{
+    NSData *serialization = [@"bad-input" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    BBKSerializableMock *mock = [BBKEntitySerialization entityWithData:serialization
+                                                              keyClass:[BBKSerializableMock class]
+                                                                 error:NULL];
+    
     XCTAssertNil(mock);
 }
 
