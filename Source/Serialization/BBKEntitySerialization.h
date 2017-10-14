@@ -34,6 +34,10 @@
 
 /**
  Returns the entity object from given JSON data.
+ 
+ @param data The JSON data to deserialize.
+ @param className The struct representing class of the entity.
+ @param errorPtr A pointer to `NSError *`, which is set when error occurred.
  */
 + (id _Nullable)entityWithData:(NSData * _Nonnull)data
                       keyClass:(Class _Nonnull)className
@@ -45,6 +49,10 @@
 
 /**
  Returns JSON data from given entity object.
+ 
+ @param entity The entity object to serialize.
+ @param options Options of serialization.
+ @param errorPtr A pointer to `NSError *`, which is set when error occurred.
  */
 + (NSData * _Nullable)dataWithEntity:(id<BBKSerialization> _Nonnull)entity
                              options:(NSJSONWritingOptions)options
