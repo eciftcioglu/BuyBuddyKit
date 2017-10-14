@@ -20,14 +20,17 @@
 // THE SOFTWARE.
 
 #import "BBKConnectionContext.h"
+#import "BBKRequestID.h"
 
 #pragma mark - Exported symbols
 
+NSString * const BBKConnectionContextRequestIDHeaderLabel = @"X-BuyBuddy-Request-ID";
 NSString * const BBKConnectionContextDispatchQueueLabel = @"com.buybuddy.buybuddykit.connectionContextQueue";
 BOOL BBKConnectionContextDispatchQueueForceConcurrent = NO;
 
 static dispatch_queue_t BBKGetConnectionDispatchQueue();
 static NSURLSessionConfiguration *BBKGetConfigurationWithPreference(BBKConnectionContextSessionPreference preference);
+static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configuration);
 
 /*
  Branch prediction helpers of LLVM Branch Weight Metadata.
@@ -135,6 +138,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
         defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     });
     
+    BBKScaffoldConfigurationObject(defaultConfiguration);
+    
     return defaultConfiguration;
 }
 
@@ -146,6 +151,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     dispatch_once(&onceToken, ^{
         ephemeralConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     });
+    
+    BBKScaffoldConfigurationObject(ephemeralConfiguration);
     
     return ephemeralConfiguration;
 }
@@ -159,6 +166,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
         ephemeralConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     });
     
+    BBKScaffoldConfigurationObject(ephemeralConfiguration);
+    
     return ephemeralConfiguration;
 }
 
@@ -169,8 +178,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
 static dispatch_queue_t BBKGetConnectionDispatchQueue()
 {
     static dispatch_queue_t dispQueue;
-    
     static dispatch_once_t onceToken;
+    
     dispatch_once(&onceToken, ^{
         dispatch_queue_attr_t attr;
     
@@ -196,6 +205,17 @@ static NSURLSessionConfiguration *BBKGetConfigurationWithPreference(BBKConnectio
         case BBKConnectionContextSessionPreferenceInsecureEphemeral:
             return [BBKConnectionContext insecureEphemeralSessionConfiguration];
     }
+}
+
+static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configuration)
+{
+    NSMutableDictionary *commonHeaders = [[NSMutableDictionary alloc] init];
+    BBKRequestID *requestID = [BBKRequestID requestID];
+    
+    [commonHeaders setObject:[requestID requestIDString]
+                      forKey:BBKConnectionContextRequestIDHeaderLabel];
+    
+    [configuration setHTTPAdditionalHeaders:commonHeaders];
 }
 
 

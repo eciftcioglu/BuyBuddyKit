@@ -99,6 +99,12 @@ NS_ASSUME_NONNULL_BEGIN
 FOUNDATION_EXPORT NSString * const BBKConnectionContextDispatchQueueLabel;
 
 /**
+ The label of the HTTP request header carrying a client-side identifiable
+ random request identifier.
+ */
+FOUNDATION_EXPORT NSString * const BBKConnectionContextRequestIDHeaderLabel;
+
+/**
  A boolean value determining whether underlying dispatch queue of the connection
  context is going to be concurrent or not.
  
