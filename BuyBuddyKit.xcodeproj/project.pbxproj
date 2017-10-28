@@ -8,30 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0553A11F8278E500A57FAF /* Security.framework */; };
-		2DD5FC3B1FA3279D006927F8 /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC391FA3279D006927F8 /* BBKProduct.h */; };
-		2DD5FC3C1FA3279D006927F8 /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */; };
-		2DD5FC3F1FA32B4C006927F8 /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */; };
-		2DD5FC401FA32B4C006927F8 /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */; };
-		2DD5FC411FA32B4E006927F8 /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */; };
-		2DD5FC421FA32B51006927F8 /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC391FA3279D006927F8 /* BBKProduct.h */; };
-		2DD5FC431FA32B52006927F8 /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC391FA3279D006927F8 /* BBKProduct.h */; };
-		2DD5FC441FA32B53006927F8 /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC391FA3279D006927F8 /* BBKProduct.h */; };
-		2DD5FC471FA32D02006927F8 /* BBKProductMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */; };
-		2DD5FC481FA32D02006927F8 /* BBKProductMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */; };
-		2DD5FC491FA32D75006927F8 /* BBKProductMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */; };
-		2DD5FC4A1FA32D76006927F8 /* BBKProductMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */; };
-		2DD5FC4B1FA32D77006927F8 /* BBKProductMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */; };
-		2DD5FC4C1FA32D7A006927F8 /* BBKProductMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */; };
-		2DD5FC4D1FA32D7A006927F8 /* BBKProductMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */; };
-		2DD5FC4E1FA32D7B006927F8 /* BBKProductMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */; };
-		2DD5FC511FA32E3D006927F8 /* BBKPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */; };
-		2DD5FC521FA32E3D006927F8 /* BBKPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC501FA32E3D006927F8 /* BBKPrice.m */; };
-		2DD5FC531FA32E4E006927F8 /* BBKPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */; };
-		2DD5FC541FA32E4E006927F8 /* BBKPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */; };
-		2DD5FC551FA32E4F006927F8 /* BBKPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */; };
-		2DD5FC561FA32E52006927F8 /* BBKPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC501FA32E3D006927F8 /* BBKPrice.m */; };
-		2DD5FC571FA32E52006927F8 /* BBKPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC501FA32E3D006927F8 /* BBKPrice.m */; };
-		2DD5FC581FA32E53006927F8 /* BBKPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5FC501FA32E3D006927F8 /* BBKPrice.m */; };
 		5A3CBDFD1F6C1EED003C8D93 /* BBKUser+DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */; };
 		5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */; };
 		5A3CBE0A1F6C4B55003C8D93 /* BBKPassphrase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBE081F6C4B55003C8D93 /* BBKPassphrase.h */; };
@@ -79,6 +55,46 @@
 		D522131A1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D52213141F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m */; };
 		D522131B1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D52213141F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m */; };
 		D522131C1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D52213141F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m */; };
+		D545973D1FA497C5008B922F /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597311FA497C5008B922F /* BBKProduct.h */; };
+		D545973E1FA497C5008B922F /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597311FA497C5008B922F /* BBKProduct.h */; };
+		D545973F1FA497C5008B922F /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597311FA497C5008B922F /* BBKProduct.h */; };
+		D54597401FA497C5008B922F /* BBKProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597311FA497C5008B922F /* BBKProduct.h */; };
+		D54597411FA497C5008B922F /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597321FA497C5008B922F /* BBKProduct.m */; };
+		D54597421FA497C5008B922F /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597321FA497C5008B922F /* BBKProduct.m */; };
+		D54597431FA497C5008B922F /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597321FA497C5008B922F /* BBKProduct.m */; };
+		D54597441FA497C5008B922F /* BBKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597321FA497C5008B922F /* BBKProduct.m */; };
+		D545974F1FA49983008B922F /* BBKProduct+Pricing.h in Headers */ = {isa = PBXBuildFile; fileRef = D545974D1FA49983008B922F /* BBKProduct+Pricing.h */; };
+		D54597501FA49983008B922F /* BBKProduct+Pricing.h in Headers */ = {isa = PBXBuildFile; fileRef = D545974D1FA49983008B922F /* BBKProduct+Pricing.h */; };
+		D54597511FA49983008B922F /* BBKProduct+Pricing.h in Headers */ = {isa = PBXBuildFile; fileRef = D545974D1FA49983008B922F /* BBKProduct+Pricing.h */; };
+		D54597521FA49983008B922F /* BBKProduct+Pricing.h in Headers */ = {isa = PBXBuildFile; fileRef = D545974D1FA49983008B922F /* BBKProduct+Pricing.h */; };
+		D54597531FA49983008B922F /* BBKProduct+Pricing.m in Sources */ = {isa = PBXBuildFile; fileRef = D545974E1FA49983008B922F /* BBKProduct+Pricing.m */; };
+		D54597541FA49983008B922F /* BBKProduct+Pricing.m in Sources */ = {isa = PBXBuildFile; fileRef = D545974E1FA49983008B922F /* BBKProduct+Pricing.m */; };
+		D54597551FA49983008B922F /* BBKProduct+Pricing.m in Sources */ = {isa = PBXBuildFile; fileRef = D545974E1FA49983008B922F /* BBKProduct+Pricing.m */; };
+		D54597561FA49983008B922F /* BBKProduct+Pricing.m in Sources */ = {isa = PBXBuildFile; fileRef = D545974E1FA49983008B922F /* BBKProduct+Pricing.m */; };
+		D54597591FA499FD008B922F /* BBKProduct+Metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597571FA499FD008B922F /* BBKProduct+Metadata.h */; };
+		D545975A1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597571FA499FD008B922F /* BBKProduct+Metadata.h */; };
+		D545975B1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597571FA499FD008B922F /* BBKProduct+Metadata.h */; };
+		D545975C1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597571FA499FD008B922F /* BBKProduct+Metadata.h */; };
+		D545975D1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597581FA499FD008B922F /* BBKProduct+Metadata.m */; };
+		D545975E1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597581FA499FD008B922F /* BBKProduct+Metadata.m */; };
+		D545975F1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597581FA499FD008B922F /* BBKProduct+Metadata.m */; };
+		D54597601FA499FD008B922F /* BBKProduct+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597581FA499FD008B922F /* BBKProduct+Metadata.m */; };
+		D54597631FA49CDD008B922F /* BBKProduct+Device.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597611FA49CDD008B922F /* BBKProduct+Device.h */; };
+		D54597641FA49CDD008B922F /* BBKProduct+Device.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597611FA49CDD008B922F /* BBKProduct+Device.h */; };
+		D54597651FA49CDD008B922F /* BBKProduct+Device.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597611FA49CDD008B922F /* BBKProduct+Device.h */; };
+		D54597661FA49CDD008B922F /* BBKProduct+Device.h in Headers */ = {isa = PBXBuildFile; fileRef = D54597611FA49CDD008B922F /* BBKProduct+Device.h */; };
+		D54597671FA49CDD008B922F /* BBKProduct+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597621FA49CDD008B922F /* BBKProduct+Device.m */; };
+		D54597681FA49CDD008B922F /* BBKProduct+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597621FA49CDD008B922F /* BBKProduct+Device.m */; };
+		D54597691FA49CDD008B922F /* BBKProduct+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597621FA49CDD008B922F /* BBKProduct+Device.m */; };
+		D545976A1FA49CDD008B922F /* BBKProduct+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = D54597621FA49CDD008B922F /* BBKProduct+Device.m */; };
+		D545976D1FA4A303008B922F /* BBKTax.h in Headers */ = {isa = PBXBuildFile; fileRef = D545976B1FA4A303008B922F /* BBKTax.h */; };
+		D545976E1FA4A303008B922F /* BBKTax.h in Headers */ = {isa = PBXBuildFile; fileRef = D545976B1FA4A303008B922F /* BBKTax.h */; };
+		D545976F1FA4A303008B922F /* BBKTax.h in Headers */ = {isa = PBXBuildFile; fileRef = D545976B1FA4A303008B922F /* BBKTax.h */; };
+		D54597701FA4A303008B922F /* BBKTax.h in Headers */ = {isa = PBXBuildFile; fileRef = D545976B1FA4A303008B922F /* BBKTax.h */; };
+		D54597711FA4A303008B922F /* BBKTax.m in Sources */ = {isa = PBXBuildFile; fileRef = D545976C1FA4A303008B922F /* BBKTax.m */; };
+		D54597721FA4A303008B922F /* BBKTax.m in Sources */ = {isa = PBXBuildFile; fileRef = D545976C1FA4A303008B922F /* BBKTax.m */; };
+		D54597731FA4A303008B922F /* BBKTax.m in Sources */ = {isa = PBXBuildFile; fileRef = D545976C1FA4A303008B922F /* BBKTax.m */; };
+		D54597741FA4A303008B922F /* BBKTax.m in Sources */ = {isa = PBXBuildFile; fileRef = D545976C1FA4A303008B922F /* BBKTax.m */; };
 		D546B68B1F67C6B200B7D751 /* BBKUser+EntityFetching.h in Headers */ = {isa = PBXBuildFile; fileRef = D546B6891F67C6B200B7D751 /* BBKUser+EntityFetching.h */; };
 		D546B68C1F67C6B200B7D751 /* BBKUser+EntityFetching.m in Sources */ = {isa = PBXBuildFile; fileRef = D546B68A1F67C6B200B7D751 /* BBKUser+EntityFetching.m */; };
 		D54D667B1F904B0C008A9A8D /* BBKSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D667A1F904B0C008A9A8D /* BBKSerializationTests.m */; };
@@ -262,12 +278,6 @@
 
 /* Begin PBXFileReference section */
 		2D0553A11F8278E500A57FAF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		2DD5FC391FA3279D006927F8 /* BBKProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKProduct.h; sourceTree = "<group>"; };
-		2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKProduct.m; sourceTree = "<group>"; };
-		2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKProductMetadata.h; sourceTree = "<group>"; };
-		2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKProductMetadata.m; sourceTree = "<group>"; };
-		2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKPrice.h; sourceTree = "<group>"; };
-		2DD5FC501FA32E3D006927F8 /* BBKPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKPrice.m; sourceTree = "<group>"; };
 		5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BBKUser+DataSource.h"; path = "Entities/User Management/BBKUser+DataSource.h"; sourceTree = "<group>"; };
 		5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BBKUser+DataSource.m"; path = "Entities/User Management/BBKUser+DataSource.m"; sourceTree = "<group>"; };
 		5A3CBE081F6C4B55003C8D93 /* BBKPassphrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKPassphrase.h; path = Source/Context/Authentication/BBKPassphrase.h; sourceTree = SOURCE_ROOT; };
@@ -306,6 +316,16 @@
 		D522130A1F8AD6F10061653E /* BBKConnectionContext+DataDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBKConnectionContext+DataDelegate.m"; sourceTree = "<group>"; };
 		D52213131F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBKConnectionContext+DownloadDelegate.h"; sourceTree = "<group>"; };
 		D52213141F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBKConnectionContext+DownloadDelegate.m"; sourceTree = "<group>"; };
+		D54597311FA497C5008B922F /* BBKProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKProduct.h; sourceTree = "<group>"; };
+		D54597321FA497C5008B922F /* BBKProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKProduct.m; sourceTree = "<group>"; };
+		D545974D1FA49983008B922F /* BBKProduct+Pricing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBKProduct+Pricing.h"; sourceTree = "<group>"; };
+		D545974E1FA49983008B922F /* BBKProduct+Pricing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBKProduct+Pricing.m"; sourceTree = "<group>"; };
+		D54597571FA499FD008B922F /* BBKProduct+Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBKProduct+Metadata.h"; sourceTree = "<group>"; };
+		D54597581FA499FD008B922F /* BBKProduct+Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBKProduct+Metadata.m"; sourceTree = "<group>"; };
+		D54597611FA49CDD008B922F /* BBKProduct+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBKProduct+Device.h"; sourceTree = "<group>"; };
+		D54597621FA49CDD008B922F /* BBKProduct+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBKProduct+Device.m"; sourceTree = "<group>"; };
+		D545976B1FA4A303008B922F /* BBKTax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKTax.h; path = Entities/Sales/BBKTax.h; sourceTree = "<group>"; };
+		D545976C1FA4A303008B922F /* BBKTax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBKTax.m; path = Entities/Sales/BBKTax.m; sourceTree = "<group>"; };
 		D546B6891F67C6B200B7D751 /* BBKUser+EntityFetching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BBKUser+EntityFetching.h"; path = "Entities/User Management/BBKUser+EntityFetching.h"; sourceTree = "<group>"; };
 		D546B68A1F67C6B200B7D751 /* BBKUser+EntityFetching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BBKUser+EntityFetching.m"; path = "Entities/User Management/BBKUser+EntityFetching.m"; sourceTree = "<group>"; };
 		D54D667A1F904B0C008A9A8D /* BBKSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKSerializationTests.m; sourceTree = "<group>"; };
@@ -430,19 +450,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2DD5FC381FA32746006927F8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				2DD5FC391FA3279D006927F8 /* BBKProduct.h */,
-				2DD5FC3A1FA3279D006927F8 /* BBKProduct.m */,
-				2DD5FC451FA32D02006927F8 /* BBKProductMetadata.h */,
-				2DD5FC461FA32D02006927F8 /* BBKProductMetadata.m */,
-				2DD5FC4F1FA32E3D006927F8 /* BBKPrice.h */,
-				2DD5FC501FA32E3D006927F8 /* BBKPrice.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5A3CBDFF1F6C4ABA003C8D93 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,7 +532,6 @@
 		5A974E911F63D0780066F83A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				2DD5FC381FA32746006927F8 /* Models */,
 				D589570A1F901A7800B475AA /* Serialization */,
 				D58BB0C01F6676EE00ABF448 /* Transfer & Marshalling */,
 				D5E93A911F644FF000B3B47B /* Context */,
@@ -578,6 +584,31 @@
 			path = Source/Context/Connection;
 			sourceTree = SOURCE_ROOT;
 		};
+		D545972E1FA497C5008B922F /* Entity Management */ = {
+			isa = PBXGroup;
+			children = (
+				D54597311FA497C5008B922F /* BBKProduct.h */,
+				D54597321FA497C5008B922F /* BBKProduct.m */,
+				D545974D1FA49983008B922F /* BBKProduct+Pricing.h */,
+				D545974E1FA49983008B922F /* BBKProduct+Pricing.m */,
+				D54597571FA499FD008B922F /* BBKProduct+Metadata.h */,
+				D54597581FA499FD008B922F /* BBKProduct+Metadata.m */,
+				D54597611FA49CDD008B922F /* BBKProduct+Device.h */,
+				D54597621FA49CDD008B922F /* BBKProduct+Device.m */,
+			);
+			name = "Entity Management";
+			path = "Entities/Entity Management";
+			sourceTree = "<group>";
+		};
+		D54597751FA4A30F008B922F /* Sales */ = {
+			isa = PBXGroup;
+			children = (
+				D545976B1FA4A303008B922F /* BBKTax.h */,
+				D545976C1FA4A303008B922F /* BBKTax.m */,
+			);
+			name = Sales;
+			sourceTree = "<group>";
+		};
 		D55E93D21F75619100D26B3A /* Credentials */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,7 +644,9 @@
 		D58BB0CD1F667E6D00ABF448 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D545972E1FA497C5008B922F /* Entity Management */,
 				D58BB0CE1F667E8A00ABF448 /* User Management */,
+				D54597751FA4A30F008B922F /* Sales */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -717,16 +750,15 @@
 			files = (
 				D5C478531F6A89BD009A2973 /* BBKUser+Delegation.h in Headers */,
 				D58BB0E81F67BD9400ABF448 /* BBKUser+EmploymentRegistry.h in Headers */,
+				D545976E1FA4A303008B922F /* BBKTax.h in Headers */,
 				D58956F91F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.h in Headers */,
-				2DD5FC491FA32D75006927F8 /* BBKProductMetadata.h in Headers */,
-				2DD5FC531FA32E4E006927F8 /* BBKPrice.h in Headers */,
 				5A6DF09A1F6D42810052A501 /* BBKPassphrase+Persistence.h in Headers */,
 				D5C4785B1F6A8B67009A2973 /* BBKUser+RegistrationInformation.h in Headers */,
 				D58BB0E01F67BBB700ABF448 /* BBKUser+PersonalInformation.h in Headers */,
 				5A3CBDFD1F6C1EED003C8D93 /* BBKUser+DataSource.h in Headers */,
 				D5C2E5041F902F7800261244 /* BBKEntitySerialization.h in Headers */,
 				D55E93E51F75619100D26B3A /* BBKCredentials.h in Headers */,
-				2DD5FC421FA32B51006927F8 /* BBKProduct.h in Headers */,
+				D54597501FA49983008B922F /* BBKProduct+Pricing.h in Headers */,
 				D58BB0C31F6677F700ABF448 /* BBKEntityFetching.h in Headers */,
 				5A3CBE0A1F6C4B55003C8D93 /* BBKPassphrase.h in Headers */,
 				D55E93E11F75619100D26B3A /* BBKCredentialsPersistenceCoordination.h in Headers */,
@@ -746,11 +778,14 @@
 				D55E93D91F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.h in Headers */,
 				5A974E751F63CFF80066F83A /* BuyBuddyKit.h in Headers */,
 				D546B68B1F67C6B200B7D751 /* BBKUser+EntityFetching.h in Headers */,
+				D545975A1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */,
 				D58BB0F01F67C0DF00ABF448 /* BBKUser+AuthenticationPreferences.h in Headers */,
 				D5E93A8C1F64410800B3B47B /* BBKNetworkReachabilityManager+AddressReachability.h in Headers */,
 				D58BB0EC1F67C03E00ABF448 /* BBKUser+AccessControl.h in Headers */,
 				D58BB0E41F67BC9300ABF448 /* BBKUser+EmploymentInformation.h in Headers */,
+				D54597641FA49CDD008B922F /* BBKProduct+Device.h in Headers */,
 				5A3CBE141F6C5601003C8D93 /* BBKPassphrase+Invalidation.h in Headers */,
+				D545973E1FA497C5008B922F /* BBKProduct.h in Headers */,
 				D5E93A951F6453D400B3B47B /* BBKNetworkReachabilityManager+Localization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -760,18 +795,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D55E93D81F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.h in Headers */,
+				D545973D1FA497C5008B922F /* BBKProduct.h in Headers */,
 				D55E93E01F75619100D26B3A /* BBKCredentialsPersistenceCoordination.h in Headers */,
 				D54D66801F92854A008A9A8D /* BBKRequestID.h in Headers */,
+				D54597631FA49CDD008B922F /* BBKProduct+Device.h in Headers */,
 				D58956F81F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.h in Headers */,
-				2DD5FC471FA32D02006927F8 /* BBKProductMetadata.h in Headers */,
+				D545974F1FA49983008B922F /* BBKProduct+Pricing.h in Headers */,
 				D52212EF1F8ACB1B0061653E /* BBKConnectionContext.h in Headers */,
+				D54597591FA499FD008B922F /* BBKProduct+Metadata.h in Headers */,
 				D58957021F901A6900B475AA /* BBKSerialization.h in Headers */,
+				D545976D1FA4A303008B922F /* BBKTax.h in Headers */,
 				D52213151F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.h in Headers */,
 				D552B23A1F6FBD7E00E89ADC /* BuyBuddyKit.h in Headers */,
 				D55E93E41F75619100D26B3A /* BBKCredentials.h in Headers */,
 				D522130B1F8AD6F10061653E /* BBKConnectionContext+DataDelegate.h in Headers */,
-				2DD5FC3B1FA3279D006927F8 /* BBKProduct.h in Headers */,
-				2DD5FC511FA32E3D006927F8 /* BBKPrice.h in Headers */,
 				D5C2E5031F902F7800261244 /* BBKEntitySerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,18 +818,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D55E93DB1F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.h in Headers */,
+				D54597401FA497C5008B922F /* BBKProduct.h in Headers */,
 				D55E93E31F75619100D26B3A /* BBKCredentialsPersistenceCoordination.h in Headers */,
 				D54D66831F92854A008A9A8D /* BBKRequestID.h in Headers */,
+				D54597661FA49CDD008B922F /* BBKProduct+Device.h in Headers */,
 				D58956FB1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.h in Headers */,
-				2DD5FC4B1FA32D77006927F8 /* BBKProductMetadata.h in Headers */,
+				D54597521FA49983008B922F /* BBKProduct+Pricing.h in Headers */,
 				D52212F21F8ACB1B0061653E /* BBKConnectionContext.h in Headers */,
+				D545975C1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */,
 				D58957051F901A6900B475AA /* BBKSerialization.h in Headers */,
+				D54597701FA4A303008B922F /* BBKTax.h in Headers */,
 				D52213181F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.h in Headers */,
 				D552B23C1F6FBD8400E89ADC /* BuyBuddyKit.h in Headers */,
 				D55E93E71F75619100D26B3A /* BBKCredentials.h in Headers */,
 				D522130E1F8AD6F10061653E /* BBKConnectionContext+DataDelegate.h in Headers */,
-				2DD5FC441FA32B53006927F8 /* BBKProduct.h in Headers */,
-				2DD5FC551FA32E4F006927F8 /* BBKPrice.h in Headers */,
 				D5C2E5061F902F7800261244 /* BBKEntitySerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,18 +841,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D55E93DA1F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.h in Headers */,
+				D545973F1FA497C5008B922F /* BBKProduct.h in Headers */,
 				D55E93E21F75619100D26B3A /* BBKCredentialsPersistenceCoordination.h in Headers */,
 				D54D66821F92854A008A9A8D /* BBKRequestID.h in Headers */,
+				D54597651FA49CDD008B922F /* BBKProduct+Device.h in Headers */,
 				D58956FA1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.h in Headers */,
-				2DD5FC4A1FA32D76006927F8 /* BBKProductMetadata.h in Headers */,
+				D54597511FA49983008B922F /* BBKProduct+Pricing.h in Headers */,
 				D52212F11F8ACB1B0061653E /* BBKConnectionContext.h in Headers */,
+				D545975B1FA499FD008B922F /* BBKProduct+Metadata.h in Headers */,
 				D58957041F901A6900B475AA /* BBKSerialization.h in Headers */,
+				D545976F1FA4A303008B922F /* BBKTax.h in Headers */,
 				D52213171F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.h in Headers */,
 				D552B23B1F6FBD7F00E89ADC /* BuyBuddyKit.h in Headers */,
 				D55E93E61F75619100D26B3A /* BBKCredentials.h in Headers */,
 				D522130D1F8AD6F10061653E /* BBKConnectionContext+DataDelegate.h in Headers */,
-				2DD5FC431FA32B52006927F8 /* BBKProduct.h in Headers */,
-				2DD5FC541FA32E4E006927F8 /* BBKPrice.h in Headers */,
 				D5C2E5051F902F7800261244 /* BBKEntitySerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,14 +1130,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54597541FA49983008B922F /* BBKProduct+Pricing.m in Sources */,
 				D5E93A961F6453D400B3B47B /* BBKNetworkReachabilityManager+Localization.m in Sources */,
+				D54597421FA497C5008B922F /* BBKProduct.m in Sources */,
 				5AFBF6291F6C05E50021D1DB /* BBKUser+FoundationConformance.m in Sources */,
 				D58BB0F11F67C0DF00ABF448 /* BBKUser+AuthenticationPreferences.m in Sources */,
-				2DD5FC4C1FA32D7A006927F8 /* BBKProductMetadata.m in Sources */,
 				5A3CBE111F6C5269003C8D93 /* BBKPassphrase+Validity.m in Sources */,
 				5A3CBE0B1F6C4B55003C8D93 /* BBKPassphrase.m in Sources */,
+				D545975E1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */,
 				D5C4785C1F6A8B67009A2973 /* BBKUser+RegistrationInformation.m in Sources */,
-				2DD5FC561FA32E52006927F8 /* BBKPrice.m in Sources */,
 				D5E93A8D1F64410800B3B47B /* BBKNetworkReachabilityManager+AddressReachability.m in Sources */,
 				D5C2E5081F902F7800261244 /* BBKEntitySerialization.m in Sources */,
 				D5C478541F6A89BD009A2973 /* BBKUser+Delegation.m in Sources */,
@@ -1112,15 +1154,16 @@
 				5A3CBE151F6C5601003C8D93 /* BBKPassphrase+Invalidation.m in Sources */,
 				D5C478581F6A8A09009A2973 /* BBKUser+DelegationRegistry.m in Sources */,
 				D58BB0ED1F67C03E00ABF448 /* BBKUser+AccessControl.m in Sources */,
+				D54597681FA49CDD008B922F /* BBKProduct+Device.m in Sources */,
 				D55E93E91F75619100D26B3A /* BBKCredentials.m in Sources */,
 				D58BB0DD1F67BB9A00ABF448 /* BBKUser.m in Sources */,
 				D522131A1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */,
 				D52212F41F8ACB1B0061653E /* BBKConnectionContext.m in Sources */,
+				D54597721FA4A303008B922F /* BBKTax.m in Sources */,
 				D54D66851F92854A008A9A8D /* BBKRequestID.m in Sources */,
 				5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */,
 				D55E93DD1F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.m in Sources */,
 				D58956FD1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.m in Sources */,
-				2DD5FC3F1FA32B4C006927F8 /* BBKProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,14 +1184,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54597531FA49983008B922F /* BBKProduct+Pricing.m in Sources */,
 				D552B1EB1F6FBB7200E89ADC /* BBKUser.m in Sources */,
+				D54597411FA497C5008B922F /* BBKProduct.m in Sources */,
 				D552B20C1F6FBB9F00E89ADC /* BBKUser+EntityFetching.m in Sources */,
 				D552B1FD1F6FBB8B00E89ADC /* BBKUser+AccessControl.m in Sources */,
-				2DD5FC481FA32D02006927F8 /* BBKProductMetadata.m in Sources */,
 				D552B2211F6FBBE100E89ADC /* BBKPassphrase+Persistence.m in Sources */,
 				D552B2151F6FBBD200E89ADC /* BBKPassphrase.m in Sources */,
+				D545975D1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */,
 				D552B1F71F6FBB8400E89ADC /* BBKUser+EmploymentInformation.m in Sources */,
-				2DD5FC521FA32E3D006927F8 /* BBKPrice.m in Sources */,
 				D5C2E5071F902F7800261244 /* BBKEntitySerialization.m in Sources */,
 				D552B2181F6FBBD600E89ADC /* BBKPassphrase+FoundationConformance.m in Sources */,
 				D522130F1F8AD6F20061653E /* BBKConnectionContext+DataDelegate.m in Sources */,
@@ -1164,15 +1208,16 @@
 				D552B21E1F6FBBDD00E89ADC /* BBKPassphrase+Invalidation.m in Sources */,
 				D552B2061F6FBB9600E89ADC /* BBKUser+DataSource.m in Sources */,
 				D552B1F41F6FBB8000E89ADC /* BBKUser+PersonalInformation.m in Sources */,
+				D54597671FA49CDD008B922F /* BBKProduct+Device.m in Sources */,
 				D55E93E81F75619100D26B3A /* BBKCredentials.m in Sources */,
 				D552B1FA1F6FBB8700E89ADC /* BBKUser+EmploymentRegistry.m in Sources */,
 				D52213191F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */,
 				D52212F31F8ACB1B0061653E /* BBKConnectionContext.m in Sources */,
+				D54597711FA4A303008B922F /* BBKTax.m in Sources */,
 				D54D66841F92854A008A9A8D /* BBKRequestID.m in Sources */,
 				D552B2331F6FBBFB00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */,
 				D55E93DC1F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.m in Sources */,
 				D58956FC1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.m in Sources */,
-				2DD5FC3C1FA3279D006927F8 /* BBKProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1193,6 +1238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54597741FA4A303008B922F /* BBKTax.m in Sources */,
 				D552B1EC1F6FBB7300E89ADC /* BBKUser.m in Sources */,
 				D552B20D1F6FBBA000E89ADC /* BBKUser+EntityFetching.m in Sources */,
 				D552B1FE1F6FBB8C00E89ADC /* BBKUser+AccessControl.m in Sources */,
@@ -1204,26 +1250,27 @@
 				D552B21C1F6FBBDA00E89ADC /* BBKPassphrase+Validity.m in Sources */,
 				D552B2041F6FBB9400E89ADC /* BBKUser+DelegationRegistry.m in Sources */,
 				D552B20A1F6FBB9C00E89ADC /* BBKUser+AuthenticationPreferences.m in Sources */,
+				D545976A1FA49CDD008B922F /* BBKProduct+Device.m in Sources */,
 				D552B1F21F6FBB7D00E89ADC /* BBKUser+RegistrationInformation.m in Sources */,
 				D552B2311F6FBBF800E89ADC /* BBKNetworkReachabilityManager+DomainReachability.m in Sources */,
 				D552B2011F6FBB9000E89ADC /* BBKUser+Delegation.m in Sources */,
+				D54597601FA499FD008B922F /* BBKProduct+Metadata.m in Sources */,
 				D55E93EB1F75619100D26B3A /* BBKCredentials.m in Sources */,
 				D52213121F8AD6F20061653E /* BBKConnectionContext+DataDelegate.m in Sources */,
-				2DD5FC4E1FA32D7B006927F8 /* BBKProductMetadata.m in Sources */,
 				D552B22E1F6FBBF400E89ADC /* BBKNetworkReachabilityManager+AddressReachability.m in Sources */,
 				D58956FF1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.m in Sources */,
-				2DD5FC411FA32B4E006927F8 /* BBKProduct.m in Sources */,
 				D522131C1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */,
 				D552B1EF1F6FBB7900E89ADC /* BBKUser+FoundationConformance.m in Sources */,
+				D54597561FA49983008B922F /* BBKProduct+Pricing.m in Sources */,
 				D552B21F1F6FBBDE00E89ADC /* BBKPassphrase+Invalidation.m in Sources */,
 				D5C2E50A1F902F7800261244 /* BBKEntitySerialization.m in Sources */,
 				D552B2071F6FBB9700E89ADC /* BBKUser+DataSource.m in Sources */,
 				D552B1F51F6FBB8000E89ADC /* BBKUser+PersonalInformation.m in Sources */,
 				D52212F61F8ACB1B0061653E /* BBKConnectionContext.m in Sources */,
-				2DD5FC581FA32E53006927F8 /* BBKPrice.m in Sources */,
 				D552B1FB1F6FBB8800E89ADC /* BBKUser+EmploymentRegistry.m in Sources */,
 				D54D66871F92854A008A9A8D /* BBKRequestID.m in Sources */,
 				D552B2341F6FBBFC00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */,
+				D54597441FA497C5008B922F /* BBKProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,14 +1278,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54597551FA49983008B922F /* BBKProduct+Pricing.m in Sources */,
 				D552B1ED1F6FBB7600E89ADC /* BBKUser.m in Sources */,
+				D54597431FA497C5008B922F /* BBKProduct.m in Sources */,
 				D552B20E1F6FBBA100E89ADC /* BBKUser+EntityFetching.m in Sources */,
 				D552B1FF1F6FBB8C00E89ADC /* BBKUser+AccessControl.m in Sources */,
-				2DD5FC4D1FA32D7A006927F8 /* BBKProductMetadata.m in Sources */,
 				D552B2231F6FBBE300E89ADC /* BBKPassphrase+Persistence.m in Sources */,
 				D552B2171F6FBBD300E89ADC /* BBKPassphrase.m in Sources */,
+				D545975F1FA499FD008B922F /* BBKProduct+Metadata.m in Sources */,
 				D552B1F91F6FBB8500E89ADC /* BBKUser+EmploymentInformation.m in Sources */,
-				2DD5FC571FA32E52006927F8 /* BBKPrice.m in Sources */,
 				D5C2E5091F902F7800261244 /* BBKEntitySerialization.m in Sources */,
 				D552B21A1F6FBBD700E89ADC /* BBKPassphrase+FoundationConformance.m in Sources */,
 				D52213111F8AD6F20061653E /* BBKConnectionContext+DataDelegate.m in Sources */,
@@ -1254,15 +1302,16 @@
 				D552B2201F6FBBDE00E89ADC /* BBKPassphrase+Invalidation.m in Sources */,
 				D552B2081F6FBB9800E89ADC /* BBKUser+DataSource.m in Sources */,
 				D552B1F61F6FBB8100E89ADC /* BBKUser+PersonalInformation.m in Sources */,
+				D54597691FA49CDD008B922F /* BBKProduct+Device.m in Sources */,
 				D55E93EA1F75619100D26B3A /* BBKCredentials.m in Sources */,
 				D552B1FC1F6FBB8800E89ADC /* BBKUser+EmploymentRegistry.m in Sources */,
 				D522131B1F8BCEFB0061653E /* BBKConnectionContext+DownloadDelegate.m in Sources */,
 				D52212F51F8ACB1B0061653E /* BBKConnectionContext.m in Sources */,
+				D54597731FA4A303008B922F /* BBKTax.m in Sources */,
 				D54D66861F92854A008A9A8D /* BBKRequestID.m in Sources */,
 				D552B2351F6FBBFC00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */,
 				D55E93DE1F75619100D26B3A /* BBKCredentialsKeychainPersistenceCoordinator.m in Sources */,
 				D58956FE1F8FD7F100B475AA /* BBKConnectionContext+RemoteAction.m in Sources */,
-				2DD5FC401FA32B4C006927F8 /* BBKProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

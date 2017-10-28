@@ -55,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
  try to catch those exceptions, since they will happen regardless of the time, unless you are not
  being granted a new permission set.
  */
+NS_SWIFT_NAME(User)
 @interface BBKUser : NSObject
 
 /**

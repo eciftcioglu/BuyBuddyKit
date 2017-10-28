@@ -1,4 +1,4 @@
-// BBKSerialization.h
+// BBKProduct+Pricing.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,44 +19,51 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKProductMetadata.h"
+#import "BBKProduct.h"
+#import "BBKTax.h"
 
-@implementation BBKProductMetadata
+@interface BBKProduct (Pricing)
 
-- (instancetype)init NS_UNAVAILABLE
-{
-    return nil;
-}
+/**
+ @name Pricing
+ */
 
-- (instancetype)initWithcolor:(NSString *)color
-                         size:(NSString *)size
-                         code:(NSInteger)code
-{
-    self = [super init];
-    
-    if (self) {
-        _color = color;
-        _size = size;
-        _code = code;
-    }
-    
-    return self;
-}
+/**
+ Specifies the current price of the product.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *currentPrice;
 
+/**
+ Specifies the price after a discount occurs on the original price
+ of that particular product.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *discountedPrice;
 
-- (instancetype)initWithDeserializedDictionary:(NSDictionary<NSString *, id> *)dictionary
-{
-        return [self initWithcolor:[dictionary objectForKey:@"color"] size:[dictionary objectForKey:@"size"] code:[[dictionary objectForKey:@"code"] intValue] ];
-}
+/**
+ Specifies the price of the product before a discount had occured.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *originalPrice;
 
-- (void)serializeToDictionary:(NSMutableDictionary<NSString *,id<NSSecureCoding>> *)dictionary
-{
-    [dictionary setObject:self.color
-                   forKey:@"color"];
-    [dictionary setObject:self.size
-                   forKey:@"size"];
-    [dictionary setObject:[NSNumber numberWithUnsignedInteger:self.code]
-                   forKey:@"code"];
-}
+/**
+ Specifies the ratio of the discount made on the initial price of the product.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *discountRatio;
+
+/**
+ Specifies the campaign price of the product.
+ If this property is not `nil`, it means the product is currently included
+ in a campaign.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *campaignPrice;
+
+/**
+ Specifies tax rate applied to the product.
+ */
+@property (nonatomic, strong, nullable, readonly) BBKTax *tax;
+
+/**
+ Specifies the tax price of the product.
+ */
+@property (nonatomic, strong, nullable, readonly) NSNumber *taxPrice;
 
 @end

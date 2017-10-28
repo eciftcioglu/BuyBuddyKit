@@ -20,30 +20,31 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <BBKSerialization.h>
 
 /**
- `BBKProductMetaData` object represents the response model which should be used to represent the metaData object contained inside the BBKProduct object.
- 
+ `BBKProduct` object represents the response model which should be used to 
+ represent either a product returned from the BuyBuddy platform or a product 
+ which will be uploaded to the BuyBuddy platform.
  */
-@interface BBKProductMetadata : NSObject <BBKSerialization>
+NS_SWIFT_NAME(Product)
+@interface BBKProduct : NSObject <BBKSerialization>
 
 /**
- Specifies the products color.
+ @name Identification
  */
-@property (nonatomic, strong, nullable, readwrite) NSString *color;
 
 /**
- Specifies the products size.
+ Specifies the BBKProduct identity in the *BuyBuddy* platform.
  */
-@property (nonatomic, strong, nullable, readwrite) NSString *size;
+@property (nonatomic, readonly) NSUInteger ID;
 
-/**
- Specifies the products code.
- */
-@property (nonatomic, readwrite) NSInteger code;
+/// :nodoc:
+@property (nonatomic, strong, nonnull, readonly) NSString *compiledID;
 
-- (instancetype _Nullable )initWithcolor:(NSString * _Nullable)color
-                                    size:(NSString *_Nullable)size
-                                    code:(NSInteger)code;
+/// :nodoc:
+- (instancetype _Nullable )initWithID:(NSUInteger)ID
+                           compiledID:(NSString * _Nonnull)compiledID NS_DESIGNATED_INITIALIZER;
+
 @end
