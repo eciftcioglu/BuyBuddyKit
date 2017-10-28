@@ -33,7 +33,7 @@
                                 hitagId:(NSInteger)hitagId
                                    name:(NSString *)name
                               productId:(NSInteger)productId
-                               metaData:(BBKProductMetaData *)metaData
+                               metaData:(BBKProductMetadata *)metaData
                                imageURL:(NSString *)imageURL
                      productDescription:(NSString *)productDescription
                                   price:(BBKPrice *)price

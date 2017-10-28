@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <BBKProductMetaData.h>
+#import <BBKProductMetadata.h>
 #import <BBKPrice.h>
 #import <UIKit/UIKit.h>
 #import <BBKSerialization.h>
@@ -59,7 +59,7 @@
 /**
  Specifies the products metadata which is a custom data type containing multiple properties.For more info on this type inspect BBKProductMetaData interface.
  */
-@property (nonatomic, strong, nullable, readwrite) BBKProductMetaData *metaData;
+@property (nonatomic, strong, nullable, readwrite) BBKProductMetadata *metaData;
 
 /**
  Specifies the url where the product image can be fetched.
@@ -87,7 +87,7 @@
                                            hitagId:(NSInteger)hitagId
                                               name:(NSString *_Nullable)name
                                          productId:(NSInteger)productId
-                                          metaData:(BBKProductMetaData *_Nullable)metaData
+                                          metaData:(BBKProductMetadata *_Nullable)metaData
                                           imageURL:(NSString *_Nullable)imageURL
                                 productDescription:(NSString *_Nullable)productDescription
                                              price:(BBKPrice *_Nullable)price;
