@@ -37,7 +37,7 @@
     id obj = [[self class] JSONObjectWithData:data
                                       options:0
                                         error:&ptr];
-    
+
     if (ptr) {
         if (errorPtr) {
             *errorPtr = ptr;
@@ -67,13 +67,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
