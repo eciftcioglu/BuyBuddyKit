@@ -23,21 +23,46 @@
 
 NS_ASSUME_NONNULL_BEGIN
 /**
- 
+ A `BBKQuotaContext` object contains the quota information of the user in context.
  */
 NS_SWIFT_NAME(QuotaContext)
 @interface BBKQuotaContext : NSObject
 
+/**
+ The total consumed amount of quota by the user in context during the session in context.
+ */
 @property (nonatomic, readonly) NSUInteger consumedAmount;
-
+/**
+ The maximum amount of consumable quota by the user in context during the session in context.
+ */
 @property (nonatomic, readonly) NSUInteger maximumAmount;
-
+/**
+ The current quota reset date for the user in context.
+ */
 @property (nonatomic, strong, nonnull, readonly) NSDate *quotaResetDate;
-
+/**
+ The remaining amount of usable quota for the user in context during the session in context.
+ */
 @property (nonatomic,  readonly) NSUInteger remainingAmount;
-
+/**
+ A boolean value determining whether key value observation is available or not during the session in context..
+ 
+ Defaults to `YES`.
+ Do not change the value unless you really know what you are doing.
+ */
 @property (readonly, nonatomic, assign, getter = isAvailable) BOOL available;
 
+/**
+ @name Instantiation
+ */
+
+/**
+ Initializes a `BBKQuotaContext` object with the given consumed amount of quota, maximum amount of quota and the quota reset date.
+ 
+ @param consumedAmount The consumed amount of quota by the user in context.
+ @param maximumAmount The maximum amount of quota available for the user in context.
+ @param quotaResetDate The reset date of the quota for the user in context.
+ */
 - (instancetype _Nonnull)initWithConsumedAmount:(NSUInteger)consumedAmount
                                   maximumAmount:(NSUInteger)maximumAmount
                                  quotaResetDate:(NSDate * _Nonnull)quotaResetDate NS_DESIGNATED_INITIALIZER;

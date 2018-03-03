@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /**
- Initializes a `BBKConnectionContext` object with given URL, action and
+ Initializes a `BBKConnectionContext` object with the given URL, action and
  session preferences.
  
  @param URL The URL to connect.
