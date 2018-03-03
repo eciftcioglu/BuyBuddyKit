@@ -1,4 +1,4 @@
-// BBKConnectionContext+RemoteAction.m
+// BBKBrand.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,41 +19,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKConnectionContext+RemoteAction.h"
+#import <Foundation/Foundation.h>
 
-@implementation BBKConnectionContext (RemoteAction)
+NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 
+ */
+NS_SWIFT_NAME(Brand)
+@interface BBKBrand : NSObject
 
+/**
+ Specifies the BBKProduct identity in the *BuyBuddy* platform.
+ */
+@property (nonatomic, readonly) NSUInteger ID;
+
+/// :nodoc:
+- (instancetype _Nonnull)initWithID:(NSUInteger)ID;
 
 @end
 
-NSString *BBKNSStringFromRemoteAction(BBKConnectionContextRemoteAction action)
-{
-    switch (action) {
-        case BBKConnectionContextRemoteActionIndex:
-            return @"index";
-        case BBKConnectionContextRemoteActionShow:
-            return @"show";
-        case BBKConnectionContextRemoteActionCreate:
-            return @"create";
-        case BBKConnectionContextRemoteActionDelete:
-            return @"delete";
-        case BBKConnectionContextRemoteActionUpdate:
-            return @"update";
-    }
-}
+NS_ASSUME_NONNULL_END
 
-NSString *BBKHTTPMethodNSStringFromRemoteAction(BBKConnectionContextRemoteAction action)
-{
-    switch (action) {
-        case BBKConnectionContextRemoteActionIndex:
-        case BBKConnectionContextRemoteActionShow:
-            return @"GET";
-        case BBKConnectionContextRemoteActionCreate:
-            return @"POST";
-        case BBKConnectionContextRemoteActionUpdate:
-            return @"PUT";
-        case BBKConnectionContextRemoteActionDelete:
-            return @"DELETE";
-    }
-}
+#import "BBKBrand+FoundationConformance.h"
+#import "BBKBrand+RegistrationInformation.h"
+#import "BBKBrand+Subentities.h"
+#import "BBKBrand+EntityFetching.h"

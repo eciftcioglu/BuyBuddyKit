@@ -20,8 +20,9 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <BBKSerialization.h>
+#import "BBKSerialization.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  `BBKProduct` object represents the response model which should be used to 
@@ -48,3 +49,9 @@ NS_SWIFT_NAME(Product)
                            compiledID:(NSString * _Nonnull)compiledID NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "BBKProduct+Pricing.h"
+#import "BBKProduct+Metadata.h"
+#import "BBKProduct+Device.h"

@@ -1,4 +1,4 @@
-// BBKProduct+Metadata.h
+// BBKBrand+RegistrationInformation.m
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,56 +19,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKProduct.h"
+#import "BBKBrand+RegistrationInformation.h"
 
-#if TARGET_OS_IOS
-#import <UIKit/UIKit.h>
-#elif TARGET_OS_OSX
-#import <Cocoa/Cocoa.h>
-#endif
-
-@interface BBKProduct (Metadata)
-
-/**
- @name Metadata
- */
-
-/**
- Specifies the products name.
- */
-@property (nonatomic, strong, nullable, readwrite) NSString *name;
-
-/**
- Specifies the products description.
- */
-@property (nonatomic, strong, nullable, readwrite) NSString *productDescription;
-
-/**
- Specifies the products color.
- */
-#if TARGET_OS_IOS
-@property (nonatomic, strong, nullable, readonly) UIColor *color;
-#elif TARGET_OS_OSX
-@property (nonatomic, strong, nullable, readonly) NSColor *color;
-#endif
-
-/**
- Specifies the products size.
- */
-@property (nonatomic, strong, nullable, readonly) NSString *size;
-
-/**
- Specifies the products code.
- */
-@property (nonatomic, strong, nullable, readonly) NSString *code;
-
-/**
- Specifies the products image.
- */
-#if TARGET_OS_IOS
-@property (nonatomic, strong, nullable, readwrite) UIImage *image;
-#elif TARGET_OS_OSX
-@property (nonatomic, strong, nullable, readwrite) NSImage *image;
-#endif
+@implementation BBKBrand (RegistrationInformation)
 
 @end

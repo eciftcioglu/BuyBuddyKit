@@ -22,7 +22,7 @@
 
 #import "BBKUser.h"
 
-@interface BBKUser (FoundationConformance) <NSSecureCoding>
+@interface BBKUser (FoundationConformance) <NSSecureCoding, NSCopying>
 
 /**
  @name Foundation Conformance
