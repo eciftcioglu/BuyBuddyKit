@@ -1,4 +1,4 @@
-// BBKIOMetricsRepository
+// BBKIOMetricsRepository.h
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,19 +26,22 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Stores `BBKIOMetrics` objects, pushes them to the central repository with the
+ Stores `BBKIOMetrics` objects, pushes them to the central repository when its appropriate method is called.
  */
-@interface BBKIOMetricsRepository : NSObject {
-@private
-    NSMutableArray<BBKIOMetrics *> *_metrics;
-}
-
-@property (nonatomic, strong, readonly, nonnull) NSArray<BBKIOMetrics *> *metrics;
+@interface BBKIOMetricsRepository : NSObject <NSSecureCoding, NSCopying>
 
 /**
  @name Management
  */
 
+/**
+ Metrics currently staged.
+ */
+@property (nonatomic, strong, readonly, nonnull) NSArray<BBKIOMetrics *> *stagedMetrics;
+
+/**
+ Adds a new metric to be staged later.
+ */
 - (void)addMetrics:(BBKIOMetrics * _Nonnull)metrics;
 
 /**
@@ -58,7 +61,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Pushes metrics to the central repository.
  */
-- (void)pushMetrics;
+- (void)pushImmediately;
+
+/**
+ Metrics pushed to the central repository.
+ */
+@property (nonatomic, strong, readonly, nonnull) NSArray<BBKIOMetrics *> *pushedMetrics;
 
 @end
 
