@@ -1,0 +1,6 @@
+framework module BuyBuddyKit {
+    umbrella header "Source/BuyBuddyKit.h"
+    
+    export *
+    module * { export * }
+}
