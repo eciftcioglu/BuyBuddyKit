@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BBKConnectionContextTests : BBKTestCase
 
+@property (nonatomic, strong, readwrite, nonnull) BBKConnectionContext *context;
+
 @end
 
 NS_ASSUME_NONNULL_END
@@ -37,7 +39,7 @@ NS_ASSUME_NONNULL_END
 {
     [super setUp];
     
-    
+    self.context = [[BBKConnectionContext alloc] init];
 }
 
 - (void)tearDown
@@ -47,9 +49,14 @@ NS_ASSUME_NONNULL_END
     [super tearDown];
 }
 
-- (void)testStoringCredentials
+- (void)testSendsGETRequest
 {
+    [self.context performConnection:[NSURL URLWithString:@"https://github.com"]
+                         HTTPMethod:BBKConnectionContextHTTPMethodGET];
     
+    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"Download github.com home page"];
+    
+    [self waitForExpectations:@[expectation] timeout:5.00];
 }
 
 @end

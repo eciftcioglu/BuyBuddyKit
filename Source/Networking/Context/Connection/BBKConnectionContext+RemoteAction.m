@@ -21,9 +21,40 @@
 
 #import "BBKConnectionContext+RemoteAction.h"
 
-@implementation BBKConnectionContext (RemoteAction)
+BBKConnectionContextHTTPMethod BBKHTTPMethodFromRemoteAction(BBKConnectionContextRemoteAction action)
+{
+    switch (action) {
+        case BBKConnectionContextRemoteActionIndex:
+        case BBKConnectionContextRemoteActionShow:
+            return BBKConnectionContextHTTPMethodGET;
+        case BBKConnectionContextRemoteActionCreate:
+            return BBKConnectionContextHTTPMethodPOST;
+        case BBKConnectionContextRemoteActionDelete:
+            return BBKConnectionContextHTTPMethodDELETE;
+        case BBKConnectionContextRemoteActionUpdate:
+            return BBKConnectionContextHTTPMethodPUT;
+    }
+}
 
-@end
+NSString *BBKNSStringFromHTTPMethod(BBKConnectionContextHTTPMethod method)
+{
+    switch (method) {
+        case BBKConnectionContextHTTPMethodHEAD:
+            return @"HEAD";
+        case BBKConnectionContextHTTPMethodGET:
+            return @"GET";
+        case BBKConnectionContextHTTPMethodPOST:
+            return @"POST";
+        case BBKConnectionContextHTTPMethodPUT:
+            return @"PUT";
+        case BBKConnectionContextHTTPMethodPATCH:
+            return @"PATCH";
+        case BBKConnectionContextHTTPMethodDELETE:
+            return @"DELETE";
+        case BBKConnectionContextHTTPMethodOPTIONS:
+            return @"OPTIONS";
+    }
+}
 
 NSString *BBKNSStringFromRemoteAction(BBKConnectionContextRemoteAction action)
 {
@@ -43,15 +74,7 @@ NSString *BBKNSStringFromRemoteAction(BBKConnectionContextRemoteAction action)
 
 NSString *BBKHTTPMethodNSStringFromRemoteAction(BBKConnectionContextRemoteAction action)
 {
-    switch (action) {
-        case BBKConnectionContextRemoteActionIndex:
-        case BBKConnectionContextRemoteActionShow:
-            return @"GET";
-        case BBKConnectionContextRemoteActionCreate:
-            return @"POST";
-        case BBKConnectionContextRemoteActionUpdate:
-            return @"PUT";
-        case BBKConnectionContextRemoteActionDelete:
-            return @"DELETE";
-    }
+    BBKConnectionContextHTTPMethod method = BBKHTTPMethodFromRemoteAction(action);
+    
+    return BBKNSStringFromHTTPMethod(method);
 }

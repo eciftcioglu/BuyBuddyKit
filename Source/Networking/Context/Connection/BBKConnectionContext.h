@@ -27,6 +27,16 @@ typedef NS_ENUM(NSUInteger, BBKConnectionContextSessionPreference) {
     BBKConnectionContextSessionPreferenceInsecureEphemeral
 };
 
+typedef NS_ENUM(NSUInteger, BBKConnectionContextHTTPMethod) {
+    BBKConnectionContextHTTPMethodHEAD,
+    BBKConnectionContextHTTPMethodGET,
+    BBKConnectionContextHTTPMethodPOST,
+    BBKConnectionContextHTTPMethodPUT,
+    BBKConnectionContextHTTPMethodPATCH,
+    BBKConnectionContextHTTPMethodDELETE,
+    BBKConnectionContextHTTPMethodOPTIONS
+};
+
 typedef NS_ENUM(NSUInteger, BBKConnectionContextRemoteAction) {
     BBKConnectionContextRemoteActionIndex,
     BBKConnectionContextRemoteActionShow,
@@ -48,26 +58,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /**
- Initializes a `BBKConnectionContext` object with given URL, action and
- session preferences.
+ Initializes a `BBKConnectionContext` object with given session preference configuration.
  
- @param URL The URL to connect.
- @param action The action connection attempts to perform.
  @param preference Session preference regarding redirections, caching etc.
  */
-- (instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL
-                        remoteAction:(BBKConnectionContextRemoteAction)action
-                   sessionPreference:(BBKConnectionContextSessionPreference)preference NS_DESIGNATED_INITIALIZER;
+- (instancetype _Nonnull)initWithSessionPreference:(BBKConnectionContextSessionPreference)preference NS_DESIGNATED_INITIALIZER;
 
 /**
- Initializes a `BBKConnectionContext` object with given URL, action and
- default session preferences.
- 
- @param URL The URL to connect.
- @param action The action connection attempts to perform.
+ Initializes a `BBKConnectionContext` object with default session preference configuration.
  */
-- (instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL
-                        remoteAction:(BBKConnectionContextRemoteAction)action;
+- (instancetype _Nonnull)init;
 
 /**
  @name Session Behavior
@@ -79,13 +79,35 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable, readonly) NSURLSessionConfiguration *configuration;
 
 /**
- @name Connection Properties
+ @name Making Connections
  */
 
 /**
- The `NSURL` object the underlying `NSURLSession` instance connects to.
+ Performs an HTTP connection to specified URL with a remote action.
+ 
+ @param URL The URL to connect.
+ @param action The action connection attempts to perform.
  */
-@property (nonatomic, strong, nullable, readonly) NSURL *URL;
+- (void)performConnection:(NSURL * _Nonnull)URL
+             remoteAction:(BBKConnectionContextRemoteAction)action;
+
+/**
+ Performs an HTTP connection to specified URL with given HTTP method.
+ 
+ @param URL The URL to connect.
+ @param method The HTTP method to be used.
+ */
+- (void)performConnection:(NSURL * _Nonnull)URL
+               HTTPMethod:(BBKConnectionContextHTTPMethod)method;
+
+/**
+ Performs an HTTP connection to specified URL with given HTTP method as a raw string.
+ 
+ @param URL The URL to connect.
+ @param methodString The HTTP method as a string, (i.e. `@"GET"`).
+ */
+- (void)performConnection:(NSURL * _Nonnull)URL
+             methodString:(NSString * _Nonnull)methodString;
 
 @end
 

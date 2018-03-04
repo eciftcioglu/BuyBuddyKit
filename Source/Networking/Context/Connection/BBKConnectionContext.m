@@ -27,6 +27,7 @@
 NSString * const BBKConnectionContextRequestIDHeaderLabel = @"X-BuyBuddy-Request-ID";
 NSString * const BBKConnectionContextDispatchQueueLabel = @"com.buybuddy.buybuddykit.connectionContextQueue";
 BOOL BBKConnectionContextDispatchQueueForceConcurrent = NO;
+NSTimeInterval BBKConnectionContextTimeoutInterval = 5.00f;
 
 static dispatch_queue_t BBKGetConnectionDispatchQueue();
 static NSURLSessionConfiguration *BBKGetConfigurationWithPreference(BBKConnectionContextSessionPreference preference);
@@ -45,7 +46,6 @@ static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configurat
 @property (nonatomic, weak, nullable, readwrite) NSURLSessionConfiguration *configuration;
 @property (nonatomic, strong, nullable, readwrite) NSOperationQueue *operationQueue;
 @property (nonatomic, strong, nullable, readwrite) NSURLSession *managedSession;
-@property (nonatomic, readwrite) BBKConnectionContextRemoteAction remoteAction;
 
 - (NSString * _Nullable)HTTPMethod;
 
@@ -63,9 +63,7 @@ static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configurat
 
 #pragma mark - Instantiation
 
-- (instancetype)initWithURL:(NSURL *)URL
-               remoteAction:(BBKConnectionContextRemoteAction)action
-          sessionPreference:(BBKConnectionContextSessionPreference)preference
+- (instancetype)initWithSessionPreference:(BBKConnectionContextSessionPreference)preference
 {
     self = [super init];
     
@@ -76,8 +74,6 @@ static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configurat
         _managedSession = [NSURLSession sessionWithConfiguration:self.configuration
                                                         delegate:self
                                                    delegateQueue:self.operationQueue];
-        _URL = URL;
-        _remoteAction = action;
         
         //  Specialization of the ivars
         [_operationQueue setUnderlyingQueue:BBKGetConnectionDispatchQueue()];
@@ -86,41 +82,40 @@ static void BBKScaffoldConfigurationObject(NSURLSessionConfiguration *configurat
     return self;
 }
 
-- (instancetype)initWithURL:(NSURL *)URL
-               remoteAction:(BBKConnectionContextRemoteAction)action
+- (instancetype)init
 {
-    return [self initWithURL:URL
-                remoteAction:action
-           sessionPreference:BBKConnectionContextSessionPreferenceDefault];
+    return [self initWithSessionPreference:BBKConnectionContextSessionPreferenceDefault];
 }
 
-- (instancetype)init NS_UNAVAILABLE
+#pragma mark - Making connections
+
+- (void)performConnection:(NSURL *)URL
+             remoteAction:(BBKConnectionContextRemoteAction)action
 {
-    return nil;
+    [self performConnection:URL
+                 HTTPMethod:BBKHTTPMethodFromRemoteAction(action)];
 }
 
-#pragma mark - NSURLSessionDelegate conformance
-
-- (void)URLSession:(NSURLSession *)session
-didBecomeInvalidWithError:(NSError *)error
+- (void)performConnection:(NSURL *)URL
+               HTTPMethod:(BBKConnectionContextHTTPMethod)method
 {
-#warning Not implemented.
+    [self performConnection:URL
+               methodString:BBKNSStringFromHTTPMethod(method)];
 }
 
-- (void)URLSession:(NSURLSession *)session
-              task:(NSURLSessionTask *)task
-didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition,
-                             NSURLCredential * _Nullable))completionHandler
+- (void)performConnection:(NSURL *)URL
+             methodString:(NSString *)methodString
 {
-#warning Not implemented.
-}
-
-#pragma mark - Accessors / mutators
-
-- (NSString *)HTTPMethod
-{
-    return BBKHTTPMethodNSStringFromRemoteAction(self.remoteAction);
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL
+                                                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                            timeoutInterval:BBKConnectionContextTimeoutInterval];
+    
+    request.HTTPMethod = [methodString copy];
+    
+    NSURLSessionDataTask *task = [self.managedSession dataTaskWithRequest:request
+                                                        completionHandler:self.URLSessionTaskHandler];
+    
+    [task resume];
 }
 
 @end

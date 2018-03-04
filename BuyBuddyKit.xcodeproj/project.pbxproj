@@ -739,16 +739,16 @@
 		D5AB2D0C204963F600644DC2 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				D5AB2D0D204963F600644DC2 /* BBKConnectionContext+RemoteAction.m */,
+				D5AB2D13204963F600644DC2 /* BBKRequestID.h */,
 				D5AB2D0E204963F600644DC2 /* BBKRequestID.m */,
-				D5AB2D0F204963F600644DC2 /* BBKConnectionContext+DownloadDelegate.m */,
-				D5AB2D10204963F600644DC2 /* BBKConnectionContext+DataDelegate.m */,
+				D5AB2D15204963F600644DC2 /* BBKConnectionContext.h */,
 				D5AB2D11204963F600644DC2 /* BBKConnectionContext.m */,
 				D5AB2D12204963F600644DC2 /* BBKConnectionContext+RemoteAction.h */,
-				D5AB2D13204963F600644DC2 /* BBKRequestID.h */,
+				D5AB2D0D204963F600644DC2 /* BBKConnectionContext+RemoteAction.m */,
 				D5AB2D14204963F600644DC2 /* BBKConnectionContext+DownloadDelegate.h */,
-				D5AB2D15204963F600644DC2 /* BBKConnectionContext.h */,
+				D5AB2D0F204963F600644DC2 /* BBKConnectionContext+DownloadDelegate.m */,
 				D5AB2D16204963F600644DC2 /* BBKConnectionContext+DataDelegate.h */,
+				D5AB2D10204963F600644DC2 /* BBKConnectionContext+DataDelegate.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";

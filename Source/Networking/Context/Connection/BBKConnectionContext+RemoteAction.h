@@ -23,13 +23,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BBKConnectionContext (RemoteAction)
-
-@end
-
 /**
  @name Helper Functions
  */
+
+/**
+ Returns HTTP method for given remote action;
+ 
+ @param action The remote action.
+ */
+BBKConnectionContextHTTPMethod BBKHTTPMethodFromRemoteAction(BBKConnectionContextRemoteAction action);
+
+/**
+ Returns corresponding `NSString` of given HTTP method.
+ */
+NSString *BBKNSStringFromHTTPMethod(BBKConnectionContextHTTPMethod method);
 
 /**
  Returns corresponding `NSString` of given action value.
