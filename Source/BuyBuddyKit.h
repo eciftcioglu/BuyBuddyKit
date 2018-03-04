@@ -36,6 +36,7 @@ FOUNDATION_EXPORT const unsigned char BBKVersionString[];
 #import "BBKCredentialsKeychainPersistenceCoordinator.h"
 #import "BBKConnectionContext.h"
 #import "BBKEntitySerialization.h"
+#import "BBKQuotaContext.h"
 
 #if !TARGET_OS_WATCH
 #import "BBKNetworkReachabilityManager.h"

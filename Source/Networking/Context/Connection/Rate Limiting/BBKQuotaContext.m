@@ -1,4 +1,4 @@
-// BBKUser+FoundationConformance.h
+// BBKQuotaContext.m
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,30 +19,55 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "BBKQuotaContext.h"
 
-#import "BBKUser.h"
+NS_ASSUME_NONNULL_BEGIN
 
-@interface BBKUser (FoundationConformance) <NSSecureCoding, NSCopying>
+@interface BBKQuotaContext ()
 
-/**
- @name Foundation Conformance
- */
-
-/**
- Returns a Boolean value which indicates whether a given `BBKUser` instance is equal to the receiver using
- identifier-based comparison.
- 
- #### Discussion
- 
- This method compares two objects by checking their `ID` properties, it does not perform a lookup on its fetched
- properties. An updated `BBKUser` instance might be equal to an outdated `BBKUser` instance due to the similarity
- on their identifiers.
- 
- #### Special Considerations
- 
- If you use two objects referring to the same user on platform-level, you will need to maintain the synchronization
- of those two instances simultaneously.
- */
-- (BOOL)isEqualToUser:(BBKUser *)user;
+@property (nonatomic, readwrite) NSUInteger consumedAmount;
+@property (nonatomic, readwrite) NSUInteger maximumAmount;
+@property (nonatomic, strong, nonnull, readwrite) NSDate *quotaResetDate;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+@implementation BBKQuotaContext
+
+#pragma mark - Initializers
+
+- (instancetype)initWithConsumedAmount:(NSUInteger)consumedAmount
+                         maximumAmount:(NSUInteger)maximumAmount
+                        quotaResetDate:(NSDate *)quotaResetDate
+{
+    self = [super init];
+    
+    if (self) {
+        _maximumAmount = maximumAmount;
+        _quotaResetDate = quotaResetDate;
+        _consumedAmount = consumedAmount;
+    }
+    
+    return self;
+}
+
+- (instancetype)init NS_UNAVAILABLE
+{
+    return nil;
+}
+
+#pragma mark - Accessors
+
+- (NSUInteger)remainingAmount
+{
+    return self.maximumAmount - self.consumedAmount;
+}
+
+- (BOOL)isAvailable
+{
+    return self.consumedAmount < self.maximumAmount;
+}
+
+@end
+

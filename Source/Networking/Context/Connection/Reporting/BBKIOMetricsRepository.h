@@ -1,4 +1,4 @@
-// BBKUser+FoundationConformance.h
+// BBKIOMetricsRepository
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,30 +19,47 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
 
-#import "BBKUser.h"
+#import "BBKIOMetrics.h"
 
-@interface BBKUser (FoundationConformance) <NSSecureCoding, NSCopying>
+NS_ASSUME_NONNULL_BEGIN
 
 /**
- @name Foundation Conformance
+ Stores `BBKIOMetrics` objects, pushes them to the central repository with the
+ */
+@interface BBKIOMetricsRepository : NSObject {
+@private
+    NSMutableArray<BBKIOMetrics *> *_metrics;
+}
+
+@property (nonatomic, strong, readonly, nonnull) NSArray<BBKIOMetrics *> *metrics;
+
+/**
+ @name Management
+ */
+
+- (void)addMetrics:(BBKIOMetrics * _Nonnull)metrics;
+
+/**
+ @name Submission
  */
 
 /**
- Returns a Boolean value which indicates whether a given `BBKUser` instance is equal to the receiver using
- identifier-based comparison.
- 
- #### Discussion
- 
- This method compares two objects by checking their `ID` properties, it does not perform a lookup on its fetched
- properties. An updated `BBKUser` instance might be equal to an outdated `BBKUser` instance due to the similarity
- on their identifiers.
- 
- #### Special Considerations
- 
- If you use two objects referring to the same user on platform-level, you will need to maintain the synchronization
- of those two instances simultaneously.
+ Timestamp of last submission to the platform.
  */
-- (BOOL)isEqualToUser:(BBKUser *)user;
+@property (nonatomic, strong, readonly, nullable) NSDate *lastSubmission;
+
+/**
+ Number of the pushes to the central repository.
+ */
+@property (nonatomic, readonly) NSUInteger numberOfSubmissions;
+
+/**
+ Pushes metrics to the central repository.
+ */
+- (void)pushMetrics;
 
 @end
+
+NS_ASSUME_NONNULL_END

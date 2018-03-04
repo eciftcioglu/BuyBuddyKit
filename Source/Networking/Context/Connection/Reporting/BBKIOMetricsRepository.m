@@ -1,4 +1,4 @@
-// BBKUser+FoundationConformance.h
+// BBKIOMetricsRepository
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,30 +19,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "BBKIOMetricsRepository.h"
 
-#import "BBKUser.h"
+NS_ASSUME_NONNULL_BEGIN
 
-@interface BBKUser (FoundationConformance) <NSSecureCoding, NSCopying>
+@interface BBKIOMetricsRepository ()
 
-/**
- @name Foundation Conformance
- */
+@property (nonatomic, strong, readwrite, nullable) NSDate *lastSubmission;
+@property (nonatomic, readwrite) NSUInteger numberOfSubmissions;
 
-/**
- Returns a Boolean value which indicates whether a given `BBKUser` instance is equal to the receiver using
- identifier-based comparison.
- 
- #### Discussion
- 
- This method compares two objects by checking their `ID` properties, it does not perform a lookup on its fetched
- properties. An updated `BBKUser` instance might be equal to an outdated `BBKUser` instance due to the similarity
- on their identifiers.
- 
- #### Special Considerations
- 
- If you use two objects referring to the same user on platform-level, you will need to maintain the synchronization
- of those two instances simultaneously.
- */
-- (BOOL)isEqualToUser:(BBKUser *)user;
+@end
+
+NS_ASSUME_NONNULL_END
+
+@implementation BBKIOMetricsRepository
+
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        _metrics = [[NSMutableArray alloc] init];
+        _numberOfSubmissions = 0;
+    }
+    
+    return self;
+}
+
+#pragma mark - Managing metrics
+
+- (void)addMetrics:(BBKIOMetrics *)metrics
+{
+    [_metrics addObject:metrics];
+}
+
+#pragma mark - Submission
+
+- (void)pushMetrics
+{
+    //  TODO: Push metrics to the repository.
+    
+    self.lastSubmission = [NSDate new];
+    self.numberOfSubmissions += 1;
+}
 
 @end

@@ -1,4 +1,4 @@
-// BBKUser+FoundationConformance.h
+// BBKQuotaContext+FoundationConformance.m
 // Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,30 +19,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "BBKQuotaContext+FoundationConformance.h"
 
-#import "BBKUser.h"
+@implementation BBKQuotaContext (FoundationConformance)
 
-@interface BBKUser (FoundationConformance) <NSSecureCoding, NSCopying>
+#pragma mark - Secure coding conformance
 
-/**
- @name Foundation Conformance
- */
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
 
-/**
- Returns a Boolean value which indicates whether a given `BBKUser` instance is equal to the receiver using
- identifier-based comparison.
- 
- #### Discussion
- 
- This method compares two objects by checking their `ID` properties, it does not perform a lookup on its fetched
- properties. An updated `BBKUser` instance might be equal to an outdated `BBKUser` instance due to the similarity
- on their identifiers.
- 
- #### Special Considerations
- 
- If you use two objects referring to the same user on platform-level, you will need to maintain the synchronization
- of those two instances simultaneously.
- */
-- (BOOL)isEqualToUser:(BBKUser *)user;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return [self initWithConsumedAmount:[aDecoder decodeIntegerForKey:@"consumedAmount"]
+                          maximumAmount:[aDecoder decodeIntegerForKey:@"maximumAmount"]
+                         quotaResetDate:[aDecoder decodeObjectForKey:@"quotaResetDate"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeInteger:self.consumedAmount forKey:@"consumedAmount"];
+    [aCoder encodeInteger:self.maximumAmount forKey:@"maximumAmount"];
+    [aCoder encodeObject:self.quotaResetDate forKey:@"quotaResetDate"];
+}
+
+#pragma mark - Copying conformance
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [[[super class] allocWithZone:zone] initWithConsumedAmount:self.consumedAmount
+                                                        maximumAmount:self.maximumAmount
+                                                       quotaResetDate:self.quotaResetDate];
+}
 
 @end
