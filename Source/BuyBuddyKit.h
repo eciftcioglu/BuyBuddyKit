@@ -31,15 +31,19 @@ FOUNDATION_EXPORT const unsigned char BBKVersionString[];
 #ifndef _BUYBUDDYKIT_
 #define _BUYBUDDYKIT_
 
-#import "BBKUser.h"
-#import "BBKPassphrase.h"
-#import "BBKCredentialsKeychainPersistenceCoordinator.h"
-#import "BBKConnectionContext.h"
-#import "BBKEntitySerialization.h"
-#import "BBKQuotaContext.h"
+#import "Entities/User Management/BBKUser.h"
+#import "Networking/Context/Authentication/Passphrase/BBKPassphrase.h"
+#import "Serialization/BBKEntitySerialization.h"
+#import "Networking/Context/Connection/Rate Limiting/BBKQuotaContext.h"
+#import "Networking/Context/Connection/Reporting/BBKIOMetricsRepository.h"
+#import "Networking/Context/Connection/BBKHTTPSessionManager.h"
 
 #if !TARGET_OS_WATCH
-#import "BBKNetworkReachabilityManager.h"
+#import "Networking/Reachability/BBKNetworkReachabilityManager.h"
+#endif
+
+#if !TARGET_OS_WATCH && !TARGET_OS_TVOS
+#import "Networking/Context/Authentication/Credentials/BBKCredentialsKeychainPersistenceCoordinator.h"
 #endif
 
 #endif
