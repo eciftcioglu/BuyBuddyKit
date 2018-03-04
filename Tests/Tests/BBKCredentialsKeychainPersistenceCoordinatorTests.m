@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_END
 
 - (void)testStoringCredentials
 {
-    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"Store passphrase"];
+    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"Stores passphrase"];
     
     void (^successBlk)(BBKCredentials * _Nonnull) = ^void (BBKCredentials * _Nonnull passphrase) {
         [expectation fulfill];
@@ -66,8 +66,7 @@ NS_ASSUME_NONNULL_END
                                  success:successBlk
                                  failure:failureBlk];
     
-    [self waitForExpectations:@[expectation]
-                      timeout:TestDuration];
+    [self waitForExpectationsWithCommonTimeout];
 }
 
 @end
