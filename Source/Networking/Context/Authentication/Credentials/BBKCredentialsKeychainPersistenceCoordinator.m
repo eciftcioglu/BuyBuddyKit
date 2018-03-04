@@ -41,7 +41,7 @@ NSString * const BBKCredentialsKeychainStorageErrorUserInfoKey = @"SecCopyErrorM
 NSString * const BBKCredentialsKeychainStorageItemLabel = @"BuyBuddy Credentials";
 NSString * const BBKCredentialsKeychainStorageItemDescription = @"Stored user credentials to authenticate in BuyBuddy platform";
 NSString * const BBKCredentialsKeychainStorageNullField = @"(null)";
-NSString * const BBKCredentialsKeychainStorageComment = @"Stored credentials with email-password tuple.";
+NSString * const BBKCredentialsKeychainStorageComment = @"Stored credentials with username/email and password tuple.";
 NSString * const BBKCredentialsKeychainStorageServiceName = @"BuyBuddy";
 static void RaiseExceptionIfStatusIsAnError(const OSStatus *status);
 static void ExecuteDynBlockAtomic(_Nonnull dispatch_block_t blk);
@@ -319,7 +319,7 @@ NS_ASSUME_NONNULL_END
         //  Execute operation atomically
         ExecuteDynBlockAtomic(^{
             //  Passing NULL as result is not required
-            keychainErr = SecItemAdd((__bridge  CFDictionaryRef)persistedDict, NULL);
+            keychainErr = SecItemAdd((__bridge CFDictionaryRef)persistedDict, nil);
             
             RaiseExceptionIfStatusIsAnError(&keychainErr);
         });
