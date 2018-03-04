@@ -12,37 +12,32 @@
 		<key>Core Kit (iOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Core Kit (macOS) Tests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Core Kit (macOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Core Kit (tvOS) Tests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Core Kit (tvOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Core Kit (watchOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>Core Kit Documentation.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
