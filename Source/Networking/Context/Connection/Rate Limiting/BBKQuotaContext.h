@@ -1,6 +1,5 @@
-// BuyBuddyKit.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
-//               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
+// BBKQuotaContext.h
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,27 +18,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 #import <Foundation/Foundation.h>
-#import <Availability.h>
 
-//! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BBKVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
+/**
+ 
+ */
+NS_SWIFT_NAME(QuotaContext)
+@interface BBKQuotaContext : NSObject
 
-//! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BBKVersionString[];
+@property (nonatomic, readonly) NSUInteger consumedAmount;
 
-#ifndef _BUYBUDDYKIT_
-#define _BUYBUDDYKIT_
+@property (nonatomic, readonly) NSUInteger maximumAmount;
 
-#import "BBKUser.h"
-#import "BBKPassphrase.h"
-#import "BBKCredentialsKeychainPersistenceCoordinator.h"
-#import "BBKConnectionContext.h"
-#import "BBKEntitySerialization.h"
-#import "BBKQuotaContext.h"
+@property (nonatomic, strong, nonnull, readonly) NSDate *quotaResetDate;
 
-#if !TARGET_OS_WATCH
-#import "BBKNetworkReachabilityManager.h"
-#endif
+@property (nonatomic,  readonly) NSUInteger remainingAmount;
 
-#endif
+@property (readonly, nonatomic, assign, getter = isAvailable) BOOL available;
+
+- (instancetype _Nonnull)initWithConsumedAmount:(NSUInteger)consumedAmount
+                                  maximumAmount:(NSUInteger)maximumAmount
+                                 quotaResetDate:(NSDate * _Nonnull)quotaResetDate NS_DESIGNATED_INITIALIZER;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+#import "BBKQuotaContext+FoundationConformance.h"
