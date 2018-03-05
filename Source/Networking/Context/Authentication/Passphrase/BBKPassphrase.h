@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull, readonly) NSDate *issueDate;
 
 /**
- @name Possesment
+ @name Possessment
  */
 
 /**

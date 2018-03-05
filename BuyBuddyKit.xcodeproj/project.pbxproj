@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0553A11F8278E500A57FAF /* Security.framework */; };
 		5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */; };
+		5A90F1EE204CF2AF0031948D /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */; };
+		5A90F1EF204CF2B00031948D /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */; };
 		5A974E6E1F63CFF80066F83A /* BuyBuddyKitmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A974E641F63CFF80066F83A /* BuyBuddyKitmacOS.framework */; };
 		5A974E941F63E3100066F83A /* BBKNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A974E921F63E3100066F83A /* BBKNetworkReachabilityManager.h */; };
 		5A974E951F63E3100066F83A /* BBKNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E931F63E3100066F83A /* BBKNetworkReachabilityManager.m */; };
@@ -407,6 +409,9 @@
 		5A87F6BE1F6D58FE00704ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5A87F6C21F6D93BF00704ABC /* NSErrorEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSErrorEnum.h; path = "Error Handling/NSErrorEnum.h"; sourceTree = "<group>"; };
 		5A87F6C51F6D952200704ABC /* BBKErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKErrorDomain.h; path = "Error Handling/BBKErrorDomain.h"; sourceTree = "<group>"; };
+		5A90F1EC204CF2A90031948D /* BBKKeychainPersistenceCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKKeychainPersistenceCoordinator.h; sourceTree = "<group>"; };
+		5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKKeychainPersistenceCoordinator.m; sourceTree = "<group>"; };
+		5A90F1F2204CF8A20031948D /* BBKSecurePersistenceCoordination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKSecurePersistenceCoordination.h; sourceTree = "<group>"; };
 		5A974E641F63CFF80066F83A /* BuyBuddyKitmacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKitmacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A974E681F63CFF80066F83A /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A974E6D1F63CFF80066F83A /* BuyBuddyKit (macOS) Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit (macOS) Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -614,6 +619,8 @@
 		5A3CBDFF1F6C4ABA003C8D93 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				5A90F1F2204CF8A20031948D /* BBKSecurePersistenceCoordination.h */,
+				5A90F1EB204CF27C0031948D /* Keychain */,
 				D5AB2CD9204963E700644DC2 /* Passphrase */,
 				D50ECBF4204963B0008A1363 /* Credentials */,
 			);
@@ -627,6 +634,15 @@
 				5A87F6C51F6D952200704ABC /* BBKErrorDomain.h */,
 			);
 			name = "Error Handling";
+			sourceTree = "<group>";
+		};
+		5A90F1EB204CF27C0031948D /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				5A90F1EC204CF2A90031948D /* BBKKeychainPersistenceCoordinator.h */,
+				5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		5A974E5A1F63CFF70066F83A = {
@@ -661,7 +677,6 @@
 		5A974E661F63CFF80066F83A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5AA7AE2B204BE95F0055DDD2 /* Generic */,
 				D58BB0CD1F667E6D00ABF448 /* Entities */,
 				D589570A1F901A7800B475AA /* Serialization */,
 				5A974E911F63D0780066F83A /* Networking */,
@@ -707,14 +722,6 @@
 				5AA7AE71204C3C5C0055DDD2 /* Networking */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		5AA7AE2B204BE95F0055DDD2 /* Generic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Generic;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		5AA7AE71204C3C5C0055DDD2 /* Networking */ = {
@@ -769,9 +776,9 @@
 			isa = PBXGroup;
 			children = (
 				D50ECBF5204963B0008A1363 /* BBKCredentials.h */,
-				D50ECBF6204963B0008A1363 /* BBKCredentialsKeychainPersistenceCoordinator.h */,
-				D50ECBF7204963B0008A1363 /* BBKCredentialsPersistenceCoordination.h */,
 				D50ECBF8204963B0008A1363 /* BBKCredentials.m */,
+				D50ECBF7204963B0008A1363 /* BBKCredentialsPersistenceCoordination.h */,
+				D50ECBF6204963B0008A1363 /* BBKCredentialsKeychainPersistenceCoordinator.h */,
 				D50ECBF9204963B0008A1363 /* BBKCredentialsKeychainPersistenceCoordinator.m */,
 			);
 			name = Credentials;
@@ -1466,6 +1473,7 @@
 				D58BB0DD1F67BB9A00ABF448 /* BBKUser.m in Sources */,
 				D54597721FA4A303008B922F /* BBKTax.m in Sources */,
 				5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */,
+				5A90F1EF204CF2B00031948D /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D545977D1FA4B840008B922F /* BBKBrand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1536,6 +1544,7 @@
 				D552B1FA1F6FBB8700E89ADC /* BBKUser+EmploymentRegistry.m in Sources */,
 				D54597711FA4A303008B922F /* BBKTax.m in Sources */,
 				D552B2331F6FBBFB00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */,
+				5A90F1EE204CF2AF0031948D /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D545977C1FA4B840008B922F /* BBKBrand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
