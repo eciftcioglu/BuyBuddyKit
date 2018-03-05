@@ -29,23 +29,27 @@ NS_SWIFT_NAME(QuotaContext)
 @interface BBKQuotaContext : NSObject
 
 /**
- The total consumed amount of quota by the user in context during the session in context.
+ @name Properties
+ */
+
+/**
+ The total consumed amount of quota by the user during the session.
  */
 @property (nonatomic, readonly) NSUInteger consumedAmount;
 /**
- The maximum amount of consumable quota by the user in context during the session in context.
+ The maximum amount of consumable quota by the user during the session.
  */
 @property (nonatomic, readonly) NSUInteger maximumAmount;
 /**
- The current quota reset date for the user in context.
+ The current quota reset date for the user.
  */
 @property (nonatomic, strong, nonnull, readonly) NSDate *quotaResetDate;
 /**
- The remaining amount of usable quota for the user in context during the session in context.
+ The remaining amount of usable quota for the user during the session.
  */
 @property (nonatomic,  readonly) NSUInteger remainingAmount;
 /**
- A boolean value determining whether key value observation is available or not during the session in context..
+ A boolean value determining whether key value observation is available or not during the session.
  
  Defaults to `YES`.
  Do not change the value unless you really know what you are doing.
@@ -59,9 +63,9 @@ NS_SWIFT_NAME(QuotaContext)
 /**
  Initializes a `BBKQuotaContext` object with the given consumed amount of quota, maximum amount of quota and the quota reset date.
  
- @param consumedAmount The consumed amount of quota by the user in context.
- @param maximumAmount The maximum amount of quota available for the user in context.
- @param quotaResetDate The reset date of the quota for the user in context.
+ @param consumedAmount The consumed amount of quota by the user.
+ @param maximumAmount The maximum amount of quota available for the user.
+ @param quotaResetDate The reset date of the quota for the user.
  */
 - (instancetype _Nonnull)initWithConsumedAmount:(NSUInteger)consumedAmount
                                   maximumAmount:(NSUInteger)maximumAmount

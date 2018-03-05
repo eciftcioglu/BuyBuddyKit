@@ -16,6 +16,8 @@
 		2DA8D403204ADEAB005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
 		2DA8D404204ADEAD005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
 		2DA8D405204ADEAE005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
+		2DEEF7EA204C210F00D5CDBB /* BBKQuotaContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */; };
+		2DEEF7EB204C213100D5CDBB /* BBKQuotaContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */; };
 		5A3CBDFD1F6C1EED003C8D93 /* BBKUser+DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */; };
 		5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */; };
 		5A974E6E1F63CFF80066F83A /* BuyBuddyKitmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A974E641F63CFF80066F83A /* BuyBuddyKitmacOS.framework */; };
@@ -342,6 +344,7 @@
 		2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKQuotaContext.m; sourceTree = "<group>"; };
 		2DA8D3FF204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBKQuotaContext+FoundationConformance.h"; sourceTree = "<group>"; };
 		2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BBKQuotaContext+FoundationConformance.m"; sourceTree = "<group>"; };
+		2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKQuotaContextTests.m; sourceTree = "<group>"; };
 		5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BBKUser+DataSource.h"; path = "Entities/User Management/BBKUser+DataSource.h"; sourceTree = "<group>"; };
 		5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BBKUser+DataSource.m"; path = "Entities/User Management/BBKUser+DataSource.m"; sourceTree = "<group>"; };
 		5A3CBE0C1F6C4EDF003C8D93 /* Privacy Policy.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Privacy Policy.md"; sourceTree = "<group>"; };
@@ -626,9 +629,10 @@
 			children = (
 				5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */,
 				D552B1A41F6F9FC300E89ADC /* BBKCredentialsKeychainPersistenceCoordinatorTests.m */,
-				D52213011F8ACEA70061653E /* BBKConnectionContextTests.m */,
 				D54D667A1F904B0C008A9A8D /* BBKSerializationTests.m */,
 				D54D66881F929E93008A9A8D /* BBKRequestIDTests.m */,
+				D52213011F8ACEA70061653E /* BBKConnectionContextTests.m */,
+				2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */,
 			);
 			path = "BuyBuddyKit Tests";
 			sourceTree = "<group>";
@@ -781,7 +785,6 @@
 			isa = PBXGroup;
 			children = (
 				D5C478621F6AA393009A2973 /* Guides */,
-				D5C478631F6AA393009A2973 /* Sections */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -796,13 +799,6 @@
 				5A3CBE0D1F6C4EE9003C8D93 /* Terms of Conditions.md */,
 			);
 			path = Guides;
-			sourceTree = "<group>";
-		};
-		D5C478631F6AA393009A2973 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sections;
 			sourceTree = "<group>";
 		};
 		D5E93A901F64491200B3B47B /* Reachability */ = {
@@ -1302,6 +1298,7 @@
 				5A974E981F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m in Sources */,
 				D54D668A1F929E93008A9A8D /* BBKRequestIDTests.m in Sources */,
 				D52213071F8ACF420061653E /* BBKConnectionContextTests.m in Sources */,
+				2DEEF7EB204C213100D5CDBB /* BBKQuotaContextTests.m in Sources */,
 				5A974E9C1F6409960066F83A /* BBKTestCase.m in Sources */,
 				D552B1A51F6F9FC300E89ADC /* BBKCredentialsKeychainPersistenceCoordinatorTests.m in Sources */,
 			);
@@ -1363,6 +1360,7 @@
 				D552B2381F6FBC0600E89ADC /* BBKNetworkReachabilityManagerTests.m in Sources */,
 				D54D66891F929E93008A9A8D /* BBKRequestIDTests.m in Sources */,
 				D52213061F8ACF410061653E /* BBKConnectionContextTests.m in Sources */,
+				2DEEF7EA204C210F00D5CDBB /* BBKQuotaContextTests.m in Sources */,
 				D552B2361F6FBC0200E89ADC /* BBKCredentialsKeychainPersistenceCoordinatorTests.m in Sources */,
 				D552B23D1F6FBDDD00E89ADC /* BBKTestCase.m in Sources */,
 			);
