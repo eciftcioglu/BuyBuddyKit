@@ -1,5 +1,5 @@
-// BBKConnectionContext+DownloadDelegate.h
-// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
+// BBKNetworkingTestCase.h
+// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,16 +19,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKConnectionContext.h"
+#import <XCTest/XCTest.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@interface BBKNetworkingTestCase : XCTestCase
 
-@interface BBKConnectionContext (DownloadDelegate) <NSURLSessionDownloadDelegate>
+@property (nonatomic, strong, readonly) NSURL *baseURL;
+@property (nonatomic, strong, readonly) NSURL *pngURL;
+@property (nonatomic, strong, readonly) NSURL *jpegURL;
+@property (nonatomic, strong, readonly) NSURL *delayURL;
+- (NSURL *)URLWithStatusCode:(NSInteger)statusCode;
 
-/**
- @name Making Downloads
- */
+@property (nonatomic, assign) NSTimeInterval networkTimeout;
+
+- (void)waitForExpectationsWithCommonTimeout;
+- (void)waitForExpectationsWithCommonTimeoutUsingHandler:(XCWaitCompletionHandler)handler;
 
 @end
-
-NS_ASSUME_NONNULL_END

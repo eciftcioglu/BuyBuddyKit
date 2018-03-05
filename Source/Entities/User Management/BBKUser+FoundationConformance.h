@@ -40,7 +40,7 @@
  
  #### Special Considerations
  
- If you use two objects referring to the same user on platform-level, you will need to maintain the syncronization
+ If you use two objects referring to the same user on platform-level, you will need to maintain the synchronization
  of those two instances simultaneously.
  */
 - (BOOL)isEqualToUser:(BBKUser *)user;

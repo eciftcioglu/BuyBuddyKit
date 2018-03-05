@@ -1,6 +1,5 @@
-// BBKConnectionContextTests.m
+// BBKNetworkingTestCase.m
 // Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
-//               2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,51 +19,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BBKTestCase.h"
-#import "BBKConnectionContext.h"
+#import "BBKNetworkingTestCase.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation BBKNetworkingTestCase
 
-@interface BBKConnectionContextTests : BBKTestCase
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-@implementation BBKConnectionContextTests
-
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
-    
-    
+    self.networkTimeout = 20.0;
 }
 
-- (void)tearDown
-{
-    
-    
+- (void)tearDown {
     [super tearDown];
 }
 
-- (void)testStoringCredentials
-{
-    
+#pragma mark -
+
+- (NSURL *)baseURL {
+    NSDictionary *environment = [[NSProcessInfo processInfo] environment];
+    return [NSURL URLWithString:environment[@"HTTPBIN_BASE_URL"] ?: @"https://httpbin.org"];
+}
+
+- (NSURL *)pngURL {
+    return [self.baseURL URLByAppendingPathComponent:@"image/png"];
+}
+
+- (NSURL *)jpegURL {
+    return [self.baseURL URLByAppendingPathComponent:@"image/jpeg"];
+}
+
+- (NSURL *)delayURL {
+    return [self.baseURL URLByAppendingPathComponent:@"delay/1"];
+}
+
+- (NSURL *)URLWithStatusCode:(NSInteger)statusCode {
+    return [self.baseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"status/%@", @(statusCode)]];
+}
+
+- (void)waitForExpectationsWithCommonTimeout {
+    [self waitForExpectationsWithCommonTimeoutUsingHandler:nil];
+}
+
+- (void)waitForExpectationsWithCommonTimeoutUsingHandler:(XCWaitCompletionHandler)handler {
+    [self waitForExpectationsWithTimeout:self.networkTimeout handler:handler];
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

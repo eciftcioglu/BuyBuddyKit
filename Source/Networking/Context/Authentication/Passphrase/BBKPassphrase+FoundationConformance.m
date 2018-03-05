@@ -81,7 +81,7 @@
 
 - (NSUInteger)hash
 {
-    return self.ID;
+    return [self.ID unsignedLongLongValue];
 }
 
 @end

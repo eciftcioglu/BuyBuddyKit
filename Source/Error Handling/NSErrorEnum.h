@@ -22,6 +22,10 @@
 
 #import <Foundation/Foundation.h>
 
+#ifdef NS_ERROR_ENUM
+#undef NS_ERROR_ENUM
+#endif
+
 #define NS_ERROR_ENUM(_type, _name, _domain)                        \
 typedef enum _name: _type _name;                                    \
 enum __attribute__((ns_error_domain(_domain))) _name: _type

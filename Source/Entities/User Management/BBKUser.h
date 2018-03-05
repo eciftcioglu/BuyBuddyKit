@@ -99,4 +99,3 @@ NS_ASSUME_NONNULL_END
 #import "BBKUser+Delegation.h"
 #import "BBKUser+DelegationRegistry.h"
 #import "BBKUser+AuthenticationPreferences.h"
-#import "BBKUser+EntityFetching.h"

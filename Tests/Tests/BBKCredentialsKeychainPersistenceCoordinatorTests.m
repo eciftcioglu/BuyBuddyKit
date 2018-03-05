@@ -26,7 +26,6 @@
 
 NSString * const Email = @"test@mail.com";
 NSString * const Password = @"234234234";
-NSTimeInterval const TestDuration = 5.00f;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -52,7 +51,7 @@ NS_ASSUME_NONNULL_END
 
 - (void)testStoringCredentials
 {
-    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"Store passphrase"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Stores passphrase"];
     
     void (^successBlk)(BBKCredentials * _Nonnull) = ^void (BBKCredentials * _Nonnull passphrase) {
         [expectation fulfill];
@@ -66,8 +65,7 @@ NS_ASSUME_NONNULL_END
                                  success:successBlk
                                  failure:failureBlk];
     
-    [self waitForExpectations:@[expectation]
-                      timeout:TestDuration];
+    [self waitForExpectationsWithTimeout:5000 handler:nil];
 }
 
 @end
