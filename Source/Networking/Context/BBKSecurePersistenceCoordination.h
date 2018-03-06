@@ -51,11 +51,35 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol BBKSecurePersistenceCoordination <NSObject>
 
-@required
-
 /**
  @name Persisting & Loading Objects
  */
+
+/**
+ Persists given data in secure persistence layer asynchronously.
+ 
+ @param data Data to be stored by the coordinator.
+ @param type Type of the going to be stored by the coordinator.
+ @param keyString Key of the value.
+ @param attributes Additional attributes passed to the persistence coordinator.
+ @param handler An optional callback function to be called at the end of the action.
+ */
+@optional
+- (void)persistData:(NSData * _Nonnull)data
+             ofType:(BBKKeychainDataType)type
+             forKey:(NSString * _Nonnull)keyString
+     withAttributes:(NSDictionary<NSString *, id> *)attributes
+  completionHandler:(void (^ _Nullable)(NSError * _Nullable error))handler;
+
+/**
+ Loads data from persistence layer with given key asynchronously.
+ 
+ @param keyString Key of the value.
+ @param handler A mandatory callback function to be called at the end of the action.
+ */
+@optional
+- (void)loadDataForKey:(NSString * _Nonnull)keyString
+     completionHandler:(void (^ _Nonnull)(NSData * _Nullable data, NSError * _Nullable error))handler;
 
 /**
  Persists given data in secure persistence layer.
@@ -63,11 +87,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param data Data to be stored by the coordinator.
  @param type Type of the going to be stored by the coordinator.
  @param keyString Key of the value.
+ @param attributes Additional attributes passed to the persistence coordinator.
  @param errPtr In case of an error, a pointer to reference the `NSError` object.
  */
+@required
 - (BOOL)persistData:(NSData * _Nonnull)data
              ofType:(BBKKeychainDataType)type
              forKey:(NSString * _Nonnull)keyString
+     withAttributes:(NSDictionary<NSString *, id> *)attributes
               error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
 /**
@@ -75,6 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param keyString Key of the value.
  */
+@required
 - (NSData * _Nullable)loadDataForKey:(NSString * _Nonnull)keyString
                                error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
@@ -82,3 +110,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
+typedef NSString * _Null_unspecified BBKSecurePersistenceAttributeKey NS_EXTENSIBLE_STRING_ENUM;
