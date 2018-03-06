@@ -55,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
  @name Persisting & Loading Objects
  */
 
+@optional
 /**
  Persists given data in secure persistence layer asynchronously.
  
@@ -64,23 +65,29 @@ NS_ASSUME_NONNULL_BEGIN
  @param attributes Additional attributes passed to the persistence coordinator.
  @param handler An optional callback function to be called at the end of the action.
  */
-@optional
 - (void)persistData:(NSData * _Nonnull)data
              ofType:(BBKKeychainDataType)type
              forKey:(NSString * _Nonnull)keyString
      withAttributes:(NSDictionary<NSString *, id> *)attributes
   completionHandler:(void (^ _Nullable)(NSError * _Nullable error))handler;
 
+@optional
 /**
  Loads data from persistence layer with given key asynchronously.
  
  @param keyString Key of the value.
  @param handler A mandatory callback function to be called at the end of the action.
  */
-@optional
 - (void)loadDataForKey:(NSString * _Nonnull)keyString
+                ofType:(BBKKeychainDataType)type
      completionHandler:(void (^ _Nonnull)(NSData * _Nullable data, NSError * _Nullable error))handler;
 
+@optional
+- (BOOL)removeDataForKey:(NSString * _Nonnull)keyString
+                  ofType:(BBKKeychainDataType)type
+       completionHandler:(void (^ _Nonnull)(NSError * _Nullable error))handler;
+
+@required
 /**
  Persists given data in secure persistence layer.
  
@@ -90,21 +97,26 @@ NS_ASSUME_NONNULL_BEGIN
  @param attributes Additional attributes passed to the persistence coordinator.
  @param errPtr In case of an error, a pointer to reference the `NSError` object.
  */
-@required
 - (BOOL)persistData:(NSData * _Nonnull)data
              ofType:(BBKKeychainDataType)type
              forKey:(NSString * _Nonnull)keyString
      withAttributes:(NSDictionary<NSString *, id> *)attributes
               error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
+@required
 /**
  Loads data from persistence layer with given key.
  
  @param keyString Key of the value.
  */
-@required
 - (NSData * _Nullable)loadDataForKey:(NSString * _Nonnull)keyString
+                              ofType:(BBKKeychainDataType)type
                                error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
+
+@required
+- (BOOL)removeDataForKey:(NSString * _Nonnull)keyString
+                  ofType:(BBKKeychainDataType)type
+                   error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
 @end
 

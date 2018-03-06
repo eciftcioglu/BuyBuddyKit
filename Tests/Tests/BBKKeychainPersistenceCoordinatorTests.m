@@ -58,9 +58,11 @@ NS_ASSUME_NONNULL_END
     [self.coordinator persistData:data
                            ofType:BBKKeychainDataTypeGenericPassword
                            forKey:@"aKey"
-                   withAttributes:@{BBKKeychainStorageAttributeLabel: @"BuyBuddy Passphrase",
-                                    BBKKeychainStorageAttributeDescription: @"Emir fucks yo ass.",
-                                    BBKKeychainStorageAttributeComment: @"That fuck was good tho, dope af."}
+                   withAttributes:@{BBKKeychainStorageAttributeComment: @"That fuck was good tho, dope af.",
+                                    BBKKeychainStorageAttributeAccount: @"Chatatata",
+                                    BBKKeychainStorageAttributeService: @"Something clever.",
+                                    BBKKeychainStorageAttributeSynchronizable: (__bridge id)kCFBooleanTrue,
+                                    }
                 completionHandler:^(NSError * _Nullable error) {
                     [expectation fulfill];
                 }];
@@ -68,10 +70,30 @@ NS_ASSUME_NONNULL_END
     [self waitForExpectationsWithCommonTimeout];
 }
 
+- (void)testLoadsGenericPassword
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Loads passphrase as a generic password"];
+    
+    NSData *previousData = [NSKeyedArchiver archivedDataWithRootObject:self.passphrase];
+    
+    [self.coordinator loadDataForKey:@"aKey"
+                              ofType:BBKKeychainDataTypeGenericPassword
+                   completionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
+                       BBKPassphrase *unarchivedPassphrase = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                       
+                       XCTAssertNotNil(data);
+                       XCTAssertNil(error);
+                       XCTAssertFalse([data isEqualToData:previousData]);
+                       XCTAssertTrue([self.passphrase.passkey isEqualToString:unarchivedPassphrase.passkey]);
+                       
+                       [expectation fulfill];
+                   }];
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
 - (void)testUpdatesGenericPassword
 {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Stores passphrase as a generic password"];
-    
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.passphrase];
     NSData *nextData = [NSKeyedArchiver archivedDataWithRootObject:[[BBKPassphrase alloc] initWithID:[NSNumber numberWithInt:0]
                                                                                              passkey:@"whoa"
@@ -79,29 +101,42 @@ NS_ASSUME_NONNULL_END
                                                                                                owner:nil]];
     
     NSString *key = @"aKey";
-    NSDictionary *attrs = @{BBKKeychainStorageAttributeLabel: @"BuyBuddy Passphrase",
-                            BBKKeychainStorageAttributeDescription: @"Emir fucks yo ass.",
-                            BBKKeychainStorageAttributeComment: @"That fuck was good tho, dope af."};
+    NSDictionary *attrs = @{BBKKeychainStorageAttributeDescription: @"Some description.",
+                            BBKKeychainStorageAttributeComment: @"Some comment."};
+    NSError *error = nil;
     
     [self.coordinator persistData:data
                            ofType:BBKKeychainDataTypeGenericPassword
                            forKey:key
                    withAttributes:attrs
-                completionHandler:^(NSError * _Nullable error) {
-                    XCTAssertNil(error);
-                    
-                    [self.coordinator persistData:nextData
-                                           ofType:BBKKeychainDataTypeGenericPassword
-                                           forKey:key
-                                   withAttributes:attrs
-                                completionHandler:^(NSError * _Nullable error) {
-                                    XCTAssertNil(error);
-                                    
-                                    [expectation fulfill];
-                                }];
-                }];
+                            error:&error];
     
-    [self waitForExpectationsWithCommonTimeout];
+    XCTAssertNil(error);
+    
+    NSData *loadedData = [self.coordinator loadDataForKey:key
+                                                   ofType:BBKKeychainDataTypeGenericPassword
+                                                    error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertNotNil(loadedData);
+    XCTAssertTrue([loadedData isEqualToData:data]);
+    XCTAssertFalse([loadedData isEqualToData:nextData]);
+    
+    [self.coordinator persistData:nextData
+                           ofType:BBKKeychainDataTypeGenericPassword
+                           forKey:key
+                   withAttributes:attrs
+                            error:&error];
+    
+    XCTAssertNil(error);
+    
+    loadedData = [self.coordinator loadDataForKey:key
+                                                   ofType:BBKKeychainDataTypeGenericPassword
+                                                    error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertFalse([loadedData isEqualToData:data]);
+    XCTAssertTrue([loadedData isEqualToData:nextData]);
 }
 
 - (void)testStoresCryptographicKey

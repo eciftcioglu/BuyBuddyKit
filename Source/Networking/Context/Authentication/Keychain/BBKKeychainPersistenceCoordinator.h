@@ -81,6 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param errPtr In case of an error, a pointer to reference the `NSError` object.
  */
 - (NSData * _Nullable)loadDataForKey:(NSString * _Nonnull)keyString
+                              ofType:(BBKKeychainDataType)type
                                error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
 /**

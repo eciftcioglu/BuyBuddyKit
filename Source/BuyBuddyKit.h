@@ -43,7 +43,7 @@ FOUNDATION_EXPORT const unsigned char BBKVersionString[];
 #endif
 
 #if !TARGET_OS_WATCH && !TARGET_OS_TVOS
-#import "Networking/Context/Authentication/Credentials/BBKCredentialsKeychainPersistenceCoordinator.h"
+#import "Networking/Context/Authentication/Keychain/BBKKeychainPersistenceCoordinator.h"
 #endif
 
 #endif

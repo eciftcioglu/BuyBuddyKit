@@ -8,25 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0553A11F8278E500A57FAF /* Security.framework */; };
-		2DA8D3F1204ABE60005CA91A /* BBKQuotaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */; };
-		2DA8D3F5204AC5D0005CA91A /* BBKQuotaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */; };
-		2DA8D3F6204AC5D1005CA91A /* BBKQuotaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */; };
-		2DA8D3F7204AC5D2005CA91A /* BBKQuotaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */; };
-		2DA8D402204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
-		2DA8D403204ADEAB005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
-		2DA8D404204ADEAD005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
-		2DA8D405204ADEAE005CA91A /* BBKQuotaContext+FoundationConformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */; };
 		2DEEF7EA204C210F00D5CDBB /* BBKQuotaContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */; };
 		2DEEF7EB204C213100D5CDBB /* BBKQuotaContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */; };
-		5A3CBDFD1F6C1EED003C8D93 /* BBKUser+DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */; };
 		5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */; };
-		5A90F1EE204CF2AF0031948D /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */; };
-		5A90F1EF204CF2B00031948D /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */; };
 		5A974E6E1F63CFF80066F83A /* BuyBuddyKitmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A974E641F63CFF80066F83A /* BuyBuddyKitmacOS.framework */; };
 		5A974E941F63E3100066F83A /* BBKNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A974E921F63E3100066F83A /* BBKNetworkReachabilityManager.h */; };
 		5A974E951F63E3100066F83A /* BBKNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E931F63E3100066F83A /* BBKNetworkReachabilityManager.m */; };
 		5A974E981F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */; };
 		5A974E9C1F6409960066F83A /* BBKTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E9B1F6409960066F83A /* BBKTestCase.m */; };
+		5AA5165A204F15BE00C91A32 /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA51659204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.m */; };
+		5AA5165B204F15BF00C91A32 /* BBKKeychainPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA51659204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.m */; };
 		5AA7AE2E204C33970055DDD2 /* BBKURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7AE2C204C33970055DDD2 /* BBKURLSessionManager.m */; };
 		5AA7AE2F204C33970055DDD2 /* BBKURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7AE2C204C33970055DDD2 /* BBKURLSessionManager.m */; };
 		5AA7AE30204C33970055DDD2 /* BBKURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7AE2C204C33970055DDD2 /* BBKURLSessionManager.m */; };
@@ -399,10 +390,6 @@
 
 /* Begin PBXFileReference section */
 		2D0553A11F8278E500A57FAF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		2DA8D3EE204ABE60005CA91A /* BBKQuotaContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKQuotaContext.h; sourceTree = "<group>"; };
-		2DA8D3EF204ABE60005CA91A /* BBKQuotaContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKQuotaContext.m; sourceTree = "<group>"; };
-		2DA8D3FF204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBKQuotaContext+FoundationConformance.h"; sourceTree = "<group>"; };
-		2DA8D400204AD9CE005CA91A /* BBKQuotaContext+FoundationConformance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BBKQuotaContext+FoundationConformance.m"; sourceTree = "<group>"; };
 		2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKQuotaContextTests.m; sourceTree = "<group>"; };
 		5A3CBDFB1F6C1EED003C8D93 /* BBKUser+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BBKUser+DataSource.h"; path = "Entities/User Management/BBKUser+DataSource.h"; sourceTree = "<group>"; };
 		5A3CBDFC1F6C1EED003C8D93 /* BBKUser+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BBKUser+DataSource.m"; path = "Entities/User Management/BBKUser+DataSource.m"; sourceTree = "<group>"; };
@@ -413,9 +400,6 @@
 		5A87F6BE1F6D58FE00704ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5A87F6C21F6D93BF00704ABC /* NSErrorEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSErrorEnum.h; path = "Error Handling/NSErrorEnum.h"; sourceTree = "<group>"; };
 		5A87F6C51F6D952200704ABC /* BBKErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBKErrorDomain.h; path = "Error Handling/BBKErrorDomain.h"; sourceTree = "<group>"; };
-		5A90F1EC204CF2A90031948D /* BBKKeychainPersistenceCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKKeychainPersistenceCoordinator.h; sourceTree = "<group>"; };
-		5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKKeychainPersistenceCoordinator.m; sourceTree = "<group>"; };
-		5A90F1F2204CF8A20031948D /* BBKSecurePersistenceCoordination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKSecurePersistenceCoordination.h; sourceTree = "<group>"; };
 		5A974E641F63CFF80066F83A /* BuyBuddyKitmacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyBuddyKitmacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A974E681F63CFF80066F83A /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		5A974E6D1F63CFF80066F83A /* BuyBuddyKit (macOS) Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuyBuddyKit (macOS) Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,6 +409,9 @@
 		5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKNetworkReachabilityManagerTests.m; sourceTree = "<group>"; };
 		5A974E9A1F6409960066F83A /* BBKTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKTestCase.h; sourceTree = "<group>"; };
 		5A974E9B1F6409960066F83A /* BBKTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKTestCase.m; sourceTree = "<group>"; };
+		5AA51658204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBKKeychainPersistenceCoordinator.h; sourceTree = "<group>"; };
+		5AA51659204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKKeychainPersistenceCoordinator.m; sourceTree = "<group>"; };
+		5AA5165D204F15F500C91A32 /* BBKSecurePersistenceCoordination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BBKSecurePersistenceCoordination.h; path = Authentication/BBKSecurePersistenceCoordination.h; sourceTree = "<group>"; };
 		5AA7AE2C204C33970055DDD2 /* BBKURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKURLSessionManager.m; sourceTree = "<group>"; };
 		5AA7AE2D204C33970055DDD2 /* BBKURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKURLSessionManager.h; sourceTree = "<group>"; };
 		5AA7AE37204C34260055DDD2 /* BBKHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBKHTTPSessionManager.m; sourceTree = "<group>"; };
@@ -620,8 +607,8 @@
 		5A3CBDFF1F6C4ABA003C8D93 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				5A90F1F2204CF8A20031948D /* BBKSecurePersistenceCoordination.h */,
-				5A90F1EB204CF27C0031948D /* Keychain */,
+				5AA5165D204F15F500C91A32 /* BBKSecurePersistenceCoordination.h */,
+				5AA51657204F15B900C91A32 /* Keychain */,
 				D5AB2CD9204963E700644DC2 /* Passphrase */,
 				D50ECBF4204963B0008A1363 /* Credentials */,
 			);
@@ -635,15 +622,6 @@
 				5A87F6C51F6D952200704ABC /* BBKErrorDomain.h */,
 			);
 			name = "Error Handling";
-			sourceTree = "<group>";
-		};
-		5A90F1EB204CF27C0031948D /* Keychain */ = {
-			isa = PBXGroup;
-			children = (
-				5A90F1EC204CF2A90031948D /* BBKKeychainPersistenceCoordinator.h */,
-				5A90F1ED204CF2A90031948D /* BBKKeychainPersistenceCoordinator.m */,
-			);
-			path = Keychain;
 			sourceTree = "<group>";
 		};
 		5A974E5A1F63CFF70066F83A = {
@@ -724,6 +702,16 @@
 				5AA7AE71204C3C5C0055DDD2 /* Networking */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5AA51657204F15B900C91A32 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				5AA51658204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.h */,
+				5AA51659204F15B900C91A32 /* BBKKeychainPersistenceCoordinator.m */,
+			);
+			name = Keychain;
+			path = Authentication/Keychain;
 			sourceTree = "<group>";
 		};
 		5AA7AE71204C3C5C0055DDD2 /* Networking */ = {
@@ -1427,6 +1415,7 @@
 				D5AB2D85204AA4F600644DC2 /* BBKIOMetrics.m in Sources */,
 				D56065451FA4BD1600218395 /* BBKBrand+EntityFetching.m in Sources */,
 				D5E93A961F6453D400B3B47B /* BBKNetworkReachabilityManager+Localization.m in Sources */,
+				5AA5165B204F15BF00C91A32 /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D54597421FA497C5008B922F /* BBKProduct.m in Sources */,
 				D5AB2D9E204AD14600644DC2 /* BBKIOMetrics+FoundationConformance.m in Sources */,
 				D545CD60204BAB2100F54641 /* BBKQuotaContext.m in Sources */,
@@ -1463,7 +1452,6 @@
 				D58BB0DD1F67BB9A00ABF448 /* BBKUser.m in Sources */,
 				D54597721FA4A303008B922F /* BBKTax.m in Sources */,
 				5A3CBDFE1F6C1EED003C8D93 /* BBKUser+DataSource.m in Sources */,
-				5A90F1EF204CF2B00031948D /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D545977D1FA4B840008B922F /* BBKBrand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1498,6 +1486,7 @@
 				D5AB2D84204AA4F600644DC2 /* BBKIOMetrics.m in Sources */,
 				D56065441FA4BD1600218395 /* BBKBrand+EntityFetching.m in Sources */,
 				D552B1EB1F6FBB7200E89ADC /* BBKUser.m in Sources */,
+				5AA5165A204F15BE00C91A32 /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D54597411FA497C5008B922F /* BBKProduct.m in Sources */,
 				D5AB2D9D204AD14600644DC2 /* BBKIOMetrics+FoundationConformance.m in Sources */,
 				D545CD5F204BAB2100F54641 /* BBKQuotaContext.m in Sources */,
@@ -1534,7 +1523,6 @@
 				D552B1FA1F6FBB8700E89ADC /* BBKUser+EmploymentRegistry.m in Sources */,
 				D54597711FA4A303008B922F /* BBKTax.m in Sources */,
 				D552B2331F6FBBFB00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */,
-				5A90F1EE204CF2AF0031948D /* BBKKeychainPersistenceCoordinator.m in Sources */,
 				D545977C1FA4B840008B922F /* BBKBrand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
