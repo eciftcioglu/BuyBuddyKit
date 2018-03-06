@@ -59,7 +59,7 @@
 
 - (BOOL)isEqualToPassphrase:(BBKPassphrase *)passphrase
 {
-    return self.ID == passphrase.ID;
+    return [self.ID isEqualToNumber:passphrase.ID];
 }
 
 - (BOOL)isEqualTo:(id)object
