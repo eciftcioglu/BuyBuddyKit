@@ -74,11 +74,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param data Data to be stored by the coordinator.
  @param type Type of the going to be stored by the coordinator.
  @param keyString Key of the value.
+ @param attributes Additional attributes passed to the persistence coordinator.
  @param errPtr In case of an error, a pointer to reference the `NSError` object.
  */
 - (BOOL)persistData:(NSData * _Nonnull)data
              ofType:(BBKKeychainDataType)type
             forKey:(NSString * _Nonnull)keyString
+     withAttributes:(NSDictionary *)attributes
               error:(NSError * __autoreleasing _Nullable * _Nullable)errPtr;
 
 /**
@@ -115,10 +117,101 @@ NS_ASSUME_NONNULL_END
 /**
  Unique string used to identify the keychain item.
  */
-extern UInt8 const BBKKeychainStorageKey[];
+FOUNDATION_EXPORT UInt8 const BBKKeychainStorageKey[];
 
 #if TARGET_OS_MAC
-extern NSString * const BBKKeychainStorageErrorUserInfoKey;
+FOUNDATION_EXPORT NSString * _Nonnull const BBKKeychainStorageErrorUserInfoKey;
 #endif
+
+/**
+ Attributes that you can apply to text in a keychain persistence of an object.
+ */
+typedef BBKSecurePersistenceAttributeKey BBKKeychainStorageAttributeKey NS_EXTENSIBLE_STRING_ENUM;
+
+/**
+ Label of the keychain entry.
+ */
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeLabel;
+
+/**
+ Description of the keychain entry.
+ */
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeDescription;
+
+/**
+ Comment of the keychain entry.
+ */
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeComment;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCreationDate;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeModificationDate;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCreator;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeType;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeIsInvisible;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeIsNegative;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeAccount;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeService;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeGeneric;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSynchronizable;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSecurityDomain;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeServer;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeProtocol;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeAuthenticationType;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributePort;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributePath;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSubject;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeIssuer;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSerialNumber;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSubjectKeyID;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributePublicKeyHash;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCertificateType;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCertificateEncoding;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeKeyClass;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeApplicationLabel;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeApplicationTag;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeKeyType;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributePRF;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeSalt;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeRounds;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeKeySizeInBits;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeEffectiveKeySize;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeTokenID;
+
+/**
+ Returns available keys for the given type of keychain entry.
+ */
+NSArray<BBKKeychainStorageAttributeKey> * _Nonnull BBKGetAvailableKeysForType(BBKKeychainDataType type);
 
 #endif
