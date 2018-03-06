@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_END
     self.coordinator = [[BBKKeychainPersistenceCoordinator alloc] init];
 }
 
-- (void)testStoringGenericPassword
+- (void)testStoresGenericPassword
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Stores passphrase as a generic password"];
     
@@ -68,7 +68,43 @@ NS_ASSUME_NONNULL_END
     [self waitForExpectationsWithCommonTimeout];
 }
 
-- (void)testStoringCryptographicKey
+- (void)testUpdatesGenericPassword
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Stores passphrase as a generic password"];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.passphrase];
+    NSData *nextData = [NSKeyedArchiver archivedDataWithRootObject:[[BBKPassphrase alloc] initWithID:[NSNumber numberWithInt:0]
+                                                                                             passkey:@"whoa"
+                                                                                           issueDate:[NSDate new]
+                                                                                               owner:nil]];
+    
+    NSString *key = @"aKey";
+    NSDictionary *attrs = @{BBKKeychainStorageAttributeLabel: @"BuyBuddy Passphrase",
+                            BBKKeychainStorageAttributeDescription: @"Emir fucks yo ass.",
+                            BBKKeychainStorageAttributeComment: @"That fuck was good tho, dope af."};
+    
+    [self.coordinator persistData:data
+                           ofType:BBKKeychainDataTypeGenericPassword
+                           forKey:key
+                   withAttributes:attrs
+                completionHandler:^(NSError * _Nullable error) {
+                    XCTAssertNil(error);
+                    
+                    [self.coordinator persistData:nextData
+                                           ofType:BBKKeychainDataTypeGenericPassword
+                                           forKey:key
+                                   withAttributes:attrs
+                                completionHandler:^(NSError * _Nullable error) {
+                                    XCTAssertNil(error);
+                                    
+                                    [expectation fulfill];
+                                }];
+                }];
+    
+    [self waitForExpectationsWithCommonTimeout];
+}
+
+- (void)testStoresCryptographicKey
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Stores passphrases"];
     

@@ -56,15 +56,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSObject<BBKSecurePersistenceCoordination>
 
 /**
- @name Initialization
- */
-
-/**
- Initializes the coordinator.
- */
-- (instancetype _Nonnull)init;
-
-/**
  @name Persisting & Retrieving Data
  */
 
@@ -117,7 +108,7 @@ NS_ASSUME_NONNULL_END
 /**
  Unique string used to identify the keychain item.
  */
-FOUNDATION_EXPORT UInt8 const BBKKeychainStorageKey[];
+FOUNDATION_EXPORT NSString * _Nonnull const BBKKeychainStorageKey;
 
 #if TARGET_OS_MAC
 FOUNDATION_EXPORT NSString * _Nonnull const BBKKeychainStorageErrorUserInfoKey;
