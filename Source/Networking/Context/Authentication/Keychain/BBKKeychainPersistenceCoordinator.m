@@ -116,35 +116,52 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
                   ofType:type
        completionHandler:^(NSData * _Nullable retrievedData, NSError * _Nullable loadError) {
            __block OSStatus keychainErr = errSecInternalError;
-           
+        
            if (loadError) {
                if (handler) handler(loadError);
+               
+               return;
            } else if (retrievedData) {
-               NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-               NSMutableDictionary *changeset = [[NSMutableDictionary alloc] init];
-               
-               //  Class of the keychain entry
-               [dictionary setObject:SecClassForKeychainDataType(type)
-                              forKey:(__bridge id)kSecClass];
-               
-               //  Key of the keychain entry
-               [dictionary setObject:[self labelStringForKey:keyString]
-                              forKey:(__bridge id)kSecAttrLabel];
-               
-               NSError *injectionError = nil;
-               
-               if (!InjectAttributesToDictionary(type, attributes, changeset, &injectionError)) {
-                   if (handler) handler(injectionError);
-                   
+               if (type == BBKKeychainDataTypeCryptographicKey) {
+                   //  Remove the key and retry
+                   [self removeDataForKey:keyString
+                                   ofType:type
+                        completionHandler:^(NSError * _Nullable error) {
+                            [self persistData:data
+                                       ofType:type
+                                       forKey:keyString
+                               withAttributes:attributes
+                            completionHandler:handler];
+                        }];
+                
                    return;
+               } else {
+                   NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+                   NSMutableDictionary *changeset = [[NSMutableDictionary alloc] init];
+                   
+                   //  Class of the keychain entry
+                   [dictionary setObject:SecClassForKeychainDataType(type)
+                                  forKey:(__bridge id)kSecClass];
+                   
+                   //  Key of the keychain entry
+                   [dictionary setObject:[self labelStringForKey:keyString]
+                                  forKey:(__bridge id)kSecAttrLabel];
+                   
+                   NSError *injectionError = nil;
+                   
+                   if (!InjectAttributesToDictionary(type, attributes, changeset, &injectionError)) {
+                       if (handler) handler(injectionError);
+                       
+                       return;
+                   }
+                   
+                   //  Value of the keychain entry
+                   [changeset setObject:data
+                                 forKey:(__bridge id)kSecValueData];
+                   
+                   keychainErr = SecItemUpdate((__bridge CFDictionaryRef)dictionary,
+                                               (__bridge CFDictionaryRef)changeset);
                }
-               
-               //  Value of the keychain entry
-               [changeset setObject:data
-                             forKey:(__bridge id)kSecValueData];
-               
-               keychainErr = SecItemUpdate((__bridge CFDictionaryRef)dictionary,
-                                           (__bridge CFDictionaryRef)changeset);
            } else {
                NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
                
@@ -164,9 +181,23 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
                    return;
                }
                
-               //  Value of the keychain entry
-               [dictionary setObject:data
-                              forKey:(__bridge id)kSecValueData];
+               if (type == BBKKeychainDataTypeCryptographicKey) {
+                   CFErrorRef ref = NULL;
+                   SecKeyRef key = SecKeyCreateFromData((__bridge CFDictionaryRef)@{(__bridge id)kSecAttrKeyType: (__bridge id)kSecAttrKeyTypeECSECPrimeRandom}, (__bridge CFDataRef)data, &ref);
+                   
+                   [dictionary setObject:(__bridge id)key
+                                  forKey:(__bridge id)kSecValueRef];
+                   
+                   if (ref != NULL) {
+                       handler((__bridge NSError *)ref);
+                       
+                       return;
+                   }
+               } else {
+                   //  Value of the keychain entry
+                   [dictionary setObject:data
+                                  forKey:(__bridge id)kSecValueData];
+               }
                
                //  Passing NULL as result is not required
                keychainErr = SecItemAdd((__bridge CFDictionaryRef)dictionary, nil);
@@ -176,13 +207,13 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
            
            if (handler) {
                handler(error);
+               
+               return;
            }
            
-           if (!error) {
-               ExecuteStaBlockAtomic(^{
-                   self.lastWriteTimestamp = [[NSDate alloc] init];
-               });
-           }
+           ExecuteStaBlockAtomic(^{
+               self.lastWriteTimestamp = [[NSDate alloc] init];
+           });
        }];
 }
 
@@ -199,7 +230,7 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
                forKey:keyString
        withAttributes:attributes
     completionHandler:^(NSError * _Nullable error) {
-        *errPtr = error;
+        if (errPtr) *errPtr = error;
         
         dispatch_semaphore_signal(dsema);
     }];
@@ -221,13 +252,15 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     [dictionary setObject:SecClassForKeychainDataType(type)
                    forKey:(__bridge id)kSecClass];
     
-    //  Query should return data
-    [dictionary setObject:(__bridge id)kCFBooleanTrue
-                   forKey:(__bridge id)kSecReturnData];
-    
-    //  Query should return attributes
-    [dictionary setObject:(__bridge id)kCFBooleanTrue
-                   forKey:(__bridge id)kSecReturnAttributes];
+    if (type == BBKKeychainDataTypeCryptographicKey) {
+        //  Query should return ref
+        [dictionary setObject:(__bridge id)kCFBooleanTrue
+                       forKey:(__bridge id)kSecReturnRef];
+    } else {
+        //  Query should return data
+        [dictionary setObject:(__bridge id)kCFBooleanTrue
+                       forKey:(__bridge id)kSecReturnData];
+    }
     
     //  Query should have a label
     [dictionary setObject:[self labelStringForKey:keyString]
@@ -237,7 +270,7 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     [dictionary setObject:(__bridge id)kSecMatchLimitOne
                    forKey:(__bridge id)kSecMatchLimit];
     
-    CFDictionaryRef data = NULL;
+    CFTypeRef data = NULL;
     OSStatus keychainErr = errSecSuccess;
     
     keychainErr = SecItemCopyMatching((__bridge CFDictionaryRef)dictionary,
@@ -247,11 +280,43 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     
     if (error) {
         handler(nil, error);
+        
+        return;
     }
     
-    NSDictionary *queryResult = (__bridge_transfer NSDictionary *)data;
-    
-    handler([queryResult objectForKey:(__bridge id)kSecValueData], nil);
+    //  Here are some words about fetching cryptographic keys.
+    //
+    //  Security framework asserts returning SecKey references in cryptographic key fetching.
+    //  We are checking if the returned reference is NULL or not.
+    //  If it is anything other than NULL, then we should export the external representation of the SecKey.
+    //  This is performed by the SecKeyCopyExternalRepresentation function.
+    //  Note that resulting artifacts are bridge-transferred to NS*-counterparts, which would make
+    //  transferring ownership of ARC non-compliant data structures to ARC compliant Objective-C objects.
+    //
+    //  If we would request for a data value in SecItemCopyMatching, it would throw an EXC_BAD_ACCESS since
+    //  the NULL data is not be convertible to a CFTypeRef carrying CFDataRef.
+    //  This creates a lot of boilerplate, but huh, what to do else?
+    //
+    //  We're not overcarry the following implementation nevertheless, though we're relying on unit tests.
+    //
+    //  Also, when manipulating this code, be strictly assertive about calling the callback only once.
+    //  Doing not so will crash the serialized variant in a horrible fashion.
+    if (type == BBKKeychainDataTypeCryptographicKey) {
+        if (data != NULL) {
+            CFErrorRef ref = NULL;
+            CFDataRef resultDataRef = SecKeyCopyExternalRepresentation((SecKeyRef)data, &ref);
+            
+            if (ref != NULL) {
+                handler(nil, (__bridge_transfer NSError *)ref);
+            } else {
+                handler((__bridge_transfer NSData *)resultDataRef, nil);
+            }
+        } else {
+            handler(nil, nil);
+        }
+    } else {
+        handler((__bridge_transfer NSData *)data, nil);
+    }
     
     ExecuteStaBlockAtomic(^{
         self.lastReadTimestamp = [[NSDate alloc] init];
@@ -269,7 +334,7 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
                   ofType:type
        completionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
            result = data;
-           *errPtr = error;
+           if (errPtr) *errPtr = error;
            
            dispatch_semaphore_signal(dsema);
        }];
@@ -328,7 +393,7 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     [self removeDataForKey:keyString
                     ofType:type
          completionHandler:^(NSError * _Nullable error) {
-             *errPtr = error;
+             if (errPtr) *errPtr = error;
              
              dispatch_semaphore_signal(dsema);
          }];
