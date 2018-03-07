@@ -201,6 +201,22 @@ FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttribu
 
 FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeTokenID;
 
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeIsPermanent;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanEncrypt;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanDecrypt;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanDerive;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanSign;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanVerify;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanWrap;
+
+FOUNDATION_EXTERN BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanUnwrap;
+
 /**
  Returns available keys for the given type of keychain entry.
  */

@@ -35,6 +35,7 @@
 
 NSString * const BBKKeychainStorageKey = @"BuyBuddy Türk Anonim Şirketi";
 NSString * const KeychainStorageKeyDelim = @": ";
+
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeLabel = @"BBKKeychainStorageAttribute.Label";
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeDescription = @"BBKKeychainStorageAttribute.Description";
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeComment = @"BBKKeychainStorageAttribute.Comment";
@@ -71,6 +72,14 @@ BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeRounds = @"BBKKe
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeKeySizeInBits = @"BBKKeychainStorageAttribute.KeySizeInBits";
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeEffectiveKeySize = @"BBKKeychainStorageAttribute.EffectiveKeySize";
 BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeTokenID = @"BBKKeychainStorageAttribute.TokenID";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeIsPermanent = @"BBKKeychainStorageAttribute.IsPermanent";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanEncrypt = @"BBKKeychainStorageAttribute.CanEncrypt";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanDecrypt = @"BBKKeychainStorageAttribute.CanDecrypt";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanDerive = @"BBKKeychainStorageAttribute.CanDerive";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanSign = @"BBKKeychainStorageAttribute.CanSign";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanVerify = @"BBKKeychainStorageAttribute.CanVerify";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanWrap = @"BBKKeychainStorageAttribute.CanWrap";
+BBKKeychainStorageAttributeKey const BBKKeychainStorageAttributeCanUnwrap = @"BBKKeychainStorageAttribute.CanUnwrap";
 
 size_t const KeychainEntryKeySize = BUFSIZ;
 #if TARGET_OS_MAC
@@ -81,8 +90,6 @@ static BOOL InjectAttributesToDictionary(BBKKeychainDataType type, NSDictionary 
 static id GetSecKeyAttrForAttributeKey(BBKKeychainStorageAttributeKey key);
 static id SecClassForKeychainDataType(BBKKeychainDataType type);
 static NSError * _Nullable MakeNSErrorForErrorOrThrow(const OSStatus * _Nonnull status);
-static void RaiseExceptionIfStatusIsAnError(const OSStatus * _Nonnull status);
-static void ExecuteDynBlockAtomic(_Nonnull dispatch_block_t blk);
 static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
 
 @interface BBKKeychainPersistenceCoordinator ()
@@ -96,6 +103,8 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
 @end
 
 @implementation BBKKeychainPersistenceCoordinator
+
+#pragma mark - Persisting data
 
 - (void)persistData:(NSData *)data
              ofType:(BBKKeychainDataType)type
@@ -200,6 +209,8 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     return errPtr == nil;
 }
 
+#pragma mark - Fetching data
+
 - (void)loadDataForKey:(NSString *)keyString
                 ofType:(BBKKeychainDataType)type
      completionHandler:(void (^)(NSData * _Nullable, NSError * _Nullable))handler
@@ -268,6 +279,8 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     return result;
 }
 
+#pragma mark - Removing data
+
 - (BOOL)removeDataForKey:(NSString *)keyString
                   ofType:(BBKKeychainDataType)type
        completionHandler:(void (^)(NSError * _Nullable))handler
@@ -325,12 +338,16 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
     return *errPtr == nil;
 }
 
+#pragma mark - Class helpers
+
 - (NSString *)labelStringForKey:(NSString *)keyString
 {
     return [NSString stringWithFormat:@"%@%@%@", BBKKeychainStorageKey, KeychainStorageKeyDelim, keyString];
 }
 
 @end
+
+#pragma mark - Injectors & converters
 
 static BOOL InjectAttributesToDictionary(BBKKeychainDataType type,
                                          NSDictionary *attributes,
@@ -378,6 +395,91 @@ static id SecClassForKeychainDataType(BBKKeychainDataType type)
     }
 }
 
+static id GetSecKeyAttrForAttributeKey(BBKKeychainStorageAttributeKey key)
+{
+    static NSDictionary *keyAttributes = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        keyAttributes = @{
+                          BBKKeychainStorageAttributeLabel: (__bridge id)kSecAttrLabel,
+                          BBKKeychainStorageAttributeDescription: (__bridge id)kSecAttrDescription,
+                          BBKKeychainStorageAttributeComment: (__bridge id)kSecAttrComment,
+                          BBKKeychainStorageAttributeCreationDate: (__bridge id)kSecAttrCreationDate,
+                          BBKKeychainStorageAttributeModificationDate: (__bridge id)kSecAttrModificationDate,
+                          BBKKeychainStorageAttributeCreator: (__bridge id)kSecAttrCreator,
+                          BBKKeychainStorageAttributeType:(__bridge id)kSecAttrType,
+                          BBKKeychainStorageAttributeIsInvisible:(__bridge id)kSecAttrIsInvisible,
+                          BBKKeychainStorageAttributeIsNegative:(__bridge id)kSecAttrIsNegative,
+                          BBKKeychainStorageAttributeAccount:(__bridge id)kSecAttrAccount,
+                          BBKKeychainStorageAttributeService:(__bridge id)kSecAttrService,
+                          BBKKeychainStorageAttributeGeneric:(__bridge id)kSecAttrGeneric,
+                          BBKKeychainStorageAttributeSynchronizable:(__bridge id)kSecAttrSynchronizable,
+                          BBKKeychainStorageAttributeSecurityDomain:(__bridge id)kSecAttrSecurityDomain,
+                          BBKKeychainStorageAttributeServer:(__bridge id)kSecAttrServer,
+                          BBKKeychainStorageAttributeProtocol:(__bridge id)kSecAttrProtocol,
+                          BBKKeychainStorageAttributeAuthenticationType:(__bridge id)kSecAttrAuthenticationType,
+                          };
+    });
+    
+    return [keyAttributes objectForKey:key];
+}
+
+NSArray<BBKKeychainStorageAttributeKey> *BBKGetAvailableKeysForType(BBKKeychainDataType type)
+{
+    static NSDictionary *availableKeys = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        availableKeys = @{
+                          [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeGenericPassword]: @[
+                                  BBKKeychainStorageAttributeDescription,
+                                  BBKKeychainStorageAttributeComment,
+                                  BBKKeychainStorageAttributeCreationDate,
+                                  BBKKeychainStorageAttributeModificationDate,
+                                  BBKKeychainStorageAttributeCreator,
+                                  BBKKeychainStorageAttributeIsInvisible,
+                                  BBKKeychainStorageAttributeIsNegative,
+                                  BBKKeychainStorageAttributeAccount,
+                                  BBKKeychainStorageAttributeService,
+                                  ],
+                          [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeCryptographicKey]: @[
+                                  BBKKeychainStorageAttributeLabel,
+                                  BBKKeychainStorageAttributeKeyClass,
+                                  BBKKeychainStorageAttributeApplicationLabel,
+                                  BBKKeychainStorageAttributeIsPermanent,
+                                  BBKKeychainStorageAttributeApplicationTag,
+                                  BBKKeychainStorageAttributeKeyType,
+                                  BBKKeychainStorageAttributePRF,
+                                  BBKKeychainStorageAttributeSalt,
+                                  BBKKeychainStorageAttributeRounds,
+                                  BBKKeychainStorageAttributeKeySizeInBits,
+                                  BBKKeychainStorageAttributeEffectiveKeySize,
+                                  BBKKeychainStorageAttributeCanEncrypt,
+                                  BBKKeychainStorageAttributeCanDecrypt,
+                                  BBKKeychainStorageAttributeCanDerive,
+                                  BBKKeychainStorageAttributeCanSign,
+                                  BBKKeychainStorageAttributeCanVerify,
+                                  BBKKeychainStorageAttributeCanWrap,
+                                  BBKKeychainStorageAttributeCanUnwrap,
+                                  ],
+                          [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeCertificate]: @[
+                                  BBKKeychainStorageAttributeCertificateType,
+                                  BBKKeychainStorageAttributeCertificateEncoding,
+                                  BBKKeychainStorageAttributeSubject,
+                                  BBKKeychainStorageAttributeIssuer,
+                                  BBKKeychainStorageAttributeSerialNumber,
+                                  BBKKeychainStorageAttributeSubjectKeyID,
+                                  BBKKeychainStorageAttributePublicKeyHash,
+                                  ],
+                          };
+    });
+    
+    return [availableKeys objectForKey:[NSNumber numberWithUnsignedInteger:type]];
+}
+
+#pragma mark - Error handling
+
 static NSError *MakeNSErrorForErrorOrThrow(const OSStatus *status)
 {
     NSCAssert(status != NULL, @"parameter status should not be NULL");
@@ -401,19 +503,7 @@ static NSError *MakeNSErrorForErrorOrThrow(const OSStatus *status)
     }
 }
 
-static void ExecuteDynBlockSync(_Nonnull dispatch_block_t blk,
-                                NSLock * _Nonnull lock)
-{
-    NSCAssert(blk != NULL, @"parameter blk should not be NULL");
-    NSCAssert(lock != nil, @"parameter lck should not be nil");
-    
-    [lock lock];
-    @try {
-        blk();
-    } @finally {
-        [lock unlock];
-    }
-}
+#pragma mark - Atomic dispatch
 
 static void ExecuteStaBlockSync(_Nonnull dispatch_block_t blk,
                                 _Nonnull dispatch_semaphore_t dsema)
@@ -442,63 +532,4 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk)
     });
     
     ExecuteStaBlockSync(blk, semaphore);
-}
-
-static id GetSecKeyAttrForAttributeKey(BBKKeychainStorageAttributeKey key)
-{
-    static NSDictionary *keyAttributes = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        keyAttributes = @{
-            BBKKeychainStorageAttributeLabel: (__bridge id)kSecAttrLabel,
-            BBKKeychainStorageAttributeDescription: (__bridge id)kSecAttrDescription,
-            BBKKeychainStorageAttributeComment: (__bridge id)kSecAttrComment,
-            BBKKeychainStorageAttributeCreationDate: (__bridge id)kSecAttrCreationDate,
-            BBKKeychainStorageAttributeModificationDate: (__bridge id)kSecAttrModificationDate,
-            BBKKeychainStorageAttributeCreator: (__bridge id)kSecAttrCreator,
-            BBKKeychainStorageAttributeType:(__bridge id)kSecAttrType,
-            BBKKeychainStorageAttributeIsInvisible:(__bridge id)kSecAttrIsInvisible,
-            BBKKeychainStorageAttributeIsNegative:(__bridge id)kSecAttrIsNegative,
-            BBKKeychainStorageAttributeAccount:(__bridge id)kSecAttrAccount,
-            BBKKeychainStorageAttributeService:(__bridge id)kSecAttrService,
-            BBKKeychainStorageAttributeGeneric:(__bridge id)kSecAttrGeneric,
-            BBKKeychainStorageAttributeSynchronizable:(__bridge id)kSecAttrSynchronizable,
-            BBKKeychainStorageAttributeSecurityDomain:(__bridge id)kSecAttrSecurityDomain,
-            BBKKeychainStorageAttributeServer:(__bridge id)kSecAttrServer,
-            BBKKeychainStorageAttributeProtocol:(__bridge id)kSecAttrProtocol,
-            BBKKeychainStorageAttributeAuthenticationType:(__bridge id)kSecAttrAuthenticationType,
-        };
-    });
-    
-    return [keyAttributes objectForKey:key];
-}
-
-NSArray<BBKKeychainStorageAttributeKey> *BBKGetAvailableKeysForType(BBKKeychainDataType type)
-{
-    static NSDictionary *availableKeys = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        availableKeys = @{
-            [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeGenericPassword]: @[
-                BBKKeychainStorageAttributeDescription,
-                BBKKeychainStorageAttributeComment,
-                BBKKeychainStorageAttributeCreationDate,
-                BBKKeychainStorageAttributeModificationDate,
-                BBKKeychainStorageAttributeCreator,
-                BBKKeychainStorageAttributeIsInvisible,
-                BBKKeychainStorageAttributeIsNegative,
-                BBKKeychainStorageAttributeAccount,
-                BBKKeychainStorageAttributeService,
-            ],
-            [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeCryptographicKey]: @[
-                
-            ],
-            [NSNumber numberWithUnsignedInteger:BBKKeychainDataTypeCertificate]: @[
-            ],
-        };
-    });
-    
-    return [availableKeys objectForKey:[NSNumber numberWithUnsignedInteger:type]];
 }
