@@ -239,7 +239,6 @@
 		D552B2331F6FBBFB00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E93A941F6453D400B3B47B /* BBKNetworkReachabilityManager+Localization.m */; };
 		D552B2351F6FBBFC00E89ADC /* BBKNetworkReachabilityManager+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E93A941F6453D400B3B47B /* BBKNetworkReachabilityManager+Localization.m */; };
 		D552B2361F6FBC0200E89ADC /* BBKKeychainPersistenceCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D552B1A41F6F9FC300E89ADC /* BBKKeychainPersistenceCoordinatorTests.m */; };
-		D552B2371F6FBC0300E89ADC /* BBKKeychainPersistenceCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D552B1A41F6F9FC300E89ADC /* BBKKeychainPersistenceCoordinatorTests.m */; };
 		D552B2381F6FBC0600E89ADC /* BBKNetworkReachabilityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E971F6407B40066F83A /* BBKNetworkReachabilityManagerTests.m */; };
 		D552B23D1F6FBDDD00E89ADC /* BBKTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E9B1F6409960066F83A /* BBKTestCase.m */; };
 		D552B23E1F6FBDDE00E89ADC /* BBKTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A974E9B1F6409960066F83A /* BBKTestCase.m */; };
@@ -1649,7 +1648,6 @@
 			files = (
 				5AA7AE6A204C3B220055DDD2 /* BBKSecurityPolicyTests.m in Sources */,
 				5AA7AE61204C3B150055DDD2 /* BBKHTTPResponseSerializationTests.m in Sources */,
-				D552B2371F6FBC0300E89ADC /* BBKKeychainPersistenceCoordinatorTests.m in Sources */,
 				D54D667D1F904B0C008A9A8D /* BBKSerializationTests.m in Sources */,
 				5AA7AE70204C3B2A0055DDD2 /* BBKURLSessionManagerTests.m in Sources */,
 				5AA7AE69204C3B220055DDD2 /* BBKJSONSerializationTests.m in Sources */,

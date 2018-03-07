@@ -61,8 +61,7 @@ NS_ASSUME_NONNULL_END
                    withAttributes:@{BBKKeychainStorageAttributeComment: @"That fuck was good tho, dope af.",
                                     BBKKeychainStorageAttributeAccount: @"Chatatata",
                                     BBKKeychainStorageAttributeService: @"Something clever.",
-                                    BBKKeychainStorageAttributeSynchronizable: (__bridge id)kCFBooleanTrue,
-                                    }
+                                    BBKKeychainStorageAttributeSynchronizable: (__bridge id)kCFBooleanTrue}
                 completionHandler:^(NSError * _Nullable error) {
                     [expectation fulfill];
                 }];
@@ -137,6 +136,36 @@ NS_ASSUME_NONNULL_END
     XCTAssertNil(error);
     XCTAssertFalse([loadedData isEqualToData:data]);
     XCTAssertTrue([loadedData isEqualToData:nextData]);
+}
+
+- (void)testRemovesGenericPassword
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.passphrase];
+    NSString *key = @"aKey";
+    NSDictionary *attrs = @{BBKKeychainStorageAttributeDescription: @"Some description.",
+                            BBKKeychainStorageAttributeComment: @"Some comment."};
+    NSError *error = nil;
+    
+    [self.coordinator persistData:data
+                           ofType:BBKKeychainDataTypeGenericPassword
+                           forKey:key
+                   withAttributes:attrs
+                            error:&error];
+    
+    XCTAssertNil(error);
+    
+    [self.coordinator removeDataForKey:key
+                                ofType:BBKKeychainDataTypeGenericPassword
+                                 error:&error];
+    
+    XCTAssertNil(error);
+    
+    NSData *loadedData = [self.coordinator loadDataForKey:key
+                                                   ofType:BBKKeychainDataTypeGenericPassword
+                                                    error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertNil(loadedData);
 }
 
 - (void)testStoresCryptographicKey
