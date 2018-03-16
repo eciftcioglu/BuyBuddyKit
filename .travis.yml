@@ -1,0 +1,20 @@
+language: objective-c  
+osx_image: xcode9.2
+xcode_project: BuyBuddyKit.xcodeproj 
+
+matrix:
+  include:
+    - xcode_scheme: BuyBuddyKit (iOS)
+      xcode_sdk: iphonesimulator11.2
+
+    - xcode_scheme: BuyBuddyKit (macOS)
+      xcode_sdk: macosx10.13
+
+    - xcode_scheme: BuyBuddyKit (tvOS)
+      xcode_sdk: appletvsimulator11.2
+
+    - xcode_scheme: BuyBuddyKit (watchOS)
+    - xcode_sdk: watchsimulator4.2
+
+xcode_scheme: BuyBuddyKit 
+xcode_sdk: iphonesimulator9.2
