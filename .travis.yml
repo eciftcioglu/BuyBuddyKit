@@ -6,18 +6,18 @@ matrix:
   include:
     - xcode_scheme: BuyBuddyKit (iOS)
       xcode_sdk: iphonesimulator11.2
-      script: xcodebuild test -scheme BuyBuddyKit\ \(iOS\) -sdk iphoneos11.2
+      script: xcodebuild test -scheme BuyBuddyKit\ \(iOS\) -sdk iphoneos10.3
 
     - xcode_scheme: BuyBuddyKit (macOS)
       xcode_sdk: macosx10.13
-      script: xcodebuild test -scheme BuyBuddyKit\ \(macOS\) -sdk macosx10.13
+      script: xcodebuild test -scheme BuyBuddyKit\ \(macOS\) -sdk macosx10.12
 
     - xcode_scheme: BuyBuddyKit (tvOS)
       xcode_sdk: appletvsimulator11.2
-      script: xcodebuild test -scheme BuyBuddyKit\ \(tvOS\) -sdk appletvos11.2
+      script: xcodebuild test -scheme BuyBuddyKit\ \(tvOS\) -sdk appletvos10.2
 
     - xcode_scheme: BuyBuddyKit (watchOS)
     - xcode_sdk: watchsimulator4.2
-      script: xcodebuild test -scheme BuyBuddyKit\ \(watchOS\) -sdk watchos4.2
+      script: xcodebuild test -scheme BuyBuddyKit\ \(watchOS\) -sdk watchos3.2
 
 
