@@ -183,7 +183,8 @@ static void ExecuteStaBlockAtomic(_Nonnull dispatch_block_t blk);
                
                if (type == BBKKeychainDataTypeCryptographicKey) {
                    CFErrorRef ref = NULL;
-                   SecKeyRef key = SecKeyCreateFromData((__bridge CFDictionaryRef)@{(__bridge id)kSecAttrKeyType: (__bridge id)kSecAttrKeyTypeECSECPrimeRandom}, (__bridge CFDataRef)data, &ref);
+                   SecKeyRef key = NULL;
+                   //SecKeyRef key = SecKeyCreateFromData((__bridge CFDictionaryRef)@{(__bridge id)kSecAttrKeyType: (__bridge id)kSecAttrKeyTypeECSECPrimeRandom}, (__bridge CFDataRef)data, &ref);
                    
                    [dictionary setObject:(__bridge id)key
                                   forKey:(__bridge id)kSecValueRef];

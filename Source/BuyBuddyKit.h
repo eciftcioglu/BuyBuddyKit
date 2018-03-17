@@ -19,14 +19,18 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 #import <Foundation/Foundation.h>
 #import <Availability.h>
 
 //! Project version number for BuyBuddyKit.
-FOUNDATION_EXPORT double BBKVersionNumber;
+FOUNDATION_EXPORT const double BBKVersionNumber;
 
 //! Project version string for BuyBuddyKit.
-FOUNDATION_EXPORT const unsigned char BBKVersionString[];
+FOUNDATION_EXPORT const char *BBKVersionString;
+
+//! Project name string for BuyBuddyKit.
+FOUNDATION_EXPORT const char *BBKLibraryName;
 
 #ifndef _BUYBUDDYKIT_
 #define _BUYBUDDYKIT_
@@ -37,6 +41,9 @@ FOUNDATION_EXPORT const unsigned char BBKVersionString[];
 #import "Networking/Context/Connection/Rate Limiting/BBKQuotaContext.h"
 #import "Networking/Context/Connection/Reporting/BBKIOMetricsRepository.h"
 #import "Networking/Context/Connection/BBKHTTPSessionManager.h"
+#import "Networking/Context/User Agent/BBKNavigator.h"
+#import "Networking/Context/User Agent/BBKUserAgent.h"
+#import "Networking/Context/User Agent/BBKCarrier.h"
 
 #if !TARGET_OS_WATCH
 #import "Networking/Reachability/BBKNetworkReachabilityManager.h"
