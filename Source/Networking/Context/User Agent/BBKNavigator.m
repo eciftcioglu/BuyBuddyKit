@@ -58,7 +58,7 @@
     return timeZone;
 }
 
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if (TARGET_OS_IOS && !TARGET_OS_WATCH) || TARGET_OS_TV
 - (NSString *)AAID
 {
     static NSString *aaid = nil;

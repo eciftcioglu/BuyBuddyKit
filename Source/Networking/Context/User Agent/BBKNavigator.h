@@ -23,9 +23,12 @@
 
 @class BBKUserAgent, BBKCarrier;
 
+#if (TARGET_OS_IOS && !TARGET_OS_WATCH) || TARGET_OS_TV
+#import <AdSupport/AdSupport.h>
+#endif
+
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
-#import <AdSupport/AdSupport.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
