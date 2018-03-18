@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D0553A21F8278E500A57FAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0553A11F8278E500A57FAF /* Security.framework */; };
+		2D21E3C5205E9ED100AF564B /* BBKQuotaContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEEF7E9204C210F00D5CDBB /* BBKQuotaContextTests.m */; };
+		2D21E3C6205E9ED300AF564B /* BBKNavigatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A4738205BA8F6007A7BA8 /* BBKNavigatorTests.m */; };
+		2D21E3C7205E9ED600AF564B /* BBKUserAgentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A4747205BBD5A007A7BA8 /* BBKUserAgentTests.m */; };
 		2D2A473A205BAAF2007A7BA8 /* BBKNavigatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A4738205BA8F6007A7BA8 /* BBKNavigatorTests.m */; };
 		2D2A473B205BAAF2007A7BA8 /* BBKNavigatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A4738205BA8F6007A7BA8 /* BBKNavigatorTests.m */; };
 		2D2A474A205BBF50007A7BA8 /* BBKUserAgentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A4747205BBD5A007A7BA8 /* BBKUserAgentTests.m */; };
@@ -1740,10 +1743,13 @@
 			files = (
 				5AA7AE6A204C3B220055DDD2 /* BBKSecurityPolicyTests.m in Sources */,
 				5AA7AE61204C3B150055DDD2 /* BBKHTTPResponseSerializationTests.m in Sources */,
+				2D21E3C5205E9ED100AF564B /* BBKQuotaContextTests.m in Sources */,
 				D54D667D1F904B0C008A9A8D /* BBKSerializationTests.m in Sources */,
 				5AA7AE70204C3B2A0055DDD2 /* BBKURLSessionManagerTests.m in Sources */,
 				5AA7AE69204C3B220055DDD2 /* BBKJSONSerializationTests.m in Sources */,
 				D552B23E1F6FBDDE00E89ADC /* BBKTestCase.m in Sources */,
+				2D21E3C6205E9ED300AF564B /* BBKNavigatorTests.m in Sources */,
+				2D21E3C7205E9ED600AF564B /* BBKUserAgentTests.m in Sources */,
 				D54D668B1F929E93008A9A8D /* BBKRequestIDTests.m in Sources */,
 				5AA7AE6D204C3B260055DDD2 /* BBKNetworkingTestCase.m in Sources */,
 				5AA7AE5E204C3B100055DDD2 /* BBKHTTPRequestSerializationTests.m in Sources */,

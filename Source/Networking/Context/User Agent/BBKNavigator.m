@@ -1,5 +1,5 @@
 // BBKNavigator.m
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,11 +45,12 @@
     return agent;
 }
 
+#if TARGET_OS_IOS
 - (BBKCarrier *)carrier
 {
     return [BBKCarrier new];
 }
-
+#endif
 - (NSTimeZone *)currentTimeZone
 {
     NSTimeZone* timeZone = [NSTimeZone localTimeZone];
@@ -57,7 +58,7 @@
     return timeZone;
 }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (NSString *)AAID
 {
     static NSString *aaid = nil;
@@ -72,7 +73,7 @@
 #endif
 
 - (NSString *)UUID
-{
+{    
 #if TARGET_OS_OSX
     io_service_t platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
                                                               IOServiceMatching("IOPlatformExpertDevice"));
@@ -92,7 +93,7 @@
     }
     
     return (__bridge NSString *)(serialNumberAsCFString);
-#else
+#elif TARGET_OS_IOS || TARGET_OS_TV
     static NSString *uuid = nil;
     static dispatch_once_t onceToken;
     
@@ -102,6 +103,7 @@
     
     return uuid;
 #endif
+    return nil;
 }
 
 @end

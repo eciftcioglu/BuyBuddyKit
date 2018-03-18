@@ -1,5 +1,5 @@
 // BBKCarrier.m
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 
 #import "BBKCarrier.h"
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
 
 @interface BBKCarrier ()
 

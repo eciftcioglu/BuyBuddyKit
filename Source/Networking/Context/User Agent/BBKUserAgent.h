@@ -1,5 +1,5 @@
 // BBKUserAgent.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,20 @@
 #if TARGET_OS_OSX
 #import <SystemConfiguration/SCDynamicStoreCopySpecific.h>
 #endif
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Use the `BBKUserAgent` class to access information about the users current device,app and operating system information.
+ Use the `BBKUserAgent` class to access information about the users current device, app and operating system information.
  */
 NS_SWIFT_NAME(UserAgent)
 @interface BBKUserAgent : NSObject
 
 /**
- @name
+ @name Properties
  */
 
 /**

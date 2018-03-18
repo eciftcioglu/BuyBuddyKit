@@ -1,5 +1,5 @@
 // BBKUserAgent.m
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2016-2018 BuyBuddy Elektronik Güvenlik Bilişim Reklam Telekomünikasyon Sanayi ve Ticaret Limited Şirketi ( https://www.buybuddy.co/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,6 +67,8 @@ static NSString *GetSysInfoByName(const char *typeSpecifier);
     dispatch_once(&onceToken, ^{
 #if TARGET_OS_OSX
         engineSystemVersion = [NSProcessInfo processInfo].operatingSystemVersionString;
+#elif TARGET_OS_WATCH
+        engineSystemVersion = [[WKInterfaceDevice currentDevice] systemVersion];
 #else
         engineSystemVersion = [[UIDevice currentDevice] systemVersion];
 #endif
@@ -83,6 +85,8 @@ static NSString *GetSysInfoByName(const char *typeSpecifier);
     dispatch_once(&onceToken, ^{
 #if TARGET_OS_OSX
         engineSystemName = @"macOS";
+#elif TARGET_OS_WATCH
+        engineSystemName = [[WKInterfaceDevice currentDevice] systemName];
 #else
         engineSystemName =  [[UIDevice currentDevice] systemName];
 #endif
@@ -131,6 +135,8 @@ static NSString *GetSysInfoByName(const char *typeSpecifier);
     dispatch_once(&onceToken, ^{
 #if TARGET_OS_OSX
         model = self.deviceFamily;
+#elif TARGET_OS_WATCH
+        model = [[WKInterfaceDevice currentDevice] model];
 #else
         model = [[UIDevice currentDevice] model];
 #endif
