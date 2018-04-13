@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
  Persists given data in secure keychain.
  
  @param data Data to be stored by the coordinator.
- @param type Type of the going to be stored by the coordinator.
+ @param type Type of the data going to be stored by the coordinator.
  @param keyString Key of the value.
  @param attributes Additional attributes passed to the persistence coordinator.
  @param errPtr In case of an error, a pointer to reference the `NSError` object.

@@ -35,9 +35,11 @@ FOUNDATION_EXPORT const char *BBKLibraryName;
 #ifndef _BUYBUDDYKIT_
 #define _BUYBUDDYKIT_
 
+#import "Networking/Context/Connection/Coordinator/BBKConnectionCoordinator.h"
 #import "Entities/User Management/BBKUser.h"
 #import "Networking/Context/Authentication/Passphrase/BBKPassphrase.h"
 #import "Serialization/BBKEntitySerialization.h"
+#import "Networking/Context/Connection/Coordinator/BBKConnectionCoordinator.h"
 #import "Networking/Context/Connection/Rate Limiting/BBKQuotaContext.h"
 #import "Networking/Context/Connection/Reporting/BBKIOMetricsRepository.h"
 #import "Networking/Context/Connection/BBKHTTPSessionManager.h"

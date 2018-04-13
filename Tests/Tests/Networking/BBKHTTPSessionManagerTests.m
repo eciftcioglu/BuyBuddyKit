@@ -54,6 +54,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"/get" relativeToURL:self.baseURL]];
+
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil
                                                  completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         blockResponseObject = responseObject;
