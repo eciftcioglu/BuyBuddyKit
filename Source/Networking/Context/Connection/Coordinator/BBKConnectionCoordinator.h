@@ -38,7 +38,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- `BBKConnectionCoordinator` creates and manages a user session by fetching a user session token using the provided user credentials or passphrase.
+ `BBKConnectionCoordinator` creates and manages a user session by fetching a session token using the provided user credentials or passphrase.
  */
 @interface BBKConnectionCoordinator : NSObject
 
@@ -84,14 +84,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)openWithCredentials:(BBKCredentials * _Nonnull)credentials;
 
 /**
- Persists the current session with the current credentials and passphrase.
+ Persists the current session by storing the current credentials and passphrase.
  */
 - (void)saveImmediately;
 
 /**
  Submits the one time code provided by the user if a two factor authentication challenge was received.
  
- @param oneTimeCode OnetimeCode
+ @param oneTimeCode The one time code provided by the user.
  */
 - (void)submitOneTimeCode:(BBKOneTimeCode * _Nonnull)oneTimeCode;
 
@@ -100,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 
 /**
- `BBKConnectionCoordinatorDelegate` informs the user about the current session status and an encountered two factor authentication challenge.
+ `BBKConnectionCoordinatorDelegate` informs the user about the current session status or an encountered two factor authentication challenge.
  */
 @protocol BBKConnectionCoordinatorDelegate <NSObject>
 
@@ -108,7 +108,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator receives a further action request for the two-factor authentication yielding SMS artifact.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the session in context.
  @param SMSAuthenticationMetadata The `BBKExternalAuthenticationMetadata` object which carries information about the current two factor authentication challenge.
  */
 - (void)connectionCoordinator:(BBKConnectionCoordinator * _Nonnull)coordinator requiresSMSAuthenticationWithMetadata:(BBKSMSAuthenticationMetadata * _Nonnull)SMSAuthenticationMetadata;
@@ -117,7 +117,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator receives a further action request for the two-factor authentication yielding Email artifact.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the session in context.
  @param emailAuthenticationMetadata The `BBKEmailAuthenticationMetadata` object which carries information about the current two factor authentication challenge.
  */
 - (void)connectionCoordinator:(BBKConnectionCoordinator * _Nonnull)coordinator requiresEmailAuthenticationWithMetadata:(BBKEmailAuthenticationMetadata * _Nonnull)emailAuthenticationMetadata;
@@ -126,7 +126,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator receives a further action request for the two-factor authentication yielding External artifact.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the session in context.
  @param externalAuthenticationMetadata The `BBKExternalAuthenticationMetadata` object which carries information about the current two factor authentication challenge.
  */
 - (void)connectionCoordinator:(BBKConnectionCoordinator * _Nonnull)coordinator requiresExternalAuthenticationWithMetadata:(BBKExternalAuthenticationMetadata * _Nonnull)externalAuthenticationMetadata;
@@ -135,7 +135,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator receives a further action request for a provided two-factor authentication strategy.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the session in context.
  @param strategy The `BBKTwoFactorAuthenticationStrategy` which needs to be followed.
  */
 - (void)connectionCoordinator:(BBKConnectionCoordinator * _Nonnull)coordinator didReceiveTwoFactorAuthenticationStrategy:(BBKTwoFactorAuthenticationStrategy * _Nonnull)strategy;
@@ -144,7 +144,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator succesfuly completes an authentication task.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the current session in context.
  */
 - (void)connectionCoordinatorDidPromoteToComplete:(BBKConnectionCoordinator * _Nonnull)coordinator;
 
@@ -152,7 +152,7 @@ NS_ASSUME_NONNULL_END
 /**
  Called when connection coordinator fails to completes an authentication task.
  
- @param coordinator The `BBKConnectionCoordinator` object in context.
+ @param coordinator The `BBKConnectionCoordinator` object for the session in context.
  @param error The finalization error received during the task.
  */
 - (void)connectionCoordinator:(BBKConnectionCoordinator * _Nonnull)coordinator didReceiveFinalizationError:(NSError * _Nonnull)error;
