@@ -24,6 +24,7 @@
 #import "BBKPassphrase.h"
 #import "BBKCredentials.h"
 #import "BBKHTTPSessionManager.h"
+#import "NSErrorEnum.h"
 
 @class BBKOneTimeCode;
 @class BBKTwoFactorAuthenticationStrategy;
@@ -34,6 +35,12 @@
 @protocol BBKConnectionCoordinatorDelegate;
 @protocol BBKCredentialsPersistenceCoordination;
 @protocol BBKPassphrasePersistenceCoordination;
+
+extern NSString * const BBKConnectionCoordinatorErrorDomain;
+
+NS_ERROR_ENUM(NSUInteger, BBKError, BBKConnectionCoordinatorErrorDomain) {
+    BBKConnectionDelegateHasNoDelegateSet = 137402ULL,
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, assign, getter = isExpired) BOOL expired;
 
 /**
- The `BBKConnectionCoordinatorDelegate` delegate object.
+ `BBKConnectionCoordinatorDelegate` object delegates the class.
  */
 @property (nonatomic, readwrite, retain) id<BBKConnectionCoordinatorDelegate> _Nonnull delegate;
 
@@ -63,11 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite, retain) id<BBKPassphrasePersistenceCoordination> _Nonnull passphraseCoordinator;
 
 /**
- Initializes a `BBKConnectionCoordinator` object with the provided delegate.
- 
- @param delegate The delegate object which has to be provided to receive required `BBKConnectionCoordinatorDelegate` callbacks.
+ Initializes a `BBKConnectionCoordinator` object.
  */
-- (instancetype)initWithDelegate:(id<BBKConnectionCoordinatorDelegate>) delegate;
+- (instancetype)init;
 
 /**
  Remakes the current session using an existing passphrase.

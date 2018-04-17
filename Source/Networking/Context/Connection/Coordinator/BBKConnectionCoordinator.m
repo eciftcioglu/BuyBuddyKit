@@ -21,6 +21,8 @@
 
 #import "BBKConnectionCoordinator.h"
 
+NSString * const BBKConnectionCoordinatorErrorDomain = @"co.buybuddy.networking.context.connection.coordinator";
+
 typedef void (^BBKSignUpCompletionHandler)(BBKPassphrase * _Nullable, NSError * _Nullable);
 typedef void (^BBKRetrieveTokenCompletionHandler)(NSObject * _Nullable, NSError * _Nullable);
 
@@ -30,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readwrite, weak) BBKHTTPSessionManager *manager;
 
-- (void)signUp:(BBKCredentials * _Nonnull)credentials
+- (void)signIn:(BBKCredentials * _Nonnull)credentials
 completionHandler:(BBKSignUpCompletionHandler _Nonnull)handler;
 
 - (void)retrieveToken:(BBKPassphrase * _Nonnull)passphrase
@@ -42,13 +44,12 @@ NS_ASSUME_NONNULL_END
 
 @implementation BBKConnectionCoordinator
 
-- (instancetype)initWithDelegate:(id<BBKConnectionCoordinatorDelegate>)delegate
+- (instancetype)init
 {
     self = [super init];
     
     if (self) {
         self.manager = [BBKHTTPSessionManager manager];
-        self.delegate = delegate;
     }
     
     return self;
@@ -56,36 +57,44 @@ NS_ASSUME_NONNULL_END
 
 - (void)openWithCredentials:(BBKCredentials *)credentials
 {
-    [self signUp:credentials completionHandler:^(BBKPassphrase * _Nullable passphrase, NSError * _Nullable error) {
-        if (error) {
+    [self signIn:credentials completionHandler:^(BBKPassphrase * _Nullable passphrase, NSError * _Nullable error) {
+        if (error != nil) {
+            //  Error occurred during sign up
             [self.delegate connectionCoordinator:self didReceiveFinalizationError:error];
+        } else if (passphrase == nil) {
+            //  Two factor authentication is mandatory
             switch ([error code]) {
                 case 1/* SMS 2fa */:
-                    if (![self.delegate respondsToSelector:@selector(connectionCoordinator:requiresSMSAuthenticationWithMetadata:)]) {
-                        NSError *error = nil;
-                        [self.delegate connectionCoordinator:self didReceiveFinalizationError:error];
+                    if ([self.delegate respondsToSelector:@selector(connectionCoordinator:requiresSMSAuthenticationWithMetadata:)]) {
+                        [self.delegate connectionCoordinator:self
+                       requiresSMSAuthenticationWithMetadata:nil];
                     }
-                    [self.delegate connectionCoordinator:self requiresSMSAuthenticationWithMetadata:nil];
+                    
                     break;
+                    
                 case 2/*Email 2fa*/:
-                    if (![self.delegate respondsToSelector:@selector(connectionCoordinator:requiresEmailAuthenticationWithMetadata:)]) {
-                        NSError *error = nil;
-                        [self.delegate connectionCoordinator:self requiresEmailAuthenticationWithMetadata:nil];
+                    if ([self.delegate respondsToSelector:@selector(connectionCoordinator:requiresEmailAuthenticationWithMetadata:)]) {
+                        [self.delegate connectionCoordinator:self
+                     requiresEmailAuthenticationWithMetadata:nil];
                     }
+                    
                     break;
+                    
                 case 3/*External 2fa*/:
-                    if (![self.delegate respondsToSelector:@selector(connectionCoordinator:requiresExternalAuthenticationWithMetadata:)]) {
-                        NSError *error = nil;
-                        [self.delegate connectionCoordinator:self requiresExternalAuthenticationWithMetadata:nil];
+                    if ([self.delegate respondsToSelector:@selector(connectionCoordinator:requiresExternalAuthenticationWithMetadata:)]) {
+                        [self.delegate connectionCoordinator:self
+                  requiresExternalAuthenticationWithMetadata:nil];
                     }
+                    
                     break;
+                    
                 default:
                     
                     break;
             }
         } else {
-                NSError *error = nil;
-                [self.delegate connectionCoordinatorDidPromoteToComplete:nil];
+            //  Authentication is completed
+            [self.delegate connectionCoordinatorDidPromoteToComplete:self];
         }
     }];
 }
@@ -96,7 +105,7 @@ NS_ASSUME_NONNULL_END
         if (error) {
             [self.delegate connectionCoordinator:self didReceiveFinalizationError:error];
         } else {
-            [self.delegate connectionCoordinatorDidPromoteToComplete:nil];
+            [self.delegate connectionCoordinatorDidPromoteToComplete:self];
         }
     }];
 }
@@ -116,7 +125,7 @@ NS_ASSUME_NONNULL_END
     return YES;
 }
 
-- (void)signUp:(BBKCredentials *)credentials
+- (void)signIn:(BBKCredentials *)credentials
 completionHandler:(BBKSignUpCompletionHandler)handler
 {
     NSURL *baseURL = [NSURL URLWithString:@"asdasd"];
@@ -127,6 +136,9 @@ completionHandler:(BBKSignUpCompletionHandler)handler
         handler(nil, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //  ...
+        error = [NSError errorWithDomain:BBKConnectionCoordinatorErrorDomain
+                                    code:BBKConnectionDelegateHasNoDelegateSet
+                                userInfo:@{@"reason": [NSString stringWithFormat:@"%@ has no delegate set", self]}];
         handler(nil, error);
     }];
 }

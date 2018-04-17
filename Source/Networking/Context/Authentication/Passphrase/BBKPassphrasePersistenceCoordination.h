@@ -29,9 +29,9 @@
 
 @optional
 /**
-Persists the provided passphrase.
+ Persists the provided passphrase.
  
-@param passphrase The session passphrase which will be persisted.
+ @param passphrase The session passphrase which will be persisted.
  */
 - (void)persistPassphrase:(BBKPassphrase * _Nonnull)passphrase;
 
@@ -46,7 +46,7 @@ Persists the provided passphrase.
 
 @optional
 /**
-Loads the persisted passphrase for the current session.
+ Loads the persisted passphrase for the current session.
  */
 - (BBKPassphrase *)loadPassphrase;
 

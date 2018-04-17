@@ -25,4 +25,5 @@ NSString * const BBKErrorDomain = @"com.buybuddy.BuyBuddyKit";
 
 NS_ERROR_ENUM(NSUInteger, BBKError, BBKErrorDomain) {
     BBKKeychainStorageAttributeNotAvailableForStorageType = 137401,
+    BBKConnectionDelegateHasNoDelegateSet = 137402,
 };

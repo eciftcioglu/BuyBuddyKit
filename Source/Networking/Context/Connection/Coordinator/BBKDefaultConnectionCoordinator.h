@@ -21,9 +21,6 @@
 
 #import "BBKConnectionCoordinator.h"
 
-/**
- 
- */
 @interface BBKDefaultConnectionCoordinator : BBKConnectionCoordinator
 
 @end
